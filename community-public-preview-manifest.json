@@ -1,0 +1,199 @@
+{
+  "generatedAt": "2026-07-09T14:12:12.692Z",
+  "packageType": "community-public-preview",
+  "sourceRoot": "outputs/community-homepage-style-exploration",
+  "entry": "index.html",
+  "homepage": "index.html",
+  "publishBasePath": "/ai666-community-preview",
+  "pageCount": 21,
+  "pages": [
+    {
+      "slug": "index",
+      "label": "社区首页",
+      "path": "index.html"
+    },
+    {
+      "slug": "aigc",
+      "label": "AIGC",
+      "path": "aigc.html"
+    },
+    {
+      "slug": "aigc-templates",
+      "label": "AIGC 模板库",
+      "path": "aigc-templates.html"
+    },
+    {
+      "slug": "model-plaza",
+      "label": "模型广场",
+      "path": "model-plaza.html"
+    },
+    {
+      "slug": "model-detail",
+      "label": "模型详情",
+      "path": "model-detail.html"
+    },
+    {
+      "slug": "flash",
+      "label": "闪念",
+      "path": "flash.html"
+    },
+    {
+      "slug": "tutorial",
+      "label": "官方教程",
+      "path": "tutorial.html"
+    },
+    {
+      "slug": "tutorial-detail",
+      "label": "教程详情",
+      "path": "tutorial-detail.html"
+    },
+    {
+      "slug": "activity-center",
+      "label": "活动中心",
+      "path": "activity-center.html"
+    },
+    {
+      "slug": "campaign-detail",
+      "label": "活动详情",
+      "path": "campaign-detail.html"
+    },
+    {
+      "slug": "campaign-prompt",
+      "label": "Prompt 共创计划",
+      "path": "campaign-prompt.html"
+    },
+    {
+      "slug": "prompt-submit",
+      "label": "Prompt 投稿",
+      "path": "prompt-submit.html"
+    },
+    {
+      "slug": "prompt-detail",
+      "label": "Prompt 详情",
+      "path": "prompt-detail.html"
+    },
+    {
+      "slug": "campaign-new-user",
+      "label": "新手任务",
+      "path": "campaign-new-user.html"
+    },
+    {
+      "slug": "campaign-seven-day",
+      "label": "七日成长任务",
+      "path": "campaign-seven-day.html"
+    },
+    {
+      "slug": "message-center",
+      "label": "消息中心",
+      "path": "message-center.html"
+    },
+    {
+      "slug": "points-center",
+      "label": "积分中心",
+      "path": "points-center.html"
+    },
+    {
+      "slug": "invite",
+      "label": "邀请有礼",
+      "path": "invite.html"
+    },
+    {
+      "slug": "login",
+      "label": "登录承接",
+      "path": "login.html"
+    },
+    {
+      "slug": "member-store",
+      "label": "AI商城",
+      "path": "member-store.html"
+    },
+    {
+      "slug": "user-center",
+      "label": "用户中心",
+      "path": "user-center.html"
+    }
+  ],
+  "standalonePages": [
+    {
+      "slug": "content-detail-modals",
+      "label": "内容详情弹层调试台",
+      "path": "content-detail-modals.html"
+    },
+    {
+      "slug": "campaign-ops",
+      "label": "一期活动预览入口",
+      "path": "campaign-ops.html"
+    }
+  ],
+  "copiedRuntimeRoots": [
+    "walkthrough.js",
+    "vendor",
+    "assets/brand",
+    "assets/image_assets",
+    "assets/video_assets",
+    "resources/icons/remixicon/svg"
+  ],
+  "runtimeScripts": [
+    "vendor/gsap.min.js",
+    "walkthrough.js"
+  ],
+  "copiedAssets": [
+    "assets/image_assets/1.png",
+    "assets/image_assets/11.png",
+    "assets/image_assets/12.png",
+    "assets/image_assets/15.jpg",
+    "assets/image_assets/17.png",
+    "assets/image_assets/18.png",
+    "assets/image_assets/2.png",
+    "assets/image_assets/3.png",
+    "assets/image_assets/4.png",
+    "assets/image_assets/5.png",
+    "assets/image_assets/7.png",
+    "assets/video_assets/28_landing.mov",
+    "assets/video_assets/effects_template.mp4",
+    "assets/video_assets/nine_grid.mp4",
+    "assets/video_assets/sd2_gen.mp4"
+  ],
+  "copiedResources": [
+    "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
+    "resources/icons/remixicon/svg/Business/bookmark-fill.svg",
+    "resources/icons/remixicon/svg/Business/bookmark-line.svg",
+    "resources/icons/remixicon/svg/Business/megaphone-fill.svg",
+    "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
+    "resources/icons/remixicon/svg/Design/edit-2-line.svg",
+    "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
+    "resources/icons/remixicon/svg/Device/smartphone-line.svg",
+    "resources/icons/remixicon/svg/Document/draft-line.svg",
+    "resources/icons/remixicon/svg/Document/file-copy-line.svg",
+    "resources/icons/remixicon/svg/Document/file-download-line.svg",
+    "resources/icons/remixicon/svg/Editor/bold.svg",
+    "resources/icons/remixicon/svg/Editor/double-quotes-l.svg",
+    "resources/icons/remixicon/svg/Editor/draggable.svg",
+    "resources/icons/remixicon/svg/Editor/h-2.svg",
+    "resources/icons/remixicon/svg/Editor/italic.svg",
+    "resources/icons/remixicon/svg/Editor/list-ordered.svg",
+    "resources/icons/remixicon/svg/Editor/list-unordered.svg",
+    "resources/icons/remixicon/svg/Finance/coins-fill.svg",
+    "resources/icons/remixicon/svg/Finance/coins-line.svg",
+    "resources/icons/remixicon/svg/Finance/gift-2-fill.svg",
+    "resources/icons/remixicon/svg/Finance/gift-2-line.svg",
+    "resources/icons/remixicon/svg/Finance/vip-crown-2-fill.svg",
+    "resources/icons/remixicon/svg/Health & Medical/heart-line.svg",
+    "resources/icons/remixicon/svg/Logos/wechat-line.svg",
+    "resources/icons/remixicon/svg/Media/image-add-line.svg",
+    "resources/icons/remixicon/svg/Media/image-edit-line.svg",
+    "resources/icons/remixicon/svg/Media/notification-3-line.svg",
+    "resources/icons/remixicon/svg/Media/play-circle-line.svg",
+    "resources/icons/remixicon/svg/Media/play-fill.svg",
+    "resources/icons/remixicon/svg/System/add-line.svg",
+    "resources/icons/remixicon/svg/System/close-fill.svg",
+    "resources/icons/remixicon/svg/System/close-line.svg",
+    "resources/icons/remixicon/svg/System/logout-box-r-line.svg",
+    "resources/icons/remixicon/svg/System/search-line.svg",
+    "resources/icons/remixicon/svg/System/share-2-line.svg",
+    "resources/icons/remixicon/svg/System/share-forward-line.svg",
+    "resources/icons/remixicon/svg/System/thumb-up-fill.svg",
+    "resources/icons/remixicon/svg/System/thumb-up-line.svg",
+    "resources/icons/remixicon/svg/User & Faces/user-3-line.svg"
+  ]
+}

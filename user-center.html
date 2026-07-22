@@ -1,0 +1,806 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>用户中心 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only">
+</head>
+<body>
+  <div class="page growth-detail-page growth-app-page user-center-page profile-studio-page" data-page="user-center" style="--growth-hero-image: url('assets/image_assets/28.webp')">
+    <div class="page-bg"><img src="assets/image_assets/28.webp" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-user-center" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>用户中心</span><span class="timer">20时 42分 39秒</span><span>继续创作、查看积分和邀请好友</span><span>继续创作</span><label class="top-campaign-close" for="top-campaign-dismiss-user-center" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link is-active" aria-current="page" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="continue-dragon" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 图片生成">
+      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <div class="case-detail-media profile-creation-detail-media">
+          <div class="case-detail-viewport">
+            <img class="case-gallery-main" src="assets/image_assets/15.webp" alt="图片生成结果预览">
+            <span class="creation-result-badge">AI 生成</span>
+          </div>
+        </div>
+        <aside class="case-detail-aside creation-result-body profile-creation-result-aside" data-profile-creation-result-detail>
+          <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
+            <div class="creation-result-status">
+              <strong>图片生成</strong>
+              <em>刚刚生成 · 内容由 AI 生成</em>
+            </div>
+            <div class="creation-result-toolbar" aria-label="操作栏">
+              <button class="creation-result-icon-button" type="button" aria-label="下载结果"><img src="resources/icons/remixicon/svg/Document/file-download-line.svg" alt=""><span>下载</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="分享结果"><img src="resources/icons/remixicon/svg/System/share-2-line.svg" alt=""><span>分享</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="收藏结果"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt=""><span>收藏</span></button>
+            </div>
+          </div>
+          <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
+            <div class="creation-result-basic" aria-label="基础参数">
+              <div class="creation-result-row-head"><b>基础参数</b></div>
+              <span><b>模型</b><em data-profile-result-param="model">doubao-seedream-4-5-251128</em></span>
+              <span><b>尺寸</b><em data-profile-result-param="size">1536x864</em></span>
+              <span><b>比例</b><em data-profile-result-param="ratio">16:9</em></span>
+            </div>
+            <div class="creation-result-prompt-card">
+              <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" aria-label="复制提示词"></button></div>
+              <p class="creation-result-prompt-text" data-profile-result-prompt>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
+            </div>
+          </section>
+          <div class="creation-result-footer" aria-label="下一步">
+            <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
+            <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
+              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
+            </div>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="continue-cyber" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 视频生成">
+      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <div class="case-detail-media profile-creation-detail-media">
+          <div class="case-detail-viewport video-viewport">
+            <video src="assets/video_assets/2.mp4" poster="assets/image_assets/17.webp" controls muted playsinline aria-label="视频生成结果预览"></video>
+            <button class="case-video-play-button" type="button" data-case-video-play aria-label="播放视频预览"></button>
+            <span class="creation-result-badge">AI 生成</span>
+          </div>
+        </div>
+        <aside class="case-detail-aside creation-result-body profile-creation-result-aside" data-profile-creation-result-detail>
+          <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
+            <div class="creation-result-status">
+              <strong>视频生成</strong>
+              <em>刚刚生成 · 内容由 AI 生成</em>
+            </div>
+            <div class="creation-result-toolbar" aria-label="操作栏">
+              <button class="creation-result-icon-button" type="button" aria-label="下载结果"><img src="resources/icons/remixicon/svg/Document/file-download-line.svg" alt=""><span>下载</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="分享结果"><img src="resources/icons/remixicon/svg/System/share-2-line.svg" alt=""><span>分享</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="收藏结果"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt=""><span>收藏</span></button>
+            </div>
+          </div>
+          <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
+            <div class="creation-result-basic" aria-label="基础参数">
+              <div class="creation-result-row-head"><b>基础参数</b></div>
+              <span><b>模型</b><em data-profile-result-param="model">doubao-seedance-2-0-5s</em></span>
+              <span><b>尺寸</b><em data-profile-result-param="size">1280x720</em></span>
+              <span><b>比例</b><em data-profile-result-param="ratio">16:9</em></span>
+            </div>
+            <div class="creation-result-prompt-card">
+              <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" aria-label="复制提示词"></button></div>
+              <p class="creation-result-prompt-text" data-profile-result-prompt>霓虹街区商品短片，镜头缓慢推进，商品在雨夜反光中出现，3 镜头完成开场、卖点和行动召唤。</p>
+            </div>
+          </section>
+          <div class="creation-result-footer" aria-label="下一步">
+            <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
+            <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
+              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
+            </div>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="continue-model-note" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 剧本创作">
+      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <div class="case-detail-media profile-creation-detail-media">
+          <div class="case-detail-viewport">
+            <article class="creation-script-result profile-creation-script-result">
+              <span>Markdown 预览</span>
+              <h4>雨夜霓虹街头 · 分镜设定</h4>
+              <p>主角在霓虹雨幕中回头，镜头从街面水光推到眼神特写，随后切入手部道具和追踪者剪影。</p>
+              <ul>
+                <li>人物：少年主角、隐藏追踪者、远处路人。</li>
+                <li>节奏：慢推进、强反差光、结尾留悬念。</li>
+              </ul>
+            </article>
+            <span class="creation-result-badge">AI 生成</span>
+          </div>
+        </div>
+        <aside class="case-detail-aside creation-result-body profile-creation-result-aside" data-profile-creation-result-detail>
+          <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
+            <div class="creation-result-status">
+              <strong>剧本创作</strong>
+              <em>刚刚生成 · 内容由 AI 生成</em>
+            </div>
+            <div class="creation-result-toolbar" aria-label="操作栏">
+              <button class="creation-result-icon-button" type="button" aria-label="下载结果"><img src="resources/icons/remixicon/svg/Document/file-download-line.svg" alt=""><span>下载</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="分享结果"><img src="resources/icons/remixicon/svg/System/share-2-line.svg" alt=""><span>分享</span></button>
+              <button class="creation-result-icon-button" type="button" aria-label="收藏结果"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt=""><span>收藏</span></button>
+            </div>
+          </div>
+          <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
+            <div class="creation-result-basic" aria-label="基础参数">
+              <div class="creation-result-row-head"><b>基础参数</b></div>
+              <span><b>模型</b><em data-profile-result-param="model">gemini-3-flash-preview</em></span>
+              <span><b>尺寸</b><em data-profile-result-param="size">Markdown 文本</em></span>
+              <span><b>比例</b><em data-profile-result-param="ratio">文本结构化</em></span>
+            </div>
+            <div class="creation-result-prompt-card">
+              <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" aria-label="复制提示词"></button></div>
+              <p class="creation-result-prompt-text" data-profile-result-prompt>雨夜霓虹街头，少年回头，电影感构图；输出人物、镜头、节奏和结尾悬念，便于继续做成漫剧。</p>
+            </div>
+          </section>
+          <div class="creation-result-footer" aria-label="下一步">
+            <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
+            <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
+              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
+            </div>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="edit-profile" class="create-modal profile-edit-modal" aria-label="编辑个人资料">
+      <a class="modal-backdrop" href="#" aria-label="关闭个人资料编辑"></a>
+      <div class="create-dialog profile-edit-dialog">
+        <div class="create-dialog-head">
+          <div><h2>编辑个人资料</h2></div>
+          <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭个人资料编辑"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+        </div>
+        <div class="profile-edit-body" data-profile-edit-modal>
+          <section class="profile-avatar-upload" data-profile-avatar-upload>
+            <div class="profile-avatar-preview">
+              <img src="assets/image_assets/29.webp" alt="">
+              <span><img src="resources/icons/remixicon/svg/Media/image-edit-line.svg" alt=""></span>
+            </div>
+            <div>
+              <strong>头像</strong>
+              <p>用于作品、闪念和邀请卡展示</p>
+              <label class="profile-upload-button">
+                <input type="file" accept="image/*" aria-label="上传新头像">
+                上传新头像
+              </label>
+            </div>
+          </section>
+
+          <div class="profile-edit-fields">
+            <label class="profile-field" data-profile-nickname-field>
+              <span>昵称</span>
+              <input type="text" value="拾光创作者" maxlength="16" aria-label="昵称">
+            </label>
+            <label class="profile-field profile-field-wide" data-profile-bio-field>
+              <span>个人简介</span>
+              <textarea maxlength="80" aria-label="个人简介">用 AIGC 记录灵感、模型体验和创作过程。</textarea>
+            </label>
+          </div>
+
+          <section class="profile-bind-list" aria-label="绑定状态">
+            <a class="profile-bind-card" href="#edit-profile" data-profile-bind-entry="wechat">
+              <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Logos/wechat-line.svg" alt=""></span>
+              <div><strong>微信绑定</strong><em>未绑定</em></div>
+              <b>去绑定</b>
+            </a>
+            <a class="profile-bind-card is-bound" href="#edit-profile" data-profile-bind-entry="phone">
+              <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Device/smartphone-line.svg" alt=""></span>
+              <div><strong>手机号绑定</strong><em>已绑定 · 138****8628</em></div>
+              <b>更换</b>
+            </a>
+          </section>
+        </div>
+        <div class="modal-actions"><a class="button secondary" href="#creation-records">取消</a><a class="button" href="#creation-records">保存资料</a></div>
+      </div>
+    </section>
+
+    <main>
+      <section class="profile-studio section">
+        <div class="wide-container profile-studio-layout">
+          <aside class="profile-sidebar" aria-label="用户中心分区">
+            <div class="profile-id-card">
+              <div class="profile-id-head">
+                <img class="profile-avatar" src="assets/image_assets/29.webp" alt="">
+                <a class="profile-edit-icon" href="#edit-profile" aria-label="编辑资料" title="编辑资料"><img src="resources/icons/remixicon/svg/Design/edit-2-line.svg" alt=""></a>
+              </div>
+              <strong>拾光创作者</strong>
+              <span>内容创作者</span>
+            </div>
+            <nav class="profile-anchor-nav" aria-label="用户中心导航">
+              <a class="is-active" href="#creation-records"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Document/draft-line.svg" alt="">创作记录</span></a>
+              <a href="#favorites"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt="">我的收藏</span></a>
+              <a href="#likes"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">我的点赞</span></a>
+              <a href="#points" data-profile-points-entry="embedded-center"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/coins-fill.svg" alt="">积分中心</span><em>1280</em></a>
+              <a href="#invite"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/gift-2-fill.svg" alt="">邀请有礼</span></a>
+            </nav>
+          </aside>
+
+          <div class="profile-studio-main">
+            <section id="creation-records" class="profile-module-panel is-default-profile-panel" data-user-section="creation-records">
+              <section class="profile-section profile-record-section">
+                <div class="profile-section-head">
+                  <div><h2>创作记录</h2></div>
+                </div>
+                <div class="profile-creation-grid" data-profile-card-grid>
+                  <a class="case-card profile-creation-card profile-result-record-card" href="#continue-dragon" data-user-asset data-user-create-source data-profile-standard-card data-profile-creation-result-card data-result-type="image">
+                    <div class="profile-result-record-media">
+                      <img src="assets/image_assets/15.webp" alt="图片生成结果预览">
+                      <span class="creation-result-badge">AI 生成</span>
+                    </div>
+                    <div class="profile-result-record-body">
+                      <div class="profile-result-record-top"><strong>图片生成</strong><em>刚刚生成 · 内容由 AI 生成</em></div>
+                      <p class="profile-result-record-prompt">描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
+                    </div>
+                  </a>
+                  <a class="case-card profile-creation-card profile-result-record-card" href="#continue-cyber" data-user-asset data-user-create-source data-profile-standard-card data-profile-creation-result-card data-result-type="video">
+                    <div class="profile-result-record-media">
+                      <img src="assets/image_assets/17.webp" alt="视频生成结果预览">
+                      <span class="creation-result-badge">AI 生成</span>
+                    </div>
+                    <div class="profile-result-record-body">
+                      <div class="profile-result-record-top"><strong>视频生成</strong><em>刚刚生成 · 内容由 AI 生成</em></div>
+                      <p class="profile-result-record-prompt">霓虹街区商品短片，3 镜头完成开场、卖点和行动召唤。</p>
+                    </div>
+                  </a>
+                  <a class="case-card profile-creation-card profile-result-record-card" href="#continue-model-note" data-user-asset data-user-create-source data-profile-standard-card data-profile-creation-result-card data-result-type="script">
+                    <div class="profile-result-record-media is-text">
+                      <article class="profile-result-record-text">
+                        <span>Markdown 预览</span>
+                        <strong>雨夜霓虹街头 · 分镜设定</strong>
+                        <p>主角在霓虹雨幕中回头，镜头推到眼神特写。</p>
+                      </article>
+                      <span class="creation-result-badge">AI 生成</span>
+                    </div>
+                    <div class="profile-result-record-body">
+                      <div class="profile-result-record-top"><strong>剧本创作</strong><em>刚刚生成 · 内容由 AI 生成</em></div>
+                      <p class="profile-result-record-prompt">雨夜霓虹街头，少年回头，电影感构图。</p>
+                    </div>
+                  </a>
+                </div>
+              </section>
+            </section>
+
+            <section id="favorites" class="profile-module-panel profile-section" data-user-section="favorites">
+              <div class="profile-section-head">
+                <div><h2>我的收藏</h2></div>
+              </div>
+              <div class="filter-row profile-content-filter-row" data-content-taxonomy="aigc-inspiration-v1" aria-label="收藏分类">
+                <a class="filter-chip is-active" href="#favorites" data-content-category="all">全部</a>
+                <a class="filter-chip" href="#favorites" data-content-category="manga">短剧漫剧</a>
+                <a class="filter-chip" href="#favorites" data-content-category="text">文本内容</a>
+                <a class="filter-chip" href="#favorites" data-content-category="image">图片生成</a>
+                <a class="filter-chip" href="#favorites" data-content-category="video">视频生成</a>
+                <a class="filter-chip" href="#favorites" data-content-category="prompt">Prompt</a>
+              </div>
+              <div class="profile-content-card-grid profile-favorite-flow" data-profile-favorite-list>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-bamboo" data-user-asset data-profile-favorite-card data-content-category="image">
+                  <img src="assets/image_assets/29.webp" alt="">
+                  <div class="copy"><h3>竹泉秘境</h3><p>清新治愈场景，夏日氛围一键生成</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-goddess-prompt" data-user-asset data-profile-favorite-card data-content-category="prompt">
+                  <img src="assets/image_assets/15.webp" alt="">
+                  <div class="copy"><h3>国风神女 Prompt</h3><p>带效果图，对照画面后再复制或同款</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-dragon" data-user-asset data-profile-favorite-card data-content-category="manga">
+                  <img src="assets/image_assets/17.webp" alt="">
+                  <div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>短剧漫剧</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-golden" data-user-asset data-profile-favorite-card data-content-category="text">
+                  <img src="assets/image_assets/18.webp" alt="">
+                  <div class="copy"><h3>金色启航</h3><p>活动海报脚本，首屏转化文案成稿</p><div class="case-hover-meta"><span>GPT-4.1</span><span>文本内容</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-lighthouse" data-user-asset data-profile-favorite-card data-content-category="video">
+                  <img src="assets/image_assets/4.webp" alt="">
+                  <div class="copy"><h3>海灯守望</h3><p>海边落日镜头，故事片头更有画面</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>视频生成</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-favorite-detail-cloud" data-user-asset data-profile-favorite-card data-content-category="image">
+                  <img src="assets/image_assets/12.webp" alt="">
+                  <div class="copy"><h3>云海行舟</h3><p>轻幻想插画，故事配图更容易出片</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div>
+                </a>
+              </div>
+            </section>
+
+            <section id="likes" class="profile-module-panel profile-section" data-user-section="likes">
+              <div class="profile-section-head">
+                <div><h2>我的点赞</h2></div>
+              </div>
+              <div class="filter-row profile-content-filter-row" data-content-taxonomy="aigc-inspiration-v1" aria-label="点赞分类">
+                <a class="filter-chip is-active" href="#likes" data-content-category="all">全部</a>
+                <a class="filter-chip" href="#likes" data-content-category="manga">短剧漫剧</a>
+                <a class="filter-chip" href="#likes" data-content-category="text">文本内容</a>
+                <a class="filter-chip" href="#likes" data-content-category="image">图片生成</a>
+                <a class="filter-chip" href="#likes" data-content-category="video">视频生成</a>
+                <a class="filter-chip" href="#likes" data-content-category="prompt">Prompt</a>
+              </div>
+              <div class="profile-content-card-grid profile-like-flow" data-profile-like-list>
+                <a class="case-card profile-content-case-card" href="#profile-like-detail-dragon" data-user-asset data-profile-like-card data-content-category="manga">
+                  <img src="assets/image_assets/11.webp" alt="">
+                  <div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>短剧漫剧</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-like-detail-goddess" data-user-asset data-profile-like-card data-content-category="image">
+                  <img src="assets/image_assets/15.webp" alt="">
+                  <div class="copy"><h3>凤冠神女</h3><p>国风神女设定，古装角色直接出图</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-like-detail-rift" data-user-asset data-profile-like-card data-content-category="video">
+                  <img src="assets/image_assets/17.webp" alt="">
+                  <div class="copy"><h3>异界裂隙</h3><p>暗黑幻想场景，战斗分镜快速定调</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>视频生成</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-like-detail-model-note" data-user-asset data-profile-like-card data-content-category="text">
+                  <img src="assets/image_assets/18.webp" alt="">
+                  <div class="copy"><h3>模型复盘封面</h3><p>经验帖配图，模型使用过程更清楚</p><div class="case-hover-meta"><span>GPT-4.1</span><span>文本内容</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card prompt-case-card" href="#profile-like-detail-title-prompt" data-user-asset data-profile-like-card data-content-category="prompt">
+                  <div class="prompt-card-preview"><strong>标题拆解 Prompt</strong><span>输入产品卖点、人群和场景，输出标题方向和封面短句。</span></div>
+                  <div class="copy"><h3>标题拆解 Prompt</h3><p>正文优先展示，适合直接复制复用</p><div class="case-hover-meta"><span>GPT-4.1</span><span>Prompt</span></div></div>
+                </a>
+                <a class="case-card profile-content-case-card" href="#profile-like-detail-healing-prompt" data-user-asset data-profile-like-card data-content-category="prompt">
+                  <img src="assets/image_assets/29.webp" alt="">
+                  <div class="copy"><h3>治愈场景 Prompt</h3><p>带示例图，沉淀可复用场景关键词</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt</span></div></div>
+                </a>
+              </div>
+            </section>
+
+            <section id="points" class="profile-module-panel profile-points-section" data-user-section="points">
+              <div class="points-center-layout profile-points-layout">
+                <section class="app-card points-balance-hero" data-profile-points-section="balance">
+                  <div class="points-balance-copy">
+                    <h1>1280</h1>
+                    <p>可用积分</p>
+                  </div>
+                  <div class="points-balance-stats" aria-label="积分状态">
+                    <span><strong>+40</strong><em>今日获得</em></span>
+                    <span><strong>+180</strong><em>近 7 日获得</em></span>
+                    <span><strong>+40</strong><em>待到账</em></span>
+                  </div>
+                  <a class="points-balance-shop" href="./member-store.html" data-points-shop-entry>
+                    <strong>去 AI 商城兑换</strong>
+                    <span>把积分换成模型体验卡和创作权益</span>
+                  </a>
+                </section>
+
+                <section class="app-card points-earn-card" data-profile-points-section="earn">
+                  <div class="app-card-head">
+                    <div>
+                      <h2>赚积分入口</h2>
+                    </div>
+                    <a class="section-link" href="./points-center.html">积分中心</a>
+                  </div>
+                  <div class="points-earn-grid">
+                    <a class="points-earn-tile" href="./campaign-new-user.html" data-profile-earn-card>
+                      <strong>新手任务</strong>
+                      <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
+                      <em>最高 110 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./campaign-seven-day.html" data-profile-earn-card>
+                      <strong>七日成长任务</strong>
+                      <p>连续 7 天完成浏览、共创、发布、分享和兑换。</p>
+                      <em>最高 320 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./campaign-detail.html" data-profile-earn-card>
+                      <strong>AI 生图创作挑战</strong>
+                      <p>按主题发布 AI 作品，进入挑战和精选候选。</p>
+                      <em>发布奖励 50 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./campaign-prompt.html" data-profile-earn-card>
+                      <strong>Prompt 共创计划</strong>
+                      <p>发布可复用 Prompt，沉淀模板和同款入口。</p>
+                      <em>纯文字 20 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./invite.html" data-profile-earn-card>
+                      <strong>邀请有礼</strong>
+                      <p>好友完成注册、首次互动和首次发布后累计奖励。</p>
+                      <em>单个好友最高 90 积分</em>
+                    </a>
+                  </div>
+                </section>
+
+                <section class="app-card points-record-card" data-profile-points-section="records">
+                  <div class="app-card-head">
+                    <div>
+                      <h2>积分记录</h2>
+                    </div>
+                  </div>
+                  <div class="growth-table compact-table points-record-table">
+                    <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 09:12</strong><span>新手首访</span><em>+10</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 09:28</strong><span>完善资料</span><em>+10</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 10:26</strong><span>参与生图挑战</span><em>+20</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 11:40</strong><span>AI商城工具兑换</span><em>-40</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>昨天 18:06</strong><span>生图挑战作品发布</span><em>+50</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>昨天 20:15</strong><span>好友首次发布作品</span><em>+90</em></div>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <section id="invite" class="profile-module-panel profile-section profile-invite-section" data-user-section="invite">
+              <div class="profile-section-head">
+                <div><h2>邀请有礼</h2></div>
+              </div>
+              <div class="profile-invite-mirror" data-profile-invite-mirror>
+                <div class="invite-landing-layout profile-invite-overview">
+                  <div class="invite-hero-copy">
+                    <h1>邀好友来创作，最高拿 90 积分</h1>
+                    <p>好友注册、互动、首次发布都能解锁奖励。越早带朋友开始创作，越快把积分攒起来。</p>
+                    <div class="invite-primary-actions">
+                      <a class="button" href="#profile-invite-link" data-invite-copy data-invite-copy-message="已复制邀请链接，快起分享给朋友吧">立即邀请</a>
+                    </div>
+                  </div>
+
+                  <div class="invite-right-stack" data-profile-invite-right-stack>
+                    <div class="invite-referrer-card profile-invite-relation" id="profile-invite-referrer" data-profile-invite-relation>
+                      <span class="invite-referrer-target" id="profile-invite-referrer-bound" aria-hidden="true"></span>
+                      <div class="invite-referrer-head">
+                        <span>我的邀请人</span>
+                      </div>
+                      <div class="invite-referrer-states">
+                        <div class="invite-referrer-state is-empty" data-profile-invite-state="empty">
+                          <div class="invite-referrer-binder" data-profile-invite-binder>
+                            <label>
+                              <input type="text" value="SG2026" placeholder="绑定邀请码" data-profile-invite-code-field aria-label="绑定邀请码">
+                            </label>
+                            <a class="button" href="#profile-invite-referrer-bound" data-profile-invite-bind-action>绑定邀请人</a>
+                          </div>
+                        </div>
+                        <div class="invite-referrer-state is-bound" data-profile-invite-state="bound">
+                          <div class="invite-referrer-person-card" data-profile-inviter-card>
+                            <img src="assets/image_assets/28.webp" alt="">
+                            <strong>青梧</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="invite-code-stage">
+                      <span class="code-caption">我的邀请码</span>
+                      <strong>SG2026</strong>
+                      <p class="invite-code-helper">复制给朋友，进入登录页后完成绑定邀请关系。</p>
+                      <div class="invite-link-box" id="profile-invite-link"><a class="invite-link-url" href="./login.html?invite=SG2026" data-invite-login-link>duoyuan-shiguang.local/login?invite=SG2026</a><a href="#profile-invite-link" data-invite-copy>复制</a></div>
+                    </div>
+                  </div>
+
+                  <div class="invite-progress-stage" data-invite-section="path">
+                    <div class="invite-progress-head">
+                      <div>
+                        <h2>邀请奖励规则</h2>
+                        <p>好友完成对应动作后，奖励进入邀请记录和积分中心。</p>
+                      </div>
+                      <a class="invite-rule-head-link" href="./invite.html#invite-rules-modal">完整规则</a>
+                    </div>
+                    <div class="invite-reward-summary" data-invite-section="tiers" aria-label="邀请分阶段奖励摘要">
+                      <a class="invite-reward-card" href="./user-center.html" data-invite-step data-invite-tier><strong>注册</strong><span>+20</span><em>成功注册</em></a>
+                      <a class="invite-reward-card" href="./aigc.html" data-invite-step data-invite-tier><strong>互动</strong><span>+20</span><em>点赞/收藏/评论</em></a>
+                      <a class="invite-reward-card" href="./campaign-detail.html" data-invite-step data-invite-tier><strong>发布</strong><span>+50</span><em>有效 AI 作品</em></a>
+                      <div class="invite-reward-card is-total" data-invite-tier><strong>单个好友最高</strong><span>90</span><em>三阶段完成</em></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="invite-record-dashboard" aria-label="邀请数据概览">
+                  <div class="invite-stat-strip invite-overview-stats">
+                    <div data-invite-stat><span>总邀请人数</span><strong>18</strong></div>
+                    <div data-invite-stat><span>已激活好友</span><strong>11</strong></div>
+                    <div data-invite-stat><span>累计获得积分</span><strong>620</strong></div>
+                    <div data-invite-stat><span>处理中积分</span><strong>40</strong></div>
+                  </div>
+                  <div class="invite-period-summary" aria-label="今日和本月邀请奖励统计">
+                    <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
+                      <strong>今日邀请奖励</strong>
+                      <span>180/300 积分</span>
+                      <em>注册 3/5 · 互动 2/5 · 发布 1/3</em>
+                    </div>
+                    <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
+                      <strong>本月邀请奖励</strong>
+                      <span>620/2000 积分</span>
+                      <em>注册 18/50 · 互动 11/30 · 发布 6/20</em>
+                    </div>
+                  </div>
+                </div>
+                <div class="invite-record-list">
+                  <a class="invite-record-row" href="./campaign-detail.html" data-user-invite-record data-invite-record><img src="assets/image_assets/27.webp" alt=""><strong>林舟<time datetime="2026-06-28T14:20" data-invite-time>06-28 14:20 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-done is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+90</em></a>
+                  <a class="invite-record-row" href="./aigc.html" data-user-invite-record data-invite-record><img src="assets/image_assets/28.webp" alt=""><strong>青梧<time datetime="2026-06-28T11:05" data-invite-time>06-28 11:05 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-current" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-todo" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+20</em></a>
+                  <a class="invite-record-row" href="./aigc.html" data-user-invite-record data-invite-record><img src="assets/image_assets/29.webp" alt=""><strong>木辛<time datetime="2026-06-27T19:40" data-invite-time>06-27 19:40 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+40</em></a>
+                  <a class="invite-record-row" href="./campaign-detail.html" data-user-invite-record data-invite-record><img src="assets/image_assets/4.webp" alt=""><strong>阿澈<time datetime="2026-06-27T16:18" data-invite-time>06-27 16:18 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-done is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+90</em></a>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="profile-favorite-detail-bamboo" class="case-detail-modal content-format-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏图片作品详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media">
+            <div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/29.webp" alt=""></div>
+            <div class="case-thumb-strip"><button class="case-thumb is-active" type="button"><img src="assets/image_assets/29.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/4.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/15.webp" alt=""></button></div>
+          </div>
+          <aside class="case-detail-aside">
+            <h3>竹泉秘境</h3>
+            <div class="detail-tags"><span>图片</span><span>3:4</span><span>Flux Pro 1.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-bamboo-tabs" id="profile-favorite-bamboo-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-bamboo-tabs" id="profile-favorite-bamboo-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-bamboo-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-bamboo-comments">评论 <span>18</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>清晨竹林秘境，画面中央有清澈泉水、柔和阳光、浅绿色雾气、藤蔓石阶和小木桥。构图保持干净，上方留白，青绿、浅金、雾白为主，适合作为故事封面、教程封面或活动海报主视觉。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/29.webp" alt=""><div><strong>竹影</strong><p>泉水上方的留白很舒服，适合做教程封面。</p><div class="comment-action-line"><span>2 分钟前</span><button type="button">回复</button><button type="button">赞 9</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>128</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>46</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>12</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 8 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">8</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-favorite-detail-goddess-prompt" class="case-detail-modal content-format-modal prompt-detail-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏 Prompt 详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭 Prompt 详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media" data-prompt-media-left>
+            <div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/15.webp" alt=""></div>
+            <div class="case-thumb-strip"><button class="case-thumb is-active" type="button"><img src="assets/image_assets/15.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/29.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/4.webp" alt=""></button></div>
+          </div>
+          <aside class="case-detail-aside">
+            <h3>国风神女角色设定 Prompt</h3>
+            <div class="detail-tags"><span>Prompt</span><span>Flux Pro 1.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-goddess-prompt-tabs" id="profile-favorite-goddess-prompt-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-goddess-prompt-tabs" id="profile-favorite-goddess-prompt-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-goddess-prompt-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-goddess-prompt-comments">评论 <span>12</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel" data-prompt-detail><strong>提示词</strong><p>国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/15.webp" alt=""><div><strong>角色设定控</strong><p>服饰、光线和用途都有约束，复用时不容易跑偏。</p><div class="comment-action-line"><span>6 分钟前</span><button type="button">回复</button><button type="button">赞 13</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="Prompt 互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>128</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>46</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>12</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-model="Flux Pro 1.1" aria-label="一键同款，带入 Prompt 和推荐模型"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-favorite-detail-dragon" class="case-detail-modal content-format-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏漫剧作品详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport video-viewport"><video src="assets/video_assets/2.mp4" poster="assets/image_assets/17.webp" controls muted playsinline></video><button class="case-video-play-button" type="button" data-case-video-play aria-label="播放视频预览"></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>龙虎天劫：第一幕冲突</h3>
+            <div class="detail-tags"><span>漫剧</span><span>9:16 竖屏</span><span>Seedance 2.0</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-dragon-tabs" id="profile-favorite-dragon-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-dragon-tabs" id="profile-favorite-dragon-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-dragon-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-dragon-comments">评论 <span>27</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>东方玄幻竖屏漫剧，乌云撕裂、金色雷光、巨龙盘旋，两位主角站在断裂石桥两端正面对峙。镜头先俯冲到石桥，再推近人物表情，最后停在即将开战的一瞬间。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/4.webp" alt=""><div><strong>追光的猫</strong><p>龙影压下来的瞬间很有第一集钩子。</p><div class="comment-action-line"><span>刚刚</span><button type="button">回复</button><button type="button">赞 12</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>214</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>86</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>19</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 28 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">28</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-favorite-detail-golden" class="case-detail-modal content-format-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏文本作品详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media"><article class="content-markdown-preview content-text-result"><span class="markdown-kicker">Markdown 预览</span><h1>AI 生图挑战 18 秒广告脚本</h1><blockquote>一句话，直接生成一支广告。先用积分试一次，再选择适合自己的模型链路。</blockquote><h2>脚本正文</h2><p><strong>开场 0-3s</strong>：镜头扫过创作台，输入框里出现一句灵感。</p><p><strong>卖点 4-12s</strong>：文本、图片、视频模型并列切换，突出多模型组合和低门槛试用。</p><p><strong>收口 13-18s</strong>：画面落到作品结果页，引导收藏结果或一键同款。</p></article></div>
+          <aside class="case-detail-aside">
+            <h3>金色启航</h3>
+            <div class="detail-tags"><span>文本</span><span>短视频脚本</span><span>GPT-4.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-golden-tabs" id="profile-favorite-golden-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-golden-tabs" id="profile-favorite-golden-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-golden-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-golden-comments">评论 <span>6</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>为 AI 生图挑战写一条 18 秒短视频广告脚本，目标用户是刚开始尝试 AI 创作的内容创作者、运营人员和小团队。脚本要突出一句话创作、多模型组合和积分轻量体验。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/28.webp" alt=""><div><strong>增长小队</strong><p>结构清楚，可以直接拆成拍摄分镜。</p><div class="comment-action-line"><span>8 分钟前</span><button type="button">回复</button><button type="button">赞 11</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>74</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>18</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>11</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 3 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">3</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-favorite-detail-lighthouse" class="case-detail-modal content-format-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏视频作品详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport video-viewport"><video src="assets/video_assets/2.mp4" poster="assets/image_assets/4.webp" controls muted playsinline></video><button class="case-video-play-button" type="button" data-case-video-play aria-label="播放视频预览"></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>海灯守望</h3>
+            <div class="detail-tags"><span>视频</span><span>16:9</span><span>Seedance 2.0</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-lighthouse-tabs" id="profile-favorite-lighthouse-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-lighthouse-tabs" id="profile-favorite-lighthouse-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-lighthouse-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-lighthouse-comments">评论 <span>14</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>傍晚海边灯塔，金色落日从云层缝隙照向海面，浪花拍打礁石，灯塔光束扫过海面。镜头贴近海岸线推进，再抬高看到灯塔全貌，故事片头感强。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/4.webp" alt=""><div><strong>镜头控</strong><p>落日和灯塔光束很适合做片头。</p><div class="comment-action-line"><span>10 分钟前</span><button type="button">回复</button><button type="button">赞 7</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>96</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>31</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>8</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 18 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">18</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-favorite-detail-cloud" class="case-detail-modal content-format-modal profile-content-detail-modal profile-favorite-detail-modal" data-profile-content-detail aria-label="收藏图片作品详情">
+        <a class="modal-backdrop" href="#favorites" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#favorites" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/12.webp" alt=""></div><div class="case-thumb-strip"><button class="case-thumb is-active" type="button"><img src="assets/image_assets/12.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/29.webp" alt=""></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>云海行舟</h3>
+            <div class="detail-tags"><span>图片</span><span>轻幻想插画</span><span>Flux Pro 1.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-cloud-tabs" id="profile-favorite-cloud-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-favorite-cloud-tabs" id="profile-favorite-cloud-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-favorite-cloud-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-favorite-cloud-comments">评论 <span>9</span></label></div>
+              <div class="detail-tab-content">
+                <div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>云海之上有一艘小舟穿过柔和金光，远处山脉若隐若现，画面保留轻幻想插画质感和故事开篇空间，适合作为连载封面或世界观设定图。</p></div>
+                <div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list" data-comment-component="global"><article class="comment-row compact"><img src="assets/image_assets/27.webp" alt=""><div><strong>故事封面</strong><p>这个方向适合做系列封面。</p><div class="comment-action-line"><span>24 分钟前</span><button type="button">回复</button><button type="button">赞 5</button></div></div></article></div><div class="comment-input-bar case-comment-input" data-comment-input="detail"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div>
+              </div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>88</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>22</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>6</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 8 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">8</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-dragon" class="case-detail-modal content-format-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞漫剧作品详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport video-viewport"><video src="assets/video_assets/2.mp4" poster="assets/image_assets/11.webp" controls muted playsinline></video><button class="case-video-play-button" type="button" data-case-video-play aria-label="播放视频预览"></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>龙虎天劫：第一幕冲突</h3>
+            <div class="detail-tags"><span>漫剧</span><span>9:16 竖屏</span><span>Seedance 2.0</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-dragon-tabs" id="profile-like-dragon-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-dragon-tabs" id="profile-like-dragon-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-dragon-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-dragon-comments">评论 <span>27</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>东方玄幻竖屏漫剧，第一集开场，巨龙从云层后盘旋而出，两位主角在断桥两端对峙，画面停在即将开战的一瞬间。</p></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/4.webp" alt=""><div><strong>追光的猫</strong><p>第一集钩子很明确。</p><div class="comment-action-line"><span>刚刚</span><button type="button">回复</button><button type="button">赞 12</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>214</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>86</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>19</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 28 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">28</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-goddess" class="case-detail-modal content-format-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞图片作品详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/15.webp" alt=""></div><div class="case-thumb-strip"><button class="case-thumb is-active" type="button"><img src="assets/image_assets/15.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/29.webp" alt=""></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>凤冠神女</h3>
+            <div class="detail-tags"><span>图片</span><span>角色设定</span><span>Flux Pro 1.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-goddess-tabs" id="profile-like-goddess-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-goddess-tabs" id="profile-like-goddess-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-goddess-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-goddess-comments">评论 <span>12</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，适合角色海报和短剧封面。</p></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/15.webp" alt=""><div><strong>角色设定控</strong><p>人物面部和服饰限制都比较清楚。</p><div class="comment-action-line"><span>6 分钟前</span><button type="button">回复</button><button type="button">赞 13</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>128</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>46</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>12</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 8 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">8</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-rift" class="case-detail-modal content-format-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞视频作品详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="case-detail-viewport video-viewport"><video src="assets/video_assets/2.mp4" poster="assets/image_assets/17.webp" controls muted playsinline></video><button class="case-video-play-button" type="button" data-case-video-play aria-label="播放视频预览"></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>异界裂隙</h3>
+            <div class="detail-tags"><span>视频</span><span>暗黑幻想</span><span>Seedance 2.0</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-rift-tabs" id="profile-like-rift-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-rift-tabs" id="profile-like-rift-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-rift-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-rift-comments">评论 <span>21</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>暗黑幻想裂隙从天空打开，红蓝能量在废墟上方交错，镜头先展示环境压迫感，再推进到角色背影和裂隙边缘。</p></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/28.webp" alt=""><div><strong>分镜研究员</strong><p>适合接一段角色转身的镜头。</p><div class="comment-action-line"><span>16 分钟前</span><button type="button">回复</button><button type="button">赞 8</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>176</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>55</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>16</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 18 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">18</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-model-note" class="case-detail-modal content-format-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞文本作品详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭作品详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media"><article class="content-markdown-preview content-text-result"><span class="markdown-kicker">Markdown 预览</span><h1>模型体验复盘封面说明</h1><blockquote>把模型反馈、输入摘要和结果封面整理成可发布的经验帖。</blockquote><h2>内容结构</h2><p><strong>输入</strong>：记录模型、提示词和关键限制。</p><p><strong>结果</strong>：展示首图和二次修正方向。</p><p><strong>复盘</strong>：总结适用场景、失败边界和下次优化。</p></article></div>
+          <aside class="case-detail-aside">
+            <h3>模型复盘封面</h3>
+            <div class="detail-tags"><span>文本</span><span>经验帖</span><span>GPT-4.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-model-note-tabs" id="profile-like-model-note-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-model-note-tabs" id="profile-like-model-note-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-model-note-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-model-note-comments">评论 <span>8</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel"><strong>提示词</strong><p>将一次模型体验整理为社区经验帖，包含目标、输入摘要、模型输出、人工修正、适用场景和下次优化方向，语气保持真实克制。</p></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/29.webp" alt=""><div><strong>模型记录员</strong><p>这个结构适合新手写复盘。</p><div class="comment-action-line"><span>21 分钟前</span><button type="button">回复</button><button type="button">赞 6</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="作品互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>92</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>24</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>10</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" aria-label="一键同款，预计消耗 3 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">3</strong></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-title-prompt" class="case-detail-modal content-format-modal prompt-detail-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞 Prompt 详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭 Prompt 详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media"><div class="prompt-text-panel" data-prompt-text-left><div class="detail-prompt" data-prompt-detail><div class="prompt-detail-copy-head"><strong>提示词</strong></div><p>请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出分为痛点型、结果型、对比型、场景型四组。</p></div></div></div>
+          <aside class="case-detail-aside">
+            <h3>爆款标题拆解 Prompt</h3>
+            <div class="detail-tags"><span>Prompt</span><span>GPT-4.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-title-prompt-tabs" id="profile-like-title-prompt-model" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-title-prompt-tabs" id="profile-like-title-prompt-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-title-prompt-model">模型信息</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-title-prompt-comments">评论 <span>6</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel prompt-model-panel" data-prompt-model-info><strong>模型情况</strong><div class="prompt-model-facts"><div class="prompt-model-fact"><span>推荐模型</span><strong>GPT-4.1 / Gemini 3 Flash</strong></div><div class="prompt-model-fact"><span>适用场景</span><strong>短视频标题、活动海报标题、教程封面标题</strong></div></div></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/28.webp" alt=""><div><strong>标题运营</strong><p>输入字段边界清楚，新人也能直接套。</p><div class="comment-action-line"><span>9 分钟前</span><button type="button">回复</button><button type="button">赞 10</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="Prompt 互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>74</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>18</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>11</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-model="GPT-4.1" aria-label="一键同款，带入 Prompt 和推荐模型"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span></a></div>
+          </aside>
+        </article>
+      </section>
+
+      <section id="profile-like-detail-healing-prompt" class="case-detail-modal content-format-modal prompt-detail-modal profile-content-detail-modal profile-like-detail-modal" data-profile-content-detail aria-label="点赞带图 Prompt 详情">
+        <a class="modal-backdrop" href="#likes" aria-label="关闭 Prompt 详情"></a>
+        <article class="case-detail-dialog">
+          <a class="case-detail-close" href="#likes" aria-label="关闭">×</a>
+          <div class="case-detail-media" data-prompt-media-left><div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/29.webp" alt=""></div><div class="case-thumb-strip"><button class="case-thumb is-active" type="button"><img src="assets/image_assets/29.webp" alt=""></button><button class="case-thumb" type="button"><img src="assets/image_assets/4.webp" alt=""></button></div></div>
+          <aside class="case-detail-aside">
+            <h3>治愈场景 Prompt</h3>
+            <div class="detail-tags"><span>Prompt</span><span>Flux Pro 1.1</span></div>
+            <div class="detail-tabs" data-global-comment-component>
+              <input class="detail-tab-radio" type="radio" name="profile-like-healing-prompt-tabs" id="profile-like-healing-prompt-prompt" checked>
+              <input class="detail-tab-radio" type="radio" name="profile-like-healing-prompt-tabs" id="profile-like-healing-prompt-comments">
+              <div class="detail-tab-controls" role="tablist" aria-label="详情内容"><label class="detail-tab-label detail-tab-label-prompt" for="profile-like-healing-prompt-prompt">提示词</label><label class="detail-tab-label detail-tab-label-comments" for="profile-like-healing-prompt-comments">评论 <span>10</span></label></div>
+              <div class="detail-tab-content"><div class="detail-tab-panel detail-prompt detail-prompt-panel" data-prompt-detail><strong>提示词</strong><p>治愈系自然场景，清晨光线穿过竹林，水面、石阶和前景虚化叶片形成层次，画面保留干净留白，适合作为教程封面和故事开场参考。</p></div><div class="detail-tab-panel detail-comments-panel"><div class="content-comment-list case-comment-list"><article class="comment-row compact"><img src="assets/image_assets/29.webp" alt=""><div><strong>场景收藏夹</strong><p>关键词很好复用，适合做系列场景。</p><div class="comment-action-line"><span>12 分钟前</span><button type="button">回复</button><button type="button">赞 8</button></div></div></article></div><div class="comment-input-bar case-comment-input"><span>写下你的看法</span><button class="button" type="button">发布</button></div></div></div>
+            </div>
+            <div class="content-action-row"><div class="detail-action-stats" data-content-detail-actions aria-label="Prompt 互动"><button class="detail-action-stat" type="button" data-detail-like-action><span class="detail-action-icon is-like" aria-hidden="true"></span><strong>83</strong></button><a class="detail-action-stat" href="#favorites" data-detail-favorite-action><span class="detail-action-icon is-favorite" aria-hidden="true"></span><strong>25</strong></a><button class="detail-action-stat" type="button" data-detail-share-action><span class="detail-action-icon is-share" aria-hidden="true"></span><strong>9</strong></button></div><a class="button content-remix-button" href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-model="Flux Pro 1.1" aria-label="一键同款，带入 Prompt 和推荐模型"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span></a></div>
+          </aside>
+        </article>
+      </section>
+    </main>
+
+<div class="footer-space"></div>
+  </div>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>

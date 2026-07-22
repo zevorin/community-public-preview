@@ -1,0 +1,592 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">  <title>闪念 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only">
+</head>
+<body class="home-header-shell">
+  <div class="page flash-page">
+    <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
+    <header class="site-header shared-home-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a class="is-active" aria-current="page" href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.webp" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>先看清权益，再决定是否进入AI商城</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">进入AI商城</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="compose-flash" class="create-modal flash-compose-modal" aria-label="发布一条闪念">
+      <a class="modal-backdrop" href="#" aria-label="关闭发布一条闪念"></a>
+      <div class="create-dialog flash-compose-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>发布一条闪念</h2>
+          </div>
+          <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭发布一条闪念"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+        </div>
+        <div class="flash-editor">
+          <div class="flash-editor-shell">
+            <textarea class="flash-editor-field" maxlength="600" aria-label="闪念内容">今天测试 gemini-3-flash-preview 做 2 分钟短片脚本，先把角色关系压成三句，再让模型拆镜头，结果比直接写长 Prompt 稳定很多。</textarea>
+            <div class="flash-editor-bar">
+              <div class="flash-compose-toolbar" aria-label="编辑工具">
+                <button class="flash-tool-button" type="button" title="二级标题" aria-label="二级标题"><img src="resources/icons/remixicon/svg/Editor/h-2.svg" alt=""></button>
+                <button class="flash-tool-button" type="button" title="加粗" aria-label="加粗"><img src="resources/icons/remixicon/svg/Editor/bold.svg" alt=""></button>
+                <button class="flash-tool-button" type="button" title="斜体" aria-label="斜体"><img src="resources/icons/remixicon/svg/Editor/italic.svg" alt=""></button>
+                <button class="flash-tool-button" type="button" title="引用" aria-label="引用"><img src="resources/icons/remixicon/svg/Editor/double-quotes-l.svg" alt=""></button>
+                <button class="flash-tool-button" type="button" title="无序列表" aria-label="无序列表"><img src="resources/icons/remixicon/svg/Editor/list-unordered.svg" alt=""></button>
+                <button class="flash-tool-button" type="button" title="有序列表" aria-label="有序列表"><img src="resources/icons/remixicon/svg/Editor/list-ordered.svg" alt=""></button>
+              </div>
+              <span class="flash-compose-counter">96 / 600</span>
+            </div>
+          </div>
+          <div class="flash-media-section">
+            <div class="flash-media-head">
+              <strong>媒体文件</strong>
+              <span>2 / 6</span>
+            </div>
+            <div class="flash-media-strip">
+              <button class="flash-media-add" type="button" aria-label="添加媒体文件">
+                <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
+              </button>
+              <div class="flash-media-item">
+                <img class="flash-media-preview" src="assets/image_assets/11.webp" alt="">
+                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
+                <span class="flash-media-type">1 / 6</span>
+              </div>
+              <div class="flash-media-item is-video">
+                <img class="flash-media-preview" src="assets/image_assets/18.webp" alt="">
+                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
+                <span class="flash-media-type">视频</span>
+              </div>
+            </div>
+          </div>
+          <div class="flash-editor-footer">
+            <span>发布后可获得 30 积分，好的经验会被更多人看到</span>
+            <div class="flash-editor-actions">
+              <a class="button secondary" href="./flash.html">取消</a>
+              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流">发布</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activity-rules" class="create-modal flash-comments-modal" aria-label="运营活动">
+      <a class="modal-backdrop" href="#" aria-label="关闭运营活动"></a>
+      <div class="create-dialog flash-comments-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>分享作品或 Prompt，赢积分奖励</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="activity-rule-grid">
+          <div><strong>参与动作</strong><span>分享 AI 生图挑战作品、Prompt 共创内容或 AIGC 过程闪念</span></div>
+          <div><strong>奖励</strong><span>发布后可获得积分奖励</span></div>
+          <div><strong>展示</strong><span>好作品和好 Prompt 会被更多人看到</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flash-image-preview-1" class="create-modal flash-media-preview-modal" aria-label="图片预览">
+      <a class="modal-backdrop" href="#" aria-label="关闭图片预览"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>漫剧开场镜头参考</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <img src="assets/image_assets/11.webp" alt="漫剧开场镜头大图预览">
+      </div>
+    </section>
+
+    <section id="flash-image-preview-2" class="create-modal flash-media-preview-modal" aria-label="图片预览">
+      <a class="modal-backdrop" href="#" aria-label="关闭图片预览"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>角色与场景氛围参考</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <img src="assets/image_assets/17.webp" alt="角色与场景氛围大图预览">
+      </div>
+    </section>
+
+    <section id="flash-video-preview" class="create-modal flash-media-preview-modal" aria-label="视频播放">
+      <a class="modal-backdrop" href="#" aria-label="关闭视频播放"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>九宫格视频生成片段</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <video controls muted playsinline preload="metadata" poster="assets/image_assets/52.webp">
+          <source src="assets/video_assets/2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section id="invite-panel" class="create-modal flash-comments-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog flash-comments-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友完成注册、互动和首次发布</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="activity-rule-grid">
+          <div><strong>注册</strong><span>邀请人 +20</span></div>
+          <div><strong>首次互动</strong><span>邀请人 +20</span></div>
+          <div><strong>首次发布 AI 作品</strong><span>邀请人 +50</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="member-panel" class="create-modal flash-comments-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog flash-comments-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>先看权益，再决定要不要升级</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="activity-rule-grid">
+          <div><strong>每月积分包</strong><span>用于 AIGC、模型体验和模板能力</span></div>
+          <div><strong>创作折扣</strong><span>图片、视频、漫剧模板优先体验</span></div>
+          <div><strong>AI商城权益</strong><span>活动工具兑换优先承接</span></div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="flash-timeline" class="section flash-main-section">
+        <div class="wide-container flash-layout">
+          <div class="flash-feed-column">
+            <div class="flash-timeline-shell">
+              <article id="post-1" class="flash-post-card" data-flash-card data-post-id="post-1">
+                <img class="flash-avatar" src="assets/image_assets/39.webp" alt="纪川的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>纪川</strong><span>·</span><time>6分钟</time></div></header>
+                  <p class="flash-post-text">用一台复古电脑做主视觉，把“技术”与“自然”只留两个对比元素，画面反而更有记忆点。</p>
+                  <div class="flash-media-grid media-count-1"><figure><img src="assets/image_assets/42.webp" alt="花丛中的复古电脑" loading="eager"></figure></div>
+                  <div class="flash-post-actions" aria-label="帖子互动">
+                    <button type="button" data-comment-toggle aria-expanded="true"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>24</span></button>
+                    <button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>186</span></button>
+                    <button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button>
+                  </div>
+                  <section class="flash-conversation" data-comments-panel aria-label="精选评论">
+                    <div class="flash-conversation-label"><span>精选回复</span><span>24 条评论</span></div>
+                    <article class="flash-comment-thread"><div class="flash-comment-main"><img class="flash-comment-avatar" src="assets/image_assets/46.webp" alt="岚音的头像"><div class="flash-comment-body"><div class="flash-author-line"><strong>岚音</strong><span>·</span><time>3分钟</time></div><p>对比很克制，清晰的主体比堆叠更多装饰有效。</p><div class="flash-comment-actions"><button type="button" data-reply-to="@岚音">回复</button><button type="button" data-comment-like aria-pressed="false">赞 <span>12</span></button></div></div></div></article>
+                    <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                  </section>
+                </div>
+              </article>
+
+              <article id="post-2" class="flash-post-card" data-flash-card data-post-id="post-2">
+                <img class="flash-avatar" src="assets/image_assets/46.webp" alt="岚音的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>岚音</strong><span>·</span><time>18分钟</time></div></header>
+                  <p class="flash-post-text">同一组蓝色时装概念，一张看人物关系，一张看空间节奏。并排后故事比单图更完整。</p>
+                  <div class="flash-media-grid media-count-2"><figure><img src="assets/image_assets/50.webp" alt="蓝色时装人物"></figure><figure><img src="assets/image_assets/51.webp" alt="蓝色建筑空间"></figure></div>
+                  <div class="flash-post-actions" aria-label="帖子互动"><button type="button" data-comment-toggle aria-expanded="false"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>18</span></button><button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>142</span></button><button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button></div>
+                  <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                </div>
+              </article>
+
+              <article id="post-3" class="flash-post-card" data-flash-card data-post-id="post-3">
+                <img class="flash-avatar" src="assets/image_assets/53.webp" alt="陆弥的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>陆弥</strong><span>·</span><time>36分钟</time></div></header>
+                  <p class="flash-post-text">三张图的重点不是平均：大图交代世界，右侧两张补足场景和人物，阅读顺序会自然发生。</p>
+                  <div class="flash-media-grid media-count-3"><figure><img src="assets/image_assets/29.webp" alt="山间古建筑"></figure><figure><img src="assets/image_assets/30.webp" alt="云上宫殿"></figure><figure><img src="assets/image_assets/31.webp" alt="望向远方的人"></figure></div>
+                  <div class="flash-post-actions" aria-label="帖子互动"><button type="button" data-comment-toggle aria-expanded="false"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>31</span></button><button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>205</span></button><button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button></div>
+                  <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                </div>
+              </article>
+
+              <article id="post-4" class="flash-post-card" data-flash-card data-post-id="post-4">
+                <img class="flash-avatar" src="assets/image_assets/27.webp" alt="矩阵猫的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>矩阵猫</strong><span>·</span><time>1小时</time></div></header>
+                  <p class="flash-post-text">四个视觉方向做成等分矩阵，相同裁切和间距让风格差异更明显，也方便快速选方向。</p>
+                  <div class="flash-media-grid media-count-4"><figure><img src="assets/image_assets/41.webp" alt="暖色墙面"></figure><figure><img src="assets/image_assets/43.webp" alt="未来感人物组合"></figure><figure><img src="assets/image_assets/44.webp" alt="光影中的时装人物"></figure><figure><img src="assets/image_assets/48.webp" alt="粉色滑梯场景"></figure></div>
+                  <div class="flash-post-actions" aria-label="帖子互动"><button type="button" data-comment-toggle aria-expanded="false"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>16</span></button><button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>118</span></button><button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button></div>
+                  <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                </div>
+              </article>
+
+              <article id="post-5" class="flash-post-card" data-flash-card data-post-id="post-5">
+                <img class="flash-avatar" src="assets/image_assets/8.webp" alt="帧间的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>帧间</strong><span>·</span><time>1小时</time></div></header>
+                  <p class="flash-post-text">横版视频适合展开环境和运动轨迹，播放器与正文保持同一条左边线，不会打断时间线。</p>
+                  <div class="flash-video-frame is-landscape"><video controls muted playsinline preload="metadata" poster="assets/image_assets/52.webp" aria-label="横版 AI 生成视频"><source src="assets/video_assets/mxgc.mp4" type="video/mp4"></video></div>
+                  <div class="flash-post-actions" aria-label="帖子互动"><button type="button" data-comment-toggle aria-expanded="false"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>22</span></button><button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>164</span></button><button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button></div>
+                  <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                </div>
+              </article>
+
+              <article id="post-6" class="flash-post-card" data-flash-card data-post-id="post-6">
+                <img class="flash-avatar" src="assets/image_assets/35.webp" alt="星野的头像">
+                <div class="flash-post-content">
+                  <header class="flash-post-head"><div class="flash-author-line"><strong>星野</strong><span>·</span><time>2小时</time></div></header>
+                  <p class="flash-post-text">竖版视频保留 9:16 的原生比例，宽度收窄但仍与文字左对齐，手机上看不需要二次放大。</p>
+                  <div class="flash-video-frame is-portrait"><video controls muted playsinline preload="metadata" poster="assets/image_assets/44.webp" aria-label="竖版 AI 生成视频"><source src="assets/video_assets/on.mp4" type="video/mp4"></video></div>
+                  <div class="flash-post-actions" aria-label="帖子互动"><button type="button" data-comment-toggle aria-expanded="false"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/comment-line.svg" alt=""></span><span data-action-count>15</span></button><button type="button" data-like-action aria-pressed="false"><span class="flash-action-icon"><img data-like-icon src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt=""></span><span data-action-count>97</span></button><button type="button" data-share-action aria-label="分享这条闪念"><span class="flash-action-icon"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt=""></span></button></div>
+                  <div class="flash-inline-reply" data-inline-reply hidden><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="我的头像"><label><span class="sr-only">回复这条闪念</span><textarea rows="1" placeholder="回复这条闪念" data-comment-input></textarea></label><button type="button" data-comment-submit>回复</button></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="flash-right-rail" aria-label="闪念右侧精选栏">
+            <section class="flash-rail-card flash-rail-compose-v2" data-rail-module="quick-compose">
+              <span class="flash-rail-overline">QUICK NOTE</span>
+              <h2 class="flash-shiny-text">留下刚刚发生的灵感</h2>
+              <p>一个方法、一次试错，都值得被看见。</p>
+              <a class="flash-rail-compose-action" href="#compose-flash" data-cta-state="打开发闪念编辑弹层"><span class="flash-rail-compose-label">发布闪念<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span><em>+30 积分</em></a>
+            </section>
+
+            <a class="flash-rail-card flash-rail-campaign" data-rail-module="campaign" href="./activity-center.html" aria-label="参加 AI 生图创作挑战">
+              <img class="flash-rail-campaign-image" src="assets/image_assets/model-banner-ringed-planet-v1.webp" alt="金色环形行星">
+              <span class="flash-rail-campaign-shade" aria-hidden="true"></span>
+              <span class="flash-rail-campaign-copy">
+                <span class="flash-rail-campaign-badge">活动广告</span>
+                <strong>AI 生图创作挑战</strong>
+                <small>分享作品或 Prompt，赢积分奖励</small>
+                <em>限时开放 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></em>
+              </span>
+            </a>
+
+            <section class="flash-rail-card flash-rail-curated" data-rail-module="official-tutorials">
+              <div class="flash-rail-v2-head"><div><span class="flash-rail-overline">OFFICIAL</span><strong>官方教程</strong></div><a href="./tutorial.html">查看全部</a></div>
+              <a class="flash-curated-row" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：12 分钟完成第一条漫剧分镜"><span class="flash-curated-index">01</span><span><strong>12 分钟完成第一条漫剧分镜</strong><small>漫剧生成 · 视频 12 分钟</small></span><em>↗</em></a>
+              <a class="flash-curated-row" href="./tutorial-detail.html?lesson=article" aria-label="打开教程：封面主视觉提示词怎么写"><span class="flash-curated-index">02</span><span><strong>封面主视觉提示词怎么写</strong><small>图片生成 · 图文入门</small></span><em>↗</em></a>
+              <a class="flash-curated-row" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：图生视频的镜头描述怎么写"><span class="flash-curated-index">03</span><span><strong>图生视频的镜头描述怎么写</strong><small>视频生成 · 视频 6 分钟</small></span><em>↗</em></a>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+<div class="footer-space"></div>
+  </div>
+  <button class="flash-back-to-top" type="button" data-back-to-top aria-label="返回页面顶部" aria-hidden="true" tabindex="-1" title="返回顶部">
+    <img src="resources/icons/remixicon/svg/Arrows/arrow-up-line.svg" alt="">
+  </button>
+  <script>
+    document.querySelectorAll("video").forEach((video) => {
+      video.autoplay = false;
+      video.defaultMuted = true;
+      video.muted = true;
+      video.pause();
+    });
+
+    const flashToast = document.createElement("div");
+    flashToast.className = "flash-action-toast";
+    flashToast.setAttribute("role", "status");
+    flashToast.setAttribute("aria-live", "polite");
+    document.body.appendChild(flashToast);
+    let flashToastTimer;
+
+    const flashBackToTop = document.querySelector("[data-back-to-top]");
+    const updateBackToTopVisibility = () => {
+      if (!flashBackToTop) return;
+      const shouldShow = window.scrollY > window.innerHeight;
+      flashBackToTop.classList.toggle("is-visible", shouldShow);
+      flashBackToTop.setAttribute("aria-hidden", String(!shouldShow));
+      flashBackToTop.tabIndex = shouldShow ? 0 : -1;
+    };
+
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    window.addEventListener("resize", updateBackToTopVisibility);
+    flashBackToTop?.addEventListener("click", () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+    updateBackToTopVisibility();
+
+    const showFlashToast = (message) => {
+      window.clearTimeout(flashToastTimer);
+      flashToast.textContent = message;
+      flashToast.classList.add("is-visible");
+      flashToastTimer = window.setTimeout(() => flashToast.classList.remove("is-visible"), 1900);
+    };
+
+    const pulseFlashAction = (button) => {
+      button.classList.remove("is-action-pulsing");
+      void button.offsetWidth;
+      button.classList.add("is-action-pulsing");
+      window.setTimeout(() => button.classList.remove("is-action-pulsing"), 400);
+    };
+
+    const flashLikeCelebrationTimers = new WeakMap();
+    const clearFlashLikeCelebration = (button) => {
+      const activeTimer = flashLikeCelebrationTimers.get(button);
+      if (activeTimer) window.clearTimeout(activeTimer);
+      flashLikeCelebrationTimers.delete(button);
+      button.classList.remove("is-like-celebrating");
+      button.querySelector(".flash-like-burst")?.remove();
+    };
+
+    const celebrateFlashLike = (button) => {
+      clearFlashLikeCelebration(button);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const icon = button.querySelector(".flash-action-icon");
+      if (!icon) return;
+
+      const burst = document.createElement("span");
+      burst.className = "flash-like-burst";
+      burst.setAttribute("aria-hidden", "true");
+      for (let index = 0; index < 8; index += 1) {
+        const particle = document.createElement("span");
+        particle.className = "flash-like-particle";
+        burst.appendChild(particle);
+      }
+
+      icon.appendChild(burst);
+      void icon.offsetWidth;
+      button.classList.add("is-like-celebrating");
+      const cleanupTimer = window.setTimeout(() => clearFlashLikeCelebration(button), 680);
+      flashLikeCelebrationTimers.set(button, cleanupTimer);
+    };
+
+    const toggleCountedAction = (button, activeMessage, inactiveMessage) => {
+      const wasActive = button.getAttribute("aria-pressed") === "true";
+      const count = button.querySelector("[data-action-count]");
+      const likeIcon = button.querySelector("[data-like-icon]");
+      const value = Number.parseInt(count?.textContent || "0", 10);
+      button.setAttribute("aria-pressed", String(!wasActive));
+      if (count && Number.isFinite(value)) count.textContent = String(Math.max(0, value + (wasActive ? -1 : 1)));
+      if (likeIcon) likeIcon.src = wasActive
+        ? "resources/icons/remixicon/svg/System/thumb-up-line.svg"
+        : "resources/icons/remixicon/svg/System/thumb-up-fill.svg";
+      pulseFlashAction(button);
+      if (wasActive) clearFlashLikeCelebration(button);
+      else celebrateFlashLike(button);
+      showFlashToast(wasActive ? inactiveMessage : activeMessage);
+    };
+
+    const focusReplyComposer = (trigger) => {
+      const conversation = trigger.closest(".flash-conversation");
+      const composer = conversation?.querySelector("[data-inline-reply]");
+      if (!composer) return;
+      composer.hidden = false;
+      const input = composer.querySelector("[data-comment-input]");
+      const replyTo = trigger.dataset.replyTo || "";
+      composer.dataset.replyTarget = replyTo;
+      if (input) {
+        input.placeholder = replyTo ? `回复 ${replyTo}` : "发布你的回复";
+        input.focus();
+      }
+    };
+
+    const createCommentNode = (content, replyTo = "") => {
+      const thread = document.createElement("article");
+      thread.className = "flash-comment-thread is-new-comment";
+      const main = document.createElement("div");
+      main.className = "flash-comment-main";
+      const avatar = document.createElement("img");
+      avatar.className = "flash-comment-avatar";
+      avatar.src = "assets/image_assets/nav-avatar-ai-creator-v1.png";
+      avatar.alt = "我的头像";
+      const body = document.createElement("div");
+      body.className = "flash-comment-body";
+      const author = document.createElement("div");
+      author.className = "flash-author-line";
+      const name = document.createElement("strong");
+      name.textContent = "AI创作者";
+      const dot = document.createElement("span");
+      dot.textContent = "·";
+      const time = document.createElement("time");
+      time.textContent = "刚刚";
+      author.append(name, dot, time);
+      const copy = document.createElement("p");
+      copy.textContent = content;
+      const replyContext = document.createElement("span");
+      replyContext.className = "flash-new-reply-context";
+      if (replyTo) replyContext.textContent = `回复 ${replyTo}`;
+      const actions = document.createElement("div");
+      actions.className = "flash-comment-actions";
+      const reply = document.createElement("button");
+      reply.type = "button";
+      reply.dataset.replyTo = "@AI创作者";
+      reply.textContent = "回复";
+      const like = document.createElement("button");
+      like.type = "button";
+      like.dataset.commentLike = "";
+      like.setAttribute("aria-pressed", "false");
+      like.append("赞 ");
+      const likeCount = document.createElement("span");
+      likeCount.textContent = "0";
+      like.append(likeCount);
+      actions.append(reply, like);
+      body.append(author, copy);
+      if (replyTo) body.append(replyContext);
+      body.append(actions);
+      main.append(avatar, body);
+      thread.append(main);
+      return thread;
+    };
+
+    document.addEventListener("input", (event) => {
+      const input = event.target.closest("[data-comment-input]");
+      if (!input) return;
+      input.style.height = "auto";
+      input.style.height = `${Math.min(input.scrollHeight, 96)}px`;
+    });
+
+    document.addEventListener("click", (event) => {
+      const likeAction = event.target.closest("[data-like-action]");
+      if (likeAction) {
+        toggleCountedAction(likeAction, "已喜欢这条闪念", "已取消喜欢");
+        return;
+      }
+
+      const shareAction = event.target.closest("[data-share-action]");
+      if (shareAction) {
+        const postId = shareAction.closest("[data-post-id]")?.dataset.postId || "flash";
+        const shareUrl = `${window.location.href.split("#")[0]}#${postId}`;
+        if (navigator.clipboard?.writeText) navigator.clipboard.writeText(shareUrl).catch(() => {});
+        pulseFlashAction(shareAction);
+        showFlashToast("已复制闪念链接");
+        return;
+      }
+
+      const commentToggle = event.target.closest("[data-comment-toggle]");
+      if (commentToggle) {
+        const card = commentToggle.closest("[data-flash-card]");
+        const panel = card?.querySelector("[data-comments-panel]");
+        const inlineReply = card?.querySelector(".flash-post-content > [data-inline-reply]");
+        const postAuthor = card?.querySelector(".flash-post-head .flash-author-line strong")?.textContent.trim();
+        if (panel) {
+          const willOpen = panel.hidden;
+          panel.hidden = !willOpen;
+          commentToggle.setAttribute("aria-expanded", String(willOpen));
+          const panelComposer = panel.querySelector("[data-inline-reply]");
+          if (panelComposer && postAuthor) panelComposer.dataset.replyTarget = `@${postAuthor}`;
+          if (willOpen) panel.querySelector("[data-comment-input]")?.focus();
+        } else if (inlineReply) {
+          const willOpen = inlineReply.hidden;
+          inlineReply.hidden = !willOpen;
+          commentToggle.setAttribute("aria-expanded", String(willOpen));
+          if (postAuthor) inlineReply.dataset.replyTarget = `@${postAuthor}`;
+          if (willOpen) inlineReply.querySelector("[data-comment-input]")?.focus();
+        }
+        return;
+      }
+
+      const replyTrigger = event.target.closest("[data-reply-to]");
+      if (replyTrigger) {
+        focusReplyComposer(replyTrigger);
+        return;
+      }
+
+      const commentLike = event.target.closest("[data-comment-like]");
+      if (commentLike) {
+        const wasLiked = commentLike.getAttribute("aria-pressed") === "true";
+        const count = commentLike.querySelector("span");
+        const value = Number.parseInt(count?.textContent || "0", 10);
+        commentLike.setAttribute("aria-pressed", String(!wasLiked));
+        if (count && Number.isFinite(value)) count.textContent = String(Math.max(0, value + (wasLiked ? -1 : 1)));
+        return;
+      }
+
+      const submit = event.target.closest("[data-comment-submit]");
+      if (submit) {
+        const composer = submit.closest("[data-comment-composer], [data-inline-reply]");
+        const input = composer?.querySelector("[data-comment-input]");
+        const content = input?.value.trim();
+        if (!content) {
+          input?.focus();
+          showFlashToast("先写下你的回复");
+          return;
+        }
+        const list = composer.closest(".flash-conversation") || composer.closest(".flash-post-content");
+        const replyTo = composer?.dataset.replyTarget || "";
+        if (list) list.insertBefore(createCommentNode(content, replyTo), composer.closest("[data-inline-reply]") || null);
+        input.value = "";
+        input.style.height = "auto";
+        composer.dataset.replyTarget = "";
+        input.placeholder = "回复这条闪念";
+        showFlashToast(replyTo ? `已回复 ${replyTo}` : "回复已发布");
+        return;
+      }
+
+    });
+  </script>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>

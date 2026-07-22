@@ -1,0 +1,530 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">  <title>多元拾光 模型广场</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-hero-blend">
+</head>
+<body class="home-header-shell">
+  <div class="page model-plaza-page model-plaza-v3 model-plaza-v4">
+    <div class="page-bg"><img src="assets/image_assets/28.webp" alt=""></div>
+    <header class="site-header shared-home-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a class="is-active" aria-current="page" href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.webp" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>先看清权益，再决定是否进入AI商城</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">进入AI商城</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <main>
+      <section class="section model-plaza-hero">
+        <div class="wide-container">
+          <div class="model-hero-shell">
+            <video class="model-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/image_assets/model-plaza-hero-v4.webp" aria-hidden="true" tabindex="-1">
+              <source src="assets/video_assets/mxgc.mp4" type="video/mp4">
+            </video>
+            <div class="model-hero-copy">
+              <span class="model-hero-kicker"><i></i> MODEL PLAZA · CREATIVE ENGINE</span>
+              <h1 data-model-hero-split>找到适合你的<br><em>创作模型</em></h1>
+              <p>从文本、图像到视频，用更直观的能力标签和价格信息，快速完成模型选型。</p>
+              <div class="hero-actions">
+                <a class="button model-specular-button" href="#model-list">
+                  <span class="model-specular-button__fx" aria-hidden="true"></span>
+                  <span class="model-specular-button__label">探索模型</span>
+                </a>
+                <a class="button secondary" href="#api-trial">申请体验</a>
+              </div>
+              <div class="model-logo-loop" role="img" aria-label="模型供应商：OpenAI、Anthropic、Gemini、DeepSeek、Qwen、Grok">
+                <div class="model-logo-loop__track" aria-hidden="true">
+                  <div class="model-logo-loop__set">
+                    <span class="model-logo-loop__item"><img src="assets/logos/openai.svg" alt=""><em>OpenAI</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/anthropic.svg" alt=""><em>Anthropic</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/gemini.svg" alt=""><em>Gemini</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/deepseek.svg" alt=""><em>DeepSeek</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/qwen.svg" alt=""><em>Qwen</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/grok.svg" alt=""><em>Grok</em></span>
+                  </div>
+                  <div class="model-logo-loop__set" aria-hidden="true">
+                    <span class="model-logo-loop__item"><img src="assets/logos/openai.svg" alt=""><em>OpenAI</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/anthropic.svg" alt=""><em>Anthropic</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/gemini.svg" alt=""><em>Gemini</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/deepseek.svg" alt=""><em>DeepSeek</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/qwen.svg" alt=""><em>Qwen</em></span>
+                    <span class="model-logo-loop__item"><img src="assets/logos/grok.svg" alt=""><em>Grok</em></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <aside class="model-hero-spotlight" aria-label="模型广场数据概览">
+              <span class="model-spotlight-glow" aria-hidden="true"></span>
+              <div class="model-spotlight-status"><i></i><span>MODEL SUPPLY ONLINE</span><em>持续更新</em></div>
+              <div class="model-spotlight-number"><strong data-count-up="98">98</strong><span>全部模型</span></div>
+              <div class="model-spotlight-divider"></div>
+              <div class="model-spotlight-feature">
+                <div class="model-spotlight-breakdown">
+                  <div><strong data-count-up="79">79</strong><span>文本模型</span></div>
+                  <i class="model-metric-divider" aria-hidden="true"></i>
+                  <div><strong data-count-up="10">10</strong><span>图像模型</span></div>
+                  <i class="model-metric-divider" aria-hidden="true"></i>
+                  <div><strong data-count-up="2">2</strong><span>视频模型</span></div>
+                </div>
+                <a href="#model-list">开始探索 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section model-ops-section" id="api-trial">
+        <div class="wide-container">
+          <div class="model-ops-grid">
+            <a class="model-op-card model-op-season" href="#model-list" data-model-operation>
+              <span>限时</span>
+              <strong>Prompt 共创计划</strong>
+              <em>从可复用提示词回到创作</em>
+              <i aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></i>
+            </a>
+            <a class="model-op-card model-op-guide" href="./tutorial.html" data-model-operation>
+              <span>新手入口</span>
+              <strong>API 接入指南</strong>
+              <em>选型、调用、反馈一步看懂</em>
+              <i aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section model-filter-section" id="model-list">
+        <div class="wide-container">
+          <div class="model-discovery-deck" aria-label="模型搜索与筛选">
+            <form class="model-search-form" action="#model-list" role="search" aria-label="搜索模型">
+              <label class="model-search-box">
+                <img src="resources/icons/remixicon/svg/System/search-line.svg" alt="">
+                <input type="search" name="q" placeholder="搜索模型：如 GPT、图像生成、视频..." aria-label="搜索模型名称、厂商或能力">
+                <button class="model-search-clear" type="button" data-model-search-clear aria-label="清空搜索">×</button>
+              </label>
+            </form>
+            <aside class="model-filter-toolbar" aria-label="模型筛选">
+              <div class="model-filter-tabs" role="tablist" aria-label="模型类型">
+                <button class="is-active" type="button" data-model-filter data-model-filter-value="all" role="tab" aria-selected="true">全部</button>
+                <button type="button" data-model-filter data-model-filter-value="文本" role="tab" aria-selected="false">文本</button>
+                <button type="button" data-model-filter data-model-filter-value="图像" role="tab" aria-selected="false">图像</button>
+                <button type="button" data-model-filter data-model-filter-value="视频" role="tab" aria-selected="false">视频</button>
+              </div>
+            </aside>
+            <span class="visually-hidden" aria-live="polite" data-model-filter-status>找到 12 个模型</span>
+          </div>
+
+          <div class="model-shelf-grid">
+            <a class="plaza-model-card is-hot" href="./model-detail.html?model=gpt-4.1" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-4.1" aria-label="查看 gpt-4.1 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai" aria-hidden="true"><img src="assets/logos/openai.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>OpenAI</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>gpt-4.1</h3>
+              <p>GPT-4.1 是由 openai 提供的人工智能模型。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.4000 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $0.8000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>工具</span><span>对话</span><span>识图</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=gpt-5-chat-latest" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-5-chat-latest" aria-label="查看 gpt-5-chat-latest 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai" aria-hidden="true"><img src="assets/logos/openai.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>OpenAI</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>gpt-5-chat-latest</h3>
+              <p>GPT-5 Chat 指向当前 ChatGPT 所使用的 GPT-5 快照版本。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.2500 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $2.0000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>对话</span><span>识图</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=claude-sonnet-4-6" target="_blank" rel="noopener" data-model-card data-pricing-model="claude-sonnet-4-6" aria-label="查看 claude-sonnet-4-6 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-claude" aria-hidden="true"><img src="assets/logos/anthropic.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Anthropic</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>claude-sonnet-4-6</h3>
+              <p>Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $1.5000 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $7.5000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>对话</span><span>识图</span><span>工具</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=gemini-3-pro-preview" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-3-pro-preview" aria-label="查看 gemini-3-pro-preview 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini" aria-hidden="true"><img src="assets/logos/gemini.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Google</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>gemini-3-pro-preview</h3>
+              <p>Gemini 3 以先进推理能力为基础，适合复杂任务和多模态任务。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $1.4000 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $8.4000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>对话</span><span>思考</span><span>多模态</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=gemini-2.5-pro" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-2.5-pro" aria-label="查看 gemini-2.5-pro 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini" aria-hidden="true"><img src="assets/logos/gemini.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Google</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>gemini-2.5-pro</h3>
+              <p>Gemini 2.5 Pro 擅长编码和复杂提示，支持多模态输入。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.8750 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $7.0000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>对话</span><span>识图</span><span>思考</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=o4-mini" target="_blank" rel="noopener" data-model-card data-pricing-model="o4-mini" aria-label="查看 o4-mini 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai" aria-hidden="true"><img src="assets/logos/openai.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>OpenAI</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="文本模型"><img src="resources/icons/remixicon/svg/model/text.svg" alt=""></span></div>
+              <h3>o4-mini</h3>
+              <p>o4-mini 偏轻量推理，适合需要较快响应的推理任务，支持多模态输入。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.5000 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $0.5000 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>对话</span><span>识图</span></div>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=text-embedding-3-large" target="_blank" rel="noopener" data-model-card data-pricing-model="text-embedding-3-large" aria-label="查看 text-embedding-3-large 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai" aria-hidden="true"><img src="assets/logos/openai.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>OpenAI</em></span></div><span class="model-card-type" data-model-type="文本" aria-label="Embedding 模型"><img src="resources/icons/remixicon/svg/model/other.svg" alt=""></span></div>
+              <h3>text-embedding-3-large</h3>
+              <p>OpenAI 第三代嵌入模型，适用于需要最高性能的检索任务。</p>
+              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.0260 <small class="model-price-unit">/ 1M Tokens</small></strong><em>补全 $0.1040 <small class="model-price-unit">/ 1M Tokens</small></em></div>
+              <div class="model-card-tags"><span>文本嵌入</span></div>
+            </a>
+            <a class="plaza-model-card media-model" href="./model-detail.html?model=gpt-image-2" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-image-2" aria-label="查看 gpt-image-2 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai" aria-hidden="true"><img src="assets/logos/openai.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>OpenAI</em></span></div><span class="model-card-type" data-model-type="图像" aria-label="图像模型"><img src="resources/icons/remixicon/svg/model/pic.svg" alt=""></span></div>
+              <h3>gpt-image-2</h3>
+              <p>GPT Image 2 支持快速、高质量的图像生成和编辑。</p>
+              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.056 <small class="model-price-unit">/ 次</small></strong></div>
+              <div class="model-card-tags"><span>绘画</span><span>dall-e-3格式</span></div>
+            </a>
+            <a class="plaza-model-card media-model" href="./model-detail.html?model=doubao-seedream-4-5-251128" target="_blank" rel="noopener" data-model-card data-pricing-model="doubao-seedream-4-5-251128" aria-label="查看 doubao-seedream-4-5-251128 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-doubao" aria-hidden="true"><img src="assets/logos/doubao.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Doubao</em></span></div><span class="model-card-type" data-model-type="图像" aria-label="图像模型"><img src="resources/icons/remixicon/svg/model/pic.svg" alt=""></span></div>
+              <h3>doubao-seedream-4-5-251128</h3>
+              <p>Seedream 4.5 支持文本、单图和多图输入，适合多图融合创作。</p>
+              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.150 <small class="model-price-unit">/ 次</small></strong></div>
+              <div class="model-card-tags"><span>绘画</span><span>dall-e-3格式</span></div>
+            </a>
+            <a class="plaza-model-card media-model" href="./model-detail.html?model=gemini-3.1-flash-image" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-3.1-flash-image" aria-label="查看 gemini-3.1-flash-image 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini" aria-hidden="true"><img src="assets/logos/gemini.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Google</em></span></div><span class="model-card-type" data-model-type="图像" aria-label="图像模型"><img src="resources/icons/remixicon/svg/model/pic.svg" alt=""></span></div>
+              <h3>gemini-3.1-flash-image</h3>
+              <p>Gemini 图像模型，适合快速图片生成、提示词测试和教程封面。</p>
+              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.175 <small class="model-price-unit">/ 次</small></strong></div>
+              <div class="model-card-tags"><span>绘画</span><span>快速</span></div>
+            </a>
+            <a class="plaza-model-card video-model" href="./model-detail.html?model=grok-video-3" target="_blank" rel="noopener" data-model-card data-pricing-model="grok-video-3" aria-label="查看 grok-video-3 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-grok" aria-hidden="true"><img src="assets/logos/grok.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Grok</em></span></div><span class="model-card-type" data-model-type="视频" aria-label="视频模型"><img src="resources/icons/remixicon/svg/model/video.svg" alt=""></span></div>
+              <h3>grok-video-3</h3>
+              <p>grok 的最新视频模型，6S。</p>
+              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.158 <small class="model-price-unit">/ 次</small></strong></div>
+              <div class="model-card-tags"><span>视频</span><span>参考生视频</span></div>
+            </a>
+            <a class="plaza-model-card video-model" href="./model-detail.html?model=grok-video-3-10s" target="_blank" rel="noopener" data-model-card data-pricing-model="grok-video-3-10s" aria-label="查看 grok-video-3-10s 模型详情">
+              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-grok" aria-hidden="true"><img src="assets/logos/grok.svg" alt=""></span><span class="model-card-provider"><small>MODEL PROVIDER</small><em>Grok</em></span></div><span class="model-card-type" data-model-type="视频" aria-label="视频模型"><img src="resources/icons/remixicon/svg/model/video.svg" alt=""></span></div>
+              <h3>grok-video-3-10s</h3>
+              <p>grok 的最新视频模型，10s，支持音画同出。</p>
+              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.158 <small class="model-price-unit">/ 次</small></strong></div>
+              <div class="model-card-tags"><span>视频</span><span>参考生视频</span></div>
+            </a>
+          </div>
+          <div class="model-empty-state" data-model-empty-state hidden>
+            <span>NO MATCHES</span>
+            <strong>没有找到相符的模型</strong>
+            <p>试试更短的关键词，或回到全部模型浏览。</p>
+            <button type="button" data-model-reset-filter>查看全部模型</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+<div class="footer-space"></div>
+  </div>
+  <script>
+    (() => {
+      const heroVideo = document.querySelector(".model-hero-video");
+      if (!heroVideo) return;
+      heroVideo.defaultMuted = true;
+      heroVideo.muted = true;
+      heroVideo.volume = 0;
+    })();
+
+    (() => {
+      const title = document.querySelector("[data-model-hero-split]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!title || reduceMotion) return;
+
+      const label = title.textContent.trim();
+      let characterIndex = 0;
+      title.setAttribute("aria-label", label);
+
+      const splitTextNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const fragment = document.createDocumentFragment();
+          Array.from(node.textContent).forEach((character) => {
+            const span = document.createElement("span");
+            span.className = character === " " ? "model-hero-title-space" : "model-hero-title-char";
+            span.style.setProperty("--char-index", characterIndex++);
+            span.setAttribute("aria-hidden", "true");
+            span.textContent = character === " " ? "\u00a0" : character;
+            fragment.appendChild(span);
+          });
+          node.replaceWith(fragment);
+          return;
+        }
+        Array.from(node.childNodes).forEach(splitTextNode);
+      };
+
+      Array.from(title.childNodes).forEach(splitTextNode);
+      title.classList.add("is-split-ready");
+    })();
+
+    (() => {
+      const card = document.querySelector(".model-hero-spotlight");
+      if (!card) return;
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) return;
+
+      const moveSpotlight = (event) => {
+        const bounds = card.getBoundingClientRect();
+        card.style.setProperty("--spotlight-x", `${event.clientX - bounds.left}px`);
+        card.style.setProperty("--spotlight-y", `${event.clientY - bounds.top}px`);
+        card.classList.add("is-spotlight-active");
+      };
+
+      card.addEventListener("pointerenter", (event) => {
+        moveSpotlight(event);
+        card.classList.add("is-spotlight-active");
+      });
+      card.addEventListener("pointermove", moveSpotlight);
+      card.addEventListener("pointerleave", () => {
+        card.classList.remove("is-spotlight-active");
+      });
+    })();
+
+    (() => {
+      const spotlight = document.querySelector(".model-hero-spotlight");
+      const counters = Array.from(document.querySelectorAll("[data-count-up]"));
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!spotlight || !counters.length) return;
+
+      const targets = counters.map((counter) => Number(counter.dataset.countUp || 0));
+      const showFinalValues = () => counters.forEach((counter, index) => {
+        counter.textContent = String(targets[index]);
+      });
+
+      if (reduceMotion) {
+        showFinalValues();
+        return;
+      }
+
+      counters.forEach((counter) => {
+        counter.textContent = "0";
+      });
+
+      let started = false;
+      const startCountUp = () => {
+        if (started) return;
+        started = true;
+        counters.forEach((counter, index) => {
+          const target = targets[index];
+          const duration = 1380 + index * 110;
+          const delay = index * 190;
+          window.setTimeout(() => {
+            const startTime = performance.now();
+            const update = (now) => {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              counter.textContent = String(Math.round(target * eased));
+              if (progress < 1) window.requestAnimationFrame(update);
+              else counter.dataset.countComplete = "true";
+            };
+            window.requestAnimationFrame(update);
+          }, delay);
+        });
+      };
+
+      if (!("IntersectionObserver" in window)) {
+        startCountUp();
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        startCountUp();
+      }, { threshold: 0.35 });
+      observer.observe(spotlight);
+    })();
+
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const operationCards = Array.from(document.querySelectorAll(".model-op-card"));
+      const discoveryDeck = document.querySelector(".model-discovery-deck");
+      const modelCards = Array.from(document.querySelectorAll(".plaza-model-card"));
+      const elements = [...operationCards, discoveryDeck, ...modelCards].filter(Boolean);
+      if (!elements.length) return;
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        elements.forEach((element) => element.classList.add("is-scroll-revealed"));
+        return;
+      }
+
+      const setRevealDelay = (element, delay) => {
+        if (!element) return;
+        element.classList.add("model-scroll-reveal");
+        element.style.setProperty("--model-reveal-delay", `${delay}ms`);
+      };
+
+      operationCards.forEach((element, index) => setRevealDelay(element, index * 140));
+      setRevealDelay(discoveryDeck, 110);
+      modelCards.forEach((element, index) => setRevealDelay(element, (index % 4) * 110));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-scroll-revealed");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -36px" });
+
+      elements.forEach((element) => observer.observe(element));
+    })();
+
+    document.querySelectorAll("[data-model-card]").forEach((card) => {
+      card.addEventListener("pointermove", () => card.classList.add("is-pointer-active"));
+      card.addEventListener("pointerleave", () => card.classList.remove("is-pointer-active"));
+
+      const href = card.getAttribute("href");
+      if (!href || !href.includes("model-detail.html?model=")) return;
+
+      const detailUrl = new URL(href, window.location.href).href;
+      card.dataset.detailUrl = detailUrl;
+
+      card.addEventListener("click", (event) => {
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        window.open(detailUrl, "_blank", "noopener");
+      });
+    });
+
+    (() => {
+      const form = document.querySelector(".model-search-form");
+      const input = form?.querySelector("input[type='search']");
+      const grid = document.querySelector(".model-shelf-grid");
+      const cards = Array.from(document.querySelectorAll("[data-model-card]"));
+      const filters = Array.from(document.querySelectorAll("[data-model-filter]"));
+      const clear = document.querySelector("[data-model-search-clear]");
+      const emptyState = document.querySelector("[data-model-empty-state]");
+      const filterStatus = document.querySelector("[data-model-filter-status]");
+      let selectedType = "all";
+
+      if (!form || !input || !grid || !cards.length) return;
+
+      const updateResults = () => {
+        const query = input.value.trim().toLocaleLowerCase();
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const type = card.querySelector(".model-card-type")?.dataset.modelType || "";
+          const searchable = `${card.textContent} ${type}`.toLocaleLowerCase();
+          const matchesType = selectedType === "all" || type === selectedType;
+          const matchesQuery = !query || searchable.includes(query);
+          const isVisible = matchesType && matchesQuery;
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        if (filterStatus) filterStatus.textContent = `找到 ${visibleCount} 个模型`;
+        grid.classList.toggle("is-filtered", Boolean(query) || selectedType !== "all");
+        emptyState.hidden = visibleCount !== 0;
+        clear.classList.toggle("is-visible", Boolean(input.value));
+      };
+
+      const reset = () => {
+        selectedType = "all";
+        input.value = "";
+        filters.forEach((filter) => {
+          const active = filter.dataset.modelFilterValue === "all";
+          filter.classList.toggle("is-active", active);
+          filter.setAttribute("aria-selected", String(active));
+        });
+        updateResults();
+      };
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        updateResults();
+      });
+      input.addEventListener("input", updateResults);
+      clear?.addEventListener("click", () => {
+        input.value = "";
+        input.focus();
+        updateResults();
+      });
+      filters.forEach((filter) => {
+        filter.addEventListener("click", () => {
+          selectedType = filter.dataset.modelFilterValue || "all";
+          filters.forEach((item) => {
+            const active = item === filter;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-selected", String(active));
+          });
+          updateResults();
+        });
+      });
+      document.querySelectorAll("[data-model-query]").forEach((button) => {
+        button.addEventListener("click", () => {
+          input.value = button.dataset.modelQuery || "";
+          input.focus();
+          updateResults();
+        });
+      });
+      document.querySelectorAll("[data-model-reset-filter]").forEach((button) => button.addEventListener("click", reset));
+      updateResults();
+    })();
+  </script>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>

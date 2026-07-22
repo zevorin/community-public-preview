@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>多元拾光 AIGC 模板库</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only">
+</head>
+<body>
+  <div class="page aigc-page aigc-templates-page" data-page="community-aigc-templates">
+    <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-aigc-templates" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>模板上新</span><span class="timer">短剧漫剧 · 视频 · 海报</span><span>本周精选模板可直接进入轻创作</span><span>去创作</span><label class="top-campaign-close" for="top-campaign-dismiss-aigc-templates" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a class="is-active" aria-current="page" href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.webp" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>先看清权益，再决定是否进入AI商城</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">进入AI商城</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="quick-create" class="create-modal" aria-label="AIGC 轻创作">
+      <a class="modal-backdrop" href="#" aria-label="关闭 AIGC 轻创作"></a>
+      <a class="creation-side-close" href="#template-list" role="button" aria-label="关闭轻发布弹层" data-creation-side-close><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+      <div class="create-dialog aigc-experience">
+        <input class="creation-mode-radio" id="templates-create-mode-image" name="templates-create-mode" type="radio" value="image" data-create-mode="image" checked>
+        <input class="creation-mode-radio" id="templates-create-mode-script" name="templates-create-mode" type="radio" value="script" data-create-mode="script">
+        <input class="creation-mode-radio" id="templates-create-mode-video" name="templates-create-mode" type="radio" value="video" data-create-mode="video">
+        <div class="experience-tabs">
+          <label class="experience-tab" for="templates-create-mode-image" data-create-mode-tab="image">图片生成</label>
+          <label class="experience-tab" for="templates-create-mode-script" data-create-mode-tab="script">剧本创作</label>
+          <label class="experience-tab" for="templates-create-mode-video" data-create-mode-tab="video">视频生成</label>
+        </div>
+        <div class="experience-canvas">
+          <div class="creation-flow" data-creation-flow>
+            <input class="creation-flow-radio" id="templates-create-step-input" name="templates-create-state" type="radio" value="input" checked>
+            <input class="creation-flow-radio" id="templates-create-step-generating" name="templates-create-state" type="radio" value="generating">
+            <input class="creation-flow-radio" id="templates-create-step-result" name="templates-create-state" type="radio" value="result">
+            <input class="creation-flow-radio" id="templates-create-step-distribute" name="templates-create-state" type="radio" value="distribute">
+            <div class="creation-step-panels">
+              <section class="creation-step-panel creation-input-panel" data-creation-step-panel="input" aria-label="输入灵感状态">
+                <div class="creation-composer">
+                  <div class="creation-mode-prompts">
+                    <textarea class="create-input create-textarea creation-mode-panel" data-create-prompt data-create-mode-panel="image" rows="6" placeholder="描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。"></textarea>
+                    <div class="creation-upload-row creation-mode-panel" data-create-mode-panel="image" aria-label="上传参考图片">
+                      <button class="creation-upload-button" type="button">
+                        <span class="creation-upload-icon" aria-hidden="true"></span>
+                        <strong>上传图片</strong>
+                        <em>用于图生图或局部编辑</em>
+                      </button>
+                    </div>
+                    <textarea class="create-input create-textarea creation-mode-panel" data-create-prompt data-create-mode-panel="script" rows="6" placeholder="输入故事设定、人物关系或短片想法，进入画布后继续拆解剧本与分镜。"></textarea>
+                    <textarea class="create-input create-textarea creation-mode-panel" data-create-prompt data-create-mode-panel="video" rows="6" placeholder="描述一段视频镜头，例如：镜头缓慢推进，角色穿过未来城市街道，光影流动。"></textarea>
+                  </div>
+                  <div class="creation-bottom-bar">
+                    <div class="creation-bottom-left">
+                      <details class="creation-model-select creation-mode-panel" data-create-model-select data-create-mode-panel="image">
+                        <summary>
+                          <span>图片模型</span>
+                          <b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b>
+                          <b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b>
+                          <b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b>
+                          <b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b>
+                          <b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedream-4-5-251128">24 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedream-5-0-260128">28 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="nano-banana-pro">22 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="gpt-image-2">18 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="nano-banana-2">20 积分</i>
+                        </summary>
+                        <div class="creation-model-menu" aria-label="图片模型选择">
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedream-4-5-251128">
+                            <input type="radio" name="templates-create-model-image" checked>
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedream-4-5-251128</strong><em data-create-model-cost>24 积分</em></span>
+                            <span class="model-option-desc">图片生成 / 图片编辑</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedream-5-0-260128">
+                            <input type="radio" name="templates-create-model-image">
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedream-5-0-260128</strong><em data-create-model-cost>28 积分</em></span>
+                            <span class="model-option-desc">高质感角色与场景</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="nano-banana-pro">
+                            <input type="radio" name="templates-create-model-image">
+                            <span class="model-option-main"><strong data-create-model-name>Nano Banana Pro</strong><em data-create-model-cost>22 积分</em></span>
+                            <span class="model-option-desc">快速概念图</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="gpt-image-2">
+                            <input type="radio" name="templates-create-model-image">
+                            <span class="model-option-main"><strong data-create-model-name>gpt-image-2</strong><em data-create-model-cost>18 积分</em></span>
+                            <span class="model-option-desc">图片生成 / 局部编辑</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="nano-banana-2">
+                            <input type="radio" name="templates-create-model-image">
+                            <span class="model-option-main"><strong data-create-model-name>nano-banana-2</strong><em data-create-model-cost>20 积分</em></span>
+                            <span class="model-option-desc">轻量图像编辑</span>
+                          </label>
+                        </div>
+                      </details>
+                      <details class="creation-model-select creation-mode-panel" data-create-model-select data-create-mode-panel="script">
+                        <summary>
+                          <span>大模型</span>
+                          <b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b>
+                          <b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b>
+                          <b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b>
+                          <b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b>
+                          <i class="model-current-cost" data-model-current-cost="gemini-3-flash-preview">8 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="kimi-k2-6">10 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="gpt-5-5">12 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="deepseek-v4-pro">9 积分</i>
+                        </summary>
+                        <div class="creation-model-menu" aria-label="剧本模型选择">
+                          <label class="creation-model-option" data-create-model-option data-model-key="gemini-3-flash-preview">
+                            <input type="radio" name="templates-create-model-script" checked>
+                            <span class="model-option-main"><strong data-create-model-name>gemini-3-flash-preview</strong><em data-create-model-cost>8 积分</em></span>
+                            <span class="model-option-desc">故事设定 / 分镜大纲</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="kimi-k2-6">
+                            <input type="radio" name="templates-create-model-script">
+                            <span class="model-option-main"><strong data-create-model-name>kimi-k2.6</strong><em data-create-model-cost>10 积分</em></span>
+                            <span class="model-option-desc">长文本梳理</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="gpt-5-5">
+                            <input type="radio" name="templates-create-model-script">
+                            <span class="model-option-main"><strong data-create-model-name>gpt-5.5</strong><em data-create-model-cost>12 积分</em></span>
+                            <span class="model-option-desc">对白和节奏优化</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="deepseek-v4-pro">
+                            <input type="radio" name="templates-create-model-script">
+                            <span class="model-option-main"><strong data-create-model-name>deepseek-v4-pro</strong><em data-create-model-cost>9 积分</em></span>
+                            <span class="model-option-desc">剧情拆解</span>
+                          </label>
+                        </div>
+                      </details>
+                      <details class="creation-model-select creation-mode-panel" data-create-model-select data-create-mode-panel="video">
+                        <summary>
+                          <span>视频模型</span>
+                          <b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b>
+                          <b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b>
+                          <b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b>
+                          <b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b>
+                          <b class="model-current" data-model-current="omni-fast">omni-fast</b>
+                          <b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b>
+                          <b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b>
+                          <b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b>
+                          <b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b>
+                          <b class="model-current" data-model-current="grok-video-3">grok-video-3</b>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedance-1-5-pro">36 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-5s">42 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="kling-3-0-omni-720p-ref-mute">48 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="grok-video-3-10s">40 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="omni-fast">28 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-10s">56 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-15s">72 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="kling-2-5-1080p">64 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="grok-1-5-video-10s">44 积分</i>
+                          <i class="model-current-cost" data-model-current-cost="grok-video-3">36 积分</i>
+                        </summary>
+                        <div class="creation-model-menu" aria-label="视频模型选择">
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedance-1-5-pro">
+                            <input type="radio" name="templates-create-model-video" checked>
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedance-1-5-pro</strong><em data-create-model-cost>36 积分</em></span>
+                            <span class="model-option-desc">短视频镜头</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedance-2-0-5s">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedance-2-0-5s</strong><em data-create-model-cost>42 积分</em></span>
+                            <span class="model-option-desc">5 秒镜头</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="kling-3-0-omni-720p-ref-mute">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>kling-3.0-omni-720p-ref-mute</strong><em data-create-model-cost>48 积分</em></span>
+                            <span class="model-option-desc">参考图静音视频</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="grok-video-3-10s">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>grok-video-3-10s</strong><em data-create-model-cost>40 积分</em></span>
+                            <span class="model-option-desc">10 秒镜头</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="omni-fast">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>omni-fast</strong><em data-create-model-cost>28 积分</em></span>
+                            <span class="model-option-desc">快速预览</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedance-2-0-10s">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedance-2-0-10s</strong><em data-create-model-cost>56 积分</em></span>
+                            <span class="model-option-desc">10 秒高质镜头</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="doubao-seedance-2-0-15s">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>doubao-seedance-2-0-15s</strong><em data-create-model-cost>72 积分</em></span>
+                            <span class="model-option-desc">15 秒镜头</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="kling-2-5-1080p">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>kling-2.5-1080p</strong><em data-create-model-cost>64 积分</em></span>
+                            <span class="model-option-desc">1080p 画质</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="grok-1-5-video-10s">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>grok-1.5-video-10s</strong><em data-create-model-cost>44 积分</em></span>
+                            <span class="model-option-desc">镜头实验</span>
+                          </label>
+                          <label class="creation-model-option" data-create-model-option data-model-key="grok-video-3">
+                            <input type="radio" name="templates-create-model-video">
+                            <span class="model-option-main"><strong data-create-model-name>grok-video-3</strong><em data-create-model-cost>36 积分</em></span>
+                            <span class="model-option-desc">图生视频</span>
+                          </label>
+                        </div>
+                      </details>
+                      <div class="creation-ratio-select creation-media-panel" data-create-ratio aria-label="比例选择">
+                        <span>比例</span>
+                        <label><input type="radio" name="templates-create-ratio" value="16:9" checked><b>16:9</b></label>
+                        <label><input type="radio" name="templates-create-ratio" value="9:16"><b>9:16</b></label>
+                        <label><input type="radio" name="templates-create-ratio" value="1:1"><b>1:1</b></label>
+                      </div>
+                    </div>
+                    <div class="creation-panel-actions creation-panel-actions-submit creation-bottom-submit">
+                      <label class="generation-submit-pill" data-create-submit for="templates-create-step-generating" aria-label="生成，当前模型预计消耗 24 积分">
+                        <b class="generation-submit-label" data-submit-label="image">生成图片</b>
+                        <b class="generation-submit-label" data-submit-label="script">开始创作</b>
+                        <b class="generation-submit-label" data-submit-label="video">生成视频</b>
+                        <span class="generation-submit-bolt" aria-hidden="true"></span>
+                        <span class="generation-submit-costs" aria-hidden="true">
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-4-5-251128">24</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-5-0-260128">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-pro">22</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-image-2">18</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-2">20</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gemini-3-flash-preview">8</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kimi-k2-6">10</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-5-5">12</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="deepseek-v4-pro">9</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-1-5-pro">36</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-5s">42</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-3-0-omni-720p-ref-mute">48</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3-10s">40</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="omni-fast">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-10s">56</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-15s">72</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-2-5-1080p">64</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-1-5-video-10s">44</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3">36</strong>
+                        </span>
+                        <span class="generation-submit-arrow" aria-hidden="true"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="creation-step-panel creation-progress-panel" data-creation-step-panel="generating" aria-label="生成中状态">
+                <div class="creation-state-shell creation-generating-shell" data-creation-motion-part>
+                  <div class="creation-conversation-panel" data-creation-motion-part>
+                    <div class="creation-chat-thread creation-chat-thread-workspace" aria-live="polite"><div class="creation-chat-message creation-chat-message-user"><span>你</span><p data-creation-prompt-preview>返回调整后可继续补充输入。</p></div><div class="creation-chat-message creation-chat-message-assistant"><span>AI</span><p>我会保留你的原始输入和模板结构，先生成一版同款结果；如果方向需要变化，可以直接在下方补充角色、风格或镜头限制。</p><div class="creation-assistant-progress-card"><div><strong class="creation-mode-panel" data-create-mode-panel="image">正在套用模板画面结构和画幅比例</strong><strong class="creation-mode-panel" data-create-mode-panel="script">正在拆解模板脚本、角色动机和节奏</strong><strong class="creation-mode-panel" data-create-mode-panel="video">正在复用模板镜头运动和视频节奏</strong><span>上下文已保留，生成完成后可补充灵感或返回调整。</span></div><i aria-hidden="true"></i></div><label class="generation-preview-card creation-chat-preview-card" data-generation-preview-open data-creation-next="result" for="templates-create-step-result" aria-label="点击预览大图"><div class="generation-preview-frame"><img class="creation-mode-panel" data-create-mode-panel="image" src="assets/image_assets/15.webp" alt="生成中的图片预览"><article class="generation-script-preview creation-mode-panel" data-create-mode-panel="script"><span>脚本生成中</span><strong>正在拆分模板角色、冲突和分镜节奏</strong><p>第 1 幕：按模板结构建立场景。第 2 幕：补足人物动机、镜头推进和结尾悬念。</p></article><video class="creation-mode-panel" data-create-mode-panel="video" src="assets/video_assets/1.mp4" poster="assets/image_assets/17.webp" autoplay muted loop playsinline aria-label="生成中的视频预览"></video><div class="generation-scan" aria-hidden="true"></div><span class="generation-progress-badge"><b>2%</b> 生成中...</span></div><span class="generation-preview-open-hint">点击预览大图</span></label></div></div>
+                                        <div class="creation-followup-composer" aria-label="输入灵感输入区">
+                      <label class="creation-followup-field">
+                        <span>输入灵感</span>
+                        <textarea class="creation-followup-input" rows="2" placeholder="补充模板变化、调整镜头或加入限制条件"></textarea>
+                      </label>
+                      <div class="creation-followup-controls">
+                        <div class="creation-followup-options" aria-label="本轮生成设置">
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="image" data-followup-model-summary>
+                          <span>图片模型</span>
+                          <em><b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b><b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b><b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b><b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b><b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b><i class="model-current-cost" data-model-current-cost="doubao-seedream-4-5-251128">24 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedream-5-0-260128">28 积分</i><i class="model-current-cost" data-model-current-cost="nano-banana-pro">22 积分</i><i class="model-current-cost" data-model-current-cost="gpt-image-2">18 积分</i><i class="model-current-cost" data-model-current-cost="nano-banana-2">20 积分</i></em>
+                        </span>
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="script" data-followup-model-summary>
+                          <span>剧本模型</span>
+                          <em><b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b><b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b><b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b><b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b><i class="model-current-cost" data-model-current-cost="gemini-3-flash-preview">8 积分</i><i class="model-current-cost" data-model-current-cost="kimi-k2-6">10 积分</i><i class="model-current-cost" data-model-current-cost="gpt-5-5">12 积分</i><i class="model-current-cost" data-model-current-cost="deepseek-v4-pro">9 积分</i></em>
+                        </span>
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="video" data-followup-model-summary>
+                          <span>视频模型</span>
+                          <em><b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b><b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b><b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b><b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b><b class="model-current" data-model-current="omni-fast">omni-fast</b><b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b><b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b><b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b><b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b><b class="model-current" data-model-current="grok-video-3">grok-video-3</b><i class="model-current-cost" data-model-current-cost="doubao-seedance-1-5-pro">36 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-5s">42 积分</i><i class="model-current-cost" data-model-current-cost="kling-3-0-omni-720p-ref-mute">48 积分</i><i class="model-current-cost" data-model-current-cost="grok-video-3-10s">40 积分</i><i class="model-current-cost" data-model-current-cost="omni-fast">28 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-10s">56 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-15s">72 积分</i><i class="model-current-cost" data-model-current-cost="kling-2-5-1080p">64 积分</i><i class="model-current-cost" data-model-current-cost="grok-1-5-video-10s">44 积分</i><i class="model-current-cost" data-model-current-cost="grok-video-3">36 积分</i></em>
+                        </span>
+                          <div class="creation-ratio-select creation-followup-ratio creation-media-panel" data-followup-ratio aria-label="比例选择">
+                            <span>比例</span>
+                            <label><input type="radio" name="templates-create-followup-ratio" value="16:9" checked><b>16:9</b></label>
+                            <label><input type="radio" name="templates-create-followup-ratio" value="9:16"><b>9:16</b></label>
+                            <label><input type="radio" name="templates-create-followup-ratio" value="1:1"><b>1:1</b></label>
+                          </div>
+                        </div>
+                        <div class="creation-panel-actions creation-panel-actions-submit creation-followup-submit-actions">
+                        <label class="generation-submit-pill creation-followup-submit" data-create-followup-submit for="templates-create-step-generating" aria-label="生成，当前模型预计消耗积分">
+                          <b class="generation-submit-label" data-submit-label="image">生成图片</b>
+                          <b class="generation-submit-label" data-submit-label="script">开始创作</b>
+                          <b class="generation-submit-label" data-submit-label="video">生成视频</b>
+                          <span class="generation-submit-bolt" aria-hidden="true"></span>
+                          <span class="generation-submit-costs" aria-hidden="true">
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-4-5-251128">24</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-5-0-260128">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-pro">22</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-image-2">18</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-2">20</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gemini-3-flash-preview">8</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kimi-k2-6">10</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-5-5">12</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="deepseek-v4-pro">9</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-1-5-pro">36</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-5s">42</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-3-0-omni-720p-ref-mute">48</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3-10s">40</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="omni-fast">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-10s">56</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-15s">72</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-2-5-1080p">64</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-1-5-video-10s">44</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3">36</strong>
+                          </span>
+                          <span class="generation-submit-arrow" aria-hidden="true"></span>
+                        </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="creation-step-panel creation-result-panel" data-creation-step-panel="result" aria-label="结果预览状态">
+                <article class="creation-result-card creation-state-shell" data-creation-result data-creation-motion-part>
+                  <div class="creation-result-preview">
+                    <div class="creation-result-media">
+                      <img class="creation-mode-panel" data-create-mode-panel="image" src="assets/image_assets/15.webp" alt="模板图片结果预览">
+                      <article class="creation-script-result creation-mode-panel" data-create-mode-panel="script"><span>Markdown 预览</span><h4>模板同款 · 分镜设定</h4><p>已按模板结构补齐人物、冲突、场景推进和结尾悬念，可继续进入画布深化。</p><ul><li>会生成：标题、人物关系、三幕式分镜。</li><li>适合：短剧开场、教程脚本、案例复盘。</li></ul></article>
+                      <video class="creation-mode-panel" data-create-mode-panel="video" src="assets/video_assets/1.mp4" poster="assets/image_assets/17.webp" controls muted playsinline aria-label="模板视频结果预览"></video>
+                      <span class="creation-result-badge">AI 生成</span>
+                    </div>
+                  </div>
+                  <aside class="creation-result-body creation-state-aside" data-creation-result-detail>
+                    <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
+                      <div class="creation-result-status">
+                        <strong data-result-mode-title>图片生成</strong>
+                        <em>刚刚生成 · 内容由 AI 生成</em>
+                      </div>
+                      <div class="creation-result-toolbar" aria-label="操作栏">
+                        <button class="creation-result-icon-button" type="button" aria-label="下载结果"><img src="resources/icons/remixicon/svg/Document/file-download-line.svg" alt=""><span>下载</span></button>
+                        <button class="creation-result-icon-button" type="button" aria-label="分享结果"><img src="resources/icons/remixicon/svg/System/share-2-line.svg" alt=""><span>分享</span></button>
+                        <button class="creation-result-icon-button" type="button" aria-label="收藏结果"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt=""><span>收藏</span></button>
+                      </div>
+                    </div>
+                    <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
+                      <div class="creation-result-basic" aria-label="基础参数">
+                        <div class="creation-result-row-head"><b>基础参数</b></div>
+                        <span><b>模型</b><em class="creation-mode-panel" data-create-mode-panel="image"><b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b><b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b><b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b><b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b><b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b></em><em class="creation-mode-panel" data-create-mode-panel="script"><b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b><b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b><b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b><b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b></em><em class="creation-mode-panel" data-create-mode-panel="video"><b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b><b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b><b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b><b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b><b class="model-current" data-model-current="omni-fast">omni-fast</b><b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b><b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b><b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b><b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b><b class="model-current" data-model-current="grok-video-3">grok-video-3</b></em></span>
+                        <span><b>尺寸</b><em class="creation-mode-panel" data-create-mode-panel="image">1536x864</em><em class="creation-mode-panel" data-create-mode-panel="script">Markdown 文本</em><em class="creation-mode-panel" data-create-mode-panel="video">1280x720</em></span>
+                        <span><b>比例</b><em class="creation-mode-panel" data-create-mode-panel="image">16:9</em><em class="creation-mode-panel" data-create-mode-panel="script">文本结构化</em><em class="creation-mode-panel" data-create-mode-panel="video">16:9</em></span>
+                      </div>
+                      <div class="creation-result-prompt-card">
+                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button></div>
+                        <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>补充模板变化、调整镜头或加入限制条件</p>
+                      </div>
+                    </section>
+                    <div class="creation-result-footer" aria-label="下一步">
+                      <label class="creation-result-adjust" data-creation-next="generating" for="templates-create-step-generating">继续调整</label>
+                      <div class="creation-result-destination-actions" aria-label="模板同款结果下一步动作">
+                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+                        <a class="button secondary" data-result-destination-action="flash" data-creation-action="flash" href="./flash.html#compose-flash">发布闪念</a>
+                      </div>
+                    </div>
+                  </aside>
+                </article>
+              </section>
+              <section class="creation-step-panel creation-distribute-panel" data-creation-step-panel="distribute" aria-label="下一步分发状态">
+                <div class="creation-distribute-shell creation-state-shell" data-creation-motion-part>
+                  <aside class="creation-state-aside creation-distribute-summary">
+                    <h3>把模板同款结果变成可继续创作的素材</h3><p>结果不止停在预览，可以继续进入漫剧画布，或把过程想法发布为闪念。</p>
+                    <div class="creation-result-mini"><span>AI 生成</span><strong class="creation-mode-panel" data-create-mode-panel="image">模板图片结果</strong><strong class="creation-mode-panel" data-create-mode-panel="script">模板脚本结果</strong><strong class="creation-mode-panel" data-create-mode-panel="video">模板视频结果</strong></div>
+                    <label class="button subtle" data-creation-next="result" for="templates-create-step-result">返回结果</label>
+                  </aside>
+                  <div class="creation-destination-grid">
+                    <article class="creation-destination-card"><span>漫剧项目</span><strong>回到 AIGC 画布继续制作</strong><a class="button" data-creation-action="manga" href="./aigc.html#canvas-studio">继续做成漫剧</a></article>
+                    <article class="creation-destination-card"><span>轻内容</span><strong>把模板同款过程发布为闪念</strong><a class="button secondary" data-creation-action="flash" href="./flash.html#compose-flash">发布为闪念</a></article>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="template-list" class="section template-list-section">
+        <div class="wide-container">
+          <div class="template-list-toolbar">
+            <div class="case-section-head">
+              <h2>全部模板</h2>
+            </div>
+            <div class="filter-row template-filter-row" aria-label="模板分类筛选">
+              <button class="filter-chip is-active" type="button" data-template-filter="all">全部</button>
+              <button class="filter-chip" type="button" data-template-filter="短剧漫剧">短剧漫剧</button>
+              <button class="filter-chip" type="button" data-template-filter="图片生成">图片生成</button>
+              <button class="filter-chip" type="button" data-template-filter="视频生成">视频生成</button>
+              <button class="filter-chip" type="button" data-template-filter="文本写作">文本写作</button>
+              <button class="filter-chip" type="button" data-template-filter="活动海报">活动海报</button>
+            </div>
+          </div>
+
+          <div class="template-list-grid">
+            <a class="case-card template-list-card tall" href="./aigc.html#template-detail-manga" data-template-card data-template-type="短剧漫剧"><img src="assets/image_assets/11.webp" alt=""><div class="copy"><h3>短剧漫剧开场</h3><p>强冲突开头和 9 格分镜</p><div class="case-hover-meta"><span>官方维护</span><span>16 起</span></div></div></a>
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-manga" data-template-card data-template-type="短剧漫剧"><img src="assets/image_assets/17.webp" alt=""><div class="copy"><h3>反转分镜脚本</h3><p>悬念、反证和结尾反转</p><div class="case-hover-meta"><span>专业维护</span><span>14 起</span></div></div></a>
+            <a class="case-card template-list-card short" href="./aigc.html#template-detail-manga" data-template-card data-template-type="短剧漫剧"><img src="assets/image_assets/29.webp" alt=""><div class="copy"><h3>三幕式故事</h3><p>人物动机和节奏节点</p><div class="case-hover-meta"><span>官方维护</span><span>12 起</span></div></div></a>
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-manga" data-template-card data-template-type="短剧漫剧"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><h3>漫剧对白</h3><p>分镜旁白和对话密度</p><div class="case-hover-meta"><span>专业维护</span><span>10 起</span></div></div></a>
+
+            <a class="case-card template-list-card tall" href="./aigc.html#template-detail-role" data-template-card data-template-type="图片生成"><img src="assets/image_assets/15.webp" alt=""><div class="copy"><h3>国风角色设定</h3><p>角色卡、服饰和表情</p><div class="case-hover-meta"><span>专业维护</span><span>12 起</span></div></div></a>
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-role" data-template-card data-template-type="图片生成"><img src="assets/image_assets/18.webp" alt=""><div class="copy"><h3>漫剧封面</h3><p>标题、构图和主视觉</p><div class="case-hover-meta"><span>官方维护</span><span>10 起</span></div></div></a>
+            <a class="case-card template-list-card short" href="./aigc.html#template-detail-role" data-template-card data-template-type="图片生成"><img src="assets/image_assets/28.webp" alt=""><div class="copy"><h3>角色三视图</h3><p>正面、侧面和表情组</p><div class="case-hover-meta"><span>专业维护</span><span>14 起</span></div></div></a>
+
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-ad" data-template-card data-template-type="视频生成"><img src="assets/image_assets/18.webp" alt=""><div class="copy"><h3>商品广告片</h3><p>卖点脚本和短片分镜</p><div class="case-hover-meta"><span>官方维护</span><span>18 起</span></div></div></a>
+            <a class="case-card template-list-card tall" href="./aigc.html#template-detail-image-video" data-template-card data-template-type="视频生成"><img src="assets/image_assets/29.webp" alt=""><div class="copy"><h3>图生视频</h3><p>镜头节奏和动态描述</p><div class="case-hover-meta"><span>专业维护</span><span>20 起</span></div></div></a>
+            <a class="case-card template-list-card short" href="./aigc.html#template-detail-image-video" data-template-card data-template-type="视频生成"><img src="assets/image_assets/11.webp" alt=""><div class="copy"><h3>竖屏口播短片</h3><p>开场钩子和字幕节奏</p><div class="case-hover-meta"><span>官方维护</span><span>15 起</span></div></div></a>
+
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-writing" data-template-card data-template-type="文本写作"><img src="assets/image_assets/28.webp" alt=""><div class="copy"><h3>文本模型写作</h3><p>大纲、标题和正文结构</p><div class="case-hover-meta"><span>官方维护</span><span>6 起</span></div></div></a>
+            <a class="case-card template-list-card tall" href="./aigc.html#template-detail-model-case" data-template-card data-template-type="文本写作"><img src="assets/image_assets/17.webp" alt=""><div class="copy"><h3>模型经验复盘</h3><p>输入、过程和结果记录</p><div class="case-hover-meta"><span>专业维护</span><span>10 起</span></div></div></a>
+            <a class="case-card template-list-card short" href="./aigc.html#template-detail-model-case" data-template-card data-template-type="文本写作"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><h3>API 笔记大纲</h3><p>调用过程和避坑条目</p><div class="case-hover-meta"><span>专业维护</span><span>8 起</span></div></div></a>
+
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-poster" data-template-card data-template-type="活动海报"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><h3>活动海报</h3><p>标题、主视觉和 CTA</p><div class="case-hover-meta"><span>官方维护</span><span>8 起</span></div></div></a>
+            <a class="case-card template-list-card tall" href="./aigc.html#template-detail-tutorial-cover" data-template-card data-template-type="活动海报"><img src="assets/image_assets/18.webp" alt=""><div class="copy"><h3>教程封面</h3><p>步骤封面和配图方向</p><div class="case-hover-meta"><span>官方维护</span><span>8 起</span></div></div></a>
+            <a class="case-card template-list-card" href="./aigc.html#template-detail-poster" data-template-card data-template-type="活动海报"><img src="assets/image_assets/11.webp" alt=""><div class="copy"><h3>邀请福利海报</h3><p>邀请口径和福利卖点</p><div class="case-hover-meta"><span>官方维护</span><span>9 起</span></div></div></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+<div class="footer-space"></div>
+  </div>
+
+  <script>
+    document.querySelectorAll("[data-template-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.templateFilter;
+        document.querySelectorAll("[data-template-filter]").forEach((node) => {
+          node.classList.toggle("is-active", node === button);
+        });
+        document.querySelectorAll("[data-template-card]").forEach((card) => {
+          card.hidden = filter !== "all" && card.dataset.templateType !== filter;
+        });
+      });
+    });
+  </script>
+  <script src="./vendor/gsap.min.js" defer></script>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>

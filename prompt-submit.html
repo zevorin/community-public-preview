@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>发布 Prompt - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only">
+</head>
+<body>
+  <div class="page growth-detail-page prompt-submit-page" data-page="prompt-submit">
+    <div class="page-bg"><img src="assets/image_assets/15.webp" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">投稿编辑</span><span>标题、正文、场景和模型达标后即可发布</span><span>进行中</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a class="is-active" aria-current="page" href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="prompt-submit-modal-stage" aria-label="Prompt 投稿编辑入口">
+      <section id="prompt-submit-compose" class="create-modal prompt-submit-modal is-open" data-prompt-submit-modal aria-label="发布 Prompt">
+        <a class="modal-backdrop" href="./campaign-prompt.html" aria-label="关闭发布 Prompt"></a>
+        <div class="create-dialog prompt-submit-dialog">
+          <div class="create-dialog-head prompt-submit-dialog-head">
+            <div>
+              <h2>发布 Prompt</h2>
+            </div>
+            <a class="modal-close-button modal-close-icon-button" href="./campaign-prompt.html" role="button" aria-label="关闭发布 Prompt"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+
+          <div class="prompt-submit-layout">
+            <article class="prompt-editor-card" aria-label="Prompt 投稿编辑器">
+              <div class="prompt-field" data-prompt-submit-field="标题">
+                <label for="prompt-title">标题</label>
+                <div class="prompt-input-shell">
+                  <input id="prompt-title" value="国风神女角色设定 Prompt" aria-label="Prompt 标题">
+                  <span class="prompt-field-counter" data-prompt-counter="title">14/4</span>
+                </div>
+              </div>
+
+              <div class="prompt-field" data-prompt-submit-field="提示词">
+                <label for="prompt-body">提示词</label>
+                <div class="prompt-textarea-shell">
+                  <textarea id="prompt-body" rows="5" aria-label="提示词">国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</textarea>
+                  <span class="prompt-field-counter" data-prompt-counter="body">88/30</span>
+                </div>
+              </div>
+
+              <div class="prompt-field-grid">
+                <div class="prompt-field" data-prompt-submit-field="适用场景">
+                  <div class="prompt-field-label-row">
+                    <label id="prompt-scene-label">适用场景</label>
+                    <span data-prompt-scene-count>3/3</span>
+                  </div>
+                  <div class="prompt-scene-picker" data-prompt-scene-multiselect data-prompt-scene-limit="3" role="group" aria-labelledby="prompt-scene-label">
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="角色设定" data-prompt-scene-option><span>角色设定</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="封面图" data-prompt-scene-option><span>封面图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="漫剧开场" data-prompt-scene-option><span>漫剧开场</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="产品海报" data-prompt-scene-option checked><span>产品海报</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="商详头图" data-prompt-scene-option checked><span>商详头图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="广告素材" data-prompt-scene-option checked><span>广告素材</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="教程封面" data-prompt-scene-option><span>教程封面</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="文章配图" data-prompt-scene-option><span>文章配图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="社区内容" data-prompt-scene-option><span>社区内容</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="分镜脚本" data-prompt-scene-option><span>分镜脚本</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="视频开场" data-prompt-scene-option><span>视频开场</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="短剧视觉" data-prompt-scene-option><span>短剧视觉</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="IP 形象" data-prompt-scene-option><span>IP 形象</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="表情包" data-prompt-scene-option><span>表情包</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="社交头像" data-prompt-scene-option><span>社交头像</span></label>
+                  </div>
+                </div>
+                <div class="prompt-field" data-prompt-submit-field="推荐模型">
+                  <label for="prompt-model">推荐模型</label>
+                  <div class="prompt-input-shell is-select">
+                    <select id="prompt-model" data-prompt-model-select aria-label="推荐模型">
+                      <optgroup label="图片模型">
+                        <option selected>doubao-seedream-4-5-251128</option>
+                        <option>doubao-seedream-5-0-260128</option>
+                        <option>Nano Banana Pro</option>
+                        <option>gpt-image-2</option>
+                        <option>nano-banana-2</option>
+                      </optgroup>
+                      <optgroup label="文本模型">
+                        <option>gemini-3-flash-preview</option>
+                        <option>kimi-k2.6</option>
+                        <option>gpt-5.5</option>
+                        <option>deepseek-v4-pro</option>
+                      </optgroup>
+                      <optgroup label="视频模型">
+                        <option>doubao-seedance-1-5-pro</option>
+                        <option>doubao-seedance-2-0-5s</option>
+                        <option>kling-3.0-omni-720p-ref-mute</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div id="prompt-media-upload" class="prompt-media-upload" data-prompt-submit-field="效果图/视频">
+                <div class="prompt-media-head">
+                  <strong>效果图/视频</strong>
+                  <span>2 / 6</span>
+                </div>
+                <div class="prompt-upload-strip">
+                  <label class="prompt-upload-dropzone" data-prompt-upload-dropzone aria-label="上传效果图或视频">
+                    <input type="file" accept="image/*,video/*" data-prompt-upload-input aria-label="选择效果图或视频">
+                    <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
+                    <strong>上传</strong>
+                  </label>
+                  <div class="prompt-upload-item" data-prompt-upload-item>
+                    <a class="prompt-upload-remove" href="#prompt-media-upload" role="button" aria-label="删除已上传图片" data-prompt-upload-remove><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+                    <a class="prompt-upload-thumb" href="#prompt-media-preview-image" data-prompt-upload-thumb aria-label="预览已上传图片">
+                      <img src="assets/image_assets/15.webp" alt="">
+                    </a>
+                  </div>
+                  <div class="prompt-upload-item" data-prompt-upload-item>
+                    <a class="prompt-upload-remove" href="#prompt-media-upload" role="button" aria-label="删除已上传视频" data-prompt-upload-remove><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+                    <a class="prompt-upload-thumb is-video" href="#prompt-media-preview-video" data-prompt-upload-thumb aria-label="预览已上传视频">
+                      <video src="assets/video_assets/1.mp4" poster="assets/image_assets/17.webp" muted playsinline></video>
+                      <span><img src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt="">视频</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          </div>
+          <div class="prompt-submit-actions">
+            <a class="button" href="./aigc.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-remix-cost data-prompt-submit-score="40" data-prompt-submit-media-count="2" aria-label="一键同款，40 积分">
+              <span>一键同款</span>
+              <span class="prompt-submit-cost-badge"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span data-prompt-submit-cost-value>40</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="prompt-media-preview-image" class="create-modal prompt-media-preview-modal" data-prompt-media-preview aria-label="图片预览">
+        <a class="modal-backdrop" href="#prompt-media-upload" aria-label="关闭图片预览"></a>
+        <div class="create-dialog prompt-media-preview-dialog">
+          <div class="create-dialog-head">
+            <div><h2>图片预览</h2></div>
+            <a class="modal-close-button modal-close-icon-button" href="#prompt-media-upload" role="button" aria-label="关闭图片预览"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+          <img src="assets/image_assets/15.webp" alt="">
+        </div>
+      </section>
+
+      <section id="prompt-media-preview-video" class="create-modal prompt-media-preview-modal" data-prompt-media-preview aria-label="视频预览">
+        <a class="modal-backdrop" href="#prompt-media-upload" aria-label="关闭视频预览"></a>
+        <div class="create-dialog prompt-media-preview-dialog">
+          <div class="create-dialog-head">
+            <div><h2>视频预览</h2></div>
+            <a class="modal-close-button modal-close-icon-button" href="#prompt-media-upload" role="button" aria-label="关闭视频预览"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+          <video src="assets/video_assets/1.mp4" poster="assets/image_assets/17.webp" controls muted playsinline></video>
+        </div>
+      </section>
+    </main>
+
+    <div class="activity-config-schema" hidden aria-hidden="true">
+      <strong data-activity-field>活动标题：Prompt 共创计划</strong>
+      <strong data-activity-field>关联页面：活动详情、投稿编辑、AIGC 灵感广场、Prompt 详情弹层、积分中心</strong>
+      <strong data-activity-field>CTA 文案：发布 Prompt</strong>
+      <strong data-activity-field>CTA 目标：aigc.html#prompt-detail-media</strong>
+    </div>
+
+
+<div class="footer-space"></div>
+  </div>
+  <script>
+    document.querySelectorAll("[data-prompt-scene-multiselect]").forEach((group) => {
+      const limit = Number(group.getAttribute("data-prompt-scene-limit")) || 3;
+      const options = Array.from(group.querySelectorAll("[data-prompt-scene-option]"));
+      const counter = group.closest("[data-prompt-submit-field]")?.querySelector("[data-prompt-scene-count]");
+      const sync = () => {
+        const selected = options.filter((option) => option.checked);
+        if (counter) counter.textContent = `${selected.length}/${limit}`;
+        options.forEach((option) => {
+          option.disabled = !option.checked && selected.length >= limit;
+        });
+      };
+      options.forEach((option) => {
+        option.addEventListener("change", () => {
+          if (options.filter((item) => item.checked).length > limit) option.checked = false;
+          sync();
+        });
+      });
+      sync();
+    });
+  </script>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">  <title>官方教程 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260722-tutorial-title-line-height-12">
+</head>
+<body class="home-header-shell">
+  <div class="page tutorial-page" data-page="community-tutorial">
+    <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
+    <canvas class="tutorial-threads-bg" data-distance="1" data-amplitude="4" aria-hidden="true"></canvas>
+    <header class="site-header shared-home-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+          <a class="is-active" aria-current="page" href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.webp" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>先看清权益，再决定是否进入AI商城</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">进入AI商城</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="invite-panel" class="create-modal tutorial-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog tutorial-simple-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>邀请好友完成首次体验，双方都得积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="tutorial-benefit-grid">
+          <div><strong>注册</strong><span>邀请人 +20</span></div>
+          <div><strong>首次互动</strong><span>邀请人 +20</span></div>
+          <div><strong>首次发布 AI 作品</strong><span>邀请人 +50</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="member-panel" class="create-modal tutorial-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
+      <div class="create-dialog tutorial-simple-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <h2>进阶教程和体验权益放在同一张卡里</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="tutorial-benefit-grid">
+          <div><strong>每月积分包</strong><span>用于 AIGC、模型体验和模板能力</span></div>
+          <div><strong>创作教程</strong><span>进阶案例、图片生成和视频生成专项</span></div>
+          <div><strong>体验权益</strong><span>模板包、教程包和创作体验额度</span></div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="tutorial-list" class="section tutorial-main-section">
+        <div class="wide-container tutorial-feed tutorial-feed-simple">
+          <section class="tutorial-banner" aria-labelledby="tutorial-banner-title">
+            <img src="assets/image_assets/tutorial-official-banner-v3.webp" alt="" aria-hidden="true">
+            <div class="tutorial-banner-copy">
+              <span class="tutorial-banner-kicker">OFFICIAL TUTORIALS</span>
+              <h1 id="tutorial-banner-title" data-tutorial-hero-split-text>跟着官方教程<br><em>开始你的创作</em></h1>
+              <p>跟练真实案例，逐步掌握图片、视频与漫剧创作</p>
+            </div>
+          </section>
+
+          <div class="filter-row" data-tutorial-filters>
+            <button class="filter-chip is-active" type="button" data-filter="all">全部</button>
+            <button class="filter-chip" type="button" data-filter="漫剧生成">漫剧生成</button>
+            <button class="filter-chip" type="button" data-filter="图片生成">图片生成</button>
+            <button class="filter-chip" type="button" data-filter="视频生成">视频生成</button>
+          </div>
+
+          <div class="tutorial-course-grid" data-tutorial-grid>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：12 分钟完成第一条漫剧分镜">
+                  <div class="tutorial-cover"><img src="assets/edubanner/5.png" alt=""><span class="tutorial-cover-badge">视频 · 12 分钟</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>漫剧生成</span></div>
+                    <p>一句话拆出角色、场景与镜头提示词</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：国风角色设定怎么保持一致">
+                  <div class="tutorial-cover"><img src="assets/edubanner/4.png" alt=""><span class="tutorial-cover-badge">视频 · 8 分钟</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>漫剧生成</span></div>
+                    <p>锁定角色关键词，统一服饰与镜头风格</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：一句话变成 9 格分镜">
+                  <div class="tutorial-cover"><img src="assets/edubanner/1.png" alt=""><span class="tutorial-cover-badge">图文 · 入门</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>漫剧生成</span></div>
+                    <p>拆解冲突、动作与节奏，生成连贯分镜</p>
+                  </div>
+                </a>
+
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：封面主视觉提示词怎么写">
+                  <div class="tutorial-cover"><img src="assets/edubanner/3.png" alt=""><span class="tutorial-cover-badge">图文 · 入门</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>图片生成</span></div>
+                    <p>组合主体、背景与氛围词生成封面</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：角色定妆图如何保持一致">
+                  <div class="tutorial-cover"><img src="assets/edubanner/4.png" alt=""><span class="tutorial-cover-badge">图文 · 进阶</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>图片生成</span></div>
+                    <p>固定描述与服饰细节，稳定角色形象</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：场景图从空画面到有故事">
+                  <div class="tutorial-cover"><img src="assets/edubanner/3.png" alt=""><span class="tutorial-cover-badge">视频 · 7 分钟</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>图片生成</span></div>
+                    <p>用前中远景关系，让场景更有故事</p>
+                  </div>
+                </a>
+
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：图生视频的镜头描述怎么写">
+                  <div class="tutorial-cover"><img src="assets/edubanner/2.png" alt=""><span class="tutorial-cover-badge">视频 · 6 分钟</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>视频生成</span></div>
+                    <p>拆写主体、运动与转场，减少返工</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：短视频开场 3 秒怎么做">
+                  <div class="tutorial-cover"><img src="assets/edubanner/2.png" alt=""><span class="tutorial-cover-badge">视频 · 5 分钟</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>视频生成</span></div>
+                    <p>设计入场、推进与首帧吸引点</p>
+                  </div>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：分镜到动态预览怎么串起来">
+                  <div class="tutorial-cover"><img src="assets/edubanner/1.png" alt=""><span class="tutorial-cover-badge">图文 · 进阶</span></div>
+                  <div class="tutorial-card-copy">
+                    <div class="tutorial-card-meta"><span>视频生成</span></div>
+                    <p>串联关键帧、运动方向与转场</p>
+                  </div>
+                </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+<div class="footer-space"></div>
+  </div>
+  <script src="./vendor/gsap.min.js" defer></script>
+  <script>
+    (() => {
+      const heroTitle = document.querySelector("[data-tutorial-hero-split-text]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!heroTitle || reduceMotion) return;
+
+      const label = heroTitle.textContent.replace(/\s+/g, "").trim();
+      let charIndex = 0;
+      heroTitle.setAttribute("aria-label", label);
+
+      const splitTextNode = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const fragment = document.createDocumentFragment();
+          Array.from(node.textContent).forEach((character) => {
+            const span = document.createElement("span");
+            span.className = character === " " ? "hero-split-space" : "hero-split-char";
+            span.style.setProperty("--char-index", charIndex++);
+            span.setAttribute("aria-hidden", "true");
+            span.textContent = character === " " ? "\u00a0" : character;
+            fragment.appendChild(span);
+          });
+          node.replaceWith(fragment);
+          return;
+        }
+        Array.from(node.childNodes).forEach(splitTextNode);
+      };
+
+      Array.from(heroTitle.childNodes).forEach(splitTextNode);
+      heroTitle.classList.add("is-split-ready");
+    })();
+
+    document.querySelectorAll("[data-tutorial-filters] .filter-chip").forEach((button) => {
+      button.addEventListener("click", () => {
+        const type = button.dataset.filter;
+        document.querySelectorAll("[data-tutorial-filters] .filter-chip").forEach((item) => {
+          item.classList.toggle("is-active", item === button);
+        });
+        document.querySelectorAll("[data-tutorial-card]").forEach((card) => {
+          card.hidden = type !== "all" && card.dataset.tutorialType !== type;
+        });
+      });
+    });
+
+    (() => {
+      const initTutorialReveal = () => {
+        const grid = document.querySelector("[data-tutorial-grid]");
+        const gsap = window.gsap;
+        if (!grid || !gsap) return;
+
+        const cards = Array.from(grid.querySelectorAll(":scope > [data-tutorial-card]"));
+        if (!cards.length) return;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          gsap.set(cards, { clearProps: "opacity,transform" });
+          return;
+        }
+
+        gsap.set(cards, { opacity: 0, y: 80, scale: 0.96 });
+        const reveal = () => {
+          if (grid.dataset.tutorialAnimated === "true") return;
+          grid.dataset.tutorialAnimated = "true";
+          gsap.to(cards, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "back.out",
+            stagger: 0.04,
+            onComplete: () => gsap.set(cards, { clearProps: "opacity,transform" })
+          });
+        };
+
+        if (!("IntersectionObserver" in window)) {
+          reveal();
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          observer.disconnect();
+          reveal();
+        }, { threshold: 0, rootMargin: "0px" });
+        observer.observe(grid);
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTutorialReveal, { once: true });
+      } else {
+        initTutorialReveal();
+      }
+    })();
+  </script>
+  <script src="./tutorial-threads.js?v=20260722-distance-1-amplitude-4" defer></script>
+  <script src="./walkthrough.js?v=20260721-no-walkthrough" defer></script>
+</body>
+</html>
