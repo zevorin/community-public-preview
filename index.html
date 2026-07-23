@@ -5,7 +5,7 @@
   <title>多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" href="./assets/GGQ.ttf?v=20260720-ggq-font" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=20260722-banner-links-v2">
+  <link rel="stylesheet" href="./style.css?v=20260723-push-layer-fix">
 </head>
 <body class="home-page">
   <div class="page">
@@ -526,8 +526,8 @@
         <div class="container wide-container">
           <section class="home-video-hero home-hero-carousel" aria-label="首页创作主题轮播" data-home-hero-carousel>
             <div class="home-hero-carousel-track">
-              <article class="home-hero-slide is-active" data-home-hero-slide data-home-hero-label="ONE SENTENCE · ONE COMMERCIAL" aria-hidden="false">
-                <video class="home-video-hero-media" src="assets/video_assets/bannervideo3.mp4" autoplay muted loop playsinline preload="auto" poster="assets/image_assets/17.webp" aria-hidden="true"></video>
+              <article class="home-hero-slide is-active" data-home-hero-slide data-home-hero-label="ONE SENTENCE · ONE COMMERCIAL" style="--home-hero-poster: url('assets/image_assets/bannervideo3-first-frame.webp')" aria-hidden="false">
+                <video class="home-video-hero-media" src="assets/video_assets/bannervideo3.mp4" autoplay muted loop playsinline preload="auto" poster="assets/image_assets/bannervideo3-first-frame.webp" aria-hidden="true"></video>
                 <a class="home-hero-slide-link" href="./aigc.html#template-detail-ad" aria-label="进入一句话广告片模板"></a>
                 <div class="home-video-hero-inner">
                   <div class="home-video-hero-copy">
@@ -537,8 +537,8 @@
                   </div>
                 </div>
               </article>
-              <article class="home-hero-slide" data-home-hero-slide data-home-hero-label="AI IMAGE · CREATION CHALLENGE" aria-hidden="true">
-                <video class="home-video-hero-media" src="assets/video_assets/bannervideo2.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              <article class="home-hero-slide" data-home-hero-slide data-home-hero-label="AI IMAGE · CREATION CHALLENGE" style="--home-hero-poster: url('assets/image_assets/bannervideo2-first-frame.webp')" aria-hidden="true" inert>
+                <video class="home-video-hero-media" src="assets/video_assets/bannervideo2.mp4" muted loop playsinline preload="metadata" poster="assets/image_assets/bannervideo2-first-frame.webp" aria-hidden="true"></video>
                 <a class="home-hero-slide-link" href="./campaign-detail.html" aria-label="查看 AI 生图创作挑战详情"></a>
                 <div class="home-video-hero-inner">
                   <div class="home-video-hero-copy">
@@ -548,8 +548,8 @@
                   </div>
                 </div>
               </article>
-              <article class="home-hero-slide" data-home-hero-slide data-home-hero-label="SEEDANCE 2.5 · VIDEO CREATION" aria-hidden="true">
-                <video class="home-video-hero-media" src="assets/video_assets/bannervideo.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              <article class="home-hero-slide" data-home-hero-slide data-home-hero-label="SEEDANCE 2.5 · VIDEO CREATION" style="--home-hero-poster: url('assets/image_assets/bannervideo-first-frame.webp')" aria-hidden="true" inert>
+                <video class="home-video-hero-media" src="assets/video_assets/bannervideo.mp4" muted loop playsinline preload="metadata" poster="assets/image_assets/bannervideo-first-frame.webp" aria-hidden="true"></video>
                 <a class="home-hero-slide-link" href="./aigc.html#quick-create" aria-label="进入 AIGC 视频创作"></a>
                 <div class="home-video-hero-inner">
                   <div class="home-video-hero-copy">
@@ -1057,6 +1057,8 @@
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let activeIndex = 0;
       let autoTimer = 0;
+      let transitionTimer = 0;
+      let repositionFrame = 0;
       let manuallyPaused = reduceMotion;
 
       const activeVideo = () => slides[activeIndex]?.querySelector("video");
@@ -1080,17 +1082,45 @@
         autoTimer = window.setInterval(() => setActive(activeIndex + 1), 6000);
       };
 
+      const getPushOffset = (slideIndex, centerIndex = activeIndex) => {
+        let offset = slideIndex - centerIndex;
+        const half = slides.length / 2;
+        if (offset > half) offset -= slides.length;
+        if (offset < -half) offset += slides.length;
+        return offset;
+      };
+
       const setActive = (nextIndex, restartAuto = true) => {
-        activeIndex = (nextIndex + slides.length) % slides.length;
+        const previousIndex = activeIndex;
+        const normalizedIndex = (nextIndex + slides.length) % slides.length;
+        const previousOffsets = slides.map((_, index) => getPushOffset(index, previousIndex));
+        const nextOffsets = slides.map((_, index) => getPushOffset(index, normalizedIndex));
+        const repositionedSlides = slides.filter((_, index) =>
+          Math.abs(nextOffsets[index] - previousOffsets[index]) > 1
+        );
+
+        window.clearTimeout(transitionTimer);
+        window.cancelAnimationFrame(repositionFrame);
+        slides.forEach((slide) => slide.classList.remove("is-leaving", "is-repositioning"));
+        if (normalizedIndex !== previousIndex) {
+          slides[previousIndex]?.classList.add("is-leaving");
+        }
+        repositionedSlides.forEach((slide) => slide.classList.add("is-repositioning"));
+        if (repositionedSlides.length) void carousel.offsetWidth;
+
+        activeIndex = normalizedIndex;
         slides.forEach((slide, index) => {
           const active = index === activeIndex;
+          slide.style.setProperty("--home-hero-offset", `${nextOffsets[index] * 100}%`);
           slide.classList.toggle("is-active", active);
           slide.setAttribute("aria-hidden", String(!active));
+          slide.toggleAttribute("inert", !active);
           const video = slide.querySelector("video");
           if (!video) return;
           if (active && !manuallyPaused) video.play().catch(() => {});
           else video.pause();
         });
+        if (repositionedSlides.length) void carousel.offsetWidth;
         dots.forEach((dot, index) => {
           const active = index === activeIndex;
           dot.classList.toggle("is-active", active);
@@ -1098,6 +1128,12 @@
         });
         if (current) current.textContent = String(activeIndex + 1).padStart(2, "0");
         if (status) status.textContent = slides[activeIndex]?.dataset.homeHeroLabel || "";
+        repositionFrame = window.requestAnimationFrame(() => {
+          repositionedSlides.forEach((slide) => slide.classList.remove("is-repositioning"));
+        });
+        transitionTimer = window.setTimeout(() => {
+          slides.forEach((slide) => slide.classList.remove("is-leaving"));
+        }, reduceMotion ? 0 : 780);
         if (restartAuto) startAuto();
       };
 
@@ -1128,6 +1164,7 @@
       });
 
       setActive(0);
+      window.requestAnimationFrame(() => carousel.classList.add("is-push-ready"));
       syncToggle();
     })();
 

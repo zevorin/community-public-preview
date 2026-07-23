@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>多元拾光 AIGC</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css?v=20260723-unified-showcase">
+  <link rel="stylesheet" href="./style.css?v=20260723-aigc-immersive-hero">
 </head>
 <body class="home-header-shell aigc-header-shell">
   <div class="page aigc-page" data-page="community-aigc">
@@ -486,8 +486,9 @@
             <span>01 / IMAGINATION IN MOTION</span>
             <button class="home-video-toggle" type="button" aria-pressed="false" aria-label="暂停背景视频"><i></i><span>PLAYING</span></button>
           </div>
-          <a class="home-video-scroll" href="#canvas-studio" aria-label="向下浏览">
-            <span>SCROLL TO EXPLORE</span><i></i>
+          <a class="home-video-scroll aigc-hero-explore" href="#canvas-studio" aria-label="向下继续探索画布创作">
+            <span>向下继续探索</span>
+            <i aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-down-s-line.svg" alt=""></i>
           </a>
         </div>
       </section>
@@ -501,12 +502,14 @@
               <p>从角色、场景到镜头节奏，在一张画布上完成你的创作流程。</p>
               <div class="canvas-actions">
                 <a class="canvas-primary-action" href="#aigc-create-panel">
-                  <span class="canvas-action-icon"><img src="resources/icons/remixicon/svg/画布部分icon/场景构建.svg" alt=""></span>
-                  <span class="canvas-action-copy"><strong>打开画布</strong><em>新建创作项目</em></span>
+                  <span class="canvas-action-main"><span class="canvas-action-icon"><img src="resources/icons/remixicon/svg/画布部分icon/场景构建.svg" alt=""></span><strong>打开画布</strong></span>
+                  <em>新建创作项目</em>
+                  <span class="canvas-action-arrow" aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span>
                 </a>
                 <a class="canvas-secondary-action" href="#template-market">
-                  <span class="canvas-action-icon"><img src="resources/icons/remixicon/svg/画布部分icon/分镜脚本.svg" alt=""></span>
-                  <span class="canvas-action-copy"><strong>从模板开始</strong><em>复用专业流程</em></span>
+                  <span class="canvas-action-main"><span class="canvas-action-icon"><img src="resources/icons/remixicon/svg/画布部分icon/分镜脚本.svg" alt=""></span><strong>从模板开始</strong></span>
+                  <em>复用专业流程</em>
+                  <span class="canvas-action-arrow" aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span>
                 </a>
               </div>
             </div>
@@ -515,49 +518,57 @@
                 <span class="canvas-card-icon"><img src="resources/icons/remixicon/svg/画布部分icon/分镜脚本.svg" alt=""></span>
                 <div><h3>分镜脚本</h3><p>可视化叙事，高效沟通</p></div>
               </header>
-              <ol class="canvas-shot-list">
-                <li>
-                  <img src="assets/fenjin/3.png" alt="巨龙掠过遗迹的远景分镜">
-                  <div><span>镜头 01 · 远景</span><p>巨龙掠过遗迹，世界观徐徐展开。</p></div>
-                </li>
-                <li>
-                  <img src="assets/fenjin/4.png" alt="人物走向高塔的中景分镜">
-                  <div><span>镜头 02 · 中景</span><p>角色走向高塔，光线划破云层。</p></div>
-                </li>
-                <li>
-                  <img src="assets/fenjin/2.png" alt="黑衣剑士的近景分镜">
-                  <div><span>镜头 03 · 近景</span><p>战士凝视前方，情绪逐渐收紧。</p></div>
-                </li>
-                <li>
-                  <img src="assets/fenjin/1.png" alt="女性角色的特写分镜">
-                  <div><span>镜头 04 · 特写</span><p>机械耳机亮起，故事迎来转折。</p></div>
-                </li>
-              </ol>
+              <div class="canvas-shot-viewport">
+                <div class="canvas-shot-track">
+                  <ol class="canvas-shot-list">
+                    <li><img src="assets/fenjin/角色1.png" alt="矮人战士角色设定"><div><span>镜头 01 · 角色设定</span><p>坚毅矮人登场，重甲与秘银剑细节清晰。</p></div></li>
+                    <li><img src="assets/fenjin/角色2.png" alt="白袍精灵角色设定"><div><span>镜头 02 · 角色设定</span><p>白袍精灵现身，柔光勾勒优雅轮廓。</p></div></li>
+                    <li><img src="assets/fenjin/角色3.png" alt="黑衣游侠角色设定"><div><span>镜头 03 · 角色设定</span><p>黑衣游侠驻足，披风与远山形成层次。</p></div></li>
+                    <li><img src="assets/fenjin/场景1.png" alt="远古森林遗迹场景"><div><span>镜头 04 · 场景构建</span><p>冒险小队踏入远古森林遗迹。</p></div></li>
+                    <li><img src="assets/fenjin/场景2.png" alt="秘境祭坛场景"><div><span>镜头 05 · 场景构建</span><p>矮人触碰祭坛，秘境能量苏醒。</p></div></li>
+                    <li><img src="assets/fenjin/场景3.png" alt="蓝色传送门遗迹场景"><div><span>镜头 06 · 场景构建</span><p>蓝色传送门照亮幽暗遗迹。</p></div></li>
+                    <li><img src="assets/fenjin/成片1.png" alt="冒险小队集结成片"><div><span>镜头 07 · 成片预览</span><p>小队集结，准备穿越传送门。</p></div></li>
+                    <li><img src="assets/fenjin/成片2.png" alt="双人穿越遗迹成片"><div><span>镜头 08 · 成片预览</span><p>双人并肩前行，蓝光引导视线。</p></div></li>
+                    <li><img src="assets/fenjin/成片3.png" alt="三位英雄走出迷雾成片"><div><span>镜头 09 · 成片预览</span><p>三位英雄走出迷雾，故事迎来新章。</p></div></li>
+                  </ol>
+                  <ol class="canvas-shot-list" aria-hidden="true">
+                    <li><img src="assets/fenjin/角色1.png" alt=""><div><span>镜头 01 · 角色设定</span><p>坚毅矮人登场，重甲与秘银剑细节清晰。</p></div></li>
+                    <li><img src="assets/fenjin/角色2.png" alt=""><div><span>镜头 02 · 角色设定</span><p>白袍精灵现身，柔光勾勒优雅轮廓。</p></div></li>
+                    <li><img src="assets/fenjin/角色3.png" alt=""><div><span>镜头 03 · 角色设定</span><p>黑衣游侠驻足，披风与远山形成层次。</p></div></li>
+                    <li><img src="assets/fenjin/场景1.png" alt=""><div><span>镜头 04 · 场景构建</span><p>冒险小队踏入远古森林遗迹。</p></div></li>
+                    <li><img src="assets/fenjin/场景2.png" alt=""><div><span>镜头 05 · 场景构建</span><p>矮人触碰祭坛，秘境能量苏醒。</p></div></li>
+                    <li><img src="assets/fenjin/场景3.png" alt=""><div><span>镜头 06 · 场景构建</span><p>蓝色传送门照亮幽暗遗迹。</p></div></li>
+                    <li><img src="assets/fenjin/成片1.png" alt=""><div><span>镜头 07 · 成片预览</span><p>小队集结，准备穿越传送门。</p></div></li>
+                    <li><img src="assets/fenjin/成片2.png" alt=""><div><span>镜头 08 · 成片预览</span><p>双人并肩前行，蓝光引导视线。</p></div></li>
+                    <li><img src="assets/fenjin/成片3.png" alt=""><div><span>镜头 09 · 成片预览</span><p>三位英雄走出迷雾，故事迎来新章。</p></div></li>
+                  </ol>
+                </div>
+              </div>
             </article>
             <div class="canvas-visual-grid" aria-label="画布创作流程预览">
-              <article class="canvas-visual-card canvas-role-card">
-                <img src="assets/fenjin/1.png" alt="未来感女性角色设定">
+              <article class="canvas-visual-card canvas-role-card" data-canvas-rotator="role">
+                <img src="assets/fenjin/角色1.png" alt="矮人战士角色设定">
                 <div class="canvas-visual-copy">
                   <span class="canvas-card-icon"><img src="resources/icons/remixicon/svg/画布部分icon/角色设定.svg" alt=""></span>
                   <div><h3>角色设定</h3><p>人物 / 造型 / 表情</p></div>
                 </div>
               </article>
-              <article class="canvas-visual-card canvas-scene-card">
-                <img src="assets/fenjin/3.png" alt="巨龙与遗迹场景构建">
+              <article class="canvas-visual-card canvas-scene-card" data-canvas-rotator="scene">
+                <img src="assets/fenjin/场景1.png" alt="远古森林遗迹场景构建">
                 <div class="canvas-visual-copy">
                   <span class="canvas-card-icon"><img src="resources/icons/remixicon/svg/画布部分icon/场景构建.svg" alt=""></span>
                   <div><h3>场景构建</h3><p>搭建你的叙事世界</p></div>
                 </div>
               </article>
               <article class="canvas-visual-card canvas-prompt-card">
-                <img src="assets/fenjin/2.png" alt="剑士画面提示词预览">
+                <img src="assets/fenjin/prompt.png" alt="巨龙峡谷画面提示词预览">
                 <div class="canvas-visual-copy">
                   <span class="canvas-card-icon"><img src="resources/icons/remixicon/svg/画布部分icon/prompt.svg" alt=""></span>
-                  <div><h3>Prompt</h3><p>灵感生成，激发共创</p></div>
+                  <div><h3>Prompt</h3><p class="canvas-prompt-typing" data-prompt-typing aria-label="随机 Prompt 提示词"><span aria-hidden="true"></span><i aria-hidden="true"></i></p></div>
                 </div>
               </article>
-              <article class="canvas-visual-card canvas-output-card">
-                <img src="assets/fenjin/5.png" alt="雨夜跑车成片输出预览">
+              <article class="canvas-visual-card canvas-output-card" data-canvas-rotator="output">
+                <img src="assets/fenjin/成片1.png" alt="冒险小队传送门成片输出预览">
                 <div class="canvas-visual-copy">
                   <span class="canvas-card-icon"><img src="resources/icons/remixicon/svg/画布部分icon/成片输出.svg" alt=""></span>
                   <div><h3>成片输出</h3><p>一键导出，高效交付</p></div>
@@ -570,25 +581,21 @@
 
       <section id="template-market" class="section">
         <div class="wide-container">
-          <div class="case-section-head aigc-home-style-head aigc-template-home-style-head">
-            <div class="case-section-title">
-              <span class="case-section-kicker">CURATED TEMPLATES</span>
-              <h2><span>热门</span>模板</h2>
-            </div>
-            <a class="aigc-showcase-link" href="./aigc-templates.html" target="_blank" rel="noopener">
-              <span>浏览全部模板</span>
-              <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
-            </a>
-          </div>
+      <div class="case-section-head aigc-home-style-head aigc-template-home-style-head">
+        <div class="case-section-title">
+          <h2><span>热门</span>模板</h2>
+          <span class="case-section-kicker">CURATED TEMPLATES</span>
+        </div>
+      </div>
           <div class="aigc-template-grid" aria-label="热门模板列表">
-            <a class="case-card aigc-template-content-card is-featured-template tall" href="#template-detail-manga" data-aigc-template-card aria-label="查看短剧漫剧开场模板"><img src="assets/image_assets/11.webp" alt=""><span class="template-card-index">01</span><div class="copy"><span class="template-card-label">编辑精选</span><h3>短剧漫剧开场</h3><p>官方维护的强冲突开场模板，适合第一幕和分镜起稿。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>16 积分起</span></div><span class="template-card-action">开始创作 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
-            <a class="case-card aigc-template-content-card" href="#template-detail-role" data-aigc-template-card aria-label="查看国风角色设定模板"><img src="assets/image_assets/15.webp" alt=""><div class="copy"><h3>国风角色设定</h3><p>专业角色卡模板，稳定服饰、表情和封面提示词。</p><div class="case-hover-meta"><span>专业维护</span><span>12 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card short" href="#template-detail-ad" data-aigc-template-card aria-label="查看商品广告片模板"><img src="assets/image_assets/18.webp" alt=""><div class="copy"><h3>商品广告片</h3><p>把卖点拆成脚本、镜头节奏和海报方向。</p><div class="case-hover-meta"><span>官方维护</span><span>18 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card" href="#template-detail-poster" data-aigc-template-card aria-label="查看活动海报模板"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><h3>活动海报</h3><p>标题、主视觉和 CTA 的可复用活动内容模板。</p><div class="case-hover-meta"><span>官方维护</span><span>8 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card tall" href="#template-detail-image-video" data-aigc-template-card aria-label="查看图生视频模板"><img src="assets/image_assets/29.webp" alt=""><div class="copy"><h3>图生视频</h3><p>从参考图扩展镜头运动、动态描述和字幕提示。</p><div class="case-hover-meta"><span>专业维护</span><span>20 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card" href="#template-detail-writing" data-aigc-template-card aria-label="查看文本模型写作模板"><img src="assets/image_assets/28.webp" alt=""><div class="copy"><h3>文本模型写作</h3><p>大纲、标题、正文草稿和发布摘要的内容模板。</p><div class="case-hover-meta"><span>官方维护</span><span>6 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card short" href="#template-detail-model-case" data-aigc-template-card aria-label="查看模型经验复盘模板"><img src="assets/image_assets/17.webp" alt=""><div class="copy"><h3>模型经验复盘</h3><p>整理输入、过程、结果和使用前确认。</p><div class="case-hover-meta"><span>专业维护</span><span>10 起</span></div></div></a>
-            <a class="case-card aigc-template-content-card" href="#template-detail-tutorial-cover" data-aigc-template-card aria-label="查看教程封面模板"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><h3>教程封面</h3><p>教程标题、摘要、封面视觉和配图方向。</p><div class="case-hover-meta"><span>官方维护</span><span>8 起</span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-manga" data-aigc-template-card aria-label="查看短剧漫剧开场模板"><img src="assets/image_assets/11.webp" alt=""><div class="copy"><span class="template-card-label">编辑精选 · 漫剧</span><h3>短剧漫剧开场</h3><p>强冲突开场、人物关系与镜头节奏一次完成。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>16 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-role" data-aigc-template-card aria-label="查看国风角色设定模板"><img src="assets/image_assets/15.webp" alt=""><div class="copy"><span class="template-card-label">角色设定 · 国风</span><h3>国风角色设定</h3><p>稳定服饰、表情、视角与封面提示词。</p><div class="template-card-footer"><div class="case-hover-meta"><span>专业维护</span><span>12 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-ad" data-aigc-template-card aria-label="查看商品广告片模板"><img src="assets/image_assets/18.webp" alt=""><div class="copy"><span class="template-card-label">商业创作 · 视频</span><h3>商品广告片</h3><p>把核心卖点拆成脚本、节奏与画面方向。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>18 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-poster" data-aigc-template-card aria-label="查看活动海报模板"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><span class="template-card-label">视觉设计 · 海报</span><h3>活动海报</h3><p>标题、主视觉与 CTA 的完整活动模板。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>8 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-image-video" data-aigc-template-card aria-label="查看图生视频模板"><img src="assets/image_assets/29.webp" alt=""><div class="copy"><span class="template-card-label">动态影像 · 图生视频</span><h3>图生视频</h3><p>从参考图扩展运镜、动态描述与字幕提示。</p><div class="template-card-footer"><div class="case-hover-meta"><span>专业维护</span><span>20 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-writing" data-aigc-template-card aria-label="查看文本模型写作模板"><img src="assets/image_assets/28.webp" alt=""><div class="copy"><span class="template-card-label">内容生产 · 文本</span><h3>文本模型写作</h3><p>大纲、标题、正文草稿与发布摘要一站生成。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>6 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-model-case" data-aigc-template-card aria-label="查看模型经验复盘模板"><img src="assets/image_assets/17.webp" alt=""><div class="copy"><span class="template-card-label">经验沉淀 · 复盘</span><h3>模型经验复盘</h3><p>整理输入、过程、结果与模型使用前确认。</p><div class="template-card-footer"><div class="case-hover-meta"><span>专业维护</span><span>10 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
+            <a class="case-card aigc-template-content-card" href="#template-detail-tutorial-cover" data-aigc-template-card aria-label="查看教程封面模板"><img src="assets/image_assets/4.webp" alt=""><div class="copy"><span class="template-card-label">教程创作 · 封面</span><h3>教程封面</h3><p>教程标题、摘要、封面视觉与配图方向。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>8 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
           </div>
 
           <section id="template-detail-manga" class="case-detail-modal content-format-modal template-detail-modal" data-template-detail-modal aria-label="短剧漫剧开场模板详情">
@@ -700,8 +707,8 @@
         <div class="wide-container">
           <div class="case-section-head aigc-home-style-head">
             <div class="case-section-title">
-              <span class="case-section-kicker">COMMUNITY CURATION</span>
               <h2><span>灵感</span>广场</h2>
+              <span class="case-section-kicker">COMMUNITY CURATION</span>
             </div>
           </div>
           <div class="filter-row inspiration-filter-row" data-content-taxonomy="aigc-inspiration-v1" role="tablist" aria-label="筛选灵感类型">
@@ -1346,6 +1353,249 @@
           trigger.classList.remove("is-pointer-glow");
           trigger.style.setProperty("--edge-proximity", "82");
         });
+      }
+    })();
+
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const bannerSection = document.querySelector(".canvas-visual-grid");
+      if (!bannerSection || reduceMotion) return;
+
+      const bannerFrames = {
+        role: [
+          ["assets/fenjin/角色1.png", "矮人战士角色设定"],
+          ["assets/fenjin/角色2.png", "白袍精灵角色设定"],
+          ["assets/fenjin/角色3.png", "黑衣游侠角色设定"]
+        ],
+        scene: [
+          ["assets/fenjin/场景1.png", "远古森林遗迹场景构建"],
+          ["assets/fenjin/场景2.png", "秘境祭坛场景构建"],
+          ["assets/fenjin/场景3.png", "蓝色传送门遗迹场景构建"]
+        ],
+        output: [
+          ["assets/fenjin/成片1.png", "冒险小队集结成片输出预览"],
+          ["assets/fenjin/成片2.png", "双人穿越遗迹成片输出预览"],
+          ["assets/fenjin/成片3.png", "三位英雄走出迷雾成片输出预览"]
+        ]
+      };
+      const banners = Array.from(bannerSection.querySelectorAll("[data-canvas-rotator]"))
+        .map((card) => ({
+          card,
+          image: card.querySelector(":scope > img"),
+          frames: bannerFrames[card.dataset.canvasRotator],
+          frameIndex: 0
+        }))
+        .filter((banner) => banner.image && banner.frames?.length > 1);
+      if (!banners.length) return;
+
+      banners.flatMap((banner) => banner.frames).forEach(([src]) => {
+        const image = new Image();
+        image.src = src;
+      });
+
+      const pushDirections = [
+        { name: "left", inX: "100%", inY: "0%", outX: "-100%", outY: "0%" },
+        { name: "right", inX: "-100%", inY: "0%", outX: "100%", outY: "0%" },
+        { name: "up", inX: "0%", inY: "100%", outX: "0%", outY: "-100%" },
+        { name: "down", inX: "0%", inY: "-100%", outX: "0%", outY: "100%" }
+      ];
+      let previousBannerIndex = -1;
+      const switchOneBanner = () => {
+        const bounds = bannerSection.getBoundingClientRect();
+        if (document.hidden || bounds.bottom < 0 || bounds.top > window.innerHeight) return;
+
+        const candidates = banners.map((_, index) => index).filter((index) => index !== previousBannerIndex);
+        const bannerIndex = candidates[Math.floor(Math.random() * candidates.length)];
+        const banner = banners[bannerIndex];
+        if (banner.isAnimating) return;
+        let nextFrameIndex = Math.floor(Math.random() * banner.frames.length);
+        if (nextFrameIndex === banner.frameIndex) nextFrameIndex = (nextFrameIndex + 1) % banner.frames.length;
+        const [src, alt] = banner.frames[nextFrameIndex];
+        const direction = pushDirections[Math.floor(Math.random() * pushDirections.length)];
+        const nextImage = banner.image.cloneNode(false);
+
+        previousBannerIndex = bannerIndex;
+        banner.frameIndex = nextFrameIndex;
+        banner.isAnimating = true;
+        banner.image.classList.add("canvas-banner-current");
+        nextImage.classList.remove("canvas-banner-current");
+        nextImage.classList.add("canvas-banner-next");
+        nextImage.src = src;
+        nextImage.alt = alt;
+        banner.card.dataset.lastPushDirection = direction.name;
+        banner.card.style.setProperty("--push-in-x", direction.inX);
+        banner.card.style.setProperty("--push-in-y", direction.inY);
+        banner.card.style.setProperty("--push-out-x", direction.outX);
+        banner.card.style.setProperty("--push-out-y", direction.outY);
+        banner.card.appendChild(nextImage);
+
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => banner.card.classList.add("is-banner-pushing"));
+        });
+
+        let hasFinished = false;
+        const finishPush = () => {
+          if (hasFinished) return;
+          hasFinished = true;
+          banner.image.remove();
+          nextImage.classList.remove("canvas-banner-next");
+          banner.card.classList.remove("is-banner-pushing");
+          banner.image = nextImage;
+          banner.isAnimating = false;
+        };
+        nextImage.addEventListener("transitionend", finishPush, { once: true });
+        window.setTimeout(finishPush, 620);
+      };
+
+      window.setInterval(switchOneBanner, 2000);
+    })();
+
+    (() => {
+      const promptLine = document.querySelector("[data-prompt-typing]");
+      const promptText = promptLine?.querySelector("span");
+      if (!promptLine || !promptText) return;
+
+      const prompts = [
+        "雨夜霓虹，电影感追逐镜头",
+        "东方古城，在云海中缓缓苏醒",
+        "机械少女，冷蓝光人物特写",
+        "黑金跑车，湿地反光与薄雾",
+        "巨龙掠过遗迹，史诗级远景",
+        "逆光旅人，风沙中的孤独背影"
+      ];
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let previousPromptIndex = -1;
+      let activePrompt = [];
+      let characterIndex = 0;
+      let isDeleting = false;
+
+      const choosePrompt = () => {
+        const candidates = prompts.map((_, index) => index).filter((index) => index !== previousPromptIndex);
+        const promptIndex = candidates[Math.floor(Math.random() * candidates.length)];
+        previousPromptIndex = promptIndex;
+        activePrompt = Array.from(prompts[promptIndex]);
+        promptLine.setAttribute("aria-label", `随机 Prompt 提示词：${prompts[promptIndex]}`);
+      };
+
+      choosePrompt();
+      if (reduceMotion) {
+        promptText.textContent = activePrompt.join("");
+        return;
+      }
+
+      const typeNext = () => {
+        const bounds = promptLine.getBoundingClientRect();
+        if (document.hidden || bounds.bottom < 0 || bounds.top > window.innerHeight) {
+          window.setTimeout(typeNext, 600);
+          return;
+        }
+
+        if (!isDeleting && characterIndex < activePrompt.length) {
+          characterIndex += 1;
+          promptText.textContent = activePrompt.slice(0, characterIndex).join("");
+          window.setTimeout(typeNext, 58 + Math.random() * 34);
+          return;
+        }
+        if (!isDeleting) {
+          isDeleting = true;
+          window.setTimeout(typeNext, 1400);
+          return;
+        }
+        if (characterIndex > 0) {
+          characterIndex -= 1;
+          promptText.textContent = activePrompt.slice(0, characterIndex).join("");
+          window.setTimeout(typeNext, 30);
+          return;
+        }
+
+        isDeleting = false;
+        choosePrompt();
+        window.setTimeout(typeNext, 320);
+      };
+
+      window.setTimeout(typeNext, 420);
+    })();
+
+    (() => {
+      const initAigcSectionMotion = () => {
+        const gsap = window.gsap;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!gsap || reduceMotion) return;
+
+        const revealSection = (section, support, cards) => {
+          if (!section || !cards.length) return;
+          const headings = Array.from(section.querySelectorAll(":scope > .wide-container > .case-section-head .case-section-title > *"));
+          const supporting = support ? [support] : [];
+          const allItems = [...headings, ...supporting, ...cards];
+          if (headings.length) gsap.set(headings, { opacity: 0, y: 24 });
+          if (supporting.length) gsap.set(supporting, { opacity: 0, y: 30 });
+          gsap.set(cards, { opacity: 0, y: 64, scale: 0.97 });
+
+          const reveal = () => {
+            if (section.dataset.aigcMotionRevealed === "true") return;
+            section.dataset.aigcMotionRevealed = "true";
+            if (headings.length) gsap.to(headings, { opacity: 1, y: 0, duration: 0.68, ease: "power3.out", stagger: 0.06 });
+            if (supporting.length) gsap.to(supporting, { opacity: 1, y: 0, duration: 0.72, ease: "power3.out", delay: 0.1 });
+            gsap.to(cards, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.88,
+              ease: "back.out",
+              stagger: 0.04,
+              delay: 0.14,
+              onComplete: () => gsap.set(allItems, { clearProps: "opacity,transform" })
+            });
+          };
+
+          if (!("IntersectionObserver" in window)) {
+            reveal();
+            return;
+          }
+          const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            observer.disconnect();
+            reveal();
+          }, { threshold: 0.04, rootMargin: "0px 0px -6% 0px" });
+          observer.observe(section);
+        };
+
+        const templateSection = document.querySelector("#template-market");
+        const templateCards = Array.from(templateSection?.querySelectorAll(".aigc-template-grid > [data-aigc-template-card]") || []);
+        revealSection(templateSection, null, templateCards);
+
+        const inspirationSection = document.querySelector("#inspiration-gallery");
+        const inspirationFilter = inspirationSection?.querySelector(".inspiration-filter-row");
+        const defaultCards = Array.from(inspirationSection?.querySelectorAll("[data-inspiration-grid] > .case-card") || []);
+        const promptCards = Array.from(inspirationSection?.querySelectorAll("[data-aigc-prompt-results] > [data-aigc-prompt-card]") || []);
+        const initialCards = inspirationSection?.classList.contains("is-showing-prompts") ? promptCards : defaultCards;
+        revealSection(inspirationSection, inspirationFilter, initialCards);
+
+        const promptChip = inspirationSection?.querySelector("[data-aigc-prompt-filter]");
+        promptChip?.addEventListener("click", () => {
+          if (!promptCards.length || inspirationSection.dataset.promptMotionRevealed === "true") return;
+          inspirationSection.dataset.promptMotionRevealed = "true";
+          window.requestAnimationFrame(() => {
+            gsap.fromTo(promptCards,
+              { opacity: 0, y: 44, scale: 0.97 },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.78,
+                ease: "back.out",
+                stagger: 0.04,
+                onComplete: () => gsap.set(promptCards, { clearProps: "opacity,transform" })
+              }
+            );
+          });
+        });
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initAigcSectionMotion, { once: true });
+      } else {
+        initAigcSectionMotion();
       }
     })();
   </script>
