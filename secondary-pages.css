@@ -1,0 +1,374 @@
+/*
+ * Secondary page visual system
+ * Loaded only by pages outside the five reference destinations:
+ * Home, AIGC, Model Plaza, Flash and Official Tutorials.
+ */
+
+:root {
+  --secondary-bg: #05070b;
+  --secondary-surface: rgba(12, 15, 18, 0.72);
+  --secondary-surface-strong: rgba(18, 21, 24, 0.9);
+  --secondary-line: rgba(255, 247, 230, 0.11);
+  --secondary-line-strong: rgba(244, 201, 93, 0.28);
+  --secondary-text: #fffaf0;
+  --secondary-muted: rgba(255, 250, 240, 0.58);
+  --secondary-gold: #f4c95d;
+  --secondary-lime: #d9ff8c;
+  --secondary-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html,
+body {
+  background: var(--secondary-bg);
+}
+
+body {
+  color: var(--secondary-text);
+}
+
+/*
+ * The reference destinations do not use the promotional strip. Keep the
+ * existing markup in place for future campaigns, but remove it from the
+ * secondary-page shell so the navigation starts at the same y-position.
+ */
+.top-campaign,
+.top-campaign-toggle {
+  display: none !important;
+}
+
+.page {
+  min-height: 100vh;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% -8%, rgba(244, 201, 93, 0.075), transparent 31%),
+    radial-gradient(circle at 8% 42%, rgba(110, 218, 204, 0.035), transparent 34%),
+    linear-gradient(180deg, #05070b 0%, #070b10 54%, #05070b 100%) !important;
+}
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+}
+
+.page-bg img {
+  opacity: 0.16 !important;
+  filter: saturate(0.72) contrast(1.06) !important;
+  transform: scale(1.02);
+}
+
+.page-bg::after {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 11, 0.98), rgba(5, 7, 11, 0.84) 48%, rgba(5, 7, 11, 0.72)),
+    linear-gradient(180deg, rgba(5, 7, 11, 0.34), #05070b 78%) !important;
+}
+
+/* The markup mirrors Home; the shared class supplies the exact component UI. */
+.site-header.shared-home-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+}
+
+.page > main {
+  margin-top: 76px;
+}
+
+.page :is(h1, h2, h3, strong) {
+  text-wrap: balance;
+}
+
+.page :is(h1, h2) {
+  color: var(--secondary-text);
+  letter-spacing: -0.035em;
+}
+
+.page p {
+  color: var(--secondary-muted);
+}
+
+/* Shared open-canvas section language. */
+.page :is(
+  .app-card,
+  .message-feed,
+  .model-detail-panel,
+  .detail-rail-card,
+  .lesson-reference-article,
+  .prompt-editor-card,
+  .prompt-submit-rail,
+  .invite-referrer-card,
+  .invite-code-stage,
+  .invite-progress-stage,
+  .new-user-task-list
+) {
+  border-color: var(--secondary-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+    var(--secondary-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 54px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px) saturate(1.08);
+}
+
+.page :is(
+  .activity-card,
+  .pricing-card,
+  .message-row,
+  .points-earn-tile,
+  .model-decision-card,
+  .content-format-card,
+  .new-user-task-item,
+  .invite-reward-card
+) {
+  border-color: var(--secondary-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.008)),
+    rgba(12, 15, 18, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    transform 220ms var(--secondary-ease),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.page :is(
+  .activity-card,
+  .pricing-card,
+  .message-row,
+  .points-earn-tile,
+  .model-decision-card,
+  .content-format-card,
+  .new-user-task-item
+):hover {
+  border-color: rgba(244, 201, 93, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(244, 201, 93, 0.018)),
+    rgba(14, 17, 20, 0.86);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 18px 42px rgba(0, 0, 0, 0.24);
+  transform: translateY(-2px);
+}
+
+.page :is(.section-head, .app-card-head, .model-detail-panel-head) {
+  align-items: end;
+}
+
+.page :is(.section-head, .app-card-head) h2 {
+  font-size: clamp(24px, 2vw, 32px);
+  line-height: 1.08;
+}
+
+.page .section-link {
+  color: rgba(255, 250, 240, 0.72);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.page .section-link:hover,
+.page .section-link:focus-visible {
+  color: var(--secondary-gold);
+  transform: translateX(2px);
+}
+
+/* Activity Center: editorial media cards, less dashboard chrome. */
+.activity-center-page .activity-list-section,
+.activity-center-page .activity-history-section {
+  padding-top: 44px;
+}
+
+.activity-center-page .activity-section-head {
+  margin-bottom: 22px;
+}
+
+.activity-center-page .activity-card {
+  overflow: clip;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+}
+
+.activity-center-page .activity-card > img {
+  filter: saturate(0.9) contrast(1.03);
+  transition: transform 520ms var(--secondary-ease), filter 300ms ease;
+}
+
+.activity-center-page .activity-card:hover > img {
+  filter: saturate(1.04) contrast(1.05);
+  transform: scale(1.025);
+}
+
+.activity-center-page .activity-card-status,
+.activity-center-page .activity-card-reward {
+  border-radius: 999px;
+}
+
+/* AI Store: remove the nested dashboard frame and let product groups breathe. */
+.member-store-page .app-workspace {
+  padding-top: 40px;
+}
+
+.member-store-page .member-plan-board {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.member-store-page .member-plan-board > .app-card-head {
+  margin-bottom: 26px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid var(--secondary-line);
+}
+
+.member-store-page .member-plan-board > .app-card-head h1 {
+  max-width: 760px;
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 0.98;
+}
+
+.member-store-page .ai-store-product-group {
+  padding: 28px 0 32px;
+  border-bottom-color: var(--secondary-line);
+}
+
+.member-store-page .pricing-card {
+  min-height: 174px;
+  border-radius: 18px;
+}
+
+.member-store-page .pricing-card.is-featured {
+  border-color: rgba(217, 255, 140, 0.3);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(217, 255, 140, 0.1), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
+    rgba(12, 18, 17, 0.82);
+}
+
+/* Notification Center: lighter list hierarchy with an open outer canvas. */
+.message-center-page .message-list-section {
+  padding-top: 40px;
+}
+
+.message-center-page .message-feed {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.message-center-page .message-tabs {
+  margin-bottom: 24px;
+}
+
+.message-center-page .message-list {
+  gap: 10px;
+}
+
+.message-center-page .message-row {
+  min-height: 112px;
+  padding: 20px 58px 20px 20px;
+  border-radius: 16px;
+}
+
+.message-center-page .message-row.is-unread {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(244, 201, 93, 0.055), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012)),
+    rgba(12, 15, 18, 0.8);
+}
+
+.message-center-page .message-row.is-unread::before {
+  background: var(--secondary-gold);
+  box-shadow: 0 0 14px rgba(244, 201, 93, 0.5);
+}
+
+/* Points Center: treat the balance as a hero and reduce the tiled dashboard look. */
+.points-detail-page .points-center-workspace {
+  padding-top: 40px;
+}
+
+.points-detail-page .points-balance-hero {
+  min-height: 190px;
+  border-color: rgba(244, 201, 93, 0.16);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(244, 201, 93, 0.12), transparent 34%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008)),
+    rgba(10, 14, 18, 0.82);
+}
+
+.points-detail-page .points-balance-copy h1 {
+  color: var(--secondary-gold);
+  font-size: clamp(64px, 8vw, 108px);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.85;
+}
+
+.points-detail-page .points-balance-shop {
+  border-color: rgba(244, 201, 93, 0.25);
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.12), rgba(217, 255, 140, 0.035)),
+    rgba(24, 22, 17, 0.82);
+}
+
+.points-detail-page .points-earn-card,
+.points-detail-page .points-record-card {
+  border-color: rgba(255, 255, 255, 0.095);
+}
+
+.points-detail-page .points-earn-tile {
+  min-height: 164px;
+  border-radius: 14px;
+}
+
+/* Shared modal surface and focus language. */
+.page :is(.create-dialog, .case-detail-dialog, .login-dialog) {
+  border-color: rgba(244, 201, 93, 0.16);
+  background:
+    radial-gradient(circle at 84% 0%, rgba(244, 201, 93, 0.07), transparent 30%),
+    rgba(9, 12, 16, 0.95);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 30px 80px rgba(0, 0, 0, 0.48);
+}
+
+.page :is(input, textarea, select):focus {
+  border-color: rgba(244, 201, 93, 0.52);
+  box-shadow: 0 0 0 3px rgba(244, 201, 93, 0.08);
+}
+
+@media (max-width: 1365px) {
+  .member-store-page .member-plan-board > .app-card-head h1 {
+    font-size: 44px;
+  }
+
+  .message-center-page .message-row {
+    padding-right: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header.shared-home-header {
+    position: sticky;
+  }
+
+  .page > main {
+    margin-top: 0;
+  }
+
+  .member-store-page .member-plan-board > .app-card-head h1 {
+    font-size: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
