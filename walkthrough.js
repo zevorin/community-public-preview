@@ -1,4 +1,250 @@
 (function () {
+  const glidingTabInstances = new Set();
+  const glidingTabRoots = new WeakMap();
+  const glidingTabListSelector = [
+    '[role="tablist"]:not(.home-hero-carousel-pagination)',
+    ".experience-tabs",
+    ".message-tabs",
+    ".filter-row[data-tutorial-filters]",
+    ".template-filter-row",
+    ".profile-content-filter-row"
+  ].join(",");
+
+  class GlidingTabs {
+    constructor(root) {
+      this.root = root;
+      this.tabs = [];
+      this.selectedTab = null;
+      this.positionFrame = 0;
+      this.syncFrame = 0;
+      this.hasPosition = false;
+      this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      this.indicator = document.createElement("span");
+      this.indicator.className = "ui-glide-tab-indicator";
+      this.indicator.setAttribute("aria-hidden", "true");
+      this.root.prepend(this.indicator);
+      this.root.classList.add("ui-glide-tabs");
+      this.root.dataset.glidingTabsReady = "true";
+      if (!this.root.hasAttribute("role")) {
+        this.root.setAttribute("role", "tablist");
+      }
+
+      this.collectTabs();
+      if (this.tabs.length < 2) {
+        this.indicator.remove();
+        this.root.classList.remove("ui-glide-tabs");
+        delete this.root.dataset.glidingTabsReady;
+        return;
+      }
+
+      this.selectedTab = this.findDomSelectedTab() || this.tabs[0];
+      this.setSelectedTab(this.selectedTab, { immediate: true });
+      this.bindEvents();
+      this.observe();
+    }
+
+    collectTabs() {
+      this.tabs = Array.from(this.root.children).filter((child) => {
+        return child !== this.indicator && child.matches("a, button, label, [role='tab']");
+      });
+      this.tabs.forEach((tab) => {
+        tab.classList.add("ui-glide-tab");
+        tab.setAttribute("role", "tab");
+      });
+    }
+
+    getControlledInput(tab) {
+      if (tab instanceof HTMLLabelElement && tab.htmlFor) {
+        const control = document.getElementById(tab.htmlFor);
+        return control instanceof HTMLInputElement ? control : null;
+      }
+      return null;
+    }
+
+    findDomSelectedTab() {
+      return this.tabs.find((tab) => this.getControlledInput(tab)?.checked)
+        || this.tabs.find((tab) => tab.getAttribute("aria-selected") === "true")
+        || this.tabs.find((tab) => tab.classList.contains("is-active"))
+        || this.selectedTab;
+    }
+
+    setSelectedTab(tab, { immediate = false, focus = false } = {}) {
+      if (!tab || !this.tabs.includes(tab)) {
+        return;
+      }
+
+      this.selectedTab = tab;
+      this.tabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle("is-active", active);
+        item.classList.toggle("is-glide-active", active);
+        if (item.getAttribute("aria-selected") !== String(active)) {
+          item.setAttribute("aria-selected", String(active));
+        }
+        item.tabIndex = active ? 0 : -1;
+      });
+      if (focus) {
+        tab.focus({ preventScroll: true });
+      }
+      this.moveIndicator(tab, { immediate });
+    }
+
+    moveIndicator(tab = this.selectedTab, { immediate = false } = {}) {
+      if (!tab) {
+        return;
+      }
+      window.cancelAnimationFrame(this.positionFrame);
+      this.positionFrame = window.requestAnimationFrame(() => {
+        const rootRect = this.root.getBoundingClientRect();
+        const tabRect = tab.getBoundingClientRect();
+        if (!rootRect.width || !rootRect.height || !tabRect.width || !tabRect.height) {
+          this.indicator.classList.remove("is-visible");
+          this.hasPosition = false;
+          return;
+        }
+
+        const jump = immediate || this.reduceMotion || !this.hasPosition;
+        this.indicator.classList.toggle("is-jump", jump);
+        this.indicator.style.setProperty("--ui-glide-x", `${tabRect.left - rootRect.left}px`);
+        this.indicator.style.setProperty("--ui-glide-y", `${tabRect.top - rootRect.top}px`);
+        this.indicator.style.setProperty("--ui-glide-width", `${tabRect.width}px`);
+        this.indicator.style.setProperty("--ui-glide-height", `${tabRect.height}px`);
+        this.indicator.style.setProperty("--ui-glide-radius", getComputedStyle(tab).borderRadius);
+        this.indicator.classList.add("is-visible");
+        this.hasPosition = true;
+
+        if (jump) {
+          window.requestAnimationFrame(() => this.indicator.classList.remove("is-jump"));
+        }
+      });
+    }
+
+    syncFromDom({ immediate = false } = {}) {
+      this.collectTabs();
+      const selected = this.findDomSelectedTab();
+      if (selected) {
+        this.setSelectedTab(selected, { immediate });
+      }
+    }
+
+    queueDomSync() {
+      window.cancelAnimationFrame(this.syncFrame);
+      this.syncFrame = window.requestAnimationFrame(() => this.syncFromDom());
+    }
+
+    bindEvents() {
+      this.root.addEventListener("click", (event) => {
+        const tab = event.target.closest(".ui-glide-tab");
+        if (!tab || tab.parentElement !== this.root) {
+          return;
+        }
+        this.setSelectedTab(tab);
+        this.queueDomSync();
+      });
+
+      this.root.addEventListener("keydown", (event) => {
+        const tab = event.target.closest(".ui-glide-tab");
+        if (!tab || tab.parentElement !== this.root) {
+          return;
+        }
+        const horizontalKeys = ["ArrowLeft", "ArrowRight"];
+        const verticalKeys = ["ArrowUp", "ArrowDown"];
+        if (![...horizontalKeys, ...verticalKeys, "Home", "End"].includes(event.key)) {
+          return;
+        }
+
+        event.preventDefault();
+        const currentIndex = Math.max(0, this.tabs.indexOf(tab));
+        let nextIndex = currentIndex;
+        if (event.key === "Home") nextIndex = 0;
+        if (event.key === "End") nextIndex = this.tabs.length - 1;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = (currentIndex + 1) % this.tabs.length;
+        }
+        if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (currentIndex - 1 + this.tabs.length) % this.tabs.length;
+        }
+
+        const nextTab = this.tabs[nextIndex];
+        this.setSelectedTab(nextTab, { focus: true });
+        nextTab.click();
+      });
+
+      const controlScope = this.root.parentElement || this.root;
+      controlScope.addEventListener("change", () => this.queueDomSync());
+      this.root.addEventListener("scroll", () => this.moveIndicator(this.selectedTab, { immediate: true }), { passive: true });
+    }
+
+    observe() {
+      this.mutationObserver = new MutationObserver(() => this.queueDomSync());
+      this.mutationObserver.observe(this.root, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class", "aria-selected"]
+      });
+
+      if ("ResizeObserver" in window) {
+        this.resizeObserver = new ResizeObserver(() => this.moveIndicator());
+        this.resizeObserver.observe(this.root);
+      }
+
+      document.fonts?.ready.then(() => this.moveIndicator(this.selectedTab, { immediate: true }));
+    }
+
+    refresh({ immediate = true } = {}) {
+      this.syncFromDom({ immediate });
+    }
+  }
+
+  function enhanceGlidingTabs(scope = document) {
+    const roots = [];
+    if (scope instanceof Element && scope.matches(glidingTabListSelector)) {
+      roots.push(scope);
+    }
+    roots.push(...scope.querySelectorAll(glidingTabListSelector));
+
+    roots.forEach((root) => {
+      if (glidingTabRoots.has(root)) {
+        return;
+      }
+      const instance = new GlidingTabs(root);
+      if (!instance.tabs || instance.tabs.length < 2) {
+        return;
+      }
+      glidingTabRoots.set(root, instance);
+      glidingTabInstances.add(instance);
+    });
+  }
+
+  function initGlidingTabs() {
+    enhanceGlidingTabs(document);
+
+    const refreshAll = (immediate = true) => {
+      glidingTabInstances.forEach((instance) => instance.refresh({ immediate }));
+    };
+    window.addEventListener("resize", () => refreshAll(true), { passive: true });
+    window.addEventListener("hashchange", () => {
+      window.requestAnimationFrame(() => refreshAll(true));
+    });
+
+    const pageObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof Element) {
+            enhanceGlidingTabs(node);
+          }
+        });
+      });
+    });
+    pageObserver.observe(document.body, { childList: true, subtree: true });
+
+    window.GlidingTabs = {
+      enhance: enhanceGlidingTabs,
+      refresh: () => refreshAll(true)
+    };
+  }
+
   function closeCreationModelSelect(event) {
     if (!(event.target instanceof Element)) {
       return;
@@ -1019,6 +1265,45 @@
     window.setTimeout(() => action.classList.remove("is-action-pulsing"), 420);
   }
 
+  const detailLikeCelebrationTimers = new WeakMap();
+
+  function clearDetailLikeCelebration(action) {
+    const activeTimer = detailLikeCelebrationTimers.get(action);
+    if (activeTimer) {
+      window.clearTimeout(activeTimer);
+    }
+    detailLikeCelebrationTimers.delete(action);
+    action.classList.remove("is-like-celebrating");
+    action.querySelector(".flash-like-burst")?.remove();
+  }
+
+  function celebrateDetailLike(action) {
+    clearDetailLikeCelebration(action);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const icon = action.querySelector(".detail-action-icon");
+    if (!icon) {
+      return;
+    }
+
+    const burst = document.createElement("span");
+    burst.className = "flash-like-burst";
+    burst.setAttribute("aria-hidden", "true");
+    for (let index = 0; index < 8; index += 1) {
+      const particle = document.createElement("span");
+      particle.className = "flash-like-particle";
+      burst.appendChild(particle);
+    }
+
+    icon.appendChild(burst);
+    void icon.offsetWidth;
+    action.classList.add("is-like-celebrating");
+    const cleanupTimer = window.setTimeout(() => clearDetailLikeCelebration(action), 680);
+    detailLikeCelebrationTimers.set(action, cleanupTimer);
+  }
+
   function updateDetailLikeState(action) {
     const wasLiked = action.dataset.likeState === "liked";
     wasLiked ? decrementDetailStat(action) : incrementDetailStat(action);
@@ -1033,6 +1318,11 @@
         : "resources/icons/remixicon/svg/System/thumb-up-fill.svg";
     }
     pulseDetailAction(action);
+    if (wasLiked) {
+      clearDetailLikeCelebration(action);
+    } else {
+      celebrateDetailLike(action);
+    }
     showContentActionToast(wasLiked ? "\u5df2\u53d6\u6d88\u70b9\u8d5e" : "\u70b9\u8d5e\u6210\u529f");
   }
 
@@ -1109,6 +1399,129 @@
       event.stopPropagation();
       updateDetailCommentLikeState(action);
     }, true);
+  }
+
+  function createDetailCommentRow(composer, value) {
+    const list = composer.closest(".detail-comments-panel")?.querySelector(".content-comment-list");
+    if (!list) {
+      return;
+    }
+
+    const row = document.createElement("article");
+    row.className = "comment-row compact is-new-comment";
+
+    const avatar = list.querySelector(".comment-row img")?.cloneNode();
+    if (avatar) {
+      avatar.alt = "";
+    }
+
+    const content = document.createElement("div");
+    const author = document.createElement("strong");
+    author.textContent = "我";
+    const copy = document.createElement("p");
+    copy.textContent = value;
+    const actions = document.createElement("div");
+    actions.className = "comment-action-line";
+
+    const time = document.createElement("span");
+    time.textContent = "刚刚";
+    const reply = document.createElement("button");
+    reply.type = "button";
+    reply.dataset.ctaState = "评论回复轻状态";
+    reply.textContent = "回复";
+    const like = document.createElement("button");
+    like.type = "button";
+    like.dataset.ctaState = "评论点赞轻状态";
+    like.textContent = "赞 0";
+    normalizeDetailCommentLikeAction(like);
+
+    actions.append(time, reply, like);
+    content.append(author, copy, actions);
+    avatar ? row.append(avatar, content) : row.append(content);
+    list.append(row);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.requestAnimationFrame(() => {
+      if (typeof list.scrollTo === "function") {
+        list.scrollTo({
+          top: list.scrollHeight,
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      } else {
+        list.scrollTop = list.scrollHeight;
+      }
+    });
+
+    const count = composer.closest(".detail-tabs")?.querySelector(".detail-tab-label-comments span");
+    if (count) {
+      const current = Number.parseInt(count.textContent.trim(), 10);
+      count.textContent = String((Number.isFinite(current) ? current : 0) + 1);
+    }
+  }
+
+  function normalizeDetailCommentComposer(composer) {
+    if (composer.dataset.commentComposerReady === "true") {
+      return;
+    }
+
+    let input = composer.querySelector("input, textarea");
+    if (!input) {
+      const legacyPlaceholder = composer.querySelector("span");
+      input = document.createElement("input");
+      input.type = "text";
+      legacyPlaceholder?.replaceWith(input);
+      if (!legacyPlaceholder) {
+        composer.prepend(input);
+      }
+    }
+
+    const button = composer.querySelector("button");
+    if (!button) {
+      return;
+    }
+
+    composer.dataset.commentComposerReady = "true";
+    input.placeholder = "聊聊你的想法";
+    input.setAttribute("aria-label", "聊聊你的想法");
+
+    const syncState = () => {
+      const hasValue = Boolean(input.value.trim());
+      button.disabled = !hasValue;
+      button.setAttribute("aria-disabled", hasValue ? "false" : "true");
+      composer.classList.toggle("is-ready", hasValue);
+    };
+
+    input.addEventListener("input", syncState);
+    input.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.isComposing || event.shiftKey) {
+        return;
+      }
+      event.preventDefault();
+      if (!button.disabled) {
+        button.click();
+      }
+    });
+
+    button.addEventListener("click", (event) => {
+      const value = input.value.trim();
+      if (!value) {
+        syncState();
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      createDetailCommentRow(composer, value);
+      input.value = "";
+      syncState();
+      input.focus();
+      showContentActionToast("评论已发布");
+    });
+
+    syncState();
+  }
+
+  function initDetailCommentComposers() {
+    document.querySelectorAll('[data-comment-input="detail"]').forEach(normalizeDetailCommentComposer);
   }
 
   function initCaseVideoPlayControls() {
@@ -1671,11 +2084,13 @@
     initReferenceImageUploads();
     enhanceUserMenus();
     initActivityTaskGuide();
+    initGlidingTabs();
     initResultPromptCopy();
     initContentCardCopy();
     initInviteCopyActions();
     initDetailActions();
     initDetailCommentLikeActions();
+    initDetailCommentComposers();
     initCaseVideoPlayControls();
     initCreationFlowMotion(gsap, reduceMotion);
     initFloatingCreateMotion();

@@ -439,6 +439,19 @@
       showFlashToast(wasActive ? inactiveMessage : activeMessage);
     };
 
+    const syncFlashCommentComposer = (composer) => {
+      if (!composer) return;
+      const input = composer.querySelector("[data-comment-input]");
+      const button = composer.querySelector("[data-comment-submit]");
+      if (!input || !button) return;
+      const hasValue = Boolean(input.value.trim());
+      button.disabled = !hasValue;
+      button.setAttribute("aria-disabled", String(!hasValue));
+      composer.classList.toggle("is-ready", hasValue);
+    };
+
+    document.querySelectorAll("[data-inline-reply]").forEach(syncFlashCommentComposer);
+
     const focusReplyComposer = (trigger) => {
       const conversation = trigger.closest(".flash-conversation");
       const composer = conversation?.querySelector("[data-inline-reply]");
@@ -506,6 +519,7 @@
       if (!input) return;
       input.style.height = "auto";
       input.style.height = `${Math.min(input.scrollHeight, 96)}px`;
+      syncFlashCommentComposer(input.closest("[data-inline-reply]"));
     });
 
     document.addEventListener("click", (event) => {
@@ -581,6 +595,7 @@
         input.style.height = "auto";
         composer.dataset.replyTarget = "";
         input.placeholder = "回复这条闪念";
+        syncFlashCommentComposer(composer);
         showFlashToast(replyTo ? `已回复 ${replyTo}` : "回复已发布");
         return;
       }

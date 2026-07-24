@@ -1,57 +1,34 @@
-# Design QA — 闪念右栏活动 Banner 与分层入场
+# Design QA
 
-- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-4b6b35cb-417f-4b4a-9c8a-c10e74d78e87.png`
-- Source focused crop: `/Users/opera/Documents/community-public-preview/flash-banner-reference-crop.png`
-- Implementation screenshot: `/Users/opera/Documents/community-public-preview/flash-banner-implementation.png`
-- Implementation focused crop: `/Users/opera/Documents/community-public-preview/flash-banner-focused.png`
-- Side-by-side comparison: `/Users/opera/Documents/community-public-preview/flash-banner-design-comparison.png`
-- Desktop capture: 1440 × 956 px, CSS pixel density 1×
-- Focused source: 710 × 191 px; focused implementation: 380 × 174 px
-- Comparison normalization: both focused regions normalized to 191 px height without changing aspect ratio
-- State: dark theme, page-load animations settled, right rail at top of timeline
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-636e1871-401d-41ce-b8da-e8d9a93a8848.png`
+- Implementation screenshot: `/Users/opera/Documents/community-public-preview/design-qa-implementation.png`
+- Combined comparison: `/Users/opera/Documents/community-public-preview/design-qa-comparison.png`
+- Browser viewport override: `1819 × 1455`
+- Source image: `1820 × 1448` pixels
+- Implementation capture: `1819 × 1198` pixels
+- Density normalization: layout geometry was measured in CSS pixels; the reference and implementation were also reviewed side by side at their native pixel sizes.
+- State: the reply-to-user composer in the first post and the post-level composer in the second post were both expanded.
 
-## Full-view comparison evidence
+## Focused evidence
 
-The browser-rendered 1440 px desktop view keeps the campaign directly below the quick-publish card and above the curated list. The right rail remains vertically balanced, the feed retains its original width, and no horizontal overflow is present. At 390 px the rail collapses to one 362 px column and the campaign measures 362 × 166 px without overflow.
+- Upper composer: left `352.5px`, width `640px`, right `992.5px`, computed `max-width: 640px`
+- Lower composer: left `352.5px`, width `640px`, right `992.5px`, computed `max-width: 640px`
+- Width difference: `0px`
+- Left-edge difference: `0px`
 
-## Focused region comparison evidence
-
-The side-by-side image compares the supplied banner crop with the implemented campaign. Both use a dark cinematic space image, a gold outlined category badge, a strong white headline, muted supporting copy, and a gold text CTA with a right-arrow icon. The implementation intentionally uses a taller ratio because it occupies the existing 380 px sidebar rather than the much wider source frame; hierarchy, crop direction and tone remain consistent after this responsive adaptation.
-
-## Required fidelity surfaces
-
-- Fonts and typography: headline weight, three-level copy hierarchy and compact gold label match the reference's visual emphasis; wrapping stays controlled in the narrower rail.
-- Spacing and layout rhythm: 20–22 px internal padding, 18 px radius and vertical gaps reproduce the source's compact campaign rhythm while fitting the existing sidebar.
-- Colors and tokens: warm gold, near-black surface and muted cream copy align with both the reference and the existing flash-page token system.
-- Image quality and asset fidelity: uses the existing high-resolution `model-banner-ringed-planet-v1.webp` asset with a responsive crop; no placeholder, CSS illustration or generated substitute is used.
-- Copy and content: campaign message follows the reference and remains coherent as a direct activity-center entry.
-- Icons and accessibility: the CTA uses the local Remix Icon `arrow-right-line.svg`; the campaign has a descriptive accessible label and all images load successfully.
+The full-page comparison confirms that the lower composer now follows the same content-column width as the upper composer. Numeric geometry is sufficient for the focused check because this task concerns exact width and alignment rather than color or imagery.
 
 ## Findings
 
-No actionable P0, P1 or P2 differences remain. The wider source ratio cannot be reproduced literally inside the current 380 px sidebar without either making the text too small or cropping the artwork excessively; the taller adaptation preserves the intended composition and readability.
+- P0: none
+- P1: none
+- P2: none
+- Browser console warnings/errors: none
 
-## Comparison history
+## Iteration history
 
-- Pass 1: the overall layout and image treatment matched, but the initial arrow filename did not exist and rendered as a broken asset. Classified P2 and replaced with the available local `arrow-right-line.svg`.
-- Pass 2: focused comparison confirmed the corrected icon, image crop, typography and hierarchy. No actionable P0/P1/P2 findings remained.
+1. Added a shared `640px` maximum width to `.flash-inline-reply`.
+2. Expanded both composer states and verified identical geometry.
+3. Reviewed the source and implementation together; no further correction was required.
 
-## Primary interactions and console
-
-- Campaign destination verified as `./activity-center.html` with accessible label `参加 AI 生图创作挑战`.
-- Navigation, six posts and all three right-rail modules render without horizontal overflow.
-- Entry animation names verified on header, post cards, post contents and right-rail cards.
-- Reduced-motion stylesheet disables all new staged animations and campaign transitions.
-- All three videos remain muted, paused and without autoplay.
-- Browser console: no page errors.
-
-## Implementation checklist
-
-- [x] Remove the tutorial module.
-- [x] Insert the campaign immediately below quick publish.
-- [x] Use a real local image and local SVG icon.
-- [x] Add staggered, lightly springy entry motion.
-- [x] Preserve reduced-motion behavior.
-- [x] Verify desktop and mobile overflow, imagery and console state.
-
-final result: passed
+Final result: passed
