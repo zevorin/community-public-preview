@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>多元拾光 AIGC</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css?v=20260724-detail-comment-frame">
+  <link rel="stylesheet" href="./style.css?v=20260724-detail-comment-frame-template-all-link-copper-coin-borderless-home-detail-parity-comment-parity-flat-input">
 </head>
 <body class="home-header-shell aigc-header-shell">
   <div class="page aigc-page" data-page="community-aigc">
@@ -581,12 +581,16 @@
 
       <section id="template-market" class="section">
         <div class="wide-container">
-      <div class="case-section-head aigc-home-style-head aigc-template-home-style-head">
-        <div class="case-section-title">
-          <h2><span>热门</span>模板</h2>
-          <span class="case-section-kicker">CURATED TEMPLATES</span>
-        </div>
-      </div>
+          <div class="case-section-head aigc-home-style-head aigc-template-home-style-head">
+            <div class="case-section-title">
+              <h2><span>热门</span>模板</h2>
+              <span class="case-section-kicker">CURATED TEMPLATES</span>
+            </div>
+            <a class="aigc-template-all-link" href="./aigc-templates.html" aria-label="查看全部模板">
+              <span>全部模板</span>
+              <i aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></i>
+            </a>
+          </div>
           <div class="aigc-template-grid" aria-label="热门模板列表">
             <a class="case-card aigc-template-content-card" href="#template-detail-manga" data-aigc-template-card aria-label="查看短剧漫剧开场模板"><img src="assets/image_assets/11.webp" alt=""><div class="copy"><span class="template-card-label">编辑精选 · 漫剧</span><h3>短剧漫剧开场</h3><p>强冲突开场、人物关系与镜头节奏一次完成。</p><div class="template-card-footer"><div class="case-hover-meta"><span>官方维护</span><span>16 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
             <a class="case-card aigc-template-content-card" href="#template-detail-role" data-aigc-template-card aria-label="查看国风角色设定模板"><img src="assets/image_assets/15.webp" alt=""><div class="copy"><span class="template-card-label">角色设定 · 国风</span><h3>国风角色设定</h3><p>稳定服饰、表情、视角与封面提示词。</p><div class="template-card-footer"><div class="case-hover-meta"><span>专业维护</span><span>12 积分起</span></div><span class="template-card-action">查看模板 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span></div></div></a>
@@ -1064,6 +1068,136 @@
   </div>
   <script>
     (() => {
+      const detailGallerySources = [
+        "assets/image_assets/11.webp",
+        "assets/image_assets/15.webp",
+        "assets/image_assets/18.webp",
+        "assets/image_assets/4.webp",
+        "assets/image_assets/29.webp",
+        "assets/image_assets/28.webp",
+        "assets/image_assets/17.webp"
+      ];
+      const detailIconSources = {
+        "is-like": "resources/icons/remixicon/svg/System/thumb-up-line.svg",
+        "is-favorite": "resources/icons/remixicon/svg/System/star-smile-line.svg",
+        "is-share": "resources/icons/remixicon/svg/System/share-circle-line.svg"
+      };
+
+      document.querySelectorAll(".aigc-page .case-detail-modal.content-format-modal").forEach((modal, modalIndex) => {
+        modal.classList.add("aigc-home-detail-modal");
+
+        if (!modal.dataset.detailKind) {
+          const modalId = modal.id || "";
+          modal.dataset.detailKind = modal.matches("[data-template-detail-modal]")
+            ? "image"
+            : /(?:video|manga)/.test(modalId)
+              ? "video"
+              : /(?:text|writing|model-case)/.test(modalId)
+                ? "text"
+                : "image";
+        }
+
+        const dialog = modal.querySelector(".case-detail-dialog");
+        const title = modal.querySelector(".case-detail-aside h3");
+        if (dialog) {
+          dialog.setAttribute("role", "dialog");
+          dialog.setAttribute("aria-modal", "true");
+        }
+        if (dialog && title) {
+          const titleId = `${modal.id || `aigc-detail-${modalIndex}`}-title`;
+          title.id ||= titleId;
+          dialog.setAttribute("aria-labelledby", title.id);
+        }
+
+        const media = modal.querySelector(".case-detail-media");
+        const viewport = media?.querySelector(".case-detail-viewport");
+        const mainImage = viewport?.querySelector(".case-gallery-main");
+        if (modal.matches("[data-template-detail-modal]") && media && mainImage && !media.querySelector(".case-thumb-strip")) {
+          const currentSource = mainImage.getAttribute("src");
+          const currentIndex = Math.max(0, detailGallerySources.indexOf(currentSource));
+          const sources = [currentSource];
+          for (let offset = 1; sources.length < 4; offset += 1) {
+            const candidate = detailGallerySources[(currentIndex + offset) % detailGallerySources.length];
+            if (candidate && !sources.includes(candidate)) sources.push(candidate);
+          }
+          const strip = document.createElement("div");
+          strip.className = "case-thumb-strip";
+          strip.setAttribute("aria-label", "作品图片预览");
+          sources.forEach((source, sourceIndex) => {
+            const button = document.createElement("button");
+            button.className = `case-thumb${sourceIndex === 0 ? " is-active" : ""}`;
+            button.type = "button";
+            button.dataset.src = source;
+            button.setAttribute("aria-label", `查看第 ${sourceIndex + 1} 张图片`);
+            const image = document.createElement("img");
+            image.src = source;
+            image.alt = "";
+            button.append(image);
+            strip.append(button);
+          });
+          media.append(strip);
+        }
+
+        const thumbStrip = media?.querySelector(".case-thumb-strip");
+        if (viewport && thumbStrip && !viewport.querySelector(".case-detail-media-badge")) {
+          const badge = document.createElement("span");
+          const total = thumbStrip.querySelectorAll(".case-thumb").length;
+          badge.className = "case-detail-media-badge";
+          badge.textContent = `1/${total}`;
+          badge.setAttribute("aria-live", "polite");
+          badge.setAttribute("aria-label", `第 1 张，共 ${total} 张`);
+          viewport.prepend(badge);
+        }
+
+        modal.querySelectorAll(".case-thumb").forEach((thumb, thumbIndex, thumbs) => {
+          thumb.setAttribute("aria-label", `查看第 ${thumbIndex + 1} 张图片`);
+          const thumbnail = thumb.querySelector("img");
+          if (thumbnail) thumbnail.alt = "";
+          const badge = viewport?.querySelector(".case-detail-media-badge");
+          if (badge && thumb.classList.contains("is-active")) {
+            badge.textContent = `${thumbIndex + 1}/${thumbs.length}`;
+            badge.setAttribute("aria-label", `第 ${thumbIndex + 1} 张，共 ${thumbs.length} 张`);
+          }
+        });
+
+        modal.querySelectorAll(".detail-action-icon").forEach((icon) => {
+          const iconClass = Object.keys(detailIconSources).find((className) => icon.classList.contains(className));
+          if (!iconClass || icon.querySelector("img")) return;
+          const image = document.createElement("img");
+          image.src = detailIconSources[iconClass];
+          image.alt = "";
+          icon.append(image);
+        });
+
+        modal.querySelectorAll(".content-remix-button:has(.content-remix-cost) .content-remix-icon").forEach((icon) => {
+          if (icon.querySelector("img")) return;
+          const image = document.createElement("img");
+          image.src = "resources/icons/remixicon/svg/Finance/copper-coin-line.svg";
+          image.alt = "";
+          icon.append(image);
+        });
+
+        modal.querySelectorAll(".case-comment-input").forEach((composer) => {
+          const placeholder = composer.querySelector(":scope > span");
+          if (!placeholder || composer.querySelector("input")) return;
+          const input = document.createElement("input");
+          input.type = "text";
+          input.placeholder = placeholder.textContent.trim() || "写下你的看法";
+          input.setAttribute("aria-label", input.placeholder);
+          placeholder.replaceWith(input);
+          const publishButton = composer.querySelector(".button");
+          if (publishButton) publishButton.disabled = true;
+        });
+
+        modal.querySelectorAll("[data-case-video-play]").forEach((button) => {
+          if (button.querySelector("img")) return;
+          const image = document.createElement("img");
+          image.src = "resources/icons/remixicon/svg/Media/play-fill.svg";
+          image.alt = "";
+          button.append(image);
+        });
+      });
+
       document.querySelectorAll(".case-thumb").forEach((button) => {
         button.addEventListener("click", () => {
           const dialog = button.closest(".case-detail-dialog");
@@ -1074,6 +1208,13 @@
           dialog.querySelectorAll(".case-thumb").forEach((item) => {
             item.classList.toggle("is-active", item === button);
           });
+          const buttons = Array.from(dialog.querySelectorAll(".case-thumb"));
+          const activeIndex = buttons.indexOf(button);
+          const badge = dialog.querySelector(".case-detail-media-badge");
+          if (badge && activeIndex >= 0) {
+            badge.textContent = `${activeIndex + 1}/${buttons.length}`;
+            badge.setAttribute("aria-label", `第 ${activeIndex + 1} 张，共 ${buttons.length} 张`);
+          }
         });
       });
 
