@@ -10,6 +10,136 @@
     ".profile-content-filter-row"
   ].join(",");
 
+  function initMediaSkeletons() {
+    const mediaSelector = "img, video";
+    const trackedSourceKey = "mediaSkeletonSource";
+
+    const getSourceKey = (media) => {
+      if (media instanceof HTMLImageElement) {
+        const declaredSource = [
+          media.getAttribute("src") || "",
+          media.getAttribute("srcset") || ""
+        ].join("::");
+        return declaredSource.replace("::", "") ? declaredSource : media.currentSrc;
+      }
+      if (media instanceof HTMLVideoElement) {
+        const sourceList = Array.from(media.querySelectorAll("source"))
+          .map((source) => source.getAttribute("src") || "")
+          .join("|");
+        const declaredSource = media.getAttribute("src") || sourceList;
+        return [
+          declaredSource || media.currentSrc,
+          media.getAttribute("poster") || ""
+        ].join("::");
+      }
+      return "";
+    };
+
+    const shouldTrack = (media) => {
+      if (!(media instanceof HTMLImageElement || media instanceof HTMLVideoElement)) {
+        return false;
+      }
+      if (media.dataset.mediaSkeleton === "off") {
+        return false;
+      }
+      if (media instanceof HTMLImageElement) {
+        const source = media.getAttribute("src") || media.getAttribute("srcset") || media.currentSrc;
+        return Boolean(source)
+          && !/\.svg(?:[?#]|$)/i.test(source)
+          && !source.toLowerCase().startsWith("data:");
+      }
+      return Boolean(getSourceKey(media).replace("::", ""));
+    };
+
+    const setMediaState = (media, state, sourceKey) => {
+      if (sourceKey && media.dataset[trackedSourceKey] !== sourceKey) {
+        return;
+      }
+      media.dataset.mediaState = state;
+      if (state === "loading") {
+        media.setAttribute("aria-busy", "true");
+      } else {
+        media.removeAttribute("aria-busy");
+      }
+    };
+
+    const trackMedia = (media) => {
+      if (!shouldTrack(media)) {
+        return;
+      }
+
+      const sourceKey = getSourceKey(media);
+      if (media.dataset[trackedSourceKey] === sourceKey && media.dataset.mediaState) {
+        return;
+      }
+
+      media.dataset[trackedSourceKey] = sourceKey;
+
+      if (media instanceof HTMLImageElement) {
+        if (media.complete) {
+          setMediaState(media, media.naturalWidth > 0 ? "ready" : "error", sourceKey);
+          return;
+        }
+        setMediaState(media, "loading", sourceKey);
+        media.addEventListener("load", () => setMediaState(media, "ready", sourceKey), { once: true });
+        media.addEventListener("error", () => setMediaState(media, "error", sourceKey), { once: true });
+        return;
+      }
+
+      if (media.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        setMediaState(media, "ready", sourceKey);
+        return;
+      }
+      if (media.error) {
+        setMediaState(media, "error", sourceKey);
+        return;
+      }
+
+      setMediaState(media, "loading", sourceKey);
+      media.addEventListener("loadeddata", () => setMediaState(media, "ready", sourceKey), { once: true });
+      media.addEventListener("error", () => setMediaState(media, "error", sourceKey), { once: true });
+    };
+
+    const trackNodeMedia = (node) => {
+      if (!(node instanceof Element)) {
+        return;
+      }
+      if (node.matches(mediaSelector)) {
+        trackMedia(node);
+      }
+      node.querySelectorAll(mediaSelector).forEach(trackMedia);
+    };
+
+    document.querySelectorAll(mediaSelector).forEach(trackMedia);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          mutation.addedNodes.forEach(trackNodeMedia);
+          return;
+        }
+
+        const target = mutation.target;
+        if (target instanceof HTMLSourceElement) {
+          const owner = target.parentElement?.closest("video, picture");
+          const parentMedia = owner instanceof HTMLVideoElement ? owner : owner?.querySelector("img");
+          if (parentMedia) {
+            trackMedia(parentMedia);
+          }
+          return;
+        }
+        trackMedia(target);
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["src", "srcset", "poster"]
+    });
+  }
+
   class GlidingTabs {
     constructor(root) {
       this.root = root;
@@ -2080,6 +2210,7 @@
   function init() {
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    initMediaSkeletons();
     enhanceCreationModelSelects();
     initReferenceImageUploads();
     enhanceUserMenus();
