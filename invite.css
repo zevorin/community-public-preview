@@ -2347,3 +2347,106 @@ body.invite-page-body .invite-copy-button {
       linear-gradient(90deg, rgba(4, 7, 14, 0.66), rgba(4, 7, 14, 0.12));
   }
 }
+
+/* Keep the 16:9 banner artwork crisp on wide desktop screens. */
+@media (min-width: 981px) {
+  .invite-space {
+    background: #020304;
+  }
+
+  .invite-space-bg {
+    top: -178px;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: 1280px;
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    transform: translateX(-50%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+}
+
+/* Match the AIGC page's “全部模板” action. */
+.invite-records-section .invite-rules-all-link {
+  min-height: 46px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 6px 5px 18px;
+  border: 0;
+  border-radius: 999px;
+  color: rgba(255, 250, 240, 0.76);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    rgba(8, 11, 16, 0.56);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 12px 34px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(16px) saturate(1.08);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 680;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition:
+    color 220ms ease,
+    background 220ms ease,
+    box-shadow 280ms ease,
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.invite-records-section .invite-rules-all-link i {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  flex: 0 0 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(244, 201, 93, 0.09);
+  transition: background 220ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.invite-records-section .invite-rules-all-link img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+  filter: brightness(0) saturate(100%) invert(82%) sepia(47%) saturate(676%) hue-rotate(346deg) brightness(101%) contrast(92%);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.invite-records-section .invite-rules-all-link:hover,
+.invite-records-section .invite-rules-all-link:focus-visible {
+  color: #fffaf0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    rgba(10, 14, 20, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 42px rgba(0, 0, 0, 0.24);
+  outline: 0;
+  transform: translateY(-2px);
+}
+
+.invite-records-section .invite-rules-all-link:hover i,
+.invite-records-section .invite-rules-all-link:focus-visible i {
+  background: rgba(244, 201, 93, 0.15);
+  transform: rotate(-4deg);
+}
+
+.invite-records-section .invite-rules-all-link:hover img,
+.invite-records-section .invite-rules-all-link:focus-visible img {
+  transform: translateX(2px);
+}
+
+.invite-records-section .invite-rules-all-link:active {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invite-records-section .invite-rules-all-link,
+  .invite-records-section .invite-rules-all-link i,
+  .invite-records-section .invite-rules-all-link img {
+    transition: none;
+  }
+}

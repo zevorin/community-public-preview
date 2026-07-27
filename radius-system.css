@@ -180,3 +180,8 @@ body.invite-page-body .invite-code-card input.invite-referrer-input {
 body.invite-page-body .invite-code-card {
   border-radius: var(--radius-large) !important;
 }
+
+/* The price section uses only its top border as a divider in model cards. */
+.model-plaza-page .model-card-price {
+  border-radius: 0 !important;
+}
