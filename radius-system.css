@@ -1,0 +1,182 @@
+/*
+ * Multi-light radius system
+ * 12px  — inputs and compact controls
+ * 16px  — standard content cards
+ * 24px  — dialogs, large panels and hero surfaces
+ * 999px — buttons, tabs, filters, badges and circular controls
+ */
+
+:root {
+  --radius: 12px;
+  --radius-control: 12px;
+  --radius-card: 16px;
+  --radius-large: 24px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --ds-radius-control: 12px;
+  --ds-radius-card: 16px;
+  --ds-radius-modal: 24px;
+  --ds-radius-pill: 999px;
+}
+
+/* Inputs and compact controls */
+:where(
+  input:not([type="radio"]):not([type="checkbox"]),
+  textarea,
+  select,
+  .create-input,
+  .input-shell,
+  .prompt-input-shell,
+  .prompt-textarea-shell,
+  .prompt-field,
+  .profile-field,
+  .login-field,
+  .phone-login label,
+  .model-search-box,
+  .creation-model-option,
+  .creation-purpose-option,
+  .creation-purpose-choice,
+  .creation-purpose-menu-list,
+  .creation-purpose-selected,
+  .creation-upload-button,
+  .creation-reference-preview,
+  .creation-ratio-menu,
+  .creation-model-menu,
+  .flash-media-add,
+  .flash-media-item,
+  .media-upload-slot,
+  .case-thumb,
+  .model-card-price
+) {
+  border-radius: var(--radius-control) !important;
+}
+
+/* Standard content cards and repeated content units */
+:where(
+  [class*="-card"],
+  [class*="-tile"],
+  [class*="-item"]:not(.radius-item),
+  [class*="-block"],
+  .growth-table,
+  .member-matrix
+) {
+  border-radius: var(--radius-card) !important;
+}
+
+/* Dialogs, large panels and hero surfaces */
+:where(
+  [role="dialog"],
+  [class*="-dialog"],
+  [class*="-modal"],
+  [class*="-hero"],
+  [class*="-panel"]:not(input):not(textarea):not(select),
+  .home-video-hero,
+  .tutorial-banner,
+  .model-discovery-deck,
+  .templates-hero-shell,
+  .app-card,
+  .creation-composer,
+  .creation-state-shell,
+  .creation-chat-thread-workspace,
+  .flash-editor-shell,
+  .lesson-player,
+  .profile-overview,
+  .message-feed
+) {
+  border-radius: var(--radius-large) !important;
+}
+
+/* Buttons, tabs, filters, tags and other pill-shaped controls */
+:where(
+  .button,
+  .action-link,
+  .icon-action,
+  .nav a,
+  .filter-chip,
+  [class*="-pill"],
+  [class*="-chip"],
+  [class*="-badge"],
+  [class*="-tag"],
+  [class*="-tab"]:not([class*="-table"]),
+  [class*="-button"]:not(.creation-upload-button),
+  :is(button, a, label)[class*="-action"],
+  :is(button, a, label, summary)[class*="-trigger"],
+  [class*="-close"],
+  [class*="-avatar"],
+  a[role="button"],
+  label[role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .model-filter-tabs button,
+  .experience-tabs label,
+  .creation-model-select summary,
+  .creation-ratio-select summary
+) {
+  border-radius: var(--radius-pill) !important;
+}
+
+/* Media and upload buttons remain compact controls, not pills. */
+:where(
+  .creation-upload-button,
+  .flash-media-add,
+  .flash-media-item,
+  .media-upload-slot,
+  .case-thumb,
+  .model-card-price
+) {
+  border-radius: var(--radius-control) !important;
+}
+
+/* Hero cards are part of the hero surface and use the large radius. */
+:where(
+  .invite-hero-card,
+  .tutorial-hero-card,
+  .model-hero-spotlight,
+  .model-hero-board
+) {
+  border-radius: var(--radius-large) !important;
+}
+
+/* Login inputs follow the pill-shaped primary action in this modal. */
+.home-page .home-login-modal :is(.login-field, .login-field input) {
+  border-radius: var(--radius-pill) !important;
+}
+
+/* Match the artwork comment content frame to the other detail tab panels. */
+.case-detail-modal.content-format-modal .detail-comments-panel {
+  border-radius: var(--radius-control) !important;
+}
+
+/* Canvas entry buttons are compact controls, not pill actions. */
+.canvas-primary-action,
+.canvas-secondary-action {
+  border-radius: var(--radius-control) !important;
+}
+
+/*
+ * Invite data panels use one continuous 24px outer curve. Their tinted header
+ * only owns the top corners, preventing the black crescent caused by two
+ * different overlapping radii.
+ */
+body.invite-page-body :is(.invite-progress-column, .invite-stats-column) {
+  border-radius: var(--radius-large) !important;
+}
+
+body.invite-page-body .invite-panel-head {
+  border-radius: var(--radius-large) var(--radius-large) 0 0 !important;
+}
+
+/* Invite entry and copy controls follow the pill-shaped comment composer. */
+body.invite-page-body .invite-code-card :is(.invite-referrer-input-shell, .invite-link-box),
+body.invite-page-body .invite-code-card :is(.invite-bind-button, .invite-copy-button) {
+  border-radius: var(--radius-pill) !important;
+}
+
+body.invite-page-body .invite-code-card input.invite-referrer-input {
+  border-radius: 0 !important;
+}
+
+body.invite-page-body .invite-code-card {
+  border-radius: var(--radius-large) !important;
+}

@@ -3,25 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>邀请有礼 - 多元拾光</title>
+  <title>邀请好友 · 创作赢积分 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton">
+  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton-comment-frame12">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260723-shell-v1">
-  <link rel="stylesheet" href="./invite.css?v=20260724-editorial-v2">
+  <link rel="stylesheet" href="./invite.css?v=20260727-invite-bg-offset-v26">
+  <link rel="stylesheet" href="./radius-system.css?v=20260727-radius-system-v3-invite-pill-controls">
 </head>
 <body class="invite-page-body">
-  <div class="page growth-detail-page growth-app-page invite-detail-page invite-v2" data-page="invite">
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-invite" aria-label="关闭顶部广告">
-    <div class="top-campaign">
-      <span>邀请有礼</span>
-      <span class="timer">一期活动</span>
-      <span>好友注册、首次互动和首次发布作品分阶段记录奖励</span>
-      <span>分阶段积分</span>
-      <label class="top-campaign-close" for="top-campaign-dismiss-invite" aria-label="关闭顶部广告">
-        <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
-      </label>
-    </div>
-
+  <div class="page invite-page" data-page="invite">
     <header class="site-header shared-home-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -51,205 +41,259 @@
     </header>
 
     <main>
-      <section class="invite-v2-hero" aria-labelledby="invite-title">
-        <img class="invite-v2-hero-art" src="assets/image_assets/invite-creative-gravity-v1.png" alt="">
-        <div class="invite-v2-hero-shade" aria-hidden="true"></div>
+      <section class="invite-space" aria-labelledby="invite-title">
+        <img class="invite-space-bg" src="assets/invite/inviteBG.png" alt="">
+        <img class="invite-astronaut" src="assets/invite/宇航员.png" alt="">
 
-        <div class="invite-v2-hero-inner wide-container invite-landing-layout">
-          <div class="invite-v2-copy">
-            <h1 id="invite-title">
-              <span>邀请好友来创作</span>
-              <span>最高拿 <em>90</em> 积分</span>
-            </h1>
-            <p class="invite-v2-lead">好友注册、互动、首次发布都能解锁奖励<br>越早带朋友开始创作，越快把积分攒起来</p>
-            <div class="invite-v2-actions">
-              <a class="invite-v2-primary" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">
-                立即邀请好友
+        <div class="invite-space-inner">
+          <div class="invite-hero">
+            <div class="invite-copy">
+              <h1 id="invite-title" data-invite-hero-split>
+                <span>邀请好友来创作</span>
+                <span>最高拿 <em>90</em> 积分</span>
+              </h1>
+              <p>好友注册、互动、首次发布都能解锁奖励<br>越早带朋友开始创作，越快把积分攒起来</p>
+              <a class="button invite-primary" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">
+                <span class="invite-primary-shine" aria-hidden="true"></span>
+                <span class="is-idle invite-primary-label">立即邀请好友</span>
+                <span class="is-copied invite-primary-label">邀请链接已复制</span>
                 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
               </a>
             </div>
+
+            <section class="invite-code-card" id="invite-link" aria-labelledby="invite-code-title">
+              <form class="invite-referrer-form" data-invite-binder novalidate>
+                <label for="invite-referrer-code">我的邀请人</label>
+                <div class="invite-referrer-input-shell">
+                  <input id="invite-referrer-code" class="invite-referrer-input" type="text" inputmode="text" autocomplete="off" maxlength="16" placeholder="输入邀请人的邀请码" aria-describedby="invite-referrer-feedback" data-invite-referrer-input>
+                  <button class="invite-bind-button" type="submit" aria-label="绑定邀请人">
+                    <span data-invite-bind-label>绑定</span>
+                  </button>
+                </div>
+                <small id="invite-referrer-feedback" role="status" aria-live="polite" data-invite-bind-feedback>绑定后不可更改，请确认邀请码无误</small>
+              </form>
+
+              <div class="invite-code-heading">
+                <div>
+                  <span id="invite-code-title">我的邀请码</span>
+                  <strong>SG2026</strong>
+                </div>
+                <img class="invite-code-watermark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+              </div>
+              <p>复制给朋友，进入登录页后完成绑定邀请关系</p>
+              <div class="invite-link-box">
+                <a class="invite-link-url" href="./login.html?invite=SG2026" data-invite-login-link>duoyuan-shiguang.local/login?invite=SG2026</a>
+                <button class="button invite-copy-button" type="button" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">
+                  <span class="is-idle">复制</span>
+                  <span class="is-copied">已复制</span>
+                </button>
+              </div>
+              <div class="invite-code-foot">
+                <span>成功邀请后，奖励将自动发放至积分中心</span>
+                <a href="./user-center.html">
+                  查看记录
+                  <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+                </a>
+              </div>
+            </section>
           </div>
 
-          <div class="invite-v2-invite-panel">
-          <div class="invite-referrer-card invite-v2-referrer" id="invite-referrer" data-invite-referrer-card>
-            <span class="invite-referrer-target" id="invite-referrer-bound" aria-hidden="true"></span>
-            <div class="invite-referrer-head">
-              <span>我的邀请人</span>
-            </div>
-            <div class="invite-referrer-states">
-              <div class="invite-referrer-state is-empty" data-invite-referrer-state="empty">
-                <div class="invite-referrer-binder" data-invite-referrer-binder>
-                  <label>
-                    <input type="text" value="SG2026" placeholder="输入邀请码" data-invite-referrer-code-field aria-label="绑定邀请码">
-                  </label>
-                  <a class="invite-v2-bind" href="#invite-referrer-bound" data-invite-referrer-bind-action aria-label="绑定邀请人">
-                    <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
-                  </a>
-                </div>
+          <section class="invite-rewards" aria-labelledby="reward-title">
+            <div class="invite-reward-panel">
+              <div class="invite-rewards-title">
+                <img src="resources/icons/remixicon/svg/Others/shining-2-fill.svg" alt="">
+                <h2 id="reward-title">邀请奖励规则</h2>
+                <img src="resources/icons/remixicon/svg/Others/shining-2-fill.svg" alt="">
               </div>
-              <div class="invite-referrer-state is-bound" data-invite-referrer-state="bound">
-                <div class="invite-referrer-person-card" data-invite-referrer-person-card>
+              <div class="invite-reward-grid">
+                <article class="invite-reward-card">
+                  <div class="reward-icon">
+                    <img src="resources/icons/remixicon/svg/User &amp; Faces/user-3-line.svg" alt="">
+                  </div>
+                  <div class="reward-copy">
+                    <div class="reward-card-title">
+                      <h3>好友注册</h3>
+                      <span>10 积分</span>
+                    </div>
+                    <p>好友完成注册并绑定邀请码<br>奖励 10 积分 / 位</p>
+                  </div>
+                </article>
+                <article class="invite-reward-card">
+                  <div class="reward-icon">
+                    <img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">
+                  </div>
+                  <div class="reward-copy">
+                    <div class="reward-card-title">
+                      <h3>好友互动</h3>
+                      <span>30 积分</span>
+                    </div>
+                    <p>好友在社区互动（点赞/评论）<br>奖励 30 积分 / 位</p>
+                  </div>
+                </article>
+                <article class="invite-reward-card">
+                  <div class="reward-icon">
+                    <img src="resources/icons/remixicon/svg/Design/edit-2-line.svg" alt="">
+                  </div>
+                  <div class="reward-copy">
+                    <div class="reward-card-title">
+                      <h3>首次发布</h3>
+                      <span>50 积分</span>
+                    </div>
+                    <p>好友首次发布作品并通过审核<br>奖励 50 积分 / 位</p>
+                  </div>
+                </article>
+                <article class="invite-reward-card">
+                  <div class="reward-icon">
+                    <img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt="">
+                  </div>
+                  <div class="reward-copy">
+                    <div class="reward-card-title">
+                      <h3>额外奖励</h3>
+                      <span>最高 90 积分</span>
+                    </div>
+                    <p>好友完成全部任务，最高可得<br>90 积分 / 位</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="invite-records" class="section invite-record-screen invite-records-section" aria-labelledby="records-title">
+        <div class="wide-container">
+          <div class="invite-record-head">
+            <div>
+              <span class="invite-section-eyebrow">INVITATION RECORDS</span>
+              <h2 id="records-title">你带来的创作回响</h2>
+              <p>好友完成注册、互动和首次发布后，积分将自动进入账户，进度会同步更新在这里。</p>
+            </div>
+            <a class="button secondary" href="#invite-rules-modal" data-invite-rule-modal-entry>查看完整规则</a>
+          </div>
+
+          <div class="invite-record-layout">
+            <section class="invite-progress-column" aria-labelledby="invite-progress-title">
+              <div class="invite-panel-head">
+                <div>
+                  <span>FRIEND PROGRESS</span>
+                  <h3 id="invite-progress-title">好友任务进度</h3>
+                </div>
+                <strong>4 位好友</strong>
+              </div>
+
+              <div class="invite-record-list-head" aria-hidden="true">
+                <span>创作者</span>
+                <span>邀请进度</span>
+                <span>获得积分</span>
+              </div>
+              <div class="invite-record-list" aria-label="好友邀请进度">
+                <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
+                  <img src="assets/image_assets/27.webp" alt="">
+                  <strong>林舒<time datetime="2026-06-28T14:20">06-28 14:20 邀请</time></strong>
+                  <span class="invite-record-stage">
+                    <span class="invite-action-timeline" aria-label="注册、互动、发布均已完成">
+                      <span class="invite-timeline-node is-done"><b>注册</b><small>+10</small></span>
+                      <span class="invite-timeline-node is-done"><b>互动</b><small>+30</small></span>
+                      <span class="invite-timeline-node is-done is-current"><b>发布</b><small>+50</small></span>
+                    </span>
+                  </span>
+                  <em>+90</em>
+                </a>
+                <a class="invite-record-row" href="./aigc.html" data-invite-record>
                   <img src="assets/image_assets/28.webp" alt="">
-                  <strong>已绑定 · 青梧</strong>
+                  <strong>青梧<time datetime="2026-06-28T11:05">06-28 11:05 邀请</time></strong>
+                  <span class="invite-record-stage">
+                    <span class="invite-action-timeline" aria-label="已完成注册与互动，等待发布">
+                      <span class="invite-timeline-node is-done"><b>注册</b><small>+10</small></span>
+                      <span class="invite-timeline-node is-done is-current"><b>互动</b><small>+30</small></span>
+                      <span class="invite-timeline-node is-todo"><b>发布</b><small>待完成</small></span>
+                    </span>
+                  </span>
+                  <em>+40</em>
+                </a>
+                <a class="invite-record-row" href="./aigc.html" data-invite-record>
+                  <img src="assets/image_assets/29.webp" alt="">
+                  <strong>木寻<time datetime="2026-06-27T19:40">06-27 19:40 邀请</time></strong>
+                  <span class="invite-record-stage">
+                    <span class="invite-action-timeline" aria-label="已完成注册，等待互动和发布">
+                      <span class="invite-timeline-node is-done is-current"><b>注册</b><small>+10</small></span>
+                      <span class="invite-timeline-node is-todo"><b>互动</b><small>待完成</small></span>
+                      <span class="invite-timeline-node is-todo"><b>发布</b><small>待完成</small></span>
+                    </span>
+                  </span>
+                  <em>+10</em>
+                </a>
+                <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
+                  <img src="assets/image_assets/4.webp" alt="">
+                  <strong>阿澄<time datetime="2026-06-27T16:18">06-27 16:18 邀请</time></strong>
+                  <span class="invite-record-stage">
+                    <span class="invite-action-timeline" aria-label="注册、互动、发布均已完成">
+                      <span class="invite-timeline-node is-done"><b>注册</b><small>+10</small></span>
+                      <span class="invite-timeline-node is-done"><b>互动</b><small>+30</small></span>
+                      <span class="invite-timeline-node is-done is-current"><b>发布</b><small>+50</small></span>
+                    </span>
+                  </span>
+                  <em>+90</em>
+                </a>
+              </div>
+            </section>
+
+            <aside class="invite-stats-column" aria-labelledby="invite-stats-title">
+              <div class="invite-panel-head">
+                <div>
+                  <span>INVITE OVERVIEW</span>
+                  <h3 id="invite-stats-title">邀请统计</h3>
+                </div>
+                <span class="invite-live-status">实时更新</span>
+              </div>
+              <div class="invite-record-dashboard app-card" aria-label="邀请数据概览">
+                <div class="invite-stat-strip invite-overview-stats">
+                  <div data-invite-stat><span>总邀请人数</span><strong>18</strong></div>
+                  <div data-invite-stat><span>已激活好友</span><strong>11</strong></div>
+                  <div data-invite-stat><span>累计获得积分</span><strong>620</strong></div>
+                  <div data-invite-stat><span>处理中积分</span><strong>40</strong></div>
+                </div>
+                <div class="invite-period-summary" aria-label="今日和本月邀请奖励统计">
+                  <div class="invite-period-record" data-invite-limit-hint>
+                    <div class="invite-period-head">
+                      <strong>今日奖励</strong>
+                      <span>180 / 300</span>
+                    </div>
+                    <progress value="180" max="300" aria-label="今日奖励进度 60%">60%</progress>
+                    <em>注册 3/5 · 互动 2/5 · 发布 1/3</em>
+                  </div>
+                  <div class="invite-period-record" data-invite-limit-hint>
+                    <div class="invite-period-head">
+                      <strong>本月奖励</strong>
+                      <span>620 / 2000</span>
+                    </div>
+                    <progress value="620" max="2000" aria-label="本月奖励进度 31%">31%</progress>
+                    <em>注册 18/50 · 互动 11/30 · 发布 6/20</em>
+                  </div>
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
 
-          <div class="invite-code-stage invite-v2-code" id="invite-link">
-            <div class="invite-v2-code-head">
-              <span class="code-caption">我的邀请码</span>
-            </div>
-            <strong>SG2026</strong>
-            <p class="invite-code-helper">复制给朋友，进入登录页后完成绑定邀请关系</p>
-            <div class="invite-link-box">
-              <a class="invite-link-url" href="./login.html?invite=SG2026" data-invite-login-link>duoyuan-shiguang.local/login?invite=SG2026</a>
-              <a class="invite-v2-copy-button" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">
-                <span class="is-idle">复制链接</span>
-                <span class="is-copied">已复制</span>
-              </a>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="invite-v2-rewards" data-invite-section="path" id="invite-path" aria-labelledby="reward-title">
-        <div class="wide-container">
-          <div class="invite-v2-section-head">
-            <div>
-              <span class="invite-v2-section-index">01</span>
-              <h2 id="reward-title">邀请奖励规则</h2>
-            </div>
-            <div class="invite-v2-section-intro">
-              <p>好友完成对应动作后，奖励进入邀请记录和积分中心。</p>
-              <a href="#invite-rules-modal" data-invite-rule-modal-entry>完整规则 <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-
-          <div class="invite-v2-reward-grid" data-invite-section="tiers" aria-label="邀请分阶段奖励摘要">
-            <a class="invite-reward-card" href="./user-center.html" data-invite-step data-invite-tier>
-              <span class="invite-v2-step-number">STEP 01</span>
-              <img src="resources/icons/remixicon/svg/User &amp; Faces/user-3-line.svg" alt="">
-              <strong>好友注册</strong>
-              <em>通过链接或邀请码完成注册</em>
-              <b>+20</b>
-            </a>
-            <a class="invite-reward-card" href="./aigc.html" data-invite-step data-invite-tier>
-              <span class="invite-v2-step-number">STEP 02</span>
-              <img src="resources/icons/remixicon/svg/System/comment-line.svg" alt="">
-              <strong>首次互动</strong>
-              <em>完成点赞、收藏或评论</em>
-              <b>+20</b>
-            </a>
-            <a class="invite-reward-card" href="./campaign-detail.html" data-invite-step data-invite-tier>
-              <span class="invite-v2-step-number">STEP 03</span>
-              <img src="resources/icons/remixicon/svg/System/upload-cloud-2-line.svg" alt="">
-              <strong>首次发布</strong>
-              <em>发布一份有效 AI 作品</em>
-              <b>+50</b>
-            </a>
-            <div class="invite-reward-card is-total" data-invite-tier>
-              <span class="invite-v2-step-number">TOTAL</span>
-              <img src="resources/icons/remixicon/svg/System/star-smile-line.svg" alt="">
-              <strong>单个好友最高</strong>
-              <em>三阶段全部完成</em>
-              <b>90</b>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="invite-records" class="invite-v2-records" data-invite-section="records" aria-labelledby="records-title">
-        <div class="wide-container">
-          <div class="invite-v2-section-head is-records">
-            <div>
-              <span class="invite-v2-section-index">02</span>
-              <p>YOUR IMPACT</p>
-              <h2 id="records-title">你带来的创作回响。</h2>
-            </div>
-            <p class="invite-v2-record-summary">已有 <strong>18</strong> 位创作者接受邀请，其中 <strong>11</strong> 位完成激活。</p>
-          </div>
-
-          <div class="invite-record-dashboard" aria-label="邀请数据概览">
-            <div class="invite-stat-strip invite-overview-stats">
-              <div data-invite-stat><span>总邀请人数</span><strong>18</strong></div>
-              <div data-invite-stat><span>已激活好友</span><strong>11</strong></div>
-              <div data-invite-stat><span>累计获得积分</span><strong>620</strong></div>
-              <div data-invite-stat><span>处理中积分</span><strong>40</strong></div>
-            </div>
-            <div class="invite-period-summary" aria-label="今日和本月邀请奖励统计">
-              <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
-                <strong>今日奖励</strong>
-                <span>180 / 300</span>
-                <em>注册 3/5 · 互动 2/5 · 发布 1/3</em>
-              </div>
-              <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
-                <strong>本月奖励</strong>
-                <span>620 / 2000</span>
-                <em>注册 18/50 · 互动 11/30 · 发布 6/20</em>
-              </div>
-            </div>
-          </div>
-
-          <div class="invite-v2-list-head" aria-hidden="true">
-            <span>创作者</span><span>邀请进度</span><span>获得积分</span>
-          </div>
-          <div class="invite-record-list">
-            <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
-              <img src="assets/image_assets/27.webp" alt="">
-              <strong>林舟<time datetime="2026-06-28T14:20" data-invite-time>06-28 14:20 邀请</time></strong>
-              <span class="invite-record-stage">
-                <span class="invite-action-timeline" data-invite-timeline aria-label="注册、互动、发布均已完成">
-                  <span class="invite-timeline-node is-done">注册</span><span class="invite-timeline-node is-done">互动</span><span class="invite-timeline-node is-done is-current">发布</span>
-                </span>
-              </span>
-              <em>+90</em>
-            </a>
-            <a class="invite-record-row" href="./aigc.html" data-invite-record>
-              <img src="assets/image_assets/28.webp" alt="">
-              <strong>青梧<time datetime="2026-06-28T11:05" data-invite-time>06-28 11:05 邀请</time></strong>
-              <span class="invite-record-stage">
-                <span class="invite-action-timeline" data-invite-timeline aria-label="已完成注册与互动，等待发布">
-                  <span class="invite-timeline-node is-done">注册</span><span class="invite-timeline-node is-done is-current">互动</span><span class="invite-timeline-node is-todo">发布</span>
-                </span>
-              </span>
-              <em>+40</em>
-            </a>
-            <a class="invite-record-row" href="./aigc.html" data-invite-record>
-              <img src="assets/image_assets/29.webp" alt="">
-              <strong>木辛<time datetime="2026-06-27T19:40" data-invite-time>06-27 19:40 邀请</time></strong>
-              <span class="invite-record-stage">
-                <span class="invite-action-timeline" data-invite-timeline aria-label="已完成注册，等待互动">
-                  <span class="invite-timeline-node is-done is-current">注册</span><span class="invite-timeline-node is-todo">互动</span><span class="invite-timeline-node is-todo">发布</span>
-                </span>
-              </span>
-              <em>+20</em>
-            </a>
-            <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
-              <img src="assets/image_assets/4.webp" alt="">
-              <strong>阿澈<time datetime="2026-06-27T16:18" data-invite-time>06-27 16:18 邀请</time></strong>
-              <span class="invite-record-stage">
-                <span class="invite-action-timeline" data-invite-timeline aria-label="注册、互动、发布均已完成">
-                  <span class="invite-timeline-node is-done">注册</span><span class="invite-timeline-node is-done">互动</span><span class="invite-timeline-node is-done is-current">发布</span>
-                </span>
-              </span>
-              <em>+90</em>
-            </a>
+          <div class="invite-completion-bridge">
+            <strong>邀请好友一起创作，积分奖励会自动累计</strong>
+            <p>好友完成全部三个阶段，单个好友最高可为你带来 90 积分。</p>
+            <a class="button" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">复制邀请链接</a>
           </div>
         </div>
       </section>
     </main>
 
     <section id="invite-rules-modal" class="create-modal invite-rules-modal" data-invite-rules-modal aria-label="邀请规则">
-      <a class="modal-backdrop" href="#invite-path" aria-label="关闭邀请规则"></a>
+      <a class="modal-backdrop" href="#invite-records" aria-label="关闭邀请规则"></a>
       <div class="invite-rules-dialog">
         <div class="invite-rules-head">
           <div>
-            <span>INVITATION RULES</span>
+            <span class="invite-section-eyebrow">INVITATION RULES</span>
             <h2>邀请规则</h2>
+            <p>好友完成对应阶段并通过系统校验后，积分将自动发放至邀请人的积分账户。</p>
           </div>
-          <a class="modal-close-icon" href="#invite-path" aria-label="关闭邀请规则">
+          <a class="modal-close-icon" href="#invite-records" aria-label="关闭邀请规则">
             <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
           </a>
         </div>
@@ -258,20 +302,20 @@
             <h3>分阶段奖励</h3>
             <div class="invite-rule-detail-table is-rewards" aria-label="邀请分阶段奖励规则">
               <div class="invite-rule-detail-row is-head"><span>好友行为阶段</span><span>邀请人奖励</span><span>奖励发放触发条件</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段一：好友完成注册</strong><span>+20 积分</span><span>好友通过邀请链接/邀请码成功注册</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段二：好友首次互动</strong><span>+20 积分</span><span>好友完成首次点赞、收藏、评论任一行为</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段三：好友首次发布</strong><span>+50 积分</span><span>好友首次成功发布有效 AI 作品</span></div>
+              <div class="invite-rule-detail-row"><strong>阶段一：好友完成注册</strong><span>+10 积分</span><span>好友通过邀请链接或邀请码成功注册并完成绑定</span></div>
+              <div class="invite-rule-detail-row"><strong>阶段二：好友首次互动</strong><span>+30 积分</span><span>好友完成首次点赞或评论行为</span></div>
+              <div class="invite-rule-detail-row"><strong>阶段三：好友首次发布</strong><span>+50 积分</span><span>好友首次成功发布符合社区规范的 AI 作品</span></div>
             </div>
           </div>
           <div class="invite-rule-block">
             <h3>每日 / 每月限额</h3>
-            <div class="invite-rule-detail-table is-limits" aria-label="邀请奖励每日每月限制规则">
-              <div class="invite-rule-detail-row is-head"><span>限制维度</span><span>限制项</span><span>限制额度</span><span>超限处理规则</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得注册奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得互动奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得发布奖励好友数</span><span>3 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日上限</strong><span>每日邀请奖励积分上限</span><span>300 积分</span><span>达到 300 后当天停止发放邀请积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月上限</strong><span>每月邀请奖励积分上限</span><span>2000 积分</span><span>达到上限后当月停止发放邀请积分</span></div>
+            <div class="invite-rule-detail-table is-limits" aria-label="邀请奖励每日每月限制">
+              <div class="invite-rule-detail-row is-head"><span>限制维度</span><span>限制项目</span><span>限制额度</span><span>超限处理规则</span></div>
+              <div class="invite-rule-detail-row"><strong>每日限制</strong><span>可获得注册奖励的好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
+              <div class="invite-rule-detail-row"><strong>每日限制</strong><span>可获得互动奖励的好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
+              <div class="invite-rule-detail-row"><strong>每日限制</strong><span>可获得发布奖励的好友数</span><span>3 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
+              <div class="invite-rule-detail-row"><strong>每日上限</strong><span>邀请奖励积分上限</span><span>300 积分</span><span>达到上限后当天停止发放邀请积分</span></div>
+              <div class="invite-rule-detail-row"><strong>每月上限</strong><span>邀请奖励积分上限</span><span>2000 积分</span><span>达到上限后当月停止发放邀请积分</span></div>
             </div>
           </div>
           <div class="invite-rule-block">
@@ -289,6 +333,6 @@
 
     <div class="footer-space"></div>
   </div>
-  <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
+  <script src="./walkthrough.js?v=20260727-invite-hero-motion-v4" defer></script>
 </body>
 </html>

@@ -1,0 +1,450 @@
+@font-face {
+  font-family: "Activity Display";
+  src: url("assets/Montserrat-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.activity-center-page {
+  --activity-bg: #05070b;
+  --activity-surface: rgba(11, 15, 19, 0.78);
+  --activity-surface-hover: rgba(18, 21, 22, 0.92);
+  --activity-paper: #fffaf0;
+  --activity-muted: rgba(255, 250, 240, 0.62);
+  --activity-faint: rgba(255, 250, 240, 0.42);
+  --activity-line: rgba(255, 247, 230, 0.14);
+  --activity-gold: #f4c95d;
+  --activity-lime: #d9ff8c;
+  --activity-mint: #66e2cf;
+  --activity-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  background:
+    radial-gradient(circle at 84% 4%, rgba(244, 201, 93, 0.08), transparent 27%),
+    radial-gradient(circle at 12% 38%, rgba(102, 226, 207, 0.035), transparent 24%),
+    var(--activity-bg);
+}
+
+.activity-center-page .page-bg {
+  display: none;
+}
+
+.activity-main {
+  min-height: calc(100vh - 76px);
+  padding: 42px 0 132px;
+  color: var(--activity-paper);
+}
+
+.activity-banner {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 58px;
+  border: 1px solid rgba(255, 247, 230, 0.16);
+  border-radius: 16px;
+  background: var(--activity-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 20px 48px rgba(0, 0, 0, 0.24);
+}
+
+.activity-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 11, 0.96) 0%, rgba(5, 7, 11, 0.76) 52%, rgba(5, 7, 11, 0.24) 100%),
+    linear-gradient(180deg, rgba(244, 201, 93, 0.04), rgba(5, 7, 11, 0.24));
+}
+
+.activity-banner-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 54%;
+  filter: saturate(0.82) contrast(1.08);
+  opacity: 0.68;
+}
+
+.activity-banner-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 0 30px;
+}
+
+.activity-banner-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.activity-banner-title > img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  filter: sepia(1) saturate(5);
+}
+
+.activity-banner-title strong {
+  flex: 0 0 auto;
+  color: var(--activity-paper);
+  font-family: "Activity Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.activity-banner-title span {
+  min-width: 0;
+  padding-left: 16px;
+  border-left: 1px solid rgba(255, 247, 230, 0.18);
+  color: var(--activity-muted);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.activity-banner-live {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 0 12px;
+  border: 1px solid rgba(217, 255, 140, 0.28);
+  border-radius: 999px;
+  color: var(--activity-lime);
+  background: rgba(5, 7, 11, 0.56);
+  backdrop-filter: blur(12px) saturate(1.08);
+  font-family: "Activity Display", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+}
+
+.activity-banner-live i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--activity-mint);
+  box-shadow: 0 0 11px rgba(102, 226, 207, 0.8);
+}
+
+.activity-section + .activity-section {
+  margin-top: 112px;
+}
+
+.activity-section-head {
+  position: relative;
+  min-height: 92px;
+  display: flex;
+  align-items: flex-end;
+  margin: 0 0 34px;
+  padding: 0 0 16px;
+  isolation: isolate;
+}
+
+.activity-section-head::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  bottom: 7px;
+  z-index: -1;
+  width: 148px;
+  height: 74px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 201, 93, 0.1), transparent 68%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.activity-section-heading {
+  display: grid;
+  gap: 8px;
+}
+
+.activity-section-heading h1,
+.activity-section-heading h2 {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  color: rgba(255, 252, 246, 0.94);
+  font-family: "Activity Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(32px, 2.55vw, 42px);
+  font-weight: 560;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  text-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+.activity-section-heading h1 span,
+.activity-section-heading h2 span {
+  margin-right: 0.18em;
+  color: var(--activity-gold);
+  font-weight: 720;
+  text-shadow: 0 0 28px rgba(244, 201, 93, 0.12);
+}
+
+.activity-section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 250, 240, 0.46);
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 560;
+  letter-spacing: 0.22em;
+}
+
+.activity-section-kicker::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--activity-gold);
+  box-shadow: 0 0 12px rgba(244, 201, 93, 0.42);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 18px;
+}
+
+.activity-equal-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--activity-line);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.008)),
+    var(--activity-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 18px 46px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 260ms var(--activity-ease),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 260ms ease;
+}
+
+.activity-equal-card:hover {
+  border-color: rgba(244, 201, 93, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(244, 201, 93, 0.014)),
+    var(--activity-surface-hover);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.065),
+    0 24px 56px rgba(0, 0, 0, 0.28);
+  transform: translateY(-4px);
+}
+
+.activity-equal-card > a {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 270px minmax(226px, 1fr);
+}
+
+.activity-card-media {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #0b0f13;
+}
+
+.activity-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(5, 7, 11, 0.5) 100%);
+}
+
+.activity-card-media img {
+  transition: transform 620ms var(--activity-ease), filter 300ms ease;
+}
+
+.activity-equal-card:hover .activity-card-media img {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.04);
+}
+
+.activity-status {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 250, 240, 0.18);
+  border-radius: 999px;
+  color: var(--activity-paper);
+  background: rgba(5, 7, 11, 0.68);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(12px) saturate(1.08);
+  font-size: 10px;
+  font-weight: 560;
+}
+
+.activity-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--activity-mint);
+  box-shadow: 0 0 11px rgba(102, 226, 207, 0.8);
+}
+
+.activity-card-content {
+  min-height: 226px;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.activity-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--activity-faint);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.activity-card-meta span {
+  color: var(--activity-gold);
+  letter-spacing: 0.1em;
+}
+
+.activity-card-meta time {
+  font-family: "Activity Display", sans-serif;
+  color: rgba(255, 250, 240, 0.68);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.activity-card-content h2,
+.activity-card-content h3 {
+  margin: 21px 0 0;
+  color: var(--activity-paper);
+  font-family: "Activity Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.activity-card-content p {
+  margin: 10px 0 0;
+  overflow: hidden;
+  color: var(--activity-muted);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.62;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-card-footer {
+  position: relative;
+  min-height: 42px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 0;
+}
+
+.activity-card-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  border-radius: 0;
+  background: var(--activity-line);
+}
+
+.activity-card-footer strong {
+  color: var(--activity-lime);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.activity-card-footer img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.68;
+  transition: opacity 180ms ease, transform 220ms var(--activity-ease);
+}
+
+.activity-equal-card:hover .activity-card-footer img {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.activity-history-section {
+  padding-top: 4px;
+}
+
+.activity-ended-card {
+  opacity: 0.84;
+}
+
+.activity-ended-card .activity-card-media img {
+  filter: saturate(0.74) contrast(1.03);
+}
+
+.activity-ended-card:hover {
+  opacity: 1;
+}
+
+.activity-ended-card .activity-status {
+  color: rgba(255, 250, 240, 0.66);
+}
+
+.activity-ended-card .activity-card-footer strong {
+  color: var(--activity-muted);
+}
+
+.activity-center-page .footer-space {
+  min-height: 0;
+  height: 0;
+}
+
+@media (max-width: 1320px) {
+  .activity-main {
+    padding-top: 64px;
+  }
+
+  .activity-equal-card > a {
+    grid-template-rows: 248px minmax(226px, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activity-equal-card,
+  .activity-card-media img,
+  .activity-card-footer img {
+    transition: none;
+  }
+}

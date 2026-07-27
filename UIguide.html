@@ -1,0 +1,2465 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多元拾光 UI Guide</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <style>
+    @font-face {
+      font-family: "Montserrat Local";
+      src: url("assets/Montserrat-Bold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --ds-bg: #05070b;
+      --ds-bg-raised: #0b0f13;
+      --ds-surface: rgba(11, 15, 19, 0.74);
+      --ds-surface-strong: rgba(20, 22, 24, 0.92);
+      --ds-surface-hover: rgba(31, 30, 27, 0.94);
+      --ds-text: #fffaf0;
+      --ds-text-muted: rgba(255, 250, 240, 0.62);
+      --ds-text-faint: rgba(255, 250, 240, 0.42);
+      --ds-line: rgba(255, 247, 230, 0.14);
+      --ds-line-strong: rgba(244, 201, 93, 0.34);
+      --ds-gold: #f4c95d;
+      --ds-gold-soft: rgba(244, 201, 93, 0.14);
+      --ds-lime: #d9ff8c;
+      --ds-mint: #66e2cf;
+      --ds-danger: #ef664e;
+      --ds-success: #68ca93;
+      --ds-radius-control: 12px;
+      --ds-radius-card: 16px;
+      --ds-radius-modal: 24px;
+      --ds-radius-pill: 999px;
+      --ds-shadow-control: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.2);
+      --ds-shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 14px 36px rgba(0, 0, 0, 0.2);
+      --ds-shadow-modal: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 72px rgba(0, 0, 0, 0.46);
+      --ds-blur: blur(16px) saturate(1.12);
+      --ds-ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --guide-aside: 268px;
+      --guide-content: 1180px;
+      color-scheme: dark;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      color: var(--ds-text);
+      background: var(--ds-bg);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ds-bg);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ds-text);
+      background:
+        radial-gradient(circle at 88% 4%, rgba(244, 201, 93, 0.11), transparent 27%),
+        radial-gradient(circle at 17% 38%, rgba(102, 226, 207, 0.055), transparent 24%),
+        #05070b;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(90deg, transparent, #000 24%, #000 76%, transparent);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ds-gold);
+      outline-offset: 3px;
+    }
+
+    .guide-shell {
+      display: grid;
+      grid-template-columns: var(--guide-aside) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .guide-aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px 20px;
+      border-right: 1px solid rgba(255, 247, 230, 0.09);
+      background: rgba(5, 7, 11, 0.82);
+      backdrop-filter: var(--ds-blur);
+    }
+
+    .guide-brand {
+      display: block;
+      padding: 3px 6px 22px;
+      border-bottom: 1px solid rgba(255, 247, 230, 0.08);
+    }
+
+    .guide-brand img {
+      width: 162px;
+      height: auto;
+    }
+
+    .guide-brand-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .guide-version {
+      min-height: 22px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 8px;
+      border: 1px solid rgba(244, 201, 93, 0.24);
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-gold);
+      background: rgba(244, 201, 93, 0.07);
+      letter-spacing: 0.04em;
+    }
+
+    .guide-nav {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      align-content: start;
+      gap: 4px;
+      margin-top: 20px;
+      overflow: auto;
+      scrollbar-width: none;
+    }
+
+    .guide-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .guide-nav-label {
+      margin: 16px 10px 7px;
+      color: rgba(255, 250, 240, 0.3);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .guide-nav-label:first-child {
+      margin-top: 0;
+    }
+
+    .guide-nav a {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 11px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: rgba(255, 250, 240, 0.54);
+      font-size: 12px;
+      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .guide-nav a::before {
+      content: attr(data-index);
+      width: 22px;
+      color: rgba(244, 201, 93, 0.36);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 9px;
+    }
+
+    .guide-nav a:hover,
+    .guide-nav a.is-active {
+      color: var(--ds-text);
+      border-color: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .guide-nav a.is-active::before {
+      color: var(--ds-gold);
+    }
+
+    .guide-aside-footer {
+      padding: 16px 8px 0;
+      border-top: 1px solid rgba(255, 247, 230, 0.08);
+      color: var(--ds-text-faint);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .guide-main {
+      min-width: 0;
+    }
+
+    .guide-content {
+      width: min(var(--guide-content), calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .guide-hero {
+      position: relative;
+      min-height: 640px;
+      display: grid;
+      align-items: end;
+      padding: 86px 0 72px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 247, 230, 0.09);
+    }
+
+    .guide-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(5, 7, 11, 0.96), rgba(5, 7, 11, 0.52) 60%, rgba(5, 7, 11, 0.88)),
+        linear-gradient(180deg, rgba(5, 7, 11, 0.18), #05070b 94%),
+        url("assets/image_assets/model-plaza-hero-v4.webp") center / cover no-repeat;
+      filter: saturate(0.68) contrast(1.08);
+      opacity: 0.82;
+    }
+
+    .guide-hero::after {
+      content: "UI GUIDE";
+      position: absolute;
+      right: max(32px, calc((100% - var(--guide-content)) / 2));
+      top: 112px;
+      z-index: -1;
+      color: rgba(255, 255, 255, 0.025);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: clamp(76px, 10vw, 176px);
+      letter-spacing: -0.08em;
+      line-height: 0.8;
+      white-space: nowrap;
+    }
+
+    .guide-eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ds-gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .guide-eyebrow::before,
+    .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .guide-hero h1 {
+      max-width: 900px;
+      margin: 24px 0 20px;
+      color: #fffdf7;
+      font-size: clamp(54px, 6vw, 92px);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+    }
+
+    .guide-hero h1 em {
+      color: var(--ds-gold);
+      font-style: normal;
+    }
+
+    .guide-hero-lead {
+      max-width: 700px;
+      margin: 0;
+      color: rgba(255, 250, 240, 0.66);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .guide-principles {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 44px;
+    }
+
+    .principle {
+      min-height: 116px;
+      padding: 18px;
+      border: 1px solid rgba(255, 247, 230, 0.11);
+      border-radius: 12px;
+      background: rgba(7, 10, 14, 0.62);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(12px);
+    }
+
+    .principle span {
+      color: rgba(244, 201, 93, 0.6);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 10px;
+    }
+
+    .principle strong {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 16px;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--ds-text-faint);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .guide-section {
+      position: relative;
+      padding: 88px 0;
+      border-bottom: 1px solid rgba(255, 247, 230, 0.08);
+      scroll-margin-top: 20px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      margin: 16px 0 12px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--ds-text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .guide-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 2px solid var(--ds-gold);
+      color: rgba(255, 250, 240, 0.6);
+      background: linear-gradient(90deg, rgba(244, 201, 93, 0.075), transparent);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .page-samples {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .page-sample {
+      grid-column: span 2;
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 230, 0.11);
+      border-radius: var(--ds-radius-card);
+      background: rgba(9, 13, 19, 0.66);
+      box-shadow: var(--ds-shadow-card);
+      transition: transform 220ms var(--ds-ease), border-color 220ms ease;
+    }
+
+    .page-sample:first-child,
+    .page-sample:nth-child(2) {
+      grid-column: span 3;
+    }
+
+    .page-sample:hover {
+      transform: translateY(-3px);
+      border-color: rgba(244, 201, 93, 0.28);
+    }
+
+    .page-sample-visual {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #080b10;
+    }
+
+    .page-sample:first-child .page-sample-visual,
+    .page-sample:nth-child(2) .page-sample-visual {
+      height: 280px;
+    }
+
+    .page-sample-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 54%, rgba(5, 7, 11, 0.72));
+      pointer-events: none;
+    }
+
+    .page-sample-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 420ms var(--ds-ease);
+    }
+
+    .page-sample:hover .page-sample-visual img {
+      transform: scale(1.018);
+    }
+
+    .page-sample-copy {
+      min-height: 122px;
+      padding: 18px 19px 20px;
+    }
+
+    .page-sample-copy span {
+      color: var(--ds-gold);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .page-sample-copy h3 {
+      margin: 8px 0 6px;
+      font-size: 18px;
+    }
+
+    .page-sample-copy p {
+      margin: 0;
+      color: var(--ds-text-faint);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .color-token {
+      position: relative;
+      min-height: 164px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 230, 0.1);
+      border-radius: var(--ds-radius-card);
+      background: var(--swatch);
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .color-token::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), transparent 42%),
+        linear-gradient(180deg, transparent 46%, rgba(0, 0, 0, 0.68));
+    }
+
+    .color-token:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .color-token > * {
+      position: relative;
+    }
+
+    .color-token strong {
+      font-size: 14px;
+    }
+
+    .color-token code {
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.58);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+    }
+
+    .color-token small {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.46);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .color-token[data-copied="true"]::after {
+      content: "已复制";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 9px;
+      border-radius: var(--ds-radius-pill);
+      color: #17120a;
+      background: var(--ds-gold);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .subsection-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 42px 0 16px;
+    }
+
+    .subsection-title h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .subsection-title span {
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .type-specimen {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) auto;
+      align-items: baseline;
+      gap: 20px;
+      padding: 22px 0;
+      border-top: 1px solid rgba(255, 247, 230, 0.08);
+    }
+
+    .type-specimen:last-child {
+      border-bottom: 1px solid rgba(255, 247, 230, 0.08);
+    }
+
+    .type-meta strong,
+    .type-meta span {
+      display: block;
+    }
+
+    .type-meta strong {
+      color: var(--ds-gold);
+      font-size: 11px;
+    }
+
+    .type-meta span,
+    .type-value {
+      margin-top: 5px;
+      color: var(--ds-text-faint);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 9px;
+    }
+
+    .type-sample.display {
+      font-family: "Montserrat Local", sans-serif;
+      font-size: clamp(40px, 5vw, 64px);
+      letter-spacing: -0.055em;
+      line-height: 0.94;
+    }
+
+    .type-sample.h1 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .type-sample.h2 {
+      font-size: 30px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    .type-sample.body {
+      max-width: 650px;
+      color: var(--ds-text-muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .type-sample.caption {
+      color: var(--ds-text-faint);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .measure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .measure-panel,
+    .component-stage {
+      padding: 24px;
+      border: 1px solid rgba(255, 247, 230, 0.1);
+      border-radius: var(--ds-radius-card);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(244, 201, 93, 0.055), transparent 34%),
+        rgba(9, 13, 19, 0.6);
+      box-shadow: var(--ds-shadow-card);
+    }
+
+    .measure-panel h3,
+    .component-stage h3 {
+      margin: 0 0 20px;
+      color: rgba(255, 250, 240, 0.82);
+      font-size: 13px;
+    }
+
+    .spacing-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .spacing-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) 38px;
+      align-items: center;
+      gap: 12px;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .spacing-bar {
+      height: 8px;
+      width: min(100%, calc(var(--space) * 6));
+      border-radius: var(--ds-radius-pill);
+      background: linear-gradient(90deg, rgba(244, 201, 93, 0.32), var(--ds-gold));
+      box-shadow: 0 0 18px rgba(244, 201, 93, 0.11);
+    }
+
+    .radius-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .radius-item {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(244, 201, 93, 0.3);
+      border-radius: var(--radius-value);
+      color: var(--ds-text-muted);
+      background: rgba(244, 201, 93, 0.055);
+      font-size: 10px;
+    }
+
+    .shadow-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .shadow-card {
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--ds-radius-card);
+      background: #11151a;
+      color: var(--ds-text-muted);
+      font-size: 11px;
+    }
+
+    .shadow-card.control { box-shadow: var(--ds-shadow-control); }
+    .shadow-card.card { box-shadow: var(--ds-shadow-card); }
+    .shadow-card.modal { box-shadow: var(--ds-shadow-modal); }
+
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 247, 230, 0.09);
+      border-radius: var(--ds-radius-card);
+      background: rgba(5, 7, 11, 0.48);
+    }
+
+    .grid-demo span {
+      min-height: 180px;
+      display: grid;
+      place-items: end center;
+      padding-bottom: 12px;
+      border-radius: 12px;
+      color: rgba(244, 201, 93, 0.52);
+      background: linear-gradient(180deg, rgba(244, 201, 93, 0.12), rgba(244, 201, 93, 0.025));
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 9px;
+    }
+
+    .grid-rules {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .grid-rule {
+      padding: 14px;
+      border: 1px solid rgba(255, 247, 230, 0.08);
+      border-radius: 12px;
+      color: var(--ds-text-faint);
+      background: rgba(255, 255, 255, 0.025);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .grid-rule strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ds-text);
+      font-size: 13px;
+    }
+
+    .demo-header {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: 164px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 18px;
+      padding: 0 20px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--ds-radius-card);
+      background: linear-gradient(180deg, rgba(3, 5, 8, 0.64), rgba(3, 5, 8, 0.34));
+      backdrop-filter: blur(15px);
+    }
+
+    .demo-header > img {
+      width: 145px;
+    }
+
+    .demo-nav,
+    .demo-actions,
+    .button-row,
+    .chip-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .demo-nav {
+      gap: 10px;
+    }
+
+    .demo-nav a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: var(--ds-radius-pill);
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 11px;
+    }
+
+    .demo-nav a.is-active {
+      min-height: 42px;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.38);
+    }
+
+    .demo-nav img,
+    .icon-button img,
+    .demo-action img,
+    .ui-button img {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+      filter: invert(1);
+      opacity: 0.88;
+    }
+
+    .demo-action,
+    .icon-button {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--ds-radius-pill);
+      color: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 10px;
+    }
+
+    .demo-action.activity {
+      color: var(--ds-lime);
+      border-color: rgba(217, 255, 140, 0.28);
+    }
+
+    .demo-action.activity img {
+      filter: none;
+    }
+
+    .icon-button {
+      width: 40px;
+      padding: 0;
+      border-radius: 999px;
+    }
+
+    .ui-button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 1px solid rgba(244, 201, 93, 0.42);
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-gold);
+      background:
+        linear-gradient(135deg, rgba(244, 201, 93, 0.13), rgba(255, 255, 255, 0.025)),
+        rgba(9, 13, 19, 0.84);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .ui-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(244, 201, 93, 0.68);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.075), 0 8px 24px rgba(244, 201, 93, 0.12);
+    }
+
+    .ui-button.filled {
+      color: #1b1408;
+      border-color: transparent;
+      background: linear-gradient(135deg, #d9a84d, #ffe6a0 56%, #c58d3e);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56), 0 10px 28px rgba(244, 201, 93, 0.17);
+    }
+
+    .ui-button.secondary {
+      color: var(--ds-text);
+      border-color: rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .ui-button.ghost {
+      color: var(--ds-text-muted);
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .ui-button:disabled {
+      color: rgba(255, 250, 240, 0.28);
+      border-color: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .segmented {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid rgba(255, 247, 230, 0.12);
+      border-radius: var(--ds-radius-pill);
+      background: rgba(9, 13, 19, 0.72);
+      box-shadow: var(--ds-shadow-control);
+    }
+
+    .segmented button,
+    .chip {
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-text-muted);
+      background: transparent;
+      font-size: 11px;
+      cursor: pointer;
+      transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .segmented button:hover,
+    .chip:hover {
+      color: var(--ds-text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .segmented button.is-active,
+    .chip.is-active {
+      color: var(--ds-gold);
+      border-color: rgba(244, 201, 93, 0.32);
+      background: var(--ds-gold-soft);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .chip {
+      min-height: 32px;
+      padding: 0 12px;
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .state-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .state-label i {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--ds-mint);
+      box-shadow: 0 0 0 4px rgba(102, 226, 207, 0.09), 0 0 14px rgba(102, 226, 207, 0.48);
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .component-stage.full {
+      grid-column: 1 / -1;
+    }
+
+    .card-showcase {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .content-card-demo,
+    .model-card-demo,
+    .tutorial-card-demo,
+    .social-card-demo {
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 230, 0.11);
+      border-radius: var(--ds-radius-card);
+      background: rgba(9, 13, 19, 0.72);
+      box-shadow: var(--ds-shadow-card);
+    }
+
+    .content-card-demo {
+      grid-column: span 5;
+    }
+
+    .model-card-demo {
+      grid-column: span 4;
+    }
+
+    .tutorial-card-demo {
+      grid-column: span 3;
+    }
+
+    .social-card-demo {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    }
+
+    .demo-media {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      background: #080b0f;
+    }
+
+    .demo-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 48%, rgba(5, 7, 11, 0.78));
+    }
+
+    .demo-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms var(--ds-ease);
+    }
+
+    .content-card-demo:hover .demo-media img,
+    .tutorial-card-demo:hover .demo-media img {
+      transform: scale(1.025);
+    }
+
+    .demo-card-copy {
+      padding: 18px;
+    }
+
+    .demo-card-copy > span,
+    .demo-card-kicker {
+      color: var(--ds-gold);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .demo-card-copy h3 {
+      margin: 8px 0 7px;
+      font-size: 18px;
+    }
+
+    .demo-card-copy p {
+      margin: 0;
+      color: var(--ds-text-faint);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .demo-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .demo-card-meta span {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 8px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-text-faint);
+      background: rgba(255, 255, 255, 0.025);
+      font-size: 9px;
+    }
+
+    .model-card-demo {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 84% 12%, rgba(102, 226, 207, 0.1), transparent 34%),
+        rgba(10, 14, 18, 0.84);
+    }
+
+    .model-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .model-brand-row img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: invert(1);
+      opacity: 0.82;
+    }
+
+    .model-brand-row span {
+      color: var(--ds-mint);
+      font-size: 9px;
+    }
+
+    .model-card-demo h3 {
+      margin: 28px 0 6px;
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .model-card-demo p {
+      margin: 0;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .model-price {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      margin-top: auto;
+      padding-top: 36px;
+    }
+
+    .model-price strong {
+      color: var(--ds-gold);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .model-price span {
+      color: var(--ds-text-faint);
+      font-size: 9px;
+    }
+
+    .tutorial-card-demo .demo-media {
+      height: 190px;
+    }
+
+    .tutorial-card-demo .demo-media img {
+      object-position: center;
+    }
+
+    .social-card-copy {
+      padding: 24px;
+    }
+
+    .social-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-author img {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    .social-author strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .social-author span {
+      display: block;
+      margin-top: 3px;
+      color: var(--ds-text-faint);
+      font-size: 9px;
+    }
+
+    .social-card-copy > p {
+      margin: 18px 0 20px;
+      color: rgba(255, 250, 240, 0.76);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .social-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .social-card-media {
+      min-height: 280px;
+      overflow: hidden;
+    }
+
+    .social-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .form-demo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .input-shell {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 250, 240, 0.15);
+      border-radius: 12px;
+      color: var(--ds-text-faint);
+      background: rgba(2, 4, 7, 0.54);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .input-shell:focus-within {
+      border-color: rgba(244, 201, 93, 0.62);
+      background: rgba(4, 6, 9, 0.8);
+      box-shadow: inset 0 0 0 1px rgba(244, 201, 93, 0.11), 0 0 0 4px rgba(244, 201, 93, 0.07);
+    }
+
+    .input-shell img {
+      width: 17px;
+      height: 17px;
+      filter: invert(1);
+      opacity: 0.58;
+    }
+
+    .input-shell input {
+      min-width: 0;
+      flex: 1;
+      border: 0;
+      outline: 0;
+      color: var(--ds-text);
+      background: transparent;
+      font-size: 12px;
+    }
+
+    .input-shell input::placeholder {
+      color: rgba(255, 250, 240, 0.35);
+      font-weight: 300;
+    }
+
+    .prompt-shell {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px 10px 20px;
+      border: 1px solid rgba(255, 247, 230, 0.18);
+      border-radius: var(--ds-radius-pill);
+      background: linear-gradient(180deg, rgba(26, 25, 23, 0.9), rgba(11, 13, 15, 0.92));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 22px 60px rgba(0, 0, 0, 0.32);
+    }
+
+    .prompt-shell > span {
+      color: var(--ds-text-muted);
+      font-size: 13px;
+    }
+
+    .prompt-shell > b {
+      margin-left: auto;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #161007;
+      background: #fff4d7;
+      font-size: 20px;
+      box-shadow: 0 0 0 7px rgba(244, 201, 93, 0.08);
+    }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .state-card {
+      min-height: 104px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .state-card strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .state-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--ds-text-faint);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .state-card.focus { border-color: rgba(244, 201, 93, 0.54); box-shadow: 0 0 0 4px rgba(244, 201, 93, 0.07); }
+    .state-card.success { border-color: rgba(104, 202, 147, 0.38); }
+    .state-card.error { border-color: rgba(239, 102, 78, 0.46); }
+    .state-card.disabled { opacity: 0.42; }
+
+    .pattern-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pattern-row {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) minmax(250px, 0.62fr);
+      gap: 24px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid rgba(255, 247, 230, 0.09);
+      border-radius: var(--ds-radius-card);
+      background: rgba(9, 13, 19, 0.54);
+    }
+
+    .pattern-name span {
+      color: var(--ds-gold);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+    }
+
+    .pattern-name h3 {
+      margin: 7px 0 0;
+      font-size: 20px;
+    }
+
+    .pattern-copy {
+      margin: 0;
+      color: var(--ds-text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .pattern-specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .pattern-specs span {
+      min-height: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      color: var(--ds-text-faint);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 9px;
+    }
+
+    .pattern-specs b {
+      margin-bottom: 3px;
+      color: rgba(255, 250, 240, 0.76);
+      font-size: 11px;
+    }
+
+    .motion-track {
+      position: relative;
+      height: 92px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 230, 0.09);
+      border-radius: var(--ds-radius-card);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .motion-dot {
+      position: absolute;
+      top: 30px;
+      left: 22px;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--ds-gold);
+      box-shadow: 0 0 30px rgba(244, 201, 93, 0.24);
+      animation: guideMotion 2.6s var(--ds-ease) infinite alternate;
+    }
+
+    .motion-track span {
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+      color: var(--ds-text-faint);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 9px;
+    }
+
+    @keyframes guideMotion {
+      from { transform: translateX(0); }
+      to { transform: translateX(min(680px, 52vw)); }
+    }
+
+    .motion-rules,
+    .checklist-grid,
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .motion-rule,
+    .check-card,
+    .decision-card {
+      padding: 18px;
+      border: 1px solid rgba(255, 247, 230, 0.09);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .motion-rule strong,
+    .check-card strong,
+    .decision-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .motion-rule p,
+    .check-card p,
+    .decision-card p {
+      margin: 0;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .motion-rule code {
+      color: var(--ds-gold);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+    }
+
+    .spec-table-wrap {
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 230, 0.1);
+      border-radius: var(--ds-radius-card);
+      background: rgba(9, 13, 19, 0.54);
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .spec-table th,
+    .spec-table td {
+      padding: 17px 18px;
+      border-bottom: 1px solid rgba(255, 247, 230, 0.075);
+      vertical-align: top;
+    }
+
+    .spec-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .spec-table th {
+      color: var(--ds-text-faint);
+      background: rgba(255, 255, 255, 0.025);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .spec-table td {
+      color: var(--ds-text-muted);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .spec-table td:first-child {
+      color: var(--ds-gold);
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .check-card {
+      position: relative;
+      padding-left: 48px;
+    }
+
+    .check-card::before {
+      content: "✓";
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(104, 202, 147, 0.36);
+      border-radius: 999px;
+      color: var(--ds-success);
+      background: rgba(104, 202, 147, 0.08);
+      font-size: 10px;
+    }
+
+    .decision-card.do {
+      border-color: rgba(104, 202, 147, 0.2);
+      background: linear-gradient(135deg, rgba(104, 202, 147, 0.055), transparent);
+    }
+
+    .decision-card.dont {
+      border-color: rgba(239, 102, 78, 0.2);
+      background: linear-gradient(135deg, rgba(239, 102, 78, 0.045), transparent);
+    }
+
+    .decision-card.do > span { color: var(--ds-success); }
+    .decision-card.dont > span { color: var(--ds-danger); }
+
+    .decision-card > span {
+      display: block;
+      margin-bottom: 10px;
+      font-family: "Montserrat Local", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+    }
+
+    .guide-footer {
+      padding: 70px 0 90px;
+      color: var(--ds-text-faint);
+      font-size: 10px;
+    }
+
+    .guide-footer-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .guide-footer img {
+      width: 146px;
+      margin-bottom: 14px;
+    }
+
+    .guide-footer p {
+      max-width: 560px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .back-top {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-text-muted);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    @media (max-width: 1180px) {
+      :root {
+        --guide-aside: 226px;
+      }
+
+      .guide-content {
+        width: min(var(--guide-content), calc(100% - 40px));
+      }
+
+      .guide-principles,
+      .token-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .demo-header {
+        grid-template-columns: 146px minmax(0, 1fr);
+      }
+
+      .demo-actions {
+        grid-column: 1 / -1;
+      }
+
+      .content-card-demo,
+      .model-card-demo {
+        grid-column: span 6;
+      }
+
+      .tutorial-card-demo {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1fr);
+      }
+
+      .pattern-row {
+        grid-template-columns: 150px minmax(0, 1fr);
+      }
+
+      .pattern-specs {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .guide-shell {
+        display: block;
+      }
+
+      .guide-aside {
+        position: sticky;
+        height: auto;
+        min-height: 66px;
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+        padding: 10px 16px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 247, 230, 0.1);
+      }
+
+      .guide-brand {
+        flex: 0 0 auto;
+        padding: 0;
+        border: 0;
+      }
+
+      .guide-brand img {
+        width: 122px;
+      }
+
+      .guide-brand-meta,
+      .guide-aside-footer,
+      .guide-nav-label {
+        display: none;
+      }
+
+      .guide-nav {
+        display: flex;
+        margin: 0;
+        overflow-x: auto;
+      }
+
+      .guide-nav a {
+        flex: 0 0 auto;
+      }
+
+      .guide-nav a::before {
+        display: none;
+      }
+
+      .guide-content {
+        width: min(100% - 32px, var(--guide-content));
+      }
+
+      .guide-hero {
+        min-height: 600px;
+        padding-top: 68px;
+      }
+
+      .page-samples {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page-sample,
+      .page-sample:first-child,
+      .page-sample:nth-child(2) {
+        grid-column: span 1;
+      }
+
+      .page-sample:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .measure-grid,
+      .component-grid,
+      .motion-rules,
+      .checklist-grid,
+      .decision-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .component-stage.full {
+        grid-column: auto;
+      }
+
+      .demo-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .demo-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
+      .content-card-demo,
+      .model-card-demo,
+      .tutorial-card-demo,
+      .social-card-demo {
+        grid-column: 1 / -1;
+      }
+
+      .social-card-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .pattern-row {
+        grid-template-columns: 1fr;
+      }
+
+      .pattern-specs {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .guide-aside {
+        align-items: center;
+      }
+
+      .guide-brand img {
+        width: 108px;
+      }
+
+      .guide-hero {
+        min-height: 640px;
+      }
+
+      .guide-hero h1 {
+        font-size: 48px;
+      }
+
+      .guide-principles,
+      .token-grid,
+      .page-samples,
+      .state-grid,
+      .grid-rules {
+        grid-template-columns: 1fr;
+      }
+
+      .page-sample,
+      .page-sample:first-child,
+      .page-sample:nth-child(2),
+      .page-sample:last-child {
+        grid-column: auto;
+      }
+
+      .page-sample-visual,
+      .page-sample:first-child .page-sample-visual,
+      .page-sample:nth-child(2) .page-sample-visual {
+        height: 220px;
+      }
+
+      .guide-section {
+        padding: 68px 0;
+      }
+
+      .type-specimen {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .type-value {
+        display: none;
+      }
+
+      .radius-list,
+      .shadow-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-demo {
+        gap: 5px;
+        padding: 10px;
+      }
+
+      .form-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .tutorial-card-demo {
+        display: block;
+      }
+
+      .pattern-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .spec-table {
+        min-width: 680px;
+      }
+
+      .spec-table-wrap {
+        overflow-x: auto;
+      }
+
+      .guide-footer-inner {
+        display: grid;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="./radius-system.css?v=20260726-radius-system-v1-comment-frame12">
+</head>
+<body>
+  <div class="guide-shell">
+    <aside class="guide-aside" aria-label="UI Guide 目录">
+      <a class="guide-brand" href="#overview" aria-label="返回规范概览">
+        <img src="assets/brand/LOGO.svg" alt="多元拾光">
+        <span class="guide-brand-meta">
+          <span>Design System</span>
+          <span class="guide-version">V1.1</span>
+        </span>
+      </a>
+
+      <nav class="guide-nav">
+        <span class="guide-nav-label">Foundation</span>
+        <a href="#overview" data-index="01">设计概览</a>
+        <a href="#source-pages" data-index="02">页面研究</a>
+        <a href="#color" data-index="03">色彩系统</a>
+        <a href="#typography" data-index="04">字体层级</a>
+        <a href="#space" data-index="05">间距与形态</a>
+        <a href="#layout" data-index="06">布局网格</a>
+
+        <span class="guide-nav-label">Components</span>
+        <a href="#navigation" data-index="07">导航</a>
+        <a href="#controls" data-index="08">按钮与筛选</a>
+        <a href="#cards" data-index="09">卡片</a>
+        <a href="#forms" data-index="10">表单与状态</a>
+
+        <span class="guide-nav-label">Patterns</span>
+        <a href="#patterns" data-index="11">页面模式</a>
+        <a href="#motion" data-index="12">动效</a>
+        <a href="#responsive" data-index="13">响应式</a>
+        <a href="#accessibility" data-index="14">无障碍</a>
+        <a href="#decisions" data-index="15">使用边界</a>
+      </nav>
+
+      <div class="guide-aside-footer">
+        基于首页、AIGC、模型广场、闪念与官方教程的实际页面采样整理。
+      </div>
+    </aside>
+
+    <main class="guide-main">
+      <section class="guide-hero" id="overview">
+        <div class="guide-content">
+          <span class="guide-eyebrow">DUOYUAN SHIGUANG · UI SYSTEM</span>
+          <h1>沉浸式暗场<br><em>创作界面规范</em></h1>
+          <p class="guide-hero-lead">以近黑暗场承载作品与模型，以暖金建立行动层级，以克制的玻璃表面、线型图标和编辑式排版形成多元拾光统一的创作社区体验。</p>
+
+          <div class="guide-principles">
+            <article class="principle">
+              <span>01</span>
+              <strong>内容先于容器</strong>
+              <p>让作品、视频和模型信息成为主角，容器只承担层级与交互提示。</p>
+            </article>
+            <article class="principle">
+              <span>02</span>
+              <strong>暗场而非纯黑</strong>
+              <p>用近黑层级、低透明表面与局部光晕建立深度，不用厚重面板堆叠。</p>
+            </article>
+            <article class="principle">
+              <span>03</span>
+              <strong>暖金只给关键动作</strong>
+              <p>选中态、主行动、积分与核心数据使用暖金，其余内容保持中性。</p>
+            </article>
+            <article class="principle">
+              <span>04</span>
+              <strong>轻量但可感知</strong>
+              <p>反馈通过 1–2px 位移、边界增亮和短时缓动完成，不制造界面噪音。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="guide-content">
+        <section class="guide-section" id="source-pages">
+          <div class="section-head">
+            <span class="section-kicker">Source pages</span>
+            <h2>五个页面，一套共同语言</h2>
+            <p>统一性来自导航、色彩、字阶、控件形态与动效；页面个性来自媒体占比与信息编排。新页面应先选择合适的内容模式，再复用同一套基础令牌。</p>
+          </div>
+
+          <div class="page-samples">
+            <article class="page-sample">
+              <div class="page-sample-visual"><img src="assets/uiguide/source-home.png" alt="首页界面采样"></div>
+              <div class="page-sample-copy">
+                <span>HOME · CINEMATIC FRAME</span>
+                <h3>首页</h3>
+                <p>框内电影主视觉、四项能力入口、作品策展与底部悬浮创作器。</p>
+              </div>
+            </article>
+            <article class="page-sample">
+              <div class="page-sample-visual"><img src="assets/uiguide/source-aigc.png" alt="AIGC 页面界面采样"></div>
+              <div class="page-sample-copy">
+                <span>AIGC · FULL BLEED</span>
+                <h3>AIGC</h3>
+                <p>全屏媒体开场、中心式品牌主张、创作器与纵向叙事模块。</p>
+              </div>
+            </article>
+            <article class="page-sample">
+              <div class="page-sample-visual"><img src="assets/uiguide/source-model-plaza.png" alt="模型广场界面采样"></div>
+              <div class="page-sample-copy">
+                <span>MODEL PLAZA · EDITORIAL DATA</span>
+                <h3>模型广场</h3>
+                <p>编辑式标题、建筑感主视觉、数据看板与搜索筛选组合。</p>
+              </div>
+            </article>
+            <article class="page-sample">
+              <div class="page-sample-visual"><img src="assets/uiguide/source-flash.png" alt="闪念页面界面采样"></div>
+              <div class="page-sample-copy">
+                <span>FLASH · SOCIAL FEED</span>
+                <h3>闪念</h3>
+                <p>无重容器内容流、媒体优先帖子、轻互动与右侧精选栏。</p>
+              </div>
+            </article>
+            <article class="page-sample">
+              <div class="page-sample-visual"><img src="assets/uiguide/source-tutorial.png" alt="官方教程页面界面采样"></div>
+              <div class="page-sample-copy">
+                <span>TUTORIAL · COVER GRID</span>
+                <h3>官方教程</h3>
+                <p>教学场景横幅、胶囊分类与三列封面型课程网格。</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="guide-note">共同规则优先级：品牌导航 → 全局令牌 → 共享组件 → 页面模式 → 局部特例。局部特例不得反向覆盖全局交互和可访问性。</p>
+        </section>
+
+        <section class="guide-section" id="color">
+          <div class="section-head">
+            <span class="section-kicker">Color</span>
+            <h2>深色层级 + 单一暖金主强调</h2>
+            <p>背景从 #05070B 起步，表面通过透明度和阴影抬升。暖金用于主动作与选择，薄荷绿用于“在线/可用”，酸橙色用于活动与增长入口。</p>
+          </div>
+
+          <div class="token-grid">
+            <button class="color-token" style="--swatch:#05070b" data-copy="#05070B" aria-label="复制背景色 #05070B">
+              <strong>Background</strong><code>#05070B</code><small>页面底色</small>
+            </button>
+            <button class="color-token" style="--swatch:#0b0f13" data-copy="#0B0F13" aria-label="复制抬升背景色 #0B0F13">
+              <strong>Raised</strong><code>#0B0F13</code><small>抬升区域、侧栏</small>
+            </button>
+            <button class="color-token" style="--swatch:rgba(20,22,24,.92)" data-copy="rgba(20,22,24,.92)" aria-label="复制强表面色">
+              <strong>Surface Strong</strong><code>rgba(20,22,24,.92)</code><small>弹层、展开菜单</small>
+            </button>
+            <button class="color-token" style="--swatch:#fffaf0" data-copy="#FFFAF0" aria-label="复制主文字色 #FFFAF0">
+              <strong>Text</strong><code>#FFFAF0</code><small>标题、主文字</small>
+            </button>
+            <button class="color-token" style="--swatch:#f4c95d" data-copy="#F4C95D" aria-label="复制暖金色 #F4C95D">
+              <strong>Warm Gold</strong><code>#F4C95D</code><small>主动作、选中、积分</small>
+            </button>
+            <button class="color-token" style="--swatch:#d9ff8c" data-copy="#D9FF8C" aria-label="复制酸橙色 #D9FF8C">
+              <strong>Growth Lime</strong><code>#D9FF8C</code><small>活动与增长入口</small>
+            </button>
+            <button class="color-token" style="--swatch:#66e2cf" data-copy="#66E2CF" aria-label="复制薄荷色 #66E2CF">
+              <strong>System Mint</strong><code>#66E2CF</code><small>在线、持续更新</small>
+            </button>
+            <button class="color-token" style="--swatch:#ef664e" data-copy="#EF664E" aria-label="复制危险色 #EF664E">
+              <strong>Danger</strong><code>#EF664E</code><small>错误、危险动作</small>
+            </button>
+          </div>
+        </section>
+
+        <section class="guide-section" id="typography">
+          <div class="section-head">
+            <span class="section-kicker">Typography</span>
+            <h2>编辑式大标题，低噪音正文</h2>
+            <p>中文使用系统字族保证清晰，英文品牌主张和大数字使用 Montserrat。大标题紧凑、正文舒展，辅助信息通过透明度而不是极小字号降级。</p>
+          </div>
+
+          <div class="type-specimen">
+            <div class="type-meta"><strong>Display / EN</strong><span>Montserrat Local · 700</span></div>
+            <div class="type-sample display">MAKE IT <span style="color:var(--ds-gold)">REAL.</span></div>
+            <div class="type-value">64 / .94</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta"><strong>Hero / CN</strong><span>System Sans · 700</span></div>
+            <div class="type-sample h1">找到适合你的创作模型</div>
+            <div class="type-value">44 / 1.05</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta"><strong>Section</strong><span>System Sans · 650</span></div>
+            <div class="type-sample h2">跟着官方教程开始创作</div>
+            <div class="type-value">30 / 1.15</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta"><strong>Body</strong><span>System Sans · 400</span></div>
+            <div class="type-sample body">从灵感出发，选择适合的模型和模板，用清晰的能力标签与价格信息快速完成选型。</div>
+            <div class="type-value">15 / 1.80</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-meta"><strong>Caption</strong><span>System Sans · 400</span></div>
+            <div class="type-sample caption">MODEL SUPPLY ONLINE · 持续更新</div>
+            <div class="type-value">11 / 1.50</div>
+          </div>
+        </section>
+
+        <section class="guide-section" id="space">
+          <div class="section-head">
+            <span class="section-kicker">Space & shape</span>
+            <h2>4px 基准，四类语义圆角</h2>
+            <p>间距采用 4px 倍数。输入框与小型控件使用 12px，普通内容卡片使用 16px，弹层、大型面板与 Hero 使用 24px；按钮、Tab 和筛选器统一使用 999px 胶囊。</p>
+          </div>
+
+          <div class="measure-grid">
+            <article class="measure-panel">
+              <h3>Spacing scale</h3>
+              <div class="spacing-list">
+                <div class="spacing-item"><span>XS</span><i class="spacing-bar" style="--space:8px"></i><b>8</b></div>
+                <div class="spacing-item"><span>SM</span><i class="spacing-bar" style="--space:12px"></i><b>12</b></div>
+                <div class="spacing-item"><span>MD</span><i class="spacing-bar" style="--space:16px"></i><b>16</b></div>
+                <div class="spacing-item"><span>LG</span><i class="spacing-bar" style="--space:24px"></i><b>24</b></div>
+                <div class="spacing-item"><span>XL</span><i class="spacing-bar" style="--space:32px"></i><b>32</b></div>
+                <div class="spacing-item"><span>2XL</span><i class="spacing-bar" style="--space:48px"></i><b>48</b></div>
+              </div>
+            </article>
+
+            <article class="measure-panel">
+              <h3>Radius scale</h3>
+              <div class="radius-list">
+                <div class="radius-item" style="--radius-value:12px">12 · 控件</div>
+                <div class="radius-item" style="--radius-value:16px">16 · 卡片</div>
+                <div class="radius-item" style="--radius-value:24px">24 · 大面板</div>
+                <div class="radius-item" style="--radius-value:999px">999 · 胶囊</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="subsection-title"><h3>Elevation</h3><span>靠层级与阴影抬升，不靠粗边框</span></div>
+          <div class="shadow-list">
+            <div class="shadow-card control">Control · 8 / 24</div>
+            <div class="shadow-card card">Card · 14 / 36</div>
+            <div class="shadow-card modal">Modal · 28 / 72</div>
+          </div>
+        </section>
+
+        <section class="guide-section" id="layout">
+          <div class="section-head">
+            <span class="section-kicker">Layout</span>
+            <h2>1280px 内容基线，12 列网格</h2>
+            <p>五个页面均以桌面创作场景为主。1440px 视口下内容最大宽度 1280px，左右至少 24–40px 安全区；卡片和双栏关系使用 12 列网格表达。</p>
+          </div>
+
+          <div class="grid-demo" aria-label="12 列网格示意">
+            <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span>
+            <span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span>
+          </div>
+          <div class="grid-rules">
+            <div class="grid-rule"><strong>1280</strong>内容最大宽度</div>
+            <div class="grid-rule"><strong>16</strong>默认列间距</div>
+            <div class="grid-rule"><strong>40 / 24</strong>桌面安全边距</div>
+            <div class="grid-rule"><strong>76</strong>顶部导航高度</div>
+          </div>
+        </section>
+
+        <section class="guide-section" id="navigation">
+          <div class="section-head">
+            <span class="section-kicker">Navigation</span>
+            <h2>导航始终轻于内容</h2>
+            <p>顶部导航高 76px，背景为低透明近黑渐变并带 15px 模糊。当前项才出现 42px 深色胶囊和线型图标，普通项保持 36px 纯文字状态。</p>
+          </div>
+
+          <div class="component-stage">
+            <div class="demo-header">
+              <img src="assets/brand/LOGO.svg" alt="多元拾光">
+              <nav class="demo-nav" aria-label="导航组件示例">
+                <a class="is-active" href="#navigation"><img src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+                <a href="#navigation">AIGC</a>
+                <a href="#navigation">模型广场</a>
+                <a href="#navigation">闪念</a>
+                <a href="#navigation">官方教程</a>
+              </nav>
+              <div class="demo-actions">
+                <span class="demo-action activity"><img src="resources/icons/remixicon/svg/Business/megaphone-line.svg" alt="">活动中心</span>
+                <span class="demo-action"><img src="resources/icons/remixicon/svg/Buildings/store-2-line.svg" alt="">AI商城</span>
+                <button class="icon-button" type="button" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-rules">
+            <div class="grid-rule"><strong>当前项</strong>42px 高，深色胶囊，图标 + 文本</div>
+            <div class="grid-rule"><strong>普通项</strong>36px 高，透明背景，文字透明度 64%</div>
+            <div class="grid-rule"><strong>账户态</strong>登录按钮或“积分 + 头像”组合胶囊</div>
+            <div class="grid-rule"><strong>移动</strong>优先横向滚动，不临时删除主导航项</div>
+          </div>
+        </section>
+
+        <section class="guide-section" id="controls">
+          <div class="section-head">
+            <span class="section-kicker">Controls</span>
+            <h2>主动作清晰，次动作克制</h2>
+            <p>按钮最小高度 42px，主操作使用暖金边界或金色实体；次操作使用中性玻璃；文字动作无背景。Hover 不改变组件尺寸。</p>
+          </div>
+
+          <div class="component-grid">
+            <article class="component-stage">
+              <h3>Buttons</h3>
+              <div class="button-row">
+                <button class="ui-button filled" type="button">开始创作</button>
+                <button class="ui-button" type="button">探索模型</button>
+                <button class="ui-button secondary" type="button">申请体验</button>
+                <button class="ui-button ghost" type="button">查看全部 →</button>
+                <button class="ui-button" type="button" disabled>不可用</button>
+              </div>
+            </article>
+
+            <article class="component-stage">
+              <h3>Tabs / segmented control</h3>
+              <div class="segmented" data-segmented>
+                <button class="is-active" type="button">全部</button>
+                <button type="button">图片生成</button>
+                <button type="button">视频生成</button>
+                <button type="button">文本</button>
+              </div>
+            </article>
+
+            <article class="component-stage full">
+              <h3>Chips / metadata</h3>
+              <div class="chip-row" data-chip-group>
+                <button class="chip is-active" type="button">全部</button>
+                <button class="chip" type="button">官方维护</button>
+                <button class="chip" type="button">Prompt</button>
+                <button class="chip" type="button">16 积分起</button>
+                <span class="state-label"><i></i>模型服务在线</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="cards">
+          <div class="section-head">
+            <span class="section-kicker">Cards</span>
+            <h2>卡片随内容而变，不做万能大框</h2>
+            <p>媒体卡突出画面与标题，模型卡突出品牌、能力和价格，课程卡突出封面识别，闪念卡保持接近内容流。共同点是 16px 圆角、低对比边界与 2px 内轻量 Hover。</p>
+          </div>
+
+          <div class="card-showcase">
+            <article class="content-card-demo">
+              <div class="demo-media"><img src="assets/image_assets/15.webp" alt="国风角色创作示例"></div>
+              <div class="demo-card-copy">
+                <span>角色设定 · 国风</span>
+                <h3>国风角色设定</h3>
+                <p>稳定服饰、表情、视角与封面提示词。</p>
+                <div class="demo-card-meta"><span>专业维护</span><span>12 积分起</span></div>
+              </div>
+            </article>
+
+            <article class="model-card-demo">
+              <div class="model-brand-row">
+                <img src="assets/logos/openai.svg" alt="OpenAI">
+                <span>TEXT MODEL</span>
+              </div>
+              <h3>gpt-4.1</h3>
+              <p>长文本 · 多模态理解 · 工具调用</p>
+              <div class="demo-card-meta"><span>文本</span><span>热门</span></div>
+              <div class="model-price"><strong>8</strong><span>积分 / 次</span></div>
+            </article>
+
+            <article class="tutorial-card-demo">
+              <div class="demo-media"><img src="assets/edubanner/1.png" alt="官方教程封面"></div>
+              <div class="demo-card-copy">
+                <span>漫剧生成</span>
+                <h3>第一条漫剧分镜</h3>
+                <p>从 0 到 1 完成创作流程。</p>
+              </div>
+            </article>
+
+            <article class="social-card-demo">
+              <div class="social-card-copy">
+                <div class="social-author">
+                  <img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="创作者头像">
+                  <div><strong>纪川</strong><span>6 分钟前</span></div>
+                </div>
+                <p>用一句复古电脑做主视觉，把“技术”与“自然”只留两个对比元素，画面反而更有记忆点。</p>
+                <div class="social-actions"><span>评论 24</span><span>赞 186</span><span>分享</span></div>
+              </div>
+              <div class="social-card-media"><img src="assets/image_assets/10.webp" alt="闪念作品媒体示例"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="forms">
+          <div class="section-head">
+            <span class="section-kicker">Forms & states</span>
+            <h2>输入不抢内容，Focus 必须明确</h2>
+            <p>输入与选择器高度 48–52px，使用深色玻璃底。Focus 通过暖金边界和外光环表达，不改变尺寸；Placeholder 保持 35–52% 明度。</p>
+          </div>
+
+          <div class="component-grid">
+            <article class="component-stage">
+              <h3>Search</h3>
+              <div class="form-demo">
+                <label class="input-shell">
+                  <img src="resources/icons/remixicon/svg/System/search-line.svg" alt="">
+                  <input type="search" placeholder="搜索模型：如 GPT、图像生成、视频…">
+                </label>
+                <button class="ui-button filled" type="button">搜索模型</button>
+              </div>
+            </article>
+
+            <article class="component-stage">
+              <h3>Creation prompt</h3>
+              <div class="prompt-shell"><span>✦　输入灵感，即刻体验</span><b>↑</b></div>
+            </article>
+
+            <article class="component-stage full">
+              <h3>Interaction states</h3>
+              <div class="state-grid">
+                <div class="state-card"><strong>Default</strong><span>低对比边界，保持安静。</span></div>
+                <div class="state-card focus"><strong>Focus</strong><span>暖金描边 + 4px 外光环。</span></div>
+                <div class="state-card success"><strong>Success</strong><span>成功色只用于状态反馈。</span></div>
+                <div class="state-card disabled"><strong>Disabled</strong><span>降低至 42%，取消位移。</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="patterns">
+          <div class="section-head">
+            <span class="section-kicker">Page patterns</span>
+            <h2>按内容任务选择页面结构</h2>
+            <p>同一设计系统下，五类页面各有最合适的密度和媒体比例。不要把模型广场的数据卡片直接搬到闪念内容流，也不要让教程页使用全屏视频夺走学习入口。</p>
+          </div>
+
+          <div class="pattern-list">
+            <article class="pattern-row">
+              <div class="pattern-name"><span>HOME</span><h3>电影策展</h3></div>
+              <p class="pattern-copy">首屏用框内大媒体建立主题，下一层紧接能力入口，再进入策展内容。创作入口可悬浮，但不得遮挡标题与核心导航。</p>
+              <div class="pattern-specs"><span><b>Hero</b>1280 × 540 约</span><span><b>Flow</b>主题 → 能力 → 内容</span></div>
+            </article>
+            <article class="pattern-row">
+              <div class="pattern-name"><span>AIGC</span><h3>全屏创作</h3></div>
+              <p class="pattern-copy">全视口媒体负责情绪，中心标题和创作器负责行动。向下滚动后切换为专业画布、模板和灵感内容。</p>
+              <div class="pattern-specs"><span><b>Hero</b>100vh 全幅媒体</span><span><b>CTA</b>中央创作器</span></div>
+            </article>
+            <article class="pattern-row">
+              <div class="pattern-name"><span>MODEL</span><h3>编辑型发现</h3></div>
+              <p class="pattern-copy">左侧主张与行动，右侧数据概览。搜索和分类组成同一发现面板，卡片重点呈现品牌、能力、类型和积分价格。</p>
+              <div class="pattern-specs"><span><b>Grid</b>8 + 4 列</span><span><b>Density</b>高信息、低装饰</span></div>
+            </article>
+            <article class="pattern-row">
+              <div class="pattern-name"><span>FLASH</span><h3>双栏社区流</h3></div>
+              <p class="pattern-copy">左栏承载作者、正文、媒体和互动；右栏放发布、活动与教程精选。帖子本身减少外框，回复通过间距与细线建立层级。</p>
+              <div class="pattern-specs"><span><b>Grid</b>8 + 4 列</span><span><b>Rail</b>可视区内跟随</span></div>
+            </article>
+            <article class="pattern-row">
+              <div class="pattern-name"><span>TUTORIAL</span><h3>课程封面网格</h3></div>
+              <p class="pattern-copy">横幅先表达官方可信度与学习任务，分类紧贴横幅下方，课程使用三列 16:9 封面，标题和摘要保持短而可扫读。</p>
+              <div class="pattern-specs"><span><b>Grid</b>3 列课程</span><span><b>Cover</b>16:9 识别优先</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="motion">
+          <div class="section-head">
+            <span class="section-kicker">Motion</span>
+            <h2>短反馈，长内容不晃动</h2>
+            <p>位移动效只用于确认交互关系，媒体内容保持稳定。导航选择和弹层进入可使用品牌缓动；所有动效必须响应 reduced motion。</p>
+          </div>
+
+          <div class="motion-track" aria-label="品牌缓动示意">
+            <i class="motion-dot"></i>
+            <span>cubic-bezier(.16, 1, .3, 1)</span>
+          </div>
+          <div class="motion-rules">
+            <article class="motion-rule"><strong>快速反馈</strong><p><code>160ms ease</code><br>按钮、图标、边界与颜色。</p></article>
+            <article class="motion-rule"><strong>状态切换</strong><p><code>220ms ease</code><br>Tab、筛选、卡片 Hover。</p></article>
+            <article class="motion-rule"><strong>内容进入</strong><p><code>420ms var(--ds-ease)</code><br>弹层、首屏内容和选中导航。</p></article>
+            <article class="motion-rule"><strong>位移边界</strong><p>按钮最多 1px，卡片最多 2–3px；不使用模糊入场。</p></article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="responsive">
+          <div class="section-head">
+            <span class="section-kicker">Responsive</span>
+            <h2>当前以 1280+ 桌面为生产基线</h2>
+            <p>现有五个页面设置了 1280px 最小宽度，主要服务桌面创作与浏览。下面把“当前生产规则”与“新增响应式页面的扩展规则”分开，避免把未来建议误认为现状。</p>
+          </div>
+
+          <div class="spec-table-wrap">
+            <table class="spec-table">
+              <thead><tr><th>Viewport</th><th>当前生产规则</th><th>新增页面扩展规则</th><th>重点</th></tr></thead>
+              <tbody>
+                <tr><td>≥ 1600</td><td>内容最大 1280px 居中，媒体可全幅。</td><td>保持内容行长，不无止境拉宽卡片。</td><td>留白、媒体清晰度</td></tr>
+                <tr><td>1280–1599</td><td>完整导航与账户胶囊；左右安全区 24–40px。</td><td>压缩导航间距，保留全部一级入口。</td><td>桌面主基线</td></tr>
+                <tr><td>900–1279</td><td>现有页面会保持 1280px 并横向浏览。</td><td>新页面可收拢侧栏，双栏改为 7 + 5 或单栏。</td><td>不删核心操作</td></tr>
+                <tr><td>640–899</td><td>当前未作为正式适配范围。</td><td>导航横向滚动，表单单列，网格 2 列。</td><td>触控目标 ≥ 40px</td></tr>
+                <tr><td>&lt; 640</td><td>当前未作为正式适配范围。</td><td>卡片单列、主按钮满宽、弹层贴合视口。</td><td>内容优先、减少装饰</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="guide-section" id="accessibility">
+          <div class="section-head">
+            <span class="section-kicker">Accessibility</span>
+            <h2>暗色界面也要保持清楚和可操作</h2>
+            <p>透明度是层级工具，不应让信息失去可读性。所有状态都需要颜色之外的第二种提示，键盘焦点必须可见。</p>
+          </div>
+
+          <div class="checklist-grid">
+            <article class="check-card"><strong>文字对比</strong><p>正文与背景达到 WCAG AA；低透明辅助文字不承载关键任务。</p></article>
+            <article class="check-card"><strong>焦点可见</strong><p>使用 2px 暖金外轮廓或等效光环，不依赖颜色轻微变化。</p></article>
+            <article class="check-card"><strong>操作尺寸</strong><p>图标按钮与点击目标至少 40 × 40px，胶囊高度至少 36px。</p></article>
+            <article class="check-card"><strong>语义标签</strong><p>纯图标按钮提供 aria-label；装饰图片使用空 alt。</p></article>
+            <article class="check-card"><strong>状态冗余</strong><p>成功、错误和选中态同时使用文字、图标、边界或位置提示。</p></article>
+            <article class="check-card"><strong>减少动态</strong><p>prefers-reduced-motion 下关闭位移、轮播自动切换和装饰动画。</p></article>
+          </div>
+        </section>
+
+        <section class="guide-section" id="decisions">
+          <div class="section-head">
+            <span class="section-kicker">Usage boundary</span>
+            <h2>保持品牌，不制造“暗色后台”</h2>
+            <p>多元拾光的核心不是把所有内容装进深色卡片，而是让创作内容在克制界面中被看见。以下边界用于新页面评审。</p>
+          </div>
+
+          <div class="decision-grid">
+            <article class="decision-card do">
+              <span>DO</span>
+              <strong>用媒体与留白建立主次</strong>
+              <p>让首屏只有一个明确焦点；用 16–48px 间距和渐隐遮罩组织信息。</p>
+            </article>
+            <article class="decision-card dont">
+              <span>DON'T</span>
+              <strong>把每段内容都包进大面板</strong>
+              <p>避免“大框套小框”、高对比描边和传统后台式模块堆叠。</p>
+            </article>
+            <article class="decision-card do">
+              <span>DO</span>
+              <strong>让暖金代表选择和行动</strong>
+              <p>同一视区优先保留一个金色主动作，价格和积分可作为次级金色信息。</p>
+            </article>
+            <article class="decision-card dont">
+              <span>DON'T</span>
+              <strong>同时使用多种高饱和强调色</strong>
+              <p>酸橙与薄荷只服务特定语义，不与暖金争夺主行动层级。</p>
+            </article>
+            <article class="decision-card do">
+              <span>DO</span>
+              <strong>为内容类型选择专用卡片</strong>
+              <p>作品、模型、教程和帖子使用不同信息结构，但共享圆角、边界和状态。</p>
+            </article>
+            <article class="decision-card dont">
+              <span>DON'T</span>
+              <strong>复制一个万能卡片到所有页面</strong>
+              <p>统一不等于相同；先保证任务结构，再复用视觉令牌和交互规则。</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <footer class="guide-footer">
+        <div class="guide-content guide-footer-inner">
+          <div>
+            <img src="assets/brand/LOGO.svg" alt="多元拾光">
+            <p>UI Guide V1.1 · 基于首页、AIGC、模型广场、闪念与官方教程的 1440px 页面采样和现有设计令牌整理。</p>
+          </div>
+          <a class="back-top" href="#overview">返回顶部 ↑</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const navLinks = [...document.querySelectorAll(".guide-nav a")];
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      const guideNav = document.querySelector(".guide-nav");
+      const setActive = (id) => {
+        navLinks.forEach((link) => {
+          const isActive = link.getAttribute("href") === `#${id}`;
+          link.classList.toggle("is-active", isActive);
+          if (isActive && window.innerWidth <= 860 && guideNav) {
+            const navRect = guideNav.getBoundingClientRect();
+            const linkRect = link.getBoundingClientRect();
+            guideNav.scrollTo({
+              left: Math.max(0, guideNav.scrollLeft + linkRect.left - navRect.left - (guideNav.clientWidth - linkRect.width) / 2),
+              behavior: "auto"
+            });
+          }
+        });
+      };
+
+      let activeFrame = 0;
+      const updateActiveSection = () => {
+        activeFrame = 0;
+        const marker = window.innerWidth <= 860 ? 96 : 150;
+        let current = sections[0];
+        sections.forEach((section) => {
+          if (section.getBoundingClientRect().top <= marker) current = section;
+        });
+        if (current) setActive(current.id);
+      };
+      const requestActiveUpdate = () => {
+        if (activeFrame) return;
+        activeFrame = window.requestAnimationFrame(updateActiveSection);
+      };
+      window.addEventListener("scroll", requestActiveUpdate, { passive: true });
+      window.addEventListener("resize", requestActiveUpdate);
+      window.requestAnimationFrame(updateActiveSection);
+
+      document.querySelectorAll("[data-segmented], [data-chip-group]").forEach((group) => {
+        group.addEventListener("click", (event) => {
+          const target = event.target.closest("button");
+          if (!target) return;
+          group.querySelectorAll("button").forEach((button) => button.classList.remove("is-active"));
+          target.classList.add("is-active");
+        });
+      });
+
+      document.querySelectorAll("[data-copy]").forEach((token) => {
+        token.addEventListener("click", async () => {
+          const value = token.dataset.copy;
+          try {
+            await navigator.clipboard.writeText(value);
+          } catch {
+            const helper = document.createElement("textarea");
+            helper.value = value;
+            helper.style.position = "fixed";
+            helper.style.opacity = "0";
+            document.body.appendChild(helper);
+            helper.select();
+            document.execCommand("copy");
+            helper.remove();
+          }
+          token.dataset.copied = "true";
+          window.setTimeout(() => { delete token.dataset.copied; }, 1000);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

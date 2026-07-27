@@ -5,9 +5,10 @@
   <title>多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" href="./assets/GGQ.ttf?v=20260720-ggq-font" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=20260724-featured-title-match-copper-coin-media-skeleton">
+  <link rel="stylesheet" href="./style.css?v=20260727-home-login-modal-v23">
+  <link rel="stylesheet" href="./radius-system.css?v=20260727-radius-system-v2-comment-frame12">
 </head>
-<body class="home-page">
+<body class="home-page is-guest">
   <div class="page">
     <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-index" aria-label="关闭顶部广告">
@@ -27,6 +28,9 @@
         <div class="header-actions">
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <div class="member-account-pill guest-account-pill">
+            <a class="home-login-button" href="#login-modal" data-open-login aria-haspopup="dialog">登录</a>
+          </div>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
@@ -83,6 +87,97 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="login-modal" class="create-modal home-login-modal login-body" data-login-modal-root aria-label="登录" hidden>
+      <a class="modal-backdrop" href="#" data-login-close aria-label="关闭登录弹窗"></a>
+      <section class="login-dialog" data-login-modal role="dialog" aria-modal="true" aria-labelledby="home-login-title">
+        <img class="login-space-background" src="assets/login/bg-top-planet-asteroids-v6.png" alt="">
+        <div
+          class="login-galaxy-layer"
+          data-login-galaxy
+          data-star-speed="0.8"
+          data-density="0.5"
+          data-hue-shift="130"
+          data-glow-intensity="0.1"
+          data-saturation="0.1"
+          data-repulsion-strength="1"
+          data-twinkle-intensity="0.1"
+          data-rotation-speed="0.05"
+          data-auto-center-repulsion="0"
+          aria-hidden="true"
+        ></div>
+
+        <a class="case-detail-close login-close" href="#" data-login-close aria-label="关闭登录弹窗"></a>
+
+        <div class="login-panel" data-login-panel>
+          <section class="login-pane phone-login-pane" data-login-mode="phone" aria-label="手机验证码登录">
+            <div class="login-pane-content">
+              <header class="login-pane-heading">
+                <h1 id="home-login-title">手机验证码<span>登录</span></h1>
+                <p>输入手机号、验证码和邀请码即可登录</p>
+              </header>
+
+              <form class="login-form" data-login-form novalidate>
+                <div class="login-field-stack">
+                  <label class="login-field login-phone-field">
+                    <span class="sr-only">手机号</span>
+                    <input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" placeholder="请输入手机号" aria-label="请输入手机号">
+                  </label>
+
+                  <label class="login-field login-code-field">
+                    <span class="sr-only">验证码</span>
+                    <input name="verification-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="请输入验证码" aria-label="请输入验证码">
+                    <button type="button" data-send-code disabled aria-disabled="true">获取验证码</button>
+                  </label>
+
+                  <label class="login-field">
+                    <span class="sr-only">邀请码</span>
+                    <input name="invite-code" type="text" autocomplete="off" placeholder="请输入邀请码（选填）" aria-label="请输入邀请码，可选填" data-invite-code-field>
+                  </label>
+                </div>
+
+                <button class="button content-remix-button login-submit" type="submit" data-login-complete-target>登录</button>
+                <p class="login-message" data-login-message aria-live="polite"></p>
+              </form>
+            </div>
+          </section>
+
+          <section class="login-pane scan-login-pane" data-login-mode="scan" aria-label="扫码登录">
+            <div class="login-pane-content">
+              <header class="login-pane-heading">
+                <h2>扫码登录</h2>
+                <p>使用 <strong>微信 APP</strong> 扫码登录</p>
+              </header>
+
+              <div class="login-scan-visual">
+                <div class="login-qr-card">
+                  <div class="login-qr-frame" aria-label="微信登录二维码">
+                    <img src="assets/login/qr.png" alt="微信登录二维码">
+                  </div>
+
+                  <img class="login-qr-corner is-top-left" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
+                  <img class="login-qr-corner is-top-right" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
+                  <img class="login-qr-corner is-bottom-left" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
+                  <img class="login-qr-corner is-bottom-right" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
+                </div>
+                <img class="login-astronaut" src="assets/login/ip.png" alt="多元拾光宇航员">
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="login-divider-badge" aria-hidden="true">
+          <img src="resources/icons/remixicon/svg/Others/flashlight-fill.svg" alt="">
+        </div>
+
+        <p class="login-agreement">
+          登录即表示同意
+          <a href="#" data-login-agreement>《用户协议》</a>
+          和
+          <a href="#" data-login-agreement>《隐私政策》</a>
+        </p>
+      </section>
     </section>
 
 
@@ -1504,6 +1599,7 @@
       });
     })();
   </script>
+  <script src="./login-modal.js?v=20260727-home-login-modal-v7" defer></script>
   <script src="./walkthrough.js?v=20260724-detail-comment-motion-media-skeleton" defer></script>
 </body>
 </html>

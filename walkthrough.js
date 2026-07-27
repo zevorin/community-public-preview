@@ -1259,6 +1259,43 @@
     return (scopedLink?.textContent || scopedLink?.getAttribute("href") || "").trim();
   }
 
+  function initInviteHeroTitle() {
+    const title = document.querySelector("[data-invite-hero-split]");
+    if (!title || title.dataset.inviteHeroSplitReady === "true") {
+      return;
+    }
+
+    title.dataset.inviteHeroSplitReady = "true";
+    const label = title.textContent.trim().replace(/\s+/g, " ");
+    let characterIndex = 0;
+    title.setAttribute("aria-label", label);
+
+    const splitTextNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (!node.textContent.trim()) {
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        Array.from(node.textContent).forEach((character) => {
+          const span = document.createElement("span");
+          span.className = character === " " ? "invite-hero-title-space" : "invite-hero-title-char";
+          span.style.setProperty("--invite-char-index", characterIndex++);
+          span.setAttribute("aria-hidden", "true");
+          span.textContent = character === " " ? "\u00a0" : character;
+          fragment.appendChild(span);
+        });
+        node.replaceWith(fragment);
+        return;
+      }
+
+      Array.from(node.childNodes).forEach(splitTextNode);
+    };
+
+    Array.from(title.childNodes).forEach(splitTextNode);
+    title.classList.add("is-split-ready");
+  }
+
   function initInviteCopyActions() {
     if (document.documentElement.dataset.inviteCopyReady === "true") {
       return;
@@ -1287,6 +1324,69 @@
           action.removeAttribute("aria-label");
         }, 1400);
       });
+    });
+  }
+
+  function initInviteBinder() {
+    const form = document.querySelector("[data-invite-binder]");
+    if (!form || form.dataset.inviteBinderReady === "true") {
+      return;
+    }
+
+    form.dataset.inviteBinderReady = "true";
+    const input = form.querySelector("[data-invite-referrer-input]");
+    const feedback = form.querySelector("[data-invite-bind-feedback]");
+    const label = form.querySelector("[data-invite-bind-label]");
+    const button = form.querySelector(".invite-bind-button");
+    const ownCode = document.querySelector(".invite-code-heading strong")?.textContent.trim().toUpperCase() || "";
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!input || !feedback || !button || form.dataset.bindState === "bound") {
+        return;
+      }
+
+      const code = input.value.trim().toUpperCase();
+      input.value = code;
+      input.removeAttribute("aria-invalid");
+      form.dataset.bindState = "idle";
+
+      if (!/^[A-Z0-9]{4,16}$/.test(code)) {
+        input.setAttribute("aria-invalid", "true");
+        form.dataset.bindState = "error";
+        feedback.textContent = "请输入 4–16 位字母或数字邀请码";
+        showContentActionToast("邀请码格式不正确");
+        input.focus();
+        return;
+      }
+
+      if (code === ownCode) {
+        input.setAttribute("aria-invalid", "true");
+        form.dataset.bindState = "error";
+        feedback.textContent = "不能绑定自己的邀请码";
+        showContentActionToast("不能绑定自己的邀请码");
+        input.focus();
+        return;
+      }
+
+      form.dataset.bindState = "bound";
+      input.disabled = true;
+      button.disabled = true;
+      button.setAttribute("aria-label", "已绑定");
+      if (label) {
+        label.textContent = "已绑定";
+      }
+      feedback.textContent = `已绑定邀请人 ${code}，邀请关系不可更改`;
+      showContentActionToast("邀请人绑定成功");
+    });
+
+    input?.addEventListener("input", () => {
+      if (form.dataset.bindState !== "error") {
+        return;
+      }
+      form.dataset.bindState = "idle";
+      input.removeAttribute("aria-invalid");
+      feedback.textContent = "绑定后不可更改，请确认邀请码无误";
     });
   }
 
@@ -2218,7 +2318,9 @@
     initGlidingTabs();
     initResultPromptCopy();
     initContentCardCopy();
+    initInviteHeroTitle();
     initInviteCopyActions();
+    initInviteBinder();
     initDetailActions();
     initDetailCommentLikeActions();
     initDetailCommentComposers();

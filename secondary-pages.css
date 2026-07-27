@@ -184,7 +184,7 @@ body {
 .activity-center-page .activity-card {
   overflow: clip;
   border-color: rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .activity-center-page .activity-card > img {
@@ -234,7 +234,7 @@ body {
 
 .member-store-page .pricing-card {
   min-height: 174px;
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .member-store-page .pricing-card.is-featured {
@@ -319,7 +319,7 @@ body {
 
 .points-detail-page .points-earn-tile {
   min-height: 164px;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 /* Shared modal surface and focus language. */

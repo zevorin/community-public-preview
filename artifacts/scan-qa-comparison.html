@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>扫码登录设计对照</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      padding: 28px;
+      color: #f5f5f5;
+      background: #101114;
+      font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 600;
+    }
+
+    img {
+      display: block;
+      height: 726px;
+      width: auto;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #050607;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <figure>
+    <figcaption>参考图</figcaption>
+    <img src="./login-modal-scan-reference.png" alt="扫码登录参考图">
+  </figure>
+  <figure>
+    <figcaption>当前实现</figcaption>
+    <img src="./login-modal-scan-pane-v17.png" alt="扫码登录当前实现">
+  </figure>
+</body>
+</html>
