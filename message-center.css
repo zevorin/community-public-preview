@@ -1,3 +1,9 @@
+@property --message-title-fade {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 28%;
+}
+
 .message-center-page {
   --message-gold: var(--ds-gold);
   --message-paper: #f6f6f4;
@@ -19,21 +25,59 @@
 
 .message-center-page .message-hero {
   position: relative;
+  isolation: isolate;
   height: 250px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  background-color: #0b0e10;
+  background: #030305;
+}
+
+.message-center-page .message-hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -5px;
   background-image: url("assets/image_assets/message-center-hero-v3.png");
   background-position: right center;
   background-repeat: no-repeat;
   background-size: auto 180%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 27%,
+    rgba(0, 0, 0, 0.2) 35%,
+    rgba(0, 0, 0, 0.72) 47%,
+    #000 58%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 27%,
+    rgba(0, 0, 0, 0.2) 35%,
+    rgba(0, 0, 0, 0.72) 47%,
+    #000 58%,
+    #000 100%
+  );
+  transform: scale(1.012);
+  transform-origin: 76% 50%;
+  animation: message-hero-breathe 12s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .message-center-page .message-hero::after {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 0;
-  background: rgba(2, 4, 6, 0.12);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 3, 5, 0.2) 0%,
+      rgba(3, 3, 5, 0.1) 36%,
+      transparent 64%
+    ),
+    rgba(2, 4, 6, 0.08);
   pointer-events: none;
 }
 
@@ -49,8 +93,11 @@
 }
 
 .message-center-page .message-hero-copy h1 {
+  --message-title-fade: 28%;
+  align-self: flex-start;
+  max-width: 100%;
   margin: 0;
-  color: #ffffff1f;
+  color: rgba(255, 255, 255, 0.2);
   font-family: "Montserrat", "Arial Black", "Helvetica Neue", sans-serif;
   font-size: 82px;
   font-weight: 900;
@@ -58,13 +105,34 @@
   letter-spacing: -0.065em;
   text-transform: uppercase;
   white-space: nowrap;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--message-title-fade),
+    rgba(0, 0, 0, 0.12) calc(var(--message-title-fade) + 18%),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--message-title-fade),
+    rgba(0, 0, 0, 0.12) calc(var(--message-title-fade) + 18%),
+    transparent 100%
+  );
+  animation: message-title-opacity-wave 4.8s ease-in-out infinite;
 }
 
 .message-center-page .message-hero-copy h1 span,
 .message-center-page .message-hero-copy h1 strong {
+  display: inline-block;
   color: inherit;
   font: inherit;
   letter-spacing: inherit;
+  animation: message-copy-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.message-center-page .message-hero-copy h1 strong {
+  animation-delay: 90ms;
 }
 
 .message-center-page .message-hero-copy h2 {
@@ -74,6 +142,7 @@
   font-weight: 760;
   line-height: 1;
   letter-spacing: -0.03em;
+  animation: message-copy-rise 650ms 150ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .message-center-page .message-hero-copy p {
@@ -81,6 +150,7 @@
   color: rgba(246, 246, 244, 0.64);
   font-size: 13px;
   line-height: 1.4;
+  animation: message-copy-rise 650ms 230ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .message-center-page .message-hero-status {
@@ -95,6 +165,7 @@
   font-size: 11px;
   font-weight: 800;
   line-height: 1.15;
+  animation: message-status-pulse 3.6s ease-in-out infinite;
 }
 
 .message-center-page .message-hero-status::after {
@@ -106,6 +177,8 @@
   height: 1px;
   background: rgba(255, 255, 255, 0.42);
   transform: translateX(100%);
+  transform-origin: left center;
+  animation: message-status-line 3.6s ease-in-out infinite;
 }
 
 .message-center-page .message-workspace {
@@ -162,6 +235,12 @@
   height: 34px;
   display: grid;
   place-items: center;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.message-center-page .message-filter:hover .message-filter-icon,
+.message-center-page .message-filter:focus-visible .message-filter-icon {
+  transform: translateX(3px);
 }
 
 .message-center-page .message-filter-icon img {
@@ -230,7 +309,11 @@
   color: inherit;
   background: var(--ds-surface);
   text-decoration: none;
-  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .message-center-page .notification-card[hidden] {
@@ -241,8 +324,16 @@
 .message-center-page .notification-card:focus-visible {
   border-color: var(--ds-line-strong);
   background: var(--ds-surface-hover);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
   outline: 0;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.message-center-page .notification-card.is-entering {
+  animation: message-card-enter 460ms
+    calc(var(--message-order, 0) * 55ms)
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .message-center-page .notification-icon {
@@ -252,10 +343,19 @@
   place-items: center;
   border-radius: 11px;
   background: var(--ds-gold-soft);
+  transition:
+    box-shadow 220ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .message-center-page .notification-icon.is-featured {
   background: var(--message-gold);
+  animation: message-featured-glow 3s ease-in-out infinite;
+}
+
+.message-center-page .notification-card:hover .notification-icon,
+.message-center-page .notification-card:focus-visible .notification-icon {
+  transform: rotate(-2deg) scale(1.04);
 }
 
 .message-center-page .notification-icon img {
@@ -331,6 +431,7 @@
   border-radius: 999px;
   background: var(--message-gold);
   box-shadow: 0 0 12px var(--ds-line-strong);
+  animation: message-unread-pulse 2.4s ease-in-out infinite;
 }
 
 .message-center-page .notification-card:not(.is-unread) .notification-meta b,
@@ -344,6 +445,15 @@
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.62;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.message-center-page .notification-card:hover .notification-arrow,
+.message-center-page .notification-card:focus-visible .notification-arrow {
+  opacity: 0.9;
+  transform: translateX(3px);
 }
 
 .message-center-page .message-empty-state {
@@ -386,6 +496,99 @@
   font-display: swap;
 }
 
+@keyframes message-hero-breathe {
+  0% {
+    transform: scale(1.012) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.032) translate3d(-3px, -1px, 0);
+  }
+}
+
+@keyframes message-copy-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes message-title-opacity-wave {
+  0%,
+  100% {
+    --message-title-fade: 24%;
+  }
+
+  50% {
+    --message-title-fade: 72%;
+  }
+}
+
+@keyframes message-status-pulse {
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes message-status-line {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(100%) scaleX(0.5);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(100%) scaleX(1);
+  }
+}
+
+@keyframes message-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes message-featured-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(244, 201, 93, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(244, 201, 93, 0.2);
+  }
+}
+
+@keyframes message-unread-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 7px rgba(244, 201, 93, 0.28);
+    transform: scale(0.92);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(244, 201, 93, 0.62);
+    transform: scale(1.06);
+  }
+}
+
 @media (max-width: 1365px) {
   .message-center-page .message-hero-copy h1 {
     font-size: 74px;
@@ -399,8 +602,37 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .message-center-page .message-hero::before,
+  .message-center-page .message-hero-copy h1,
+  .message-center-page .message-hero-copy h1 span,
+  .message-center-page .message-hero-copy h1 strong,
+  .message-center-page .message-hero-copy h2,
+  .message-center-page .message-hero-copy p,
+  .message-center-page .message-hero-status,
+  .message-center-page .message-hero-status::after,
+  .message-center-page .notification-card,
+  .message-center-page .notification-card.is-entering,
+  .message-center-page .notification-icon.is-featured,
+  .message-center-page .notification-meta i {
+    animation: none;
+  }
+
   .message-center-page .message-filter,
-  .message-center-page .notification-card {
+  .message-center-page .message-filter-icon,
+  .message-center-page .notification-card,
+  .message-center-page .notification-icon,
+  .message-center-page .notification-arrow {
     transition: none;
+  }
+
+  .message-center-page .message-filter:hover .message-filter-icon,
+  .message-center-page .message-filter:focus-visible .message-filter-icon,
+  .message-center-page .notification-card:hover,
+  .message-center-page .notification-card:focus-visible,
+  .message-center-page .notification-card:hover .notification-icon,
+  .message-center-page .notification-card:focus-visible .notification-icon,
+  .message-center-page .notification-card:hover .notification-arrow,
+  .message-center-page .notification-card:focus-visible .notification-arrow {
+    transform: none;
   }
 }

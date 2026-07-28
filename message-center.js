@@ -15,6 +15,7 @@
 
   const applyFilter = (filter) => {
     let visibleCount = 0;
+    const visibleMessages = [];
 
     filters.forEach((button) => {
       const selected = button.dataset.filter === filter;
@@ -27,11 +28,20 @@
         filter === "all" ||
         (filter === "unread" && message.classList.contains("is-unread")) ||
         message.dataset.category === filter;
+      message.classList.remove("is-entering");
       message.hidden = !matches;
-      if (matches) visibleCount += 1;
+      if (matches) {
+        message.style.setProperty("--message-order", String(visibleCount));
+        visibleMessages.push(message);
+        visibleCount += 1;
+      }
     });
 
     if (emptyState) emptyState.hidden = visibleCount !== 0;
+
+    requestAnimationFrame(() => {
+      visibleMessages.forEach((message) => message.classList.add("is-entering"));
+    });
   };
 
   filters.forEach((button) => {
@@ -39,6 +49,12 @@
   });
 
   messages.forEach((message) => {
+    message.addEventListener("animationend", (event) => {
+      if (event.animationName === "message-card-enter") {
+        message.classList.remove("is-entering");
+      }
+    });
+
     message.addEventListener("click", () => {
       message.classList.remove("is-unread");
       updateUnreadCount();

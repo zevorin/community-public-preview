@@ -418,7 +418,7 @@
   left: 0;
   height: 1px;
   border-radius: 0;
-  background: var(--activity-line);
+  background: rgba(255, 247, 230, 0.5);
 }
 
 .activity-card-footer strong {
