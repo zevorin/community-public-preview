@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>AI 商城视觉对照</title>
+  <style>
+    * { box-sizing: border-box; }
+    html,
+    body {
+      width: 1448px;
+      min-width: 1448px;
+      height: 2188px;
+      margin: 0;
+      overflow: hidden;
+      background: #1b1b1b;
+    }
+    main {
+      display: grid;
+      grid-template-rows: 1086px 1086px;
+      gap: 16px;
+    }
+    img {
+      width: 1448px;
+      height: 1086px;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="./reference.png" alt="参考图">
+    <img src="./implementation-final-v2-1448x1086.png" alt="实现图">
+  </main>
+</body>
+</html>

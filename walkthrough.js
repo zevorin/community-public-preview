@@ -1125,16 +1125,32 @@
     button.dataset.contentCopy = "";
     button.setAttribute("aria-label", `复制${label || "内容"}`);
     button.title = "复制";
+    normalizeContentCopyButton(button);
 
     return button;
   }
 
   function normalizeContentCopyButton(button) {
-    Array.from(button.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE || node.nodeName === "IMG") {
-        node.remove();
-      }
-    });
+    if (button.querySelector(".content-copy-button-icon")) {
+      return;
+    }
+
+    const icon = document.createElement("span");
+    icon.className = "content-copy-button-icon";
+    icon.setAttribute("aria-hidden", "true");
+
+    const copyGlyph = document.createElement("span");
+    copyGlyph.className = "content-copy-button-glyph is-copy";
+
+    const checkGlyph = document.createElement("span");
+    checkGlyph.className = "content-copy-button-glyph is-check";
+
+    const copyLabel = document.createElement("span");
+    copyLabel.className = "content-copy-button-label";
+    copyLabel.textContent = "复制";
+
+    icon.append(copyGlyph, checkGlyph);
+    button.replaceChildren(icon, copyLabel);
   }
 
   function removeContentCopyHead(card, label) {
@@ -1153,17 +1169,27 @@
   }
 
   function ensureContentCopyHead(card) {
-    const label = card.querySelector("strong");
+    if (card.classList.contains("prompt-modal-summary") || card.matches("[data-prompt-model-info], .prompt-model-panel")) {
+      const label = card.querySelector("strong");
+      if (!label) {
+        return;
+      }
+
+      removeContentCopyHead(card, label);
+      return;
+    }
+
+    let label = card.querySelector(":scope > strong, :scope > .prompt-detail-copy-head > strong");
+    if (!label && card.classList.contains("detail-prompt-panel")) {
+      label = document.createElement("strong");
+      label.textContent = "提示词";
+      card.prepend(label);
+    }
     if (!label) {
       return;
     }
 
     const labelText = label.textContent.trim();
-    if (card.classList.contains("prompt-modal-summary") || card.matches("[data-prompt-model-info], .prompt-model-panel")) {
-      removeContentCopyHead(card, label);
-      return;
-    }
-
     let head = card.querySelector(".prompt-detail-copy-head");
     if (!head) {
       const labelHost = label.parentElement;
@@ -1197,8 +1223,18 @@
     }
 
     const card = button.closest(".detail-prompt, .prompt-modal-summary");
-    const content = card?.querySelector("p, span");
-    return content?.textContent.trim() || "";
+    const paragraphs = card
+      ? Array.from(card.children).filter((child) => child.matches("p"))
+      : [];
+    if (paragraphs.length) {
+      return paragraphs
+        .map((paragraph) => paragraph.textContent.trim())
+        .filter(Boolean)
+        .join("\n\n");
+    }
+
+    const summary = card?.querySelector(":scope > span");
+    return summary?.textContent.trim() || "";
   }
 
   function initContentCardCopy() {
@@ -1222,11 +1258,18 @@
 
       event.preventDefault();
       writeClipboardText(value).finally(() => {
+        const copyLabel = button.querySelector(".content-copy-button-label");
+        const originalAriaLabel = button.dataset.contentCopyAriaLabel
+          || button.getAttribute("aria-label")
+          || "复制内容";
+        button.dataset.contentCopyAriaLabel = originalAriaLabel;
         button.dataset.copyState = "copied";
+        button.setAttribute("aria-label", "已复制");
+        button.title = "已复制";
+        if (copyLabel) {
+          copyLabel.textContent = "已复制";
+        }
         window.clearTimeout(button.contentCopyTimer);
-        button.contentCopyTimer = window.setTimeout(() => {
-          button.dataset.copyState = "idle";
-        }, 1200);
       });
     });
   }

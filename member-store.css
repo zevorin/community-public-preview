@@ -1,0 +1,780 @@
+.member-store-page {
+  --store-bg: #030507;
+  --store-paper: #f4f1ea;
+  --store-muted: rgba(244, 241, 234, 0.64);
+  --store-gold: #d8aa52;
+  --store-gold-bright: #f1c968;
+  --store-card: rgba(17, 20, 25, 0.92);
+  min-height: 100vh;
+  font-family: "Montserrat Numerals", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  color: var(--store-paper);
+  background: var(--store-bg) !important;
+}
+
+.member-store-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.member-store-page .shared-home-header {
+  border-bottom-color: transparent;
+  background: rgba(3, 5, 7, 0.72);
+}
+
+.member-store-page .shared-home-header .header-inner {
+  width: 100%;
+}
+
+.member-store-page .shared-home-header .header-actions > a[data-nav-action="activity-center"] {
+  color: var(--store-gold-bright);
+  border-color: rgba(216, 170, 82, 0.28);
+}
+
+.member-store-page .shared-home-header .header-actions > a[data-nav-action="activity-center"]::before {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(63%) saturate(495%) hue-rotate(355deg) brightness(99%) contrast(91%);
+}
+
+.member-store-page .shared-home-header .header-actions > a[data-nav-action="member"].is-active {
+  color: rgba(244, 241, 234, 0.92);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.member-store-page .member-store-main {
+  margin-top: 76px;
+}
+
+.member-store-page .member-store-catalog {
+  position: relative;
+  z-index: 2;
+  width: 1280px;
+  padding: 0 0 34px;
+}
+
+.member-store-page .member-store-hero {
+  position: relative;
+  height: 430px;
+  isolation: isolate;
+}
+
+.member-store-page .member-store-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+.member-store-page .member-store-particles canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.member-store-page .member-store-hero-copy {
+  position: relative;
+  z-index: 3;
+  width: 510px;
+  padding: 70px 0 0 40px;
+}
+
+.member-store-page .member-store-hero-copy h1 {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  color: var(--store-paper);
+  font-family: "WYF_BQT", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, 0.58);
+}
+
+.member-store-page .member-store-hero-copy h1 span,
+.member-store-page .member-store-hero-copy h1 em {
+  color: inherit;
+  font-style: normal;
+}
+
+.member-store-page .member-store-hero-copy h1 > span,
+.member-store-page .member-store-hero-copy h1 > span .member-store-hero-title-char {
+  border-radius: 0 !important;
+  color: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.72) 76%,
+    rgba(255, 255, 255, 0.38) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.member-store-page .member-store-hero-copy h1 em {
+  color: rgba(255, 255, 255, 0.96);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.96);
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, 0.58);
+}
+
+.member-store-page .member-store-hero-copy h1.is-split-ready .member-store-hero-title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.46em) rotate(2deg);
+  filter: blur(5px);
+  animation: memberStoreHeroTitleReveal 980ms both cubic-bezier(0.22, 1, 0.36, 1);
+  animation-delay: calc(80ms + var(--member-store-char-index) * 52ms);
+}
+
+.member-store-page .member-store-hero-copy h1 .member-store-hero-title-space {
+  display: inline-block;
+  width: 0.25em;
+}
+
+.member-store-page .member-store-hero-copy > p {
+  margin: 17px 0 0;
+  color: var(--store-muted);
+  font-size: 16px;
+  font-weight: 420;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.member-store-page .member-store-wallet {
+  display: flex;
+  align-items: flex-end;
+  gap: 54px;
+  margin-top: 37px;
+}
+
+.member-store-page .member-store-wallet > div {
+  display: grid;
+  gap: 6px;
+}
+
+.member-store-page .member-store-wallet span {
+  color: rgba(244, 241, 234, 0.78);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.member-store-page .member-store-wallet strong {
+  color: var(--store-gold);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+}
+
+.member-store-page .member-store-wallet > a {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 122px;
+  min-width: 122px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 1px;
+  padding: 0 10px 0 16px;
+  border: 1px solid rgba(216, 170, 82, 0.72);
+  border-radius: 999px;
+  color: var(--store-gold-bright);
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255, 232, 174, 0.09), transparent 38%),
+    rgba(14, 12, 9, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(85, 52, 8, 0.38),
+    0 10px 28px rgba(0, 0, 0, 0.24);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  font-weight: 400;
+  transition: transform 150ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.member-store-page .member-store-wallet > a img {
+  position: relative;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(63%) saturate(495%) hue-rotate(355deg) brightness(99%) contrast(91%);
+}
+
+.member-store-page .member-store-specular-button__fx {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.72;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 41%,
+    rgba(255, 224, 147, 0.16) 46%,
+    rgba(255, 255, 255, 0.72) 50%,
+    rgba(244, 201, 93, 0.2) 54%,
+    transparent 59%,
+    transparent 100%
+  ) -180% 0 / 260% 100% no-repeat;
+  animation: memberStoreSpecularSweep 4.6s ease-in-out infinite;
+}
+
+.member-store-page .member-store-wallet .member-store-specular-button__label {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+}
+
+.member-store-page .member-store-wallet > a:hover,
+.member-store-page .member-store-wallet > a:focus-visible {
+  color: #fff9ea;
+  border-color: rgba(255, 235, 184, 0.78);
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255, 239, 197, 0.14), transparent 40%),
+    rgba(19, 15, 9, 0.68);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    inset 0 -1px 0 rgba(85, 52, 8, 0.45),
+    0 12px 32px rgba(203, 142, 43, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.member-store-page .member-store-wallet > a:hover img,
+.member-store-page .member-store-wallet > a:focus-visible img {
+  filter: brightness(0) invert(1);
+}
+
+.member-store-page .member-store-wallet > a:active {
+  transform: scale(0.97);
+}
+
+.member-store-page .member-store-hero-visual {
+  position: absolute;
+  top: -45px;
+  right: -20px;
+  z-index: 1;
+  width: 1000px;
+  height: 510px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 84% 76% at 57% 46%, #000 45%, rgba(0, 0, 0, 0.76) 68%, transparent 100%);
+  mask-image: radial-gradient(ellipse 84% 76% at 57% 46%, #000 45%, rgba(0, 0, 0, 0.76) 68%, transparent 100%);
+}
+
+.member-store-page .member-store-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 72% 66% at 57% 46%,
+    transparent 46%,
+    rgba(3, 5, 7, 0.14) 64%,
+    rgba(3, 5, 7, 0.68) 86%,
+    var(--store-bg) 100%
+  );
+}
+
+.member-store-page .member-store-hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+}
+
+.member-store-page .ai-store-lineup {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  gap: 40px;
+  padding: 0 10px;
+}
+
+.member-store-page .ai-store-product-group {
+  display: grid;
+  gap: 18px;
+  padding: 0;
+  border: 0;
+}
+
+.member-store-page .ai-store-group-head {
+  display: grid;
+  grid-template-columns: 15px max-content;
+  gap: 8px;
+  align-items: center;
+}
+
+.member-store-page .ai-store-group-head > img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  filter: none;
+}
+
+.member-store-page .ai-store-group-head h2 {
+  margin: 0;
+  color: rgba(244, 241, 234, 0.86);
+  font-size: 16px;
+  font-weight: 460;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.member-store-page .ai-store-group-head i {
+  display: none;
+}
+
+.member-store-page .ai-store-product-grid,
+.member-store-page .ai-store-product-group .ai-store-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.member-store-page.growth-app-page .ai-store-product,
+.member-store-page .pricing-card {
+  position: relative;
+  min-height: 94px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 8px 12px;
+  align-content: center;
+  padding: 17px 18px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--store-paper);
+  background: var(--store-card);
+  box-shadow: none;
+  transition: border-color 180ms ease, background-color 180ms ease, padding-right 180ms ease, transform 180ms ease;
+}
+
+.member-store-page.growth-app-page .ai-store-product h2 {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: rgba(244, 241, 234, 0.93);
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-store-page.growth-app-page .ai-store-product > strong {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  color: var(--store-gold-bright);
+  font-size: 13px;
+  font-weight: 560;
+  line-height: 1.2;
+}
+
+.member-store-page .ai-store-redeem-link {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  z-index: 2;
+  width: 72px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 1px solid var(--store-gold-bright);
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  color: #171107;
+  background: var(--store-gold-bright);
+  box-shadow: 0 8px 20px rgba(216, 170, 82, 0.14);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  transform: translate(8px, -50%);
+  transition: opacity 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.member-store-page .ai-store-redeem-link::before {
+  content: "去兑换";
+}
+
+.member-store-page .ai-store-redeem-link img {
+  display: none;
+}
+
+.member-store-page .ai-store-product:hover,
+.member-store-page .ai-store-product:focus-within {
+  padding-right: 104px;
+  border-color: transparent;
+  background: var(--store-card);
+  transform: translateY(-2px);
+}
+
+@keyframes memberStoreHeroTitleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes memberStoreSpecularSweep {
+  0%,
+  24% {
+    background-position: -180% 0;
+  }
+
+  68%,
+  100% {
+    background-position: 180% 0;
+  }
+}
+
+.member-store-page .ai-store-product:hover .ai-store-redeem-link,
+.member-store-page .ai-store-product:focus-within .ai-store-redeem-link,
+.member-store-page .ai-store-redeem-link:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  border-color: var(--store-gold-bright);
+  color: #171107;
+  background: var(--store-gold-bright);
+  box-shadow: 0 10px 26px rgba(216, 170, 82, 0.22);
+  outline: none;
+  transform: translate(0, -50%);
+}
+
+.member-store-page .footer-space {
+  height: 20px;
+}
+
+.member-store-page .ai-store-redeem-modal:target {
+  z-index: 220;
+}
+
+.member-store-page .ai-store-redeem-modal {
+  position: fixed;
+  inset: 0;
+  padding: 24px;
+}
+
+.member-store-page .ai-store-redeem-modal .modal-backdrop {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(244, 201, 93, 0.09), transparent 32%),
+    radial-gradient(circle at 86% 88%, rgba(102, 226, 207, 0.065), transparent 30%),
+    rgba(2, 4, 7, 0.48);
+  background-repeat: no-repeat;
+  background-size: 128% 128%, 136% 136%, auto;
+  background-position: 0% 0%, 100% 100%, 0 0;
+  -webkit-backdrop-filter: blur(9px) saturate(0.92) brightness(0.82);
+  backdrop-filter: blur(9px) saturate(0.92) brightness(0.82);
+}
+
+body:not(.home-page) .member-store-page .ai-store-redeem-dialog {
+  width: min(520px, calc(100vw - 40px));
+  padding: 28px;
+  overflow: hidden auto;
+  border: 1px solid rgba(255, 247, 230, 0.11);
+  background:
+    radial-gradient(circle at 70% 16%, rgba(255, 255, 255, 0.025), transparent 25%),
+    #080a0d;
+  box-shadow:
+    0 38px 130px rgba(0, 0, 0, 0.64),
+    0 0 0 1px rgba(244, 201, 93, 0.018),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.member-store-page .ai-store-redeem-dialog::before {
+  content: none;
+}
+
+.member-store-page .ai-store-redeem-modal:target .ai-store-redeem-dialog {
+  animation: memberStoreDialogEnter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.member-store-page .ai-store-redeem-head {
+  min-height: 36px;
+  padding-right: 54px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.member-store-page .ai-store-redeem-head h2 {
+  color: rgba(255, 252, 245, 0.96);
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.member-store-page .ai-store-redeem-head .modal-close-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 3;
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  border-radius: 999px;
+  opacity: 1;
+  color: #e6c184;
+  background:
+    linear-gradient(145deg, rgba(255, 247, 230, 0.08), rgba(102, 226, 207, 0.04)),
+    rgba(5, 7, 11, 0.58);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  -webkit-backdrop-filter: blur(16px) saturate(1.12);
+  backdrop-filter: blur(16px) saturate(1.12);
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.member-store-page .ai-store-redeem-head .modal-close-icon:hover,
+.member-store-page .ai-store-redeem-head .modal-close-icon:focus-visible {
+  color: #fffaf0;
+  border-color: rgba(244, 201, 93, 0.44);
+  background:
+    linear-gradient(145deg, rgba(244, 201, 93, 0.18), rgba(102, 226, 207, 0.08)),
+    rgba(5, 7, 11, 0.72);
+  outline: none;
+  transform: translateY(-1px) rotate(4deg);
+}
+
+.member-store-page .ai-store-redeem-head .modal-close-icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(84%) sepia(37%) saturate(764%) hue-rotate(351deg) brightness(104%) contrast(94%);
+  opacity: 1;
+}
+
+.member-store-page .ai-store-redeem-detail {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.member-store-page .ai-store-redeem-detail > div {
+  min-width: 0;
+  min-height: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.member-store-page .ai-store-redeem-detail > div:first-child,
+.member-store-page .ai-store-redeem-detail > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.member-store-page .ai-store-redeem-detail dt {
+  color: rgba(244, 241, 234, 0.46);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.member-store-page .ai-store-redeem-detail dd {
+  color: rgba(255, 252, 245, 0.92);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.member-store-page .ai-store-redeem-detail > div:first-child dd {
+  font-size: 17px;
+  font-weight: 620;
+}
+
+.member-store-page .ai-store-redeem-detail > div:nth-child(2) dd {
+  color: var(--store-gold-bright);
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.member-store-page .ai-store-redeem-detail > div:last-child dd {
+  color: rgba(244, 241, 234, 0.68);
+}
+
+.member-store-page .ai-store-redeem-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.member-store-page .ai-store-redeem-success .ai-store-redeem-actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.member-store-page .ai-store-redeem-actions .button {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--store-gold-bright);
+  border-radius: 12px;
+  color: #171107;
+  background: var(--store-gold-bright);
+  box-shadow: 0 12px 28px rgba(216, 170, 82, 0.16);
+  font-size: 14px;
+  font-weight: 650;
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.member-store-page .ai-store-redeem-actions .button:hover,
+.member-store-page .ai-store-redeem-actions .button:focus-visible {
+  border-color: #ffe09a;
+  background: #ffe09a;
+  box-shadow: 0 14px 34px rgba(216, 170, 82, 0.24);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.member-store-page .ai-store-redeem-actions .button.secondary {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(244, 241, 234, 0.82);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: none;
+}
+
+.member-store-page .ai-store-redeem-actions .button.secondary:hover,
+.member-store-page .ai-store-redeem-actions .button.secondary:focus-visible {
+  border-color: rgba(241, 201, 104, 0.28);
+  color: var(--store-gold-bright);
+  background: rgba(241, 201, 104, 0.08);
+}
+
+.member-store-page .ai-store-redeem-success p {
+  margin-top: 20px;
+  padding: 17px 18px;
+  border: 1px solid rgba(241, 201, 104, 0.12);
+  border-radius: 12px;
+  color: rgba(244, 241, 234, 0.72);
+  background: rgba(241, 201, 104, 0.045);
+}
+
+body:not(.home-page) .member-store-page .ai-store-record-dialog {
+  width: min(720px, calc(100vw - 40px));
+}
+
+.member-store-page .ai-store-record-summary span {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(244, 241, 234, 0.62);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.member-store-page .ai-store-record-row {
+  border-color: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.member-store-page .ai-store-record-row.is-head {
+  border-color: rgba(241, 201, 104, 0.12);
+  background: rgba(241, 201, 104, 0.055);
+}
+
+@keyframes memberStoreDialogEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1360px) {
+  .member-store-page .member-store-catalog {
+    width: calc(100% - 48px);
+  }
+
+  .member-store-page .member-store-hero-visual {
+    right: -24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member-store-page .member-store-hero-copy h1.is-split-ready .member-store-hero-title-char {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+
+  .member-store-page .member-store-specular-button__fx {
+    animation: none;
+  }
+
+  .member-store-page .member-store-wallet > a,
+  .member-store-page .ai-store-product,
+  .member-store-page .ai-store-redeem-link,
+  .member-store-page .ai-store-redeem-head .modal-close-icon,
+  .member-store-page .ai-store-redeem-actions .button {
+    transition: none;
+  }
+
+  .member-store-page .ai-store-redeem-modal:target .ai-store-redeem-dialog {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  body:not(.home-page) .member-store-page .ai-store-redeem-dialog {
+    width: min(100%, calc(100vw - 24px));
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .member-store-page .ai-store-redeem-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .member-store-page .ai-store-redeem-detail > div:first-child,
+  .member-store-page .ai-store-redeem-detail > div:last-child {
+    grid-column: auto;
+  }
+
+  .member-store-page .ai-store-redeem-success .ai-store-redeem-actions {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">  <title>AI商城 - 多元拾光</title>
+  <meta charset="utf-8">
+  <title>AI商城 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton-comment-frame12">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260723-shell-v1">
   <link rel="stylesheet" href="./radius-system.css?v=20260726-radius-system-v1-comment-frame12">
+  <link rel="stylesheet" href="./member-store.css?v=20260728-midpoint-alpha-title-v1">
+  <link rel="stylesheet" href="./ui-theme.css?v=20260728-ui-guide-v2">
 </head>
-<body>
-  <div class="page growth-detail-page growth-app-page member-store-page" data-page="member-store" style="--growth-hero-image: url('assets/image_assets/17.webp')">
-    <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-member" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>AI商城</span><span class="timer">20时 42分 39秒</span><span>积分兑换 gpt-5-chat-latest、Codex体验卡和闪创AI体验卡</span><span>积分兑换</span><label class="top-campaign-close" for="top-campaign-dismiss-member" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+<body class="home-header-shell">
+  <div class="page growth-detail-page growth-app-page member-store-page" data-page="member-store">
     <header class="site-header shared-home-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -26,7 +26,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
-          <a class="action-link is-active" aria-current="page" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
@@ -36,123 +36,150 @@
       </div>
     </header>
 
-    <main>
-      <section class="app-workspace section">
-        <div class="wide-container member-store-shell">
-          <section id="ai-store-catalog" class="app-card member-plan-board ai-store-hero-card" data-member-section="catalog">
-            <div class="app-card-head">
+    <main class="member-store-main">
+      <section id="ai-store-catalog" class="member-store-catalog wide-container" data-member-section="catalog">
+        <div class="member-store-hero">
+          <div class="member-store-particles" data-member-store-particles aria-hidden="true"></div>
+          <div class="member-store-hero-copy">
+            <h1 data-member-store-hero-split aria-label="用积分兑换 AI产品权益"><span>用积分兑换</span><em>AI产品权益</em></h1>
+            <p>精选 AI 能力与专属体验，助你探索更多可能</p>
+            <div class="member-store-wallet">
               <div>
-                <h1>用积分兑换 AI 产品权益</h1>
+                <span>我的积分</span>
+                <strong>1280</strong>
               </div>
-              <a class="section-link" href="#ai-store-records" data-ai-store-record-entry>兑换记录</a>
+              <a class="member-store-specular-button" href="#ai-store-records" data-ai-store-record-entry>
+                <span class="member-store-specular-button__fx" aria-hidden="true"></span>
+                <span class="member-store-specular-button__label">积分明细</span>
+                <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+              </a>
             </div>
-            <div class="ai-store-lineup" data-ai-store-lineup>
+          </div>
+          <div class="member-store-hero-visual" aria-hidden="true">
+            <img src="assets/image_assets/member-store-hero-blackgold-v1.png" alt="">
+          </div>
+        </div>
+
+        <div class="ai-store-lineup" data-ai-store-lineup>
               <section class="ai-store-product-group" data-ai-store-group="api-relay" aria-label="API中转站">
                 <div class="ai-store-group-head">
-                  <h2>API中转站</h2>
+                  <img src="assets/brand/duoyuan-shiguang-spark.svg" alt="">
+                  <h2>API 中转站</h2>
+                  <i aria-hidden="true"></i>
                 </div>
                 <div class="pricing-grid ai-store-product-grid">
-                  <article class="pricing-card ai-store-product is-featured" data-ai-store-product>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>gpt-5-chat-latest Token</h2>
                     <strong>1200 积分</strong>
-                    <a class="button" href="#redeem-gpt5-token">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-gpt5-token" aria-label="兑换 gpt-5-chat-latest Token"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>gpt-4.1 Token</h2>
                     <strong>520 积分</strong>
-                    <a class="button secondary" href="#redeem-gpt41-token">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-gpt41-token" aria-label="兑换 gpt-4.1 Token"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>gpt-image-2 Token</h2>
                     <strong>760 积分</strong>
-                    <a class="button secondary" href="#redeem-gpt-image-token">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-gpt-image-token" aria-label="兑换 gpt-image-2 Token"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>text-embedding-3-large Token</h2>
                     <strong>880 积分</strong>
-                    <a class="button secondary" href="#redeem-embedding-token">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-embedding-token" aria-label="兑换 text-embedding-3-large Token"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                 </div>
               </section>
 
               <section class="ai-store-product-group" data-ai-store-group="mirror-site" aria-label="镜像站">
                 <div class="ai-store-group-head">
+                  <img src="assets/brand/duoyuan-shiguang-spark.svg" alt="">
                   <h2>镜像站</h2>
+                  <i aria-hidden="true"></i>
                 </div>
                 <div class="pricing-grid ai-store-product-grid">
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>多元探索网页体验卡</h2>
                     <strong>100 积分</strong>
-                    <a class="button secondary" href="#redeem-mirror-day">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-mirror-day" aria-label="兑换多元探索网页体验卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>Codex体验卡</h2>
                     <strong>200 积分</strong>
-                    <a class="button secondary" href="#redeem-codex-card">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-codex-card" aria-label="兑换 Codex 体验卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>多元探索网页月卡</h2>
                     <strong>360 积分</strong>
-                    <a class="button secondary" href="#redeem-mirror-month">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-mirror-month" aria-label="兑换多元探索网页月卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>多元探索网页加量包-周卡</h2>
                     <strong>480 积分</strong>
-                    <a class="button secondary" href="#redeem-mirror-week-pack">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-mirror-week-pack" aria-label="兑换多元探索网页加量包周卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                 </div>
               </section>
 
               <section class="ai-store-product-group" data-ai-store-group="flash-create-ai" aria-label="闪创AI">
                 <div class="ai-store-group-head">
-                  <h2>闪创AI</h2>
+                  <img src="assets/brand/duoyuan-shiguang-spark.svg" alt="">
+                  <h2>闪创 AI</h2>
+                  <i aria-hidden="true"></i>
                 </div>
                 <div class="pricing-grid ai-store-product-grid">
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>闪创AI 体验小时卡</h2>
                     <strong>180 积分</strong>
-                    <a class="button secondary" href="#redeem-flash-hour">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-flash-hour" aria-label="兑换闪创 AI 体验小时卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>闪创AI 体验日卡</h2>
                     <strong>260 积分</strong>
-                    <a class="button secondary" href="#redeem-flash-day">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-flash-day" aria-label="兑换闪创 AI 体验日卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>闪创AI 体验周卡</h2>
                     <strong>680 积分</strong>
-                    <a class="button secondary" href="#redeem-flash-week">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-flash-week" aria-label="兑换闪创 AI 体验周卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>闪创AI 体验月卡</h2>
                     <strong>900 积分</strong>
-                    <a class="button secondary" href="#redeem-flash-month">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-flash-month" aria-label="兑换闪创 AI 体验月卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
+                </div>
+              </section>
+
+              <section class="ai-store-product-group" data-ai-store-group="manga-production" aria-label="漫剧制作">
+                <div class="ai-store-group-head">
+                  <img src="assets/brand/duoyuan-shiguang-spark.svg" alt="">
+                  <h2>漫剧制作</h2>
+                  <i aria-hidden="true"></i>
+                </div>
+                <div class="pricing-grid ai-store-product-grid">
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>漫剧制作小时卡</h2>
                     <strong>240 积分</strong>
-                    <a class="button secondary" href="#redeem-manga-hour">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-manga-hour" aria-label="兑换漫剧制作小时卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>漫剧制作日卡</h2>
                     <strong>320 积分</strong>
-                    <a class="button secondary" href="#redeem-manga-day">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-manga-day" aria-label="兑换漫剧制作日卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>漫剧制作周卡</h2>
                     <strong>420 积分</strong>
-                    <a class="button secondary" href="#redeem-manga-week">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-manga-week" aria-label="兑换漫剧制作周卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                   <article class="pricing-card ai-store-product" data-ai-store-product>
                     <h2>漫剧制作月卡</h2>
                     <strong>560 积分</strong>
-                    <a class="button secondary" href="#redeem-manga-month">去兑换</a>
+                    <a class="ai-store-redeem-link" href="#redeem-manga-month" aria-label="兑换漫剧制作月卡"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
                   </article>
                 </div>
               </section>
-            </div>
-          </section>
-
         </div>
       </section>
     </main>
@@ -432,5 +459,6 @@
 <div class="footer-space"></div>
   </div>
   <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
+  <script src="./member-store.js?v=20260728-redeem-pill-particle-size-v1" defer></script>
 </body>
 </html>
