@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton-comment-frame12">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260723-shell-v1">
-  <link rel="stylesheet" href="./invite.css?v=20260729-invite-padding-align-v37">
+  <link rel="stylesheet" href="./invite.css?v=20260730-invite-reward-divider-v42">
   <link rel="stylesheet" href="./radius-system.css?v=20260729-radius-system-v4-invite-cards">
 </head>
 <body class="invite-page-body">
@@ -162,10 +162,10 @@
 
       <section id="invite-records" class="section invite-record-screen invite-records-section" aria-labelledby="records-title">
         <div class="wide-container">
-          <div class="invite-record-head">
-            <div>
-              <h2 id="records-title">你带来的创作回响</h2>
-              <p>好友完成注册、互动和首次发布后，积分将自动进入账户，进度会同步更新在这里。</p>
+          <div class="invite-record-head case-section-head invite-home-style-head">
+            <div class="case-section-title">
+              <h2 id="records-title"><span>邀请</span>记录</h2>
+              <span class="case-section-kicker">INVITATION RECORDS</span>
             </div>
             <a class="invite-rules-all-link" href="#invite-rules-modal" data-invite-rule-modal-entry aria-label="查看完整邀请规则">
               <span>查看完整规则</span>
@@ -182,13 +182,8 @@
                 <strong>4 位好友</strong>
               </div>
 
-              <div class="invite-record-list-head" aria-hidden="true">
-                <span>创作者</span>
-                <span>邀请进度</span>
-                <span>获得积分</span>
-              </div>
               <div class="invite-record-list" aria-label="好友邀请进度">
-                <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
+                <article class="invite-record-row">
                   <img src="assets/image_assets/27.webp" alt="">
                   <strong>林舒<time datetime="2026-06-28T14:20">06-28 14:20 邀请</time></strong>
                   <span class="invite-record-stage">
@@ -199,8 +194,8 @@
                     </span>
                   </span>
                   <em>+90</em>
-                </a>
-                <a class="invite-record-row" href="./aigc.html" data-invite-record>
+                </article>
+                <article class="invite-record-row">
                   <img src="assets/image_assets/28.webp" alt="">
                   <strong>青梧<time datetime="2026-06-28T11:05">06-28 11:05 邀请</time></strong>
                   <span class="invite-record-stage">
@@ -211,8 +206,8 @@
                     </span>
                   </span>
                   <em>+40</em>
-                </a>
-                <a class="invite-record-row" href="./aigc.html" data-invite-record>
+                </article>
+                <article class="invite-record-row">
                   <img src="assets/image_assets/29.webp" alt="">
                   <strong>木寻<time datetime="2026-06-27T19:40">06-27 19:40 邀请</time></strong>
                   <span class="invite-record-stage">
@@ -223,8 +218,8 @@
                     </span>
                   </span>
                   <em>+10</em>
-                </a>
-                <a class="invite-record-row" href="./campaign-detail.html" data-invite-record>
+                </article>
+                <article class="invite-record-row">
                   <img src="assets/image_assets/4.webp" alt="">
                   <strong>阿澄<time datetime="2026-06-27T16:18">06-27 16:18 邀请</time></strong>
                   <span class="invite-record-stage">
@@ -235,7 +230,7 @@
                     </span>
                   </span>
                   <em>+90</em>
-                </a>
+                </article>
               </div>
             </section>
 
@@ -275,16 +270,6 @@
             </aside>
           </div>
 
-          <div class="invite-completion-bridge">
-            <div class="invite-completion-message">
-              <img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt="">
-              <div>
-                <strong>邀请好友一起创作，积分奖励会自动累计</strong>
-                <p>好友完成全部三个阶段，单个好友最高可为你带来 90 积分。</p>
-              </div>
-            </div>
-            <a class="button" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">复制邀请链接</a>
-          </div>
         </div>
       </section>
     </main>
