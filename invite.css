@@ -1367,7 +1367,7 @@ body.invite-page-body .invite-copy-button:focus-visible {
   margin-top: 20px;
   color: rgba(255, 252, 244, 0.64);
   font-size: 14px;
-  font-weight: 420;
+  font-weight: 400;
   line-height: 1.72;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.72);
   animation: inviteHeroRise 820ms 150ms both cubic-bezier(0.22, 1, 0.36, 1);
@@ -1804,10 +1804,10 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-panel-head {
+  padding-right: 32px;
+  padding-left: 32px;
   border-bottom-color: rgba(217, 255, 140, 0.13);
-  background:
-    linear-gradient(110deg, rgba(217, 255, 140, 0.12), rgba(217, 255, 140, 0.045) 58%, rgba(225, 190, 113, 0.05)),
-    #0c1016;
+  background: transparent;
 }
 
 .invite-panel-head span {
@@ -1821,13 +1821,15 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-record-list-head {
-  padding-right: 22px;
-  padding-left: 22px;
+  grid-template-columns: 42px minmax(120px, 0.7fr) minmax(360px, 1.7fr) 64px;
+  padding-right: 32px;
+  padding-left: 32px;
   background: #080a0e;
 }
 
 .invite-record-list-head span:nth-child(2) {
   width: min(360px, 100%);
+  justify-self: start;
   text-align: center;
 }
 
@@ -1837,8 +1839,8 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-records-section .invite-record-row {
-  padding-right: 22px;
-  padding-left: 22px;
+  padding-right: 32px;
+  padding-left: 32px;
   background: #080a0e;
 }
 
@@ -1887,6 +1889,8 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-records-section .invite-record-dashboard .invite-overview-stats div {
+  padding-right: 32px;
+  padding-left: 32px;
   background: #080a0e;
 }
 
@@ -1907,16 +1911,21 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-stats-column .invite-record-dashboard .invite-period-summary {
+  padding: 14px 32px 16px;
   background: #080a0e;
 }
 
 .invite-stats-column .invite-record-dashboard .invite-period-record {
-  border-color: rgba(151, 169, 178, 0.11);
-  background: #0b0e13;
+  padding-right: 0;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .invite-stats-column .invite-record-dashboard .invite-period-record + .invite-period-record {
-  border-color: rgba(151, 169, 178, 0.11);
+  border: 0;
 }
 
 .invite-period-record progress,
@@ -1945,7 +1954,10 @@ body.invite-page-body .invite-copy-button:focus-visible {
 }
 
 .invite-records-section .invite-completion-bridge {
+  column-gap: 32px;
+  padding: 22px 32px;
   border-color: rgba(233, 199, 122, 0.24);
+  border-radius: var(--radius-card, 16px);
 }
 
 @media (max-width: 980px) {
@@ -2370,6 +2382,98 @@ body.invite-page-body .invite-copy-button {
   }
 }
 
+/* Match the model plaza “探索模型” specular action. */
+.invite-primary,
+body.invite-page-body .invite-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: auto;
+  min-width: 132px;
+  min-height: 44px;
+  height: 44px;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 224, 147, 0.46);
+  border-radius: 12px;
+  color: #f9d98f;
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255, 232, 174, 0.09), transparent 38%),
+    rgba(14, 12, 9, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(85, 52, 8, 0.38),
+    0 10px 28px rgba(0, 0, 0, 0.24);
+  font-size: 14px;
+  font-weight: 400;
+  text-shadow: none;
+  backdrop-filter: blur(10px);
+  transition: transform 150ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.invite-primary-shine {
+  display: block;
+  opacity: 0.72;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 41%,
+    rgba(255, 224, 147, 0.16) 46%,
+    rgba(255, 255, 255, 0.72) 50%,
+    rgba(244, 201, 93, 0.2) 54%,
+    transparent 59%,
+    transparent 100%
+  ) -180% 0 / 260% 100% no-repeat;
+}
+
+.invite-primary img,
+body.invite-page-body .invite-primary img {
+  width: 17px;
+  height: 17px;
+  filter: brightness(0) saturate(100%) invert(86%) sepia(39%) saturate(713%) hue-rotate(348deg) brightness(106%) contrast(95%);
+}
+
+.invite-primary:hover,
+.invite-primary:focus-visible,
+body.invite-page-body .invite-primary:hover,
+body.invite-page-body .invite-primary:focus-visible {
+  border-color: rgba(255, 235, 184, 0.78);
+  color: #fff9ea;
+  background:
+    radial-gradient(circle at 32% 18%, rgba(255, 239, 197, 0.14), transparent 40%),
+    rgba(19, 15, 9, 0.68);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    inset 0 -1px 0 rgba(85, 52, 8, 0.45),
+    0 12px 32px rgba(203, 142, 43, 0.12);
+  transform: translateY(-1px);
+}
+
+.invite-primary:active,
+body.invite-page-body .invite-primary:active {
+  transform: scale(0.97);
+}
+
+.invite-completion-message {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.invite-completion-message > img {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  filter: brightness(0) saturate(100%) invert(85%) sepia(39%) saturate(724%) hue-rotate(349deg) brightness(103%) contrast(92%);
+}
+
+.invite-completion-message > div {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+
 /* Match the AIGC page's “全部模板” action. */
 .invite-records-section .invite-rules-all-link {
   min-height: 46px;
@@ -2448,5 +2552,22 @@ body.invite-page-body .invite-copy-button {
   .invite-records-section .invite-rules-all-link i,
   .invite-records-section .invite-rules-all-link img {
     transition: none;
+  }
+}
+
+/* Desktop hero positioning. */
+@media (min-width: 981px) {
+  .invite-copy {
+    margin-left: 80px;
+  }
+
+  .invite-code-card {
+    transform: translateX(152px);
+  }
+
+  .invite-astronaut {
+    top: -26px;
+    z-index: 1;
+    right: max(-146px, calc((100vw - 1440px) / 2 - 78px));
   }
 }

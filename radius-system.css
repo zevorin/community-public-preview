@@ -154,17 +154,13 @@
   border-radius: var(--radius-control) !important;
 }
 
-/*
- * Invite data panels use one continuous 24px outer curve. Their tinted header
- * only owns the top corners, preventing the black crescent caused by two
- * different overlapping radii.
- */
+/* Invite data panels follow the UIguide standard 16px content-card radius. */
 body.invite-page-body :is(.invite-progress-column, .invite-stats-column) {
-  border-radius: var(--radius-large) !important;
+  border-radius: var(--radius-card) !important;
 }
 
 body.invite-page-body .invite-panel-head {
-  border-radius: var(--radius-large) var(--radius-large) 0 0 !important;
+  border-radius: var(--radius-card) var(--radius-card) 0 0 !important;
 }
 
 /* Invite entry and copy controls follow the pill-shaped comment composer. */

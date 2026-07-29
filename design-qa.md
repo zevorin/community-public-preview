@@ -1,3 +1,344 @@
+# 发布闪念 UIguide 按钮状态设计 QA
+
+- Source visual truth: `qa/uiguide-controls-v10-source.png`（`UIguide.html#controls` 浏览器实拍）
+- Implementation screenshot: `qa/flash-compose-v10-final.png`
+- Upload-hover verification: `qa/flash-compose-v10-upload-hover.png`
+- Full-view comparison evidence: `qa/flash-compose-v10-comparison.png`
+- Source pixels / CSS size: `1280 × 720` pixels / `1280 × 720` CSS px
+- Implementation pixels / CSS size: `1280 × 720` pixels / `1280 × 720` CSS px
+- Comparison pixels: `2560 × 720`
+- Density normalization: none; source and implementation are native 1:1 captures
+- State: UIguide “按钮与筛选”规范与发布闪念空内容默认态；另验证上传文件选择、内容启用和发布成功状态
+
+## Full-view comparison evidence
+
+The combined source/implementation image verifies the same UIguide control language: warm-gold primary action, restrained neutral-glass secondary action, pill action geometry, low-contrast borders, and hover feedback that does not change component dimensions. The modal remains visually stable while the four affected controls adopt the guide’s shorter `160ms` border, shadow, background, and `1px` lift transitions.
+
+## Focused comparison evidence
+
+The complete affected controls are readable at native size in the implementation capture, so no additional crop is needed. Browser geometry confirms the close button remains `40 × 40px`, upload remains `104 × 104px`, cancel remains `92 × 42px`, and publish remains `132 × 42px`. Before and after publish, the publish button stays `132 × 42px` with `transform: none`. After exercising the upload file chooser, there are zero `.flash-kinetic-ripple` nodes and zero `[data-kinetic-control]` nodes.
+
+## Required fidelity surfaces
+
+- Fonts and typography: existing UIguide typography is unchanged; button text weights and labels remain stable.
+- Spacing and layout rhythm: all four controls preserve their fixed geometry. Hover may translate a control by `1px` but never changes its width or height.
+- Colors and visual tokens: close and cancel use UIguide neutral glass with warm-gold hover border/shadow; publish retains the UIguide filled warm-gold gradient; upload retains its square media surface and gold affordance.
+- Image quality and asset fidelity: the close and upload icons continue using project-local Remix SVGs; no generated or substitute icon was introduced.
+- Copy and content: button labels, helper copy, and modal content are unchanged.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the requested button-state scope.
+
+## Comparison history
+
+1. Earlier state
+   - Finding: close used `scale(0.92)` on press; upload, cancel, and publish used `scale(0.97)`. All four also received expanding click ripples and magnetic pointer translation, which compounded the perceived enlargement.
+2. UIguide correction
+   - Fix: removed all press-time scale transforms, Kinetics ripple nodes, and magnetic pointer listeners. Close, cancel, and publish now return to baseline on press with only restrained shadow changes. Upload has no `:active` declaration, so pressing it adds no state beyond its existing hover treatment.
+   - Post-fix evidence: `qa/flash-compose-v10-final.png`, `qa/flash-compose-v10-comparison.png`, browser geometry, and zero ripple/kinetic-node checks.
+
+## Interaction and runtime checks
+
+- Upload control opens the native file chooser and remains exactly `104 × 104px`.
+- Entering content enables the publish action.
+- Clicking publish keeps the action exactly `132 × 42px`, restores `transform: none`, and reports “闪念已发布”.
+- Static verification confirms no affected active selector contains `scale()`.
+- Browser console errors and warnings: none.
+- JavaScript syntax and whitespace validation: passed.
+
+final result: passed
+
+---
+
+# AI 商城积分面板第 3 稿设计 QA
+
+- Selected visual source: `qa/member-store-v4/selected-wallet-panel-option-3.png`
+- Surface implementation: CSS radial and linear gradients; no image asset
+- Implementation screenshot: `qa/member-store-v4/implementation-wallet-css-final.png`
+- Source pixels: `1503 × 1046`
+- Implementation viewport/pixels: `1280 × 720` CSS px / `1280 × 720` pixels
+- Browser device pixel ratio: `2`; screenshot output is normalized to CSS-pixel dimensions
+- State: clean page load at the top of `member-store.html`, animations initialized, no navigation item selected
+
+## Full-view comparison evidence
+
+The final page keeps the established hero title, copy, artwork, particle layer, wallet text, and points-detail action unchanged. The selected dark-and-warm direction is implemented entirely in CSS: one unified charcoal translucent surface, restrained smoked-gold warmth on the balance side, a darker neutral action side, and no hard divider.
+
+## Focused comparison evidence
+
+The live browser measurement confirms the panel width differs from the first title line's rendered glyph width by only `0.164px`. The reduced panel height keeps the balance and points-detail action vertically centered without changing their typography or control dimensions.
+
+## Required fidelity surfaces
+
+- Fonts and typography: existing wallet label, `1,280` value, and points-detail button typography are preserved.
+- Spacing and layout rhythm: the panel computes to `362 × 104px`, uses `16px 18px 18px 32px` padding, and matches the `361.836px` rendered width of the first title line.
+- Colors and visual tokens: layered CSS gradients create the warm-left/dark-right transition, with a low-opacity warm-white border and subtle inset highlight.
+- Image quality and asset fidelity: no image is loaded or rendered for the wallet background.
+- Copy and content: the hero subtitle has been removed as requested; wallet and product copy remain unchanged.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the selected Option 3 scope.
+
+## Interaction and runtime checks
+
+- Points-detail action opens the centered `兑换记录` dialog and closes back to the catalog anchor.
+- Particle renderer reports ready and remains behind the hero artwork.
+- Wallet geometry: `362 × 104px`; title-width delta: `0.164px`; border width: `0`; border radius: `16px`; horizontal overflow: none.
+- Active navigation item count: `0`.
+- JavaScript syntax and whitespace validation: passed.
+
+final result: passed
+
+---
+
+# 发布闪念参考交互状态设计 QA
+
+- Close-button source: `qa/flash-compose-v9-reference-close-focus.png`（首页作品详情关闭按钮）
+- Navigation-button source: `qa/flash-compose-v9-reference-nav-focus.png`（首页主导航按钮）
+- Implementation default: `qa/flash-compose-v9-final.png`
+- Implementation close focus/hover-equivalent: `qa/flash-compose-v9-close-focus.png`
+- Implementation action focus/hover-equivalent: `qa/flash-compose-v9-actions-focus.png`
+- Full-view before/after comparison: `qa/flash-compose-v9-full-comparison.png`
+- Focused close comparison: `qa/flash-compose-v9-close-comparison.png`
+- Focused action comparison: `qa/flash-compose-v9-actions-comparison.png`
+- Viewport and pixels: all captures use `1280 × 720` CSS px / `1280 × 720` pixels
+- Density normalization: none; source and implementation captures are native 1:1
+- State: source and implementation controls use keyboard `:focus-visible`, which shares the same declaration block as `:hover`; implementation default and post-publish states were also verified
+
+## Full-view comparison evidence
+
+The full-view comparison confirms the existing modal composition, control sizing, editor height, and footer placement are unchanged. Only the requested interaction styling changed: the close control now has the same gold-glass resting treatment as the homepage detail close, while the action controls retain their existing semantic colors.
+
+## Focused comparison evidence
+
+The close comparison shows the homepage detail reference and flash composer using the same gold/cyan glass hover treatment. Browser-computed values match on the defining motion and state tokens: `translateY(-1px) rotate(4deg)`, gold `0.44` border, the same two-layer background, and the same light icon filter. The action comparison confirms the add-media control uses the navigation rhythm of a `1px` hover lift; cancel and publish use the same lift, and all three use `scale(0.97)` on press.
+
+## Required fidelity surfaces
+
+- Fonts and typography: unchanged; this pass modifies only interaction states.
+- Spacing and layout rhythm: modal geometry and button dimensions are unchanged. Hover moves controls by exactly `-1px`, matching navigation.
+- Colors and visual tokens: close-button hover/focus uses the homepage detail gold/cyan glass tokens. Add, cancel, and publish preserve their established semantic surfaces while adopting navigation motion and press feedback.
+- Image quality and asset fidelity: close continues using the project-local Remix `System/close-line.svg`; no generated or substitute asset was introduced.
+- Copy and content: unchanged.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the requested reference-state mapping.
+
+## Comparison history
+
+1. Reference extraction
+   - Homepage detail close reference: hover/focus lifts `1px`, rotates `4deg`, strengthens the gold border/background, and active press scales to `0.92`.
+   - Main navigation reference: hover/focus lifts `1px`; active press returns to the baseline and scales to `0.97`.
+
+2. State mapping
+   - Earlier implementation: close used a generic scale/inner-icon rotation; add-media lifted `2px`; footer actions had no press scale.
+   - Fix: mapped the homepage detail close tokens and transforms to `.flash-compose-close`, then mapped navigation lift/press transforms to add-media, cancel, and publish.
+   - Post-fix evidence: both focused comparison images and the browser-computed transform checks.
+
+## Interaction and runtime checks
+
+- Close focus/hover-equivalent transform: identical to source `translateY(-1px) rotate(4deg)`.
+- Close active selector: `translateY(0) scale(0.92)`.
+- Add-media, cancel, and publish focus/hover-equivalent transform: `translateY(-1px)`.
+- Add-media, cancel, and publish active selectors: `translateY(0) scale(0.97)`.
+- Publishing still uses no additional keyframe animation; after click, `animation-name`, `transform`, and `scale` return to none.
+- Existing dialog behavior, disabled publish state, and content enablement remain intact.
+- Horizontal and vertical overflow: none at `1280 × 720`.
+- Browser console errors and warnings: none.
+- JavaScript syntax and whitespace validation: passed.
+
+final result: passed
+
+---
+
+# 发布闪念尺寸、对齐与按钮反馈设计 QA
+
+- Scoped source visual baseline: `qa/flash-compose-controls-final.png`
+- Original modal source: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-38bb788d-676e-4ecd-bd52-40a051c35f4c.png`
+- User specification: 上传按钮与媒体均为 `104 × 104px`；话题删除图标上下居中；内容输入框增高；取消和发布按钮点击时不缩放
+- Implementation screenshot: `qa/flash-compose-controls-v8-final.png`
+- Full-view before/after comparison: `qa/flash-compose-controls-v8-comparison.png`
+- Baseline viewport/pixels: `1440 × 1000` CSS px / `1440 × 1000` pixels
+- Implementation viewport/pixels: `1280 × 720` CSS px / `1280 × 720` pixels
+- Density normalization: baseline scaled proportionally to `720px` height; implementation retained at native `1280 × 720`
+- State: modal open with content, one added topic, one uploaded image, and enabled footer actions
+
+## Full-view comparison evidence
+
+The combined before/after view confirms the requested density correction without changing the established two-column composition. In the implementation, the add-media control and uploaded image form a consistent pair of equal square tiles. The taller editor restores more writing space while the footer remains fully visible at the compact `1280 × 720` viewport.
+
+## Focused comparison evidence
+
+The complete controls are readable in the implementation capture, and browser geometry supplies the precision check: both media controls compute to exactly `104 × 104px`; the topic remove button computes to `20 × 20px`, its local SVG to `12 × 12px`, and their vertical-center delta is `0px`. During publishing, the submit button computes to `animation-name: none`, `transform: none`, and `scale: none`.
+
+## Required fidelity surfaces
+
+- Fonts and typography: existing UIguide heading, label, helper, and action typography remains unchanged. The taller editor changes only available writing space.
+- Spacing and layout rhythm: the media add control and preview now share an exact 1:1 frame. The editor computes to `230px` at the normal desktop target and `176px` at the compact-height desktop target while preserving the footer.
+- Colors and visual tokens: black-gold surfaces, borders, focus states, and status colors remain unchanged.
+- Image quality and asset fidelity: uploaded images continue using `object-fit: cover` inside the square frame. The topic remove affordance now uses the project-local `System/close-line.svg`.
+- Copy and content: all established modal copy and the requested topic placeholder remain unchanged.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the four requested corrections.
+
+## Comparison history
+
+1. Proportion and writing-space correction
+   - Earlier finding: the add-media control was `164 × 84px`, while uploaded images were square; compact viewports reduced both media tiles to `80px` and the editor to `120px`.
+   - Fix: unified add and uploaded media at `104 × 104px`, removed the compact media override, increased the normal editor clamp, and raised the compact editor to `176px`.
+
+2. Alignment and press-feedback correction
+   - Earlier finding: the text glyph “×” was visually baseline-dependent, and publishing ran a spring animation that reached `scale(1.04)`.
+   - Fix: replaced the glyph with the local `close-line.svg`, centered it with a fixed grid, removed the publishing scale animation, and explicitly set both footer actions to no transform on `:active`.
+   - Post-fix evidence: `qa/flash-compose-controls-v8-final.png` and browser-computed center/animation checks.
+
+## Interaction and runtime checks
+
+- Real project image upload tested successfully.
+- Add-media and uploaded-media dimensions: both `104 × 104px`.
+- Topic Enter-to-add tested; remove icon vertical-center delta: `0px`.
+- Publishing state tested; submit animation and transform: none.
+- Cancel action computed animation, transform, and scale: none.
+- Compact desktop: editor `176px`, footer visible, dialog has no overflow.
+- Normal desktop: editor `230px`, dialog has no overflow.
+- Mobile `390 × 844`: add-media control remains `104 × 104px`, editor expands to `203px`, and horizontal overflow is absent.
+- Browser console errors and warnings: none.
+- JavaScript syntax and whitespace validation: passed.
+
+final result: passed
+
+---
+
+# 发布闪念控件修正设计 QA
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-38bb788d-676e-4ecd-bd52-40a051c35f4c.png`
+- User specification: 发布按钮仅显示“发布闪念”且点击后不变形；媒体缩略图为正方形；话题空状态提示为“输入话题后回车添加，最多添加5个”
+- Implementation screenshot: `qa/flash-compose-controls-final.png`
+- Mobile verification screenshot: `qa/flash-compose-controls-mobile.png`
+- Full-view comparison: `qa/flash-compose-controls-comparison.png`
+- Desktop viewport and implementation pixels: `1440 × 1000` CSS px / `1440 × 1000` pixels
+- Mobile viewport and implementation pixels: `390 × 844` CSS px / `390 × 844` pixels
+- Source pixels: `1612 × 1616`
+- Density normalization: source scaled proportionally to `1000px` height and placed beside the native-density desktop capture
+- State: modal open with populated content, one added topic, one uploaded image, and post-publish success status
+
+## Full-view comparison evidence
+
+The combined comparison confirms that the original modal’s creation, media, publishing-settings, and action hierarchy remains recognizable while the selected two-column design stays intact. The updated footer now contains a stable single-label “发布闪念” action with no points copy. The settings column no longer contains the reward panel, and the uploaded image is visibly square.
+
+## Focused comparison evidence
+
+A separate crop was unnecessary because the complete footer button, topic input, generated topic tag, and `104 × 104px` media thumbnail are legible in the native `1440 × 1000` implementation capture. Browser-computed checks additionally confirmed an exact thumbnail ratio of `1`, the exact placeholder string, and unchanged button text/class after publishing.
+
+## Required fidelity surfaces
+
+- Fonts and typography: the existing modal hierarchy and UIguide font stacks are unchanged. The longer topic hint remains readable at the existing compact control size.
+- Spacing and layout rhythm: removing the reward panel simplifies the settings column without changing its alignment. The media thumbnail now computes to `104 × 104px` on the desktop target and remains square in the compact-height rule.
+- Colors and visual tokens: the publish button keeps its normal black-gold treatment before and after publishing. Success is communicated only through the green status copy, avoiding a conflicting green button state.
+- Image quality and asset fidelity: the uploaded WebP uses `object-fit: cover` inside an exact 1:1 frame; no stretching occurs.
+- Copy and content: no points text remains inside the modal. The action label remains “发布闪念”; the topic placeholder exactly matches “输入话题后回车添加，最多添加5个”.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the requested control changes.
+
+## Comparison history
+
+1. Control-state correction
+   - Earlier finding: publishing changed the button to a green “发布成功” state and displayed points in both the action and settings column.
+   - Fix: removed the reward block, points sublabel, success icon, and published-state class. Publishing now restores the normal enabled gold action and reports “闪念已发布” in the live status.
+
+2. Media and topic correction
+   - Earlier finding: uploaded media computed to a landscape `104 × 84px` frame, and a “技术” topic was prefilled.
+   - Fix: changed media items to an exact 1:1 frame, removed the prefilled tag, and installed the requested topic placeholder with existing Enter-to-add and five-tag limit behavior.
+   - Post-fix evidence: `qa/flash-compose-controls-final.png` and browser-computed `104 × 104px` media geometry.
+
+## Interaction and runtime checks
+
+- Enter adds a topic and clears the input.
+- A sixth topic is rejected; the tag count remains five and the live status reads “最多可添加 5 个话题”.
+- Uploading a real project image produces a `104 × 104px` thumbnail with ratio `1`.
+- Content enables the publish action.
+- Clicking publish keeps the label “发布闪念”, retains the original button class/style, re-enables the action, and reports “闪念已发布”.
+- The reward panel is absent.
+- Desktop dialog has no horizontal or vertical overflow.
+- Mobile dialog has no horizontal overflow at `390 × 844`.
+- Browser console errors and warnings: none.
+- JavaScript syntax and whitespace validation: passed.
+
+final result: passed
+
+---
+
+# 发布闪念双栏弹窗设计 QA
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-38bb788d-676e-4ecd-bd52-40a051c35f4c.png`
+- Supporting design-system source: `UIguide.html`
+- Motion reference: `https://kinetics.colorion.co/`
+- Implementation screenshot: `qa/flash-compose-final-1440.png`
+- Full-view comparison: `qa/flash-compose-reference-comparison.png`
+- Additional states: `qa/flash-compose-success-1440.png`, `qa/flash-compose-mobile-390.png`
+- Browser viewport: `1440 × 1000` CSS px for desktop and `390 × 844` CSS px for mobile
+- Comparison pixels: source and implementation normalized to the same `720px` height, then placed side by side without stretching
+- State: 发布闪念弹窗打开；桌面默认空内容状态。另验证了填充成功状态与移动端单栏状态。
+
+## Full-view comparison evidence
+
+The comparison preserves every required source control—title, content editor, 600-character counter, media uploader, topic, category, cancel, and publish—while reorganizing the desktop modal into the selected two-column layout. The left column is dedicated to creation and media; the narrower right column keeps publishing decisions visually close and subordinate. The persistent footer keeps status and primary actions visible without crowding the editor.
+
+## Focused comparison evidence
+
+The implementation screenshots show the same modal in three functional states. The default desktop capture verifies the complete empty-state hierarchy and disabled publish action. The success capture verifies uploaded media, selected topic/category, populated copy, reward feedback, and the success treatment. The mobile capture verifies the same controls collapse into one column with no horizontal overflow.
+
+## Required fidelity surfaces
+
+- Fonts and typography: the existing site font stacks are retained. UIguide’s warm-white heading, restrained gold eyebrow, muted helper copy, and compact label hierarchy are consistently applied.
+- Spacing and layout rhythm: the dialog uses a `1040px` desktop frame, a `1fr / 310px` content split, 24px outer radius, 16–24px internal rhythm, and a fixed footer. At `900px` and below, the settings stack beneath the editor.
+- Colors and visual tokens: the modal follows UIguide’s near-black `#05070b` foundation, warm-white `#fffaf0` text, gold `#f4c95d` accent, translucent borders, and glass-like surface treatment.
+- Image and icon quality: every interface icon is a project-local Remix SVG. Browser upload testing used a real local WebP; video previews are configured muted and `playsInline`, with no automatic playback.
+- Copy and content: the original 600-character limit, six-media limit, topic, category, cancel, and publish concepts remain. The redesign adds concise helper copy and makes the `+30` publishing reward visible at decision time.
+- Motion fidelity: Kinetics-inspired spring easing is used for modal entry, control feedback, chip selection, counter changes, upload insertion, magnetic pointer response, and button ripples. `prefers-reduced-motion` removes nonessential motion.
+
+## Findings
+
+- No actionable P0, P1, P2, or P3 differences remain for the selected two-column redesign.
+
+## Comparison history
+
+1. Initial implementation pass
+   - Finding: the footer could fall below the modal’s visible frame.
+   - Fix: converted the dialog and form to constrained flex regions and allowed only the content layout to scroll.
+
+2. Layout correction pass
+   - Finding: the project-global `main` top margin displaced the media section and created clipping.
+   - Fix: scoped `.flash-compose-primary` to a zero margin inside this dialog.
+
+3. Final comparison pass
+   - Result: the complete editor, media uploader, settings, reward panel, status, and footer are visible together at the desktop target. Mobile stacking and success states remain intact.
+
+## Interaction and runtime checks
+
+- Empty content keeps the publish action disabled; entering content enables it.
+- Character count updates and applies a spring bump.
+- Heading, bold, italic, quote, unordered-list, and ordered-list controls update the textarea selection.
+- Topic choice is single-select and exposes the correct `aria-pressed` state.
+- Category changes update the live status text.
+- Image/video file selection, six-item limit, removal, and drag reordering are wired.
+- Media upload was exercised through the browser’s real file chooser.
+- Successful submission changes the button and live status to the completed state.
+- Desktop and mobile layouts have no horizontal overflow.
+- Browser console errors and warnings: none.
+- `flash-compose.js` syntax validation: passed.
+
+final result: passed
+
+---
+
 # 消息中心 V2 视觉与中文化设计 QA
 
 - Source visual truth: `/Users/opera/Downloads/ChatGPT_Image_2026年7月28日_14_00_54.png`
@@ -55,6 +396,58 @@ The focused feed comparison confirms the four-card hierarchy remains aligned wit
 ## Follow-up polish
 
 - No required follow-up for the requested desktop refinement.
+
+final result: passed
+
+---
+
+# 活动中心卡片参考样式 V12 设计 QA
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-110d0499-411e-409f-848f-621c6a83dd2a.png`
+- Implementation screenshot: `qa/activity-center-card-reference-v12-full.png`
+- Full-card comparison: `qa/activity-card-reference-comparison-v12.png`
+- Browser viewport: `1280 × 720` CSS px
+- Source pixels: `670 × 682`; normalized source card crop: `604 × 567`
+- Implementation capture pixels: `1280 × 2264`; normalized first-card crop: `399 × 476`, scaled to `475 × 567` for comparison
+- Device scale factor: `1`
+- State: activity center desktop, default active-card state
+
+## Full-view comparison evidence
+
+The side-by-side card comparison shows the same dominant structure as the supplied reference: a full-width cover, gold status tag over the upper-left of the image, label/date metadata row, large title, muted description, low-opacity divider, gold reward, and a bordered circular arrow action. The implementation intentionally adapts the reference to the existing three-column grid instead of copying the source card width.
+
+## Focused comparison evidence
+
+A separate focused crop was not required because the normalized comparison renders the complete status tag, metadata, typography, divider, reward and arrow at readable size. Browser-computed checks confirm a `62.73 × 30px` active tag, `6px` tag radius, `rgb(244, 201, 93)` background, and a `42 × 42px` circular arrow with `50%` radius.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Existing site display and Chinese system font stacks are preserved. Title, metadata, description and reward hierarchy follow the source; the tag copy is intentionally simplified from “火热进行中” to the user-requested “进行中”.
+- Spacing and layout rhythm: Cover/content balance, metadata alignment, divider placement and bottom action spacing follow the reference while respecting the existing `398.66px` three-column card width and `16px` site radius system.
+- Colors and visual tokens: Status background, reward text and arrow border use the existing `--activity-gold` token. Card surface, warm-white type and `0.1` divider opacity remain consistent with the activity-center palette.
+- Image quality and asset fidelity: Existing generated `800 × 540` WebP activity covers are retained without stretching or placeholder substitution.
+- Copy and content: Existing activity titles, descriptions, dates and rewards are preserved. Only the active status presentation changes; ended-history cards retain their ended state.
+
+## Findings
+
+- No actionable P0, P1 or P2 differences remain.
+- [P3] The reference uses a wider standalone card and a slightly larger outer radius. The implementation intentionally keeps the site's responsive three-column frame and `16px` radius token.
+
+## Comparison history
+
+1. Initial implementation comparison
+   - Result: no actionable P0/P1/P2 differences.
+   - Intentional adaptations: “进行中” replaces “火热进行中”; existing site radius and grid dimensions are preserved.
+   - Post-check evidence: all five active cards render the gold tag and circular arrow consistently; browser console warnings and errors: none.
+
+## Interaction and runtime checks
+
+- All card links retain their existing destinations.
+- Hover lift and image zoom remain active.
+- Arrow hover treatment preserves the reference-style circular control.
+- Status tag content: `进行中`.
+- Horizontal overflow: none at `1280 × 720`.
+- Browser runtime errors: none.
 
 final result: passed
 
@@ -613,7 +1006,7 @@ The combined comparison confirms that the existing 1280px frame, black-gold hier
 
 - Fonts and typography: the existing `WYF_BQT` title treatment and per-character entrance are preserved; only the user-requested space after `AI` was removed.
 - Spacing and layout rhythm: the redeem arrow now uses `align-self: center` and has exactly equal top and bottom spacing without changing card height or text alignment.
-- Colors and visual tokens: particles use warm white and the existing gold tokens on a transparent canvas, with a clearly visible `0.88` layer opacity.
+- Colors and visual tokens: particles use warm white and the existing gold tokens on a transparent canvas, with full `1` layer opacity.
 - Image quality and asset fidelity: the hero raster and four-sided black fade remain unchanged; the official React Bits OGL geometry, shaders, and motion model were adapted without replacing the image asset.
 - Copy and content: only the specified title space changed; all product names, point values, labels, and destinations remain intact.
 
@@ -680,6 +1073,24 @@ The combined comparison confirms that the existing 1280px frame, black-gold hier
 16. Midpoint gradient start
    - User direction: start the transparency transition in the middle rather than at the top.
    - Fix: kept the first `50%` of “用积分兑换” at fully opaque white, then faded from the midpoint through `72%` opacity to `38%` at the bottom.
+17. Eager page animation startup
+   - User direction: start all animations with the initial page load instead of waiting for each section to scroll into view.
+   - Fix: removed the member-store `IntersectionObserver` and assigns `is-in-view` to all four product groups during initialization, so all card-group reveals begin in the same initial loading phase.
+18. Particle visibility increase
+   - User direction: make the background particles more visible again.
+   - Fix: increased the particle layer opacity from `0.88` to `1` while preserving the `300` count, `1.4–4.8px` size range, speed, color palette, and background layer order.
+19. Banner navigation flash removal
+   - User direction: prevent the Banner area from flashing white when leaving AI 商城 for another page.
+   - Fix: removed the `pagehide` teardown that detached the particle canvas and explicitly lost its WebGL context before document replacement. The browser now retains the completed Banner frame until navigation commits and reclaims the document resources itself.
+   - Post-fix evidence: the particle canvas remains present before navigation; switching to `model-plaza.html` completes with both root and body backgrounds at `rgb(5, 7, 11)` and no horizontal overflow.
+20. Catalog spacing and Banner lower-edge blend
+   - User direction: set `.ai-store-lineup` padding to `40px 10px` and blend the Banner artwork's lower edge further into the background.
+   - Fixes: applied the exact catalog padding and layered a dedicated vertical dark fade over the existing radial artwork vignette.
+   - Post-fix evidence: the first product group begins exactly `40px` inside the lineup; the artwork overlay fades from transparent at `54%` to `--store-bg` at `100%`; horizontal overflow remains zero.
+21. Stable points-detail action during count-up
+   - User direction: keep the points-detail button fixed while the balance number increases.
+   - Fixes: reserved a fixed `104px` balance slot and enabled tabular numerals with no wrapping.
+   - Post-fix evidence: across sampled values `0`, `549`, `992`, `1,207`, `1,268`, and `1,280`, the button remained at `x: 254px`; measured movement delta is `0px`.
 
 ## Interaction and runtime checks
 
@@ -689,7 +1100,7 @@ The combined comparison confirms that the existing 1280px frame, black-gold hier
 - Particle count: `300`.
 - Horizontal coverage factor: `2.74`.
 - Particle mask: none.
-- Particle layer opacity: `0.88`.
+- Particle layer opacity: `1`.
 - Layer order: particles `0`, hero artwork `1`, title copy `3`.
 - Particle layer and canvas width: `1280px`, equal to the Banner width.
 - Title visible text: `用积分兑换AI产品权益`.

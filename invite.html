@@ -7,8 +7,8 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton-comment-frame12">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260723-shell-v1">
-  <link rel="stylesheet" href="./invite.css?v=20260727-invite-bg-offset-v26">
-  <link rel="stylesheet" href="./radius-system.css?v=20260727-radius-system-v3-invite-pill-controls">
+  <link rel="stylesheet" href="./invite.css?v=20260729-invite-padding-align-v37">
+  <link rel="stylesheet" href="./radius-system.css?v=20260729-radius-system-v4-invite-cards">
 </head>
 <body class="invite-page-body">
   <div class="page invite-page" data-page="invite">
@@ -164,7 +164,6 @@
         <div class="wide-container">
           <div class="invite-record-head">
             <div>
-              <span class="invite-section-eyebrow">INVITATION RECORDS</span>
               <h2 id="records-title">你带来的创作回响</h2>
               <p>好友完成注册、互动和首次发布后，积分将自动进入账户，进度会同步更新在这里。</p>
             </div>
@@ -178,7 +177,6 @@
             <section class="invite-progress-column" aria-labelledby="invite-progress-title">
               <div class="invite-panel-head">
                 <div>
-                  <span>FRIEND PROGRESS</span>
                   <h3 id="invite-progress-title">好友任务进度</h3>
                 </div>
                 <strong>4 位好友</strong>
@@ -244,7 +242,6 @@
             <aside class="invite-stats-column" aria-labelledby="invite-stats-title">
               <div class="invite-panel-head">
                 <div>
-                  <span>INVITE OVERVIEW</span>
                   <h3 id="invite-stats-title">邀请统计</h3>
                 </div>
                 <span class="invite-live-status">实时更新</span>
@@ -279,8 +276,13 @@
           </div>
 
           <div class="invite-completion-bridge">
-            <strong>邀请好友一起创作，积分奖励会自动累计</strong>
-            <p>好友完成全部三个阶段，单个好友最高可为你带来 90 积分。</p>
+            <div class="invite-completion-message">
+              <img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt="">
+              <div>
+                <strong>邀请好友一起创作，积分奖励会自动累计</strong>
+                <p>好友完成全部三个阶段，单个好友最高可为你带来 90 积分。</p>
+              </div>
+            </div>
             <a class="button" href="#invite-link" data-invite-copy data-invite-copy-message="邀请链接已复制，去发给你的创作搭子吧">复制邀请链接</a>
           </div>
         </div>

@@ -1,9 +1,3 @@
-@property --message-title-fade {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 28%;
-}
-
 .message-center-page {
   --message-gold: var(--ds-gold);
   --message-paper: #f6f6f4;
@@ -26,7 +20,7 @@
 .message-center-page .message-hero {
   position: relative;
   isolation: isolate;
-  height: 250px;
+  height: 160px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.07);
   background: #030305;
@@ -40,7 +34,7 @@
   background-image: url("assets/image_assets/message-center-hero-v3.png");
   background-position: right center;
   background-repeat: no-repeat;
-  background-size: auto 180%;
+  background-size: auto 160%;
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -89,50 +83,40 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 0 0 36px;
+  padding: 0 0 0 24px;
 }
 
 .message-center-page .message-hero-copy h1 {
-  --message-title-fade: 28%;
   align-self: flex-start;
   max-width: 100%;
   margin: 0;
-  color: rgba(255, 255, 255, 0.2);
+  color: transparent;
+  background-image:
+    linear-gradient(
+      100deg,
+      transparent 42%,
+      rgba(11, 14, 16, 0.72) 48%,
+      #0b0e10 50%,
+      rgba(11, 14, 16, 0.72) 52%,
+      transparent 58%
+    ),
+    linear-gradient(#ffffff1f, #ffffff1f);
+  background-position: 135% 50%, 0 0;
+  background-size: 280% 100%, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: "Montserrat", "Arial Black", "Helvetica Neue", sans-serif;
   font-size: 82px;
   font-weight: 900;
   line-height: 0.96;
   letter-spacing: -0.065em;
+  padding-right: 0.12em;
+  overflow: visible;
   text-transform: uppercase;
   white-space: nowrap;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 var(--message-title-fade),
-    rgba(0, 0, 0, 0.12) calc(var(--message-title-fade) + 18%),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 var(--message-title-fade),
-    rgba(0, 0, 0, 0.12) calc(var(--message-title-fade) + 18%),
-    transparent 100%
-  );
-  animation: message-title-opacity-wave 4.8s ease-in-out infinite;
-}
-
-.message-center-page .message-hero-copy h1 span,
-.message-center-page .message-hero-copy h1 strong {
-  display: inline-block;
-  color: inherit;
-  font: inherit;
-  letter-spacing: inherit;
-  animation: message-copy-rise 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.message-center-page .message-hero-copy h1 strong {
-  animation-delay: 90ms;
+  animation: message-title-shimmer 7s linear infinite;
 }
 
 .message-center-page .message-hero-copy h2 {
@@ -151,34 +135,6 @@
   font-size: 13px;
   line-height: 1.4;
   animation: message-copy-rise 650ms 230ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.message-center-page .message-hero-status {
-  position: absolute;
-  z-index: 3;
-  right: 34px;
-  bottom: 42px;
-  display: grid;
-  gap: 2px;
-  color: rgba(255, 255, 255, 0.76);
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.15;
-  animation: message-status-pulse 3.6s ease-in-out infinite;
-}
-
-.message-center-page .message-hero-status::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: -3px;
-  width: 38px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.42);
-  transform: translateX(100%);
-  transform-origin: left center;
-  animation: message-status-line 3.6s ease-in-out infinite;
 }
 
 .message-center-page .message-workspace {
@@ -518,38 +474,13 @@
   }
 }
 
-@keyframes message-title-opacity-wave {
-  0%,
-  100% {
-    --message-title-fade: 24%;
+@keyframes message-title-shimmer {
+  from {
+    background-position: 135% 50%, 0 0;
   }
 
-  50% {
-    --message-title-fade: 72%;
-  }
-}
-
-@keyframes message-status-pulse {
-  0%,
-  100% {
-    opacity: 0.62;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes message-status-line {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: translateX(100%) scaleX(0.5);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateX(100%) scaleX(1);
+  to {
+    background-position: -135% 50%, 0 0;
   }
 }
 
@@ -608,8 +539,6 @@
   .message-center-page .message-hero-copy h1 strong,
   .message-center-page .message-hero-copy h2,
   .message-center-page .message-hero-copy p,
-  .message-center-page .message-hero-status,
-  .message-center-page .message-hero-status::after,
   .message-center-page .notification-card,
   .message-center-page .notification-card.is-entering,
   .message-center-page .notification-icon.is-featured,

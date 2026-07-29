@@ -36199,3 +36199,1003 @@ body.login-modal-open {
     animation: none;
   }
 }
+
+/* Flash compose v4 — UIguide layout with restrained Kinetics spring feedback. */
+.flash-compose-modal {
+  padding: 24px;
+}
+
+.flash-compose-modal .modal-backdrop {
+  background: rgba(5, 7, 11, 0.78);
+  backdrop-filter: blur(16px) saturate(1.08);
+}
+
+.flash-compose-dialog {
+  width: min(1040px, calc(100vw - 48px));
+  height: min(760px, calc(100vh - 48px));
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 247, 230, 0.14);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(244, 201, 93, 0.095), transparent 30%),
+    rgba(11, 15, 19, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 72px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px) saturate(1.12);
+  transform-origin: 50% 44%;
+}
+
+.flash-compose-modal:target .flash-compose-dialog {
+  animation: flash-compose-spring-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.flash-compose-modal:target .modal-backdrop {
+  animation: flash-compose-backdrop-in 260ms ease both;
+}
+
+.flash-compose-head {
+  flex: 0 0 auto;
+  min-height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 26px 20px;
+  border-bottom: 1px solid rgba(255, 247, 230, 0.1);
+}
+
+.flash-compose-heading > span,
+.flash-settings-head > span {
+  display: block;
+  color: rgba(244, 201, 93, 0.68);
+  font-family: "Montserrat Local", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.16em;
+}
+
+.flash-compose-heading h2 {
+  margin: 7px 0 0;
+  color: #fffaf0;
+  font-size: 23px;
+  font-weight: 620;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.flash-compose-heading p {
+  margin: 7px 0 0;
+  color: rgba(255, 250, 240, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.flash-compose-close {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.flash-compose-close img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(84%) sepia(37%) saturate(764%) hue-rotate(351deg) brightness(104%) contrast(94%);
+  opacity: 1;
+  transition: filter 160ms ease;
+}
+
+.flash-compose-close:hover,
+.flash-compose-close:focus-visible {
+  border-color: rgba(244, 201, 93, 0.68);
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.13), rgba(255, 255, 255, 0.025)),
+    rgba(9, 13, 19, 0.84);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.075),
+    0 8px 24px rgba(244, 201, 93, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.flash-compose-close:hover img,
+.flash-compose-close:focus-visible img {
+  filter: brightness(0) saturate(100%) invert(96%) sepia(17%) saturate(760%) hue-rotate(335deg) brightness(106%) contrast(102%);
+}
+
+.flash-compose-close:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.flash-compose-form {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flash-compose-layout {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.flash-compose-layout::-webkit-scrollbar {
+  display: none;
+}
+
+.flash-compose-primary {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  margin: 0 !important;
+  padding: 24px;
+}
+
+.flash-compose-modal [data-compose-section] {
+  animation: flash-compose-section-in 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(100ms + var(--compose-order, 0) * 55ms);
+}
+
+.flash-compose-modal .flash-editor-shell {
+  overflow: hidden;
+  border: 1px solid rgba(255, 247, 230, 0.13);
+  border-radius: 16px !important;
+  background: rgba(5, 7, 11, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flash-compose-modal .flash-editor-shell:focus-within {
+  border-color: rgba(255, 247, 230, 0.24);
+  background: rgba(5, 7, 11, 0.58);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 0 0 3px rgba(255, 247, 230, 0.025);
+  transform: none;
+}
+
+.flash-field-head {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  padding: 14px 16px 8px;
+}
+
+.flash-field-head label {
+  color: #fffaf0;
+  font-size: 14px;
+  font-weight: 560;
+  line-height: 20px;
+}
+
+.flash-compose-modal .flash-editor-field {
+  width: calc(100% - 16px);
+  height: clamp(180px, 24vh, 230px);
+  min-height: clamp(180px, 24vh, 230px);
+  margin: 0 8px;
+  padding: 10px 8px 18px;
+  border: 0;
+  border-radius: 0 !important;
+  outline: 0;
+  resize: none;
+  color: rgba(255, 250, 240, 0.86);
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.72;
+}
+
+.flash-compose-modal .flash-editor-field::placeholder {
+  color: rgba(255, 250, 240, 0.34);
+  font-weight: 300;
+}
+
+body:not(.home-page) .flash-compose-modal textarea.flash-editor-field,
+body:not(.home-page) .flash-compose-modal textarea.flash-editor-field:focus {
+  border: 0;
+  outline: 0;
+  color: rgba(255, 250, 240, 0.86);
+  background: transparent;
+  box-shadow: none;
+  caret-color: #f4c95d;
+}
+
+.flash-compose-modal .flash-editor-bar {
+  min-height: 38px;
+  justify-content: flex-start;
+  padding: 7px 16px 9px;
+  border-top: 1px solid rgba(255, 247, 230, 0.09);
+}
+
+.flash-compose-modal .flash-compose-counter {
+  min-width: 0;
+  color: rgba(255, 250, 240, 0.44);
+  font-size: 11px;
+  font-weight: 560;
+  line-height: 20px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.flash-compose-modal .flash-compose-counter.is-counter-bumping {
+  color: #f4c95d;
+  animation: flash-counter-bump 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.flash-compose-modal .flash-media-section {
+  gap: 12px;
+}
+
+.flash-compose-modal .flash-media-head {
+  min-height: 38px;
+  align-items: flex-end;
+}
+
+.flash-compose-modal .flash-media-head > div {
+  display: grid;
+  gap: 3px;
+}
+
+.flash-compose-modal .flash-media-head strong {
+  color: #fffaf0;
+  font-size: 14px;
+  font-weight: 560;
+}
+
+.flash-compose-modal .flash-media-head > div span {
+  color: rgba(255, 250, 240, 0.4);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.flash-compose-modal .flash-media-head > span {
+  color: rgba(255, 250, 240, 0.44);
+  font-size: 11px;
+  font-weight: 560;
+  font-variant-numeric: tabular-nums;
+}
+
+.flash-compose-modal .flash-media-strip {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.flash-compose-modal .flash-media-add,
+.flash-compose-modal .flash-media-item {
+  border: 1px solid rgba(255, 247, 230, 0.11);
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.flash-compose-modal .flash-media-add {
+  width: 104px;
+  height: 104px;
+  min-height: 104px;
+  flex: 0 0 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(255, 250, 240, 0.54);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.flash-compose-modal .flash-media-add:hover,
+.flash-compose-modal .flash-media-add:focus-visible {
+  border-color: rgba(244, 201, 93, 0.36);
+  background: rgba(244, 201, 93, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 30px rgba(244, 201, 93, 0.08);
+  transform: translateY(-1px);
+}
+
+.flash-media-add-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 201, 93, 0.22);
+  border-radius: 999px;
+  background: rgba(244, 201, 93, 0.08);
+}
+
+.flash-compose-modal .flash-media-add-icon img {
+  width: 15px;
+  height: 15px;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(69%) saturate(627%) hue-rotate(351deg) brightness(103%) contrast(91%);
+}
+
+.flash-compose-modal .flash-media-add strong {
+  color: rgba(255, 250, 240, 0.82);
+  font-size: 11px;
+  font-weight: 520;
+  white-space: nowrap;
+}
+
+.flash-compose-modal .flash-media-add small {
+  color: rgba(255, 250, 240, 0.34);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.flash-compose-modal .flash-media-item {
+  width: 104px;
+  height: 104px;
+  min-height: 104px;
+  flex: 0 0 104px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  animation: flash-media-item-in 440ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.flash-compose-modal .flash-media-item > img,
+.flash-compose-modal .flash-media-item > video {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: block;
+  object-fit: cover;
+}
+
+.flash-compose-modal .flash-media-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(5, 7, 11, 0.76);
+  cursor: pointer;
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 160ms ease;
+}
+
+.flash-compose-modal .flash-media-remove:hover,
+.flash-compose-modal .flash-media-remove:focus-visible {
+  background: rgba(239, 102, 78, 0.82);
+  transform: scale(1.08);
+}
+
+.flash-compose-modal .flash-media-remove img {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.flash-compose-modal .flash-media-kind {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 999px;
+  color: rgba(255, 250, 240, 0.78);
+  background: rgba(5, 7, 11, 0.74);
+  font-size: 9px;
+  font-weight: 520;
+}
+
+.flash-compose-settings {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  border-left: 1px solid rgba(255, 247, 230, 0.09);
+  background: rgba(5, 7, 11, 0.28);
+}
+
+.flash-settings-head h3 {
+  margin: 7px 0 0;
+  color: #fffaf0;
+  font-size: 18px;
+  font-weight: 580;
+  line-height: 1.2;
+}
+
+.flash-settings-head p {
+  margin: 7px 0 0;
+  color: rgba(255, 250, 240, 0.4);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.flash-setting-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.flash-setting-group legend,
+.flash-setting-group > span:first-child {
+  display: block;
+  margin-bottom: 9px;
+  color: rgba(255, 250, 240, 0.54);
+  font-size: 11px;
+  font-weight: 460;
+  line-height: 16px;
+}
+
+.flash-topic-control {
+  min-width: 0;
+}
+
+.flash-topic-input {
+  height: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 247, 230, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flash-topic-input:focus-within {
+  border-color: rgba(244, 201, 93, 0.5);
+  background: rgba(244, 201, 93, 0.045);
+  transform: translateY(-1px);
+}
+
+.flash-topic-input > input {
+  min-width: 88px;
+  flex: 1 1 88px;
+  height: 48px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0;
+  appearance: none;
+  color: rgba(255, 250, 240, 0.82);
+  background: transparent !important;
+  box-shadow: none !important;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 450;
+}
+
+.flash-topic-input > input::placeholder {
+  color: rgba(255, 250, 240, 0.34);
+}
+
+.flash-topic-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.flash-topic-tags:not(:has(.flash-topic-tag)) {
+  display: none;
+}
+
+.flash-topic-tag {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px 0 10px;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  border-radius: 999px;
+  color: #f4c95d;
+  background: rgba(244, 201, 93, 0.12);
+  font-size: 11px;
+  font-weight: 540;
+  animation: flash-topic-tag-in 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.flash-topic-tag > button {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 180ms ease;
+}
+
+.flash-topic-tag > button img {
+  width: 12px;
+  height: 12px;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(69%) saturate(627%) hue-rotate(351deg) brightness(103%) contrast(91%);
+  opacity: 0.7;
+  transition: filter 160ms ease, opacity 160ms ease;
+}
+
+.flash-topic-tag > button:hover,
+.flash-topic-tag > button:focus-visible {
+  background: #f4c95d;
+  transform: scale(1.06);
+}
+
+.flash-topic-tag > button:hover img,
+.flash-topic-tag > button:focus-visible img {
+  filter: brightness(0) saturate(1);
+  opacity: 1;
+}
+
+.flash-topic-tag.is-removing {
+  pointer-events: none;
+  animation: flash-topic-tag-out 240ms ease forwards;
+}
+
+.flash-select-shell {
+  position: relative;
+  min-height: 50px;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 247, 230, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 200ms ease,
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flash-select-shell:focus-within {
+  border-color: rgba(244, 201, 93, 0.5);
+  transform: translateY(-1px);
+}
+
+.flash-select-shell select {
+  width: 100%;
+  height: 48px;
+  padding: 0 42px 0 14px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0;
+  appearance: none;
+  color: rgba(255, 250, 240, 0.78);
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 450;
+  cursor: pointer;
+}
+
+.flash-select-shell > img {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  filter: brightness(0) invert(1);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: transform 340ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 180ms ease;
+}
+
+.flash-select-shell:focus-within > img {
+  opacity: 0.74;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.flash-compose-footer {
+  flex: 0 0 auto;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 24px;
+  border-top: 1px solid rgba(255, 247, 230, 0.1);
+  background: rgba(7, 10, 14, 0.82);
+}
+
+.flash-compose-reward {
+  color: rgba(244, 201, 93, 0.72);
+  font-size: 11px;
+  font-weight: 520;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.flash-compose-modal .flash-editor-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.flash-compose-modal .flash-compose-cancel,
+.flash-compose-modal .flash-compose-submit {
+  min-height: 46px;
+  overflow: hidden;
+  position: relative;
+  font-size: 14px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.flash-compose-modal .flash-compose-cancel {
+  min-width: 92px;
+  color: #fffaf0;
+  border-color: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.flash-compose-modal .flash-compose-cancel:hover,
+.flash-compose-modal .flash-compose-cancel:focus-visible {
+  color: #fffaf0;
+  border-color: rgba(244, 201, 93, 0.68);
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.13), rgba(255, 255, 255, 0.025)),
+    rgba(9, 13, 19, 0.84);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.075),
+    0 8px 24px rgba(244, 201, 93, 0.12);
+  transform: translateY(-1px);
+}
+
+.flash-compose-modal .flash-compose-submit {
+  min-width: 132px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #171207;
+  border-color: transparent;
+  background: linear-gradient(135deg, #d9a84d, #ffe6a0 56%, #c58d3e);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    0 10px 28px rgba(244, 201, 93, 0.17);
+  cursor: pointer;
+}
+
+.flash-compose-modal .flash-compose-submit > span {
+  font-size: inherit;
+  font-weight: 620;
+}
+
+.flash-compose-modal .flash-compose-submit:not(:disabled):hover,
+.flash-compose-modal .flash-compose-submit:not(:disabled):focus-visible {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 8px 24px rgba(244, 201, 93, 0.24);
+}
+
+.flash-compose-modal .flash-compose-submit:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    0 4px 12px rgba(244, 201, 93, 0.12);
+}
+
+.flash-compose-modal .flash-compose-cancel:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.flash-compose-modal .flash-compose-submit:disabled {
+  color: rgba(255, 250, 240, 0.28);
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:hover,
+body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:focus-visible,
+body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:active {
+  color: rgba(255, 250, 240, 0.28);
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: none;
+  outline: 0;
+  transform: none;
+}
+
+.flash-compose-modal .flash-compose-submit.is-publishing {
+  pointer-events: none;
+  animation: none;
+}
+
+.flash-compose-submit > *,
+.flash-compose-cancel > *,
+.flash-media-add > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes flash-compose-spring-in {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.955);
+  }
+  68% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.004);
+  }
+  84% {
+    transform: translateY(2px) scale(0.998);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flash-compose-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes flash-compose-section-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flash-control-pop {
+  0% { transform: scale(0.94); }
+  58% { transform: scale(1.09); }
+  100% { transform: scale(1); }
+}
+
+@keyframes flash-counter-bump {
+  0% { transform: translateY(0) scale(1); }
+  48% { transform: translateY(-4px) scale(1.16); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes flash-media-item-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(10px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.025) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flash-topic-tag-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flash-topic-tag-out {
+  to {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes flash-ripple-out {
+  to {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+
+@media (max-height: 780px) and (min-width: 901px) {
+  .flash-compose-head {
+    min-height: 92px;
+    padding: 17px 26px 15px;
+  }
+
+  .flash-compose-heading p {
+    margin-top: 4px;
+  }
+
+  .flash-compose-primary,
+  .flash-compose-settings {
+    gap: 16px;
+    padding: 18px 24px;
+  }
+
+  .flash-field-head {
+    min-height: 52px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  .flash-compose-modal .flash-editor-field {
+    height: 176px;
+    min-height: 176px;
+    padding-top: 6px;
+    padding-bottom: 12px;
+  }
+
+  .flash-compose-modal .flash-editor-bar {
+    min-height: 36px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .flash-compose-modal .flash-media-head {
+    min-height: 32px;
+  }
+
+  .flash-compose-footer {
+    min-height: 72px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+}
+
+@media (max-width: 900px) {
+  .flash-compose-modal {
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  .flash-compose-dialog {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+  }
+
+  .flash-compose-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .flash-compose-settings {
+    border-top: 1px solid rgba(255, 247, 230, 0.09);
+    border-left: 0;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .flash-compose-modal {
+    padding: 0;
+  }
+
+  .flash-compose-dialog {
+    width: 100%;
+    max-height: 100vh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 24px 24px 0 0 !important;
+  }
+
+  .flash-compose-head {
+    min-height: 92px;
+    padding: 18px 18px 16px;
+  }
+
+  .flash-compose-heading p {
+    display: none;
+  }
+
+  .flash-compose-primary,
+  .flash-compose-settings {
+    padding: 18px;
+  }
+
+  .flash-compose-modal .flash-editor-field {
+    min-height: 160px;
+  }
+
+  .flash-compose-modal .flash-editor-bar {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .flash-compose-modal .flash-editor-bar > span {
+    white-space: normal;
+  }
+
+  .flash-compose-modal .flash-media-strip {
+    display: flex;
+  }
+
+  .flash-compose-footer {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 14px 18px 18px;
+  }
+
+  .flash-compose-reward {
+    text-align: center;
+  }
+
+  .flash-compose-modal .flash-editor-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+  }
+
+  .flash-compose-modal .flash-compose-cancel,
+  .flash-compose-modal .flash-compose-submit {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-compose-modal:target .flash-compose-dialog,
+  .flash-compose-modal:target .modal-backdrop,
+  .flash-compose-modal [data-compose-section],
+  .flash-compose-modal .flash-tool-button,
+  .flash-compose-modal .flash-topic-tag,
+  .flash-compose-modal .flash-compose-counter,
+  .flash-compose-modal .flash-media-item,
+  .flash-compose-modal .flash-compose-submit {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -234,20 +234,22 @@
 .activity-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px 18px;
+  gap: 26px 20px;
 }
 
 .activity-equal-card {
+  position: relative;
+  isolation: isolate;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--activity-line);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 247, 230, 0.11);
+  border-radius: 18px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.008)),
-    var(--activity-surface);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 42%),
+    rgba(8, 11, 15, 0.92);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.045),
-    0 18px 46px rgba(0, 0, 0, 0.18);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 16px 38px rgba(0, 0, 0, 0.2);
   transition:
     transform 260ms var(--activity-ease),
     border-color 220ms ease,
@@ -255,27 +257,66 @@
     box-shadow 260ms ease;
 }
 
-.activity-equal-card:hover {
-  border-color: rgba(244, 201, 93, 0.28);
+.activity-equal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.018);
+}
+
+.activity-equal-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: -84px;
+  bottom: -104px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(244, 201, 93, 0.12), transparent 68%);
+  opacity: 0;
+  transform: scale(0.76);
+  transition: opacity 260ms ease, transform 420ms var(--activity-ease);
+}
+
+.activity-equal-card:hover,
+.activity-equal-card:focus-within {
+  border-color: rgba(244, 201, 93, 0.3);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(244, 201, 93, 0.014)),
-    var(--activity-surface-hover);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 42%),
+    rgba(12, 15, 19, 0.96);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.065),
-    0 24px 56px rgba(0, 0, 0, 0.28);
-  transform: translateY(-4px);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 28px 64px rgba(0, 0, 0, 0.34);
+  transform: translateY(-5px);
+}
+
+.activity-equal-card:hover::after,
+.activity-equal-card:focus-within::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .activity-equal-card > a {
+  position: relative;
+  z-index: 1;
   height: 100%;
   display: grid;
-  grid-template-rows: 270px minmax(226px, 1fr);
+  grid-template-rows: auto minmax(122px, 1fr);
+  color: inherit;
+  text-decoration: none;
 }
 
 .activity-card-media {
   position: relative;
   min-width: 0;
+  aspect-ratio: 1916 / 821;
   overflow: hidden;
+  border-radius: 17px 17px 0 0 !important;
   background: #0b0f13;
 }
 
@@ -284,16 +325,23 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, rgba(5, 7, 11, 0.5) 100%);
+  background:
+    linear-gradient(180deg, rgba(5, 7, 11, 0.02) 48%, rgba(5, 7, 11, 0.7) 100%),
+    linear-gradient(90deg, rgba(244, 201, 93, 0.055), transparent 28%);
 }
 
 .activity-card-media img {
-  transition: transform 620ms var(--activity-ease), filter 300ms ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--activity-ease), filter 300ms ease;
 }
 
-.activity-equal-card:hover .activity-card-media img {
-  filter: saturate(1.08) contrast(1.03);
-  transform: scale(1.04);
+.activity-equal-card:hover .activity-card-media img,
+.activity-equal-card:focus-within .activity-card-media img {
+  filter: saturate(1.06) contrast(1.025);
+  transform: scale(1.028);
 }
 
 .activity-status {
@@ -329,10 +377,14 @@
 }
 
 .activity-card-content {
-  min-height: 226px;
+  position: relative;
+  min-height: 122px;
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  padding: 18px 18px 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 42%),
+    rgba(7, 10, 14, 0.82);
 }
 
 .activity-card-meta {
@@ -342,7 +394,7 @@
   gap: 12px;
   color: var(--activity-faint);
   font-size: 10px;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .activity-center-page .activity-card-meta span {
@@ -351,49 +403,34 @@
   padding: 0;
   border: 0;
   border-radius: 0;
-  color: var(--activity-gold);
+  color: rgba(244, 201, 93, 0.78);
   background: transparent;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  font-weight: 680;
+  letter-spacing: 0.14em;
 }
 
 .activity-center-page .activity-card-meta span::before {
-  content: "";
-  width: 12px;
-  height: 1px;
-  margin-right: 7px;
-  background: currentColor;
-  opacity: 0.72;
+  display: none;
 }
 
 .activity-card-meta time {
   font-family: "Activity Display", sans-serif;
-  color: rgba(255, 250, 240, 0.68);
-  font-size: 13px;
+  color: rgba(255, 250, 240, 0.62);
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.055em;
   white-space: nowrap;
 }
 
-.activity-card-content h2,
-.activity-card-content h3 {
-  margin: 21px 0 0;
-  color: var(--activity-paper);
-  font-family: "Activity Display", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.045em;
-}
-
 .activity-card-content p {
-  margin: 10px 0 0;
+  margin: 9px 0 0;
   overflow: hidden;
-  color: var(--activity-muted);
-  font-size: 13px;
+  color: rgba(255, 250, 240, 0.58);
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.62;
+  line-height: 1.6;
+  letter-spacing: 0.015em;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -402,11 +439,11 @@
   position: relative;
   min-height: 42px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: auto 0 12px;
-  padding-top: 16px;
+  margin: auto 0 0;
+  padding: 0;
   border-top: 0;
 }
 
@@ -418,27 +455,42 @@
   left: 0;
   height: 1px;
   border-radius: 0;
-  background: rgba(255, 247, 230, 0.5);
+  background: rgba(255, 247, 230, 0.1);
 }
 
 .activity-card-footer strong {
-  color: var(--activity-lime);
+  color: var(--activity-gold);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 720;
+  letter-spacing: 0.045em;
 }
 
-.activity-card-footer img {
-  width: 18px;
-  height: 18px;
+.activity-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 250, 240, 0.7);
+  font-size: 11px;
+  font-weight: 620;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-4px);
+  transition:
+    opacity 180ms ease,
+    transform 220ms var(--activity-ease);
+}
+
+.activity-card-action img {
+  width: 14px;
+  height: 14px;
   object-fit: contain;
-  opacity: 0.68;
-  transition: opacity 180ms ease, transform 220ms var(--activity-ease);
 }
 
-.activity-equal-card:hover .activity-card-footer img {
+.activity-equal-card:hover .activity-card-action,
+.activity-equal-card:focus-within .activity-card-action {
   opacity: 1;
-  transform: translateX(4px);
+  transform: translateX(0);
 }
 
 .activity-history-section {
@@ -446,11 +498,11 @@
 }
 
 .activity-ended-card {
-  opacity: 0.84;
+  opacity: 0.74;
 }
 
 .activity-ended-card .activity-card-media img {
-  filter: saturate(0.74) contrast(1.03);
+  filter: saturate(0.62) contrast(1.04);
 }
 
 .activity-ended-card:hover {
@@ -508,7 +560,7 @@
   }
 
   .activity-equal-card > a {
-    grid-template-rows: 248px minmax(226px, 1fr);
+    grid-template-rows: auto minmax(122px, 1fr);
   }
 }
 
@@ -517,8 +569,9 @@
   .activity-banner-image,
   .activity-banner-mark,
   .activity-equal-card,
+  .activity-equal-card::after,
   .activity-card-media img,
-  .activity-card-footer img {
+  .activity-card-action {
     transition: none;
     animation: none;
   }

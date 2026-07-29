@@ -75,7 +75,7 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .member-store-page .member-store-particles canvas {
@@ -150,16 +150,6 @@
   width: 0.25em;
 }
 
-.member-store-page .member-store-hero-copy > p {
-  margin: 17px 0 0;
-  color: var(--store-muted);
-  font-size: 16px;
-  font-weight: 420;
-  letter-spacing: 0.01em;
-  line-height: 1.55;
-}
-
-.member-store-page.is-motion-ready .member-store-hero-copy > p,
 .member-store-page.is-motion-ready .member-store-wallet {
   transition:
     opacity 700ms ease,
@@ -167,15 +157,10 @@
     transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.member-store-page.is-motion-ready:not(.is-entered) .member-store-hero-copy > p,
 .member-store-page.is-motion-ready:not(.is-entered) .member-store-wallet {
   opacity: 0;
   filter: blur(6px);
   transform: translateY(18px);
-}
-
-.member-store-page.is-motion-ready .member-store-hero-copy > p {
-  transition-delay: 380ms;
 }
 
 .member-store-page.is-motion-ready .member-store-wallet {
@@ -183,13 +168,43 @@
 }
 
 .member-store-page .member-store-wallet {
+  position: relative;
+  isolation: isolate;
+  width: 362px;
+  max-width: 100%;
+  min-height: 104px;
+  box-sizing: border-box;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 54px;
   margin-top: 37px;
+  padding: 16px 18px 18px 32px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      120% 180% at 0% 52%,
+      rgba(205, 154, 66, 0.13) 0%,
+      rgba(148, 108, 45, 0.055) 38%,
+      rgba(13, 15, 19, 0) 68%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(22, 19, 13, 0.94) 0%,
+      rgba(10, 12, 16, 0.95) 58%,
+      rgba(5, 7, 10, 0.98) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 42px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(10px) saturate(1.04);
+  backdrop-filter: blur(10px) saturate(1.04);
 }
 
 .member-store-page .member-store-wallet > div {
+  flex: 0 0 104px;
+  width: 104px;
   display: grid;
   gap: 6px;
 }
@@ -204,8 +219,10 @@
   color: var(--store-gold);
   font-size: 42px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.025em;
   line-height: 0.94;
+  white-space: nowrap;
   text-shadow: 0 0 28px rgba(216, 170, 82, 0.12);
   transition: text-shadow 220ms ease, transform 220ms ease;
 }
@@ -342,13 +359,21 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 72% 66% at 57% 46%,
-    transparent 46%,
-    rgba(3, 5, 7, 0.14) 64%,
-    rgba(3, 5, 7, 0.68) 86%,
-    var(--store-bg) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      transparent 54%,
+      rgba(3, 5, 7, 0.12) 68%,
+      rgba(3, 5, 7, 0.7) 88%,
+      var(--store-bg) 100%
+    ),
+    radial-gradient(
+      ellipse 72% 66% at 57% 46%,
+      transparent 46%,
+      rgba(3, 5, 7, 0.14) 64%,
+      rgba(3, 5, 7, 0.68) 86%,
+      var(--store-bg) 100%
+    );
 }
 
 .member-store-page .member-store-hero-visual img {
@@ -368,7 +393,7 @@
   z-index: 3;
   display: grid;
   gap: 40px;
-  padding: 0 10px;
+  padding: 40px 10px;
 }
 
 .member-store-page .ai-store-product-group {
@@ -946,7 +971,6 @@ body:not(.home-page) .member-store-page .ai-store-record-dialog {
 
 @media (prefers-reduced-motion: reduce) {
   .member-store-page.is-motion-ready:not(.is-entered) .shared-home-header,
-  .member-store-page.is-motion-ready:not(.is-entered) .member-store-hero-copy > p,
   .member-store-page.is-motion-ready:not(.is-entered) .member-store-wallet,
   .member-store-page.is-motion-ready:not(.is-entered) .member-store-hero-visual,
   .member-store-page.has-reveal-motion .ai-store-product-group:not(.is-in-view) {
@@ -978,7 +1002,6 @@ body:not(.home-page) .member-store-page .ai-store-record-dialog {
   }
 
   .member-store-page.is-motion-ready .shared-home-header,
-  .member-store-page.is-motion-ready .member-store-hero-copy > p,
   .member-store-page.is-motion-ready .member-store-wallet,
   .member-store-page.is-motion-ready .member-store-hero-visual,
   .member-store-page.has-reveal-motion .ai-store-product-group,

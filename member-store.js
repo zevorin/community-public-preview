@@ -49,24 +49,8 @@
   productGroups.forEach((group) => {
     const cards = Array.from(group.querySelectorAll("[data-ai-store-product]"));
     cards.forEach((card, index) => card.style.setProperty("--member-store-card-index", index));
+    group.classList.add("is-in-view");
   });
-
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in-view");
-          revealObserver.unobserve(entry.target);
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
-    );
-
-    productGroups.forEach((group) => revealObserver.observe(group));
-  } else {
-    productGroups.forEach((group) => group.classList.add("is-in-view"));
-  }
 
   if (walletPoints && !reduceMotion) {
     const targetValue = Number.parseInt(walletPoints.textContent.replace(/\D/g, ""), 10);
@@ -136,7 +120,7 @@
 
     import("./reactbits-particles.js?v=20260728-banner-particles-v4")
       .then(({ createReactBitsParticles }) => {
-        const particles = createReactBitsParticles(particlesContainer, {
+        createReactBitsParticles(particlesContainer, {
           particleCount: 300,
           particleSpread: 11,
           speed: 0.12,
@@ -152,8 +136,6 @@
           horizontalScale: 0.92,
           pixelRatio: 1
         });
-
-        window.addEventListener("pagehide", () => particles.destroy(), { once: true });
       })
       .catch(() => {
         particlesContainer.dataset.particlesReady = "error";

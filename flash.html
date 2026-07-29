@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">  <title>闪念 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css?v=20260722-desktop-only-media-skeleton-comment-frame12">
+  <link rel="stylesheet" href="./style.css?v=20260729-flash-compose-focus-disabled-v13">
   <link rel="stylesheet" href="./radius-system.css?v=20260726-radius-system-v1-comment-frame12">
   <link rel="stylesheet" href="./ui-theme.css?v=20260728-ui-guide-v2">
 </head>
@@ -86,57 +86,93 @@
 
     <section id="compose-flash" class="create-modal flash-compose-modal" aria-label="发布一条闪念">
       <a class="modal-backdrop" href="#" aria-label="关闭发布一条闪念"></a>
-      <div class="create-dialog flash-compose-dialog">
-        <div class="create-dialog-head">
-          <div>
-            <h2>发布一条闪念</h2>
+      <div class="create-dialog flash-compose-dialog" role="dialog" aria-modal="true" aria-labelledby="flash-compose-title" tabindex="-1">
+        <header class="flash-compose-head">
+          <div class="flash-compose-heading">
+            <span>CREATE · FLASH</span>
+            <h2 id="flash-compose-title">发布一条闪念</h2>
+            <p>把刚刚发生的灵感，留在创作现场。</p>
           </div>
-          <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭发布一条闪念"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
-        </div>
-        <div class="flash-editor">
-          <div class="flash-editor-shell">
-            <textarea class="flash-editor-field" maxlength="600" aria-label="闪念内容">今天测试 gemini-3-flash-preview 做 2 分钟短片脚本，先把角色关系压成三句，再让模型拆镜头，结果比直接写长 Prompt 稳定很多。</textarea>
-            <div class="flash-editor-bar">
-              <div class="flash-compose-toolbar" aria-label="编辑工具">
-                <button class="flash-tool-button" type="button" title="二级标题" aria-label="二级标题"><img src="resources/icons/remixicon/svg/Editor/h-2.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="加粗" aria-label="加粗"><img src="resources/icons/remixicon/svg/Editor/bold.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="斜体" aria-label="斜体"><img src="resources/icons/remixicon/svg/Editor/italic.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="引用" aria-label="引用"><img src="resources/icons/remixicon/svg/Editor/double-quotes-l.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="无序列表" aria-label="无序列表"><img src="resources/icons/remixicon/svg/Editor/list-unordered.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="有序列表" aria-label="有序列表"><img src="resources/icons/remixicon/svg/Editor/list-ordered.svg" alt=""></button>
+          <a class="flash-compose-close" href="#" role="button" aria-label="关闭发布一条闪念">
+            <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
+          </a>
+        </header>
+
+        <form class="flash-compose-form" data-flash-compose-form novalidate>
+          <div class="flash-compose-layout">
+            <main class="flash-compose-primary">
+              <section class="flash-editor-shell" aria-labelledby="flash-content-label" data-compose-section style="--compose-order: 0">
+                <div class="flash-field-head">
+                  <label id="flash-content-label" for="flash-compose-content">闪念内容</label>
+                </div>
+                <textarea id="flash-compose-content" class="flash-editor-field" maxlength="600" rows="7" placeholder="写下此刻的想法…" aria-describedby="flash-compose-counter" data-flash-compose-input></textarea>
+                <div class="flash-editor-bar">
+                  <span id="flash-compose-counter" class="flash-compose-counter" data-flash-compose-counter>0/600</span>
+                </div>
+              </section>
+
+              <section class="flash-media-section" aria-labelledby="flash-media-title" data-compose-section style="--compose-order: 1">
+                <div class="flash-media-head">
+                  <div>
+                    <strong id="flash-media-title">媒体文件</strong>
+                    <span>图片与视频可混排，拖动可调整顺序</span>
+                  </div>
+                  <span data-flash-media-count>0 / 6</span>
+                </div>
+                <input class="sr-only" type="file" accept="image/*,video/*" multiple data-flash-media-input>
+                <div class="flash-media-strip" data-flash-media-list>
+                  <button class="flash-media-add" type="button" aria-label="添加图片或视频" data-flash-media-trigger>
+                    <span class="flash-media-add-icon"><img src="resources/icons/remixicon/svg/System/upload-cloud-2-line.svg" alt=""></span>
+                    <strong>添加图片 / 视频</strong>
+                    <small>单个文件不超过 50MB</small>
+                  </button>
+                </div>
+              </section>
+            </main>
+
+            <aside class="flash-compose-settings" aria-labelledby="flash-settings-title" data-compose-section style="--compose-order: 2">
+              <div class="flash-settings-head">
+                <span>SETTINGS</span>
+                <h3 id="flash-settings-title">发布设置</h3>
               </div>
-              <span class="flash-compose-counter">96 / 600</span>
-            </div>
+
+              <fieldset class="flash-setting-group">
+                <legend>话题</legend>
+                <div class="flash-topic-control" data-flash-topic-group>
+                  <div class="flash-topic-input">
+                    <input type="text" maxlength="12" placeholder="输入话题后回车添加，最多添加5个" aria-label="输入话题后回车添加，最多添加5个" autocomplete="off" data-flash-topic-input>
+                  </div>
+                  <div class="flash-topic-tags" data-flash-topic-list></div>
+                </div>
+              </fieldset>
+
+              <label class="flash-setting-group flash-category-field">
+                <span>内容分类</span>
+                <span class="flash-select-shell">
+                  <select aria-label="内容分类" data-flash-category>
+                    <option value="tools">工具推荐</option>
+                    <option value="showcase">作品展示</option>
+                    <option value="experience">经验分享</option>
+                    <option value="question">问题讨论</option>
+                  </select>
+                  <img src="resources/icons/remixicon/svg/Arrows/arrow-down-s-line.svg" alt="">
+                </span>
+              </label>
+
+            </aside>
           </div>
-          <div class="flash-media-section">
-            <div class="flash-media-head">
-              <strong>媒体文件</strong>
-              <span>2 / 6</span>
-            </div>
-            <div class="flash-media-strip">
-              <button class="flash-media-add" type="button" aria-label="添加媒体文件">
-                <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
-              </button>
-              <div class="flash-media-item">
-                <img class="flash-media-preview" src="assets/image_assets/11.webp" alt="">
-                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
-                <span class="flash-media-type">1 / 6</span>
-              </div>
-              <div class="flash-media-item is-video">
-                <img class="flash-media-preview" src="assets/image_assets/18.webp" alt="">
-                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
-                <span class="flash-media-type">视频</span>
-              </div>
-            </div>
-          </div>
-          <div class="flash-editor-footer">
-            <span>发布后可获得 30 积分，好的经验会被更多人看到</span>
+
+          <footer class="flash-compose-footer">
+            <span class="flash-compose-reward">发布后会获得30积分奖励</span>
+            <span class="sr-only" role="status" aria-live="polite" data-flash-compose-status></span>
             <div class="flash-editor-actions">
-              <a class="button secondary" href="./flash.html">取消</a>
-              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流">发布</a>
+              <a class="button secondary flash-compose-cancel" href="#">取消</a>
+              <button class="button flash-compose-submit" type="submit" disabled data-flash-compose-submit>
+                <span>发布闪念</span>
+              </button>
             </div>
-          </div>
-        </div>
+          </footer>
+        </form>
       </div>
     </section>
 
@@ -604,6 +640,7 @@
 
     });
   </script>
+  <script src="./flash-compose.js?v=20260729-flash-compose-controls-v6" defer></script>
   <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
 </body>
 </html>
