@@ -223,6 +223,70 @@
   box-shadow: 0 0 12px var(--ds-gold-strong);
 }
 
+/* Page entrance: reveal the banner first, then stagger whole cards by section. */
+.activity-center-page.activity-motion-ready .activity-enter-banner,
+.activity-center-page.activity-motion-ready .activity-enter-heading {
+  transition:
+    opacity var(--ds-duration-long) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    transform var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    clip-path var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms);
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-card {
+  transition:
+    opacity var(--ds-duration-long) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    translate var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    scale var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    clip-path var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
+    transform var(--ds-duration-slow) var(--activity-ease),
+    border-color var(--ds-duration-moderate) ease,
+    background-color var(--ds-duration-moderate) ease,
+    box-shadow var(--ds-duration-slow) ease;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-banner:not(.is-activity-entered) {
+  opacity: 0.76;
+  clip-path: inset(0 8% 0 0 round 16px);
+  transform: translateY(8px);
+  will-change: opacity, transform, clip-path;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-card:not(.is-activity-entered) {
+  opacity: 0.18;
+  clip-path: inset(0 0 14px 0 round 18px);
+  translate: 0 16px;
+  scale: 0.988;
+  will-change: opacity, translate, scale, clip-path;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-heading:not(.is-activity-entered) {
+  opacity: 0.72;
+  clip-path: inset(0 20% 0 0);
+  transform: translateX(-12px);
+  will-change: opacity, transform, clip-path;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-banner.is-activity-entered,
+.activity-center-page.activity-motion-ready .activity-enter-heading.is-activity-entered {
+  opacity: 1;
+  clip-path: inset(0);
+  transform: none;
+  will-change: auto;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered {
+  opacity: var(--activity-card-rest-opacity, 1);
+  clip-path: inset(0);
+  translate: 0 0;
+  scale: 1;
+  will-change: auto;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered:hover,
+.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered:focus-within {
+  opacity: 1;
+}
+
 .activity-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -286,6 +350,11 @@
   transform: translateY(-5px);
 }
 
+.activity-equal-card:active {
+  transform: translateY(-2px) scale(0.995);
+  transition-duration: var(--ds-duration-instant);
+}
+
 .activity-equal-card:hover::after,
 .activity-equal-card:focus-within::after {
   opacity: 1;
@@ -308,29 +377,51 @@
   aspect-ratio: 1916 / 821;
   overflow: hidden;
   border-radius: 17px 17px 0 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   background: #0b0f13;
+}
+
+.activity-card-media::before {
+  content: "";
+  position: absolute;
+  inset: -22% -36%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(108deg, transparent 42%, var(--ds-white-soft) 49%, transparent 56%);
+  opacity: 0;
+  transform: translate3d(-38%, 0, 0);
+  transition: opacity var(--ds-duration-fast) ease,
+    transform var(--ds-duration-cinematic) var(--activity-ease);
 }
 
 .activity-card-media::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   background:
     linear-gradient(180deg, rgba(5, 7, 11, 0.02) 48%, rgba(5, 7, 11, 0.7) 100%),
     linear-gradient(90deg, var(--ds-gold-veil), transparent 28%);
+  opacity: 0.9;
+  transition: opacity var(--ds-duration-moderate) ease;
 }
 
 .activity-card-media img {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 17px 17px 0 0 !important;
   object-fit: cover;
+  transform: scale(1.001) translate3d(0, 0, 0);
+  transition: transform var(--ds-duration-long) var(--activity-ease),
+    filter var(--ds-duration-moderate) ease;
 }
 
 .activity-card-time {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 16px;
   left: 16px;
   bottom: auto;
@@ -347,6 +438,9 @@
   letter-spacing: 0.055em;
   text-shadow: 0 2px 9px var(--ds-black-solid);
   white-space: nowrap;
+  transition: transform var(--ds-duration-moderate) var(--activity-ease),
+    border-color var(--ds-duration-fast) ease,
+    background-color var(--ds-duration-fast) ease;
 }
 
 .activity-status {
@@ -382,7 +476,8 @@
   min-height: 72px;
   display: flex;
   flex-direction: column;
-  padding: var(--ds-space-3) var(--ds-space-4) 0;
+  padding: var(--ds-space-3) var(--ds-space-5) 0px;
+  border-radius: 0 0 17px 17px !important;
   background:
     linear-gradient(180deg, var(--ds-white-veil), transparent 42%),
     rgba(7, 10, 14, 0.82);
@@ -398,6 +493,35 @@
   letter-spacing: 0.015em;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color var(--ds-duration-fast) ease;
+}
+
+.activity-equal-card:hover .activity-card-media::before,
+.activity-equal-card:focus-within .activity-card-media::before {
+  opacity: 0.66;
+  transform: translate3d(38%, 0, 0);
+}
+
+.activity-equal-card:hover .activity-card-media::after,
+.activity-equal-card:focus-within .activity-card-media::after {
+  opacity: 1;
+}
+
+.activity-equal-card:hover .activity-card-media img,
+.activity-equal-card:focus-within .activity-card-media img {
+  transform: scale(1.022) translate3d(0, -0.35%, 0);
+}
+
+.activity-equal-card:hover .activity-card-time,
+.activity-equal-card:focus-within .activity-card-time {
+  border-color: var(--ds-white-soft);
+  background: var(--ds-black-solid);
+  transform: translateY(-1px);
+}
+
+.activity-equal-card:hover .activity-card-content p,
+.activity-equal-card:focus-within .activity-card-content p {
+  color: var(--ds-warm-solid);
 }
 
 .activity-card-footer {
@@ -460,6 +584,7 @@
 }
 
 .activity-ended-card {
+  --activity-card-rest-opacity: 0.74;
   opacity: 0.74;
 }
 
@@ -469,6 +594,11 @@
 
 .activity-ended-card:hover {
   opacity: 1;
+}
+
+.activity-ended-card:hover .activity-card-media img,
+.activity-ended-card:focus-within .activity-card-media img {
+  filter: saturate(0.78) contrast(1.06);
 }
 
 .activity-ended-card .activity-status {
@@ -534,9 +664,40 @@
   .activity-banner-mark,
   .activity-equal-card,
   .activity-equal-card::after,
+  .activity-card-media::before,
+  .activity-card-media::after,
   .activity-card-media img,
-  .activity-card-action {
+  .activity-card-time,
+  .activity-card-content p,
+  .activity-card-action,
+  .activity-card-action img {
     transition: none;
     animation: none;
+  }
+
+  .activity-equal-card:hover,
+  .activity-equal-card:focus-within,
+  .activity-equal-card:active,
+  .activity-equal-card:hover .activity-card-media img,
+  .activity-equal-card:focus-within .activity-card-media img,
+  .activity-equal-card:hover .activity-card-time,
+  .activity-equal-card:focus-within .activity-card-time {
+    transform: none;
+  }
+
+  .activity-equal-card:hover .activity-card-media::before,
+  .activity-equal-card:focus-within .activity-card-media::before {
+    opacity: 0;
+  }
+
+  .activity-center-page.activity-motion-ready .activity-enter-item,
+  .activity-center-page.activity-motion-ready .activity-enter-item:not(.is-activity-entered) {
+    opacity: var(--activity-card-rest-opacity, 1);
+    clip-path: none;
+    translate: none;
+    scale: none;
+    transform: none;
+    transition: none;
+    will-change: auto;
   }
 }

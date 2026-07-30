@@ -36122,17 +36122,45 @@ body.login-modal-open {
 
 .flash-compose-head {
   position: relative;
+  isolation: isolate;
   flex: 0 0 auto;
   min-height: 108px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--ds-space-6);
+  overflow: hidden;
   padding: var(--ds-space-5) var(--ds-space-6);
   border-bottom: 1px solid var(--ds-paper-soft);
+  background: rgba(8, 12, 17, 0.9);
+}
+
+.flash-compose-head::before,
+.flash-compose-head::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.flash-compose-head::before {
+  inset: -6px 0 0;
+  background: url("./assets/image_assets/flash-compose-header-space-ip-v2.webp") right 28px center / auto 100% no-repeat;
+  filter: brightness(0.76) saturate(0.88) contrast(0.92);
+  opacity: 0.82;
+  transform: scale(1.01);
+}
+
+.flash-compose-head::after {
+  background:
+    linear-gradient(90deg, rgba(8, 12, 17, 0.98) 0%, rgba(8, 12, 17, 0.94) 28%, rgba(8, 12, 17, 0.56) 43%, rgba(8, 12, 17, 0.54) 72%, rgba(8, 12, 17, 0.74) 100%),
+    linear-gradient(180deg, rgba(8, 12, 17, 0.14), rgba(8, 12, 17, 0.42));
 }
 
 .flash-compose-heading {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   padding-right: 56px;
 }
@@ -36167,6 +36195,7 @@ body.login-modal-open {
 
 .flash-compose-close {
   position: absolute;
+  z-index: 2;
   top: var(--ds-space-5);
   right: var(--ds-space-5);
   width: 40px;
@@ -37027,6 +37056,20 @@ body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:active 
   .flash-compose-head {
     min-height: 92px;
     padding: var(--ds-space-4) var(--ds-space-4) var(--ds-space-4);
+  }
+
+  .flash-compose-head::before {
+    inset: -4px 0 0;
+    background-position: right 44px center;
+    background-size: auto 100%;
+    filter: brightness(0.62) saturate(0.78) contrast(0.9);
+    opacity: 0.6;
+  }
+
+  .flash-compose-head::after {
+    background:
+      linear-gradient(90deg, rgba(8, 12, 17, 0.99) 0%, rgba(8, 12, 17, 0.95) 54%, rgba(8, 12, 17, 0.73) 79%, rgba(8, 12, 17, 0.86) 100%),
+      linear-gradient(180deg, rgba(8, 12, 17, 0.28), rgba(8, 12, 17, 0.62));
   }
 
   .flash-compose-close {
