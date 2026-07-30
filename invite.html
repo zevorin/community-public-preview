@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./invite.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./invite.css?v=20260730-invite-rules-uiguide-v4">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
 </head>
 <body class="invite-page-body">
@@ -277,17 +277,16 @@
 
     <section id="invite-rules-modal" class="create-modal invite-rules-modal" data-invite-rules-modal aria-label="邀请规则">
       <a class="modal-backdrop" href="#invite-records" aria-label="关闭邀请规则"></a>
-      <div class="invite-rules-dialog">
-        <div class="invite-rules-head">
+      <div class="invite-rules-dialog" role="dialog" aria-modal="true" aria-labelledby="invite-rules-title" aria-describedby="invite-rules-description">
+        <header class="invite-rules-head">
           <div>
-            <span class="invite-section-eyebrow">INVITATION RULES</span>
-            <h2>邀请规则</h2>
-            <p>好友完成对应阶段并通过系统校验后，积分将自动发放至邀请人的积分账户。</p>
+            <h2 id="invite-rules-title">邀请规则</h2>
+            <p id="invite-rules-description">好友完成对应阶段并通过系统校验后，积分将自动发放至邀请人的积分账户。</p>
           </div>
           <a class="modal-close-icon" href="#invite-records" aria-label="关闭邀请规则">
             <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
           </a>
-        </div>
+        </header>
         <div class="invite-rules-body">
           <div class="invite-rule-block">
             <h3>分阶段奖励</h3>

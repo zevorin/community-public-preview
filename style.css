@@ -36121,14 +36121,20 @@ body.login-modal-open {
 }
 
 .flash-compose-head {
+  position: relative;
   flex: 0 0 auto;
   min-height: 108px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--ds-space-6);
-  padding: var(--ds-space-5) var(--ds-space-6) var(--ds-space-5);
+  padding: var(--ds-space-5) var(--ds-space-6);
   border-bottom: 1px solid var(--ds-paper-soft);
+}
+
+.flash-compose-heading {
+  min-width: 0;
+  padding-right: 56px;
 }
 
 .flash-compose-heading > span,
@@ -36160,14 +36166,21 @@ body.login-modal-open {
 }
 
 .flash-compose-close {
+  position: absolute;
+  top: var(--ds-space-5);
+  right: var(--ds-space-5);
   width: 40px;
   min-width: 40px;
-  height: var(--ds-control-default);
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  aspect-ratio: 1;
   display: grid;
+  flex: 0 0 40px;
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--ds-white-soft);
-  border-radius: var(--ds-radius-pill);
+  border-radius: 50% !important;
   background: var(--ds-white-veil);
   box-shadow: var(--ds-shadow-highlight);
   transition: transform var(--ds-duration-fast) ease,
@@ -36586,7 +36599,7 @@ body:not(.home-page) .flash-compose-modal textarea.flash-editor-field:focus {
   background: transparent !important;
   box-shadow: none !important;
   font: inherit;
-  font-size: var(--ds-type-xs);
+  font-size: var(--ds-type-sm);
   font-weight: var(--ds-weight-regular);
 }
 
@@ -36664,7 +36677,8 @@ body:not(.home-page) .flash-compose-modal textarea.flash-editor-field:focus {
 .flash-select-shell {
   position: relative;
   min-height: var(--ds-control-prominent);
-  display: block;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   border: 1px solid var(--ds-paper-soft);
   border-radius: var(--ds-radius-control);
@@ -37013,6 +37027,10 @@ body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:active 
   .flash-compose-head {
     min-height: 92px;
     padding: var(--ds-space-4) var(--ds-space-4) var(--ds-space-4);
+  }
+
+  .flash-compose-close {
+    top: calc(var(--ds-space-5) - 1px);
   }
 
   .flash-compose-heading p {

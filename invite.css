@@ -2457,6 +2457,197 @@ body.invite-page-body .invite-copy-button {
   }
 }
 
+/* Invite rules dialog — aligned with the UI guide's dialog and data-list patterns. */
+.invite-page .invite-rules-modal {
+  padding: 24px;
+}
+
+.invite-page .invite-rules-dialog {
+  width: min(1040px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  border: 1px solid rgba(244, 201, 93, 0.18);
+  border-radius: 24px;
+  background: rgba(7, 10, 13, 0.98);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.58);
+}
+
+.invite-page .invite-rules-head {
+  min-height: 88px;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.invite-page .invite-rules-head > div {
+  min-width: 0;
+}
+
+.invite-page .invite-rules-head h2 {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.invite-page .invite-rules-head p {
+  max-width: 720px;
+  margin-top: 6px;
+  color: rgba(235, 234, 228, 0.58);
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.invite-page .invite-rules-head .modal-close-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  opacity: 1;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.invite-page .invite-rules-head .modal-close-icon img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.72;
+}
+
+.invite-page .invite-rules-head .modal-close-icon:hover,
+.invite-page .invite-rules-head .modal-close-icon:focus-visible {
+  border-color: rgba(244, 201, 93, 0.3);
+  background: rgba(244, 201, 93, 0.09);
+  outline: 0;
+  transform: rotate(4deg);
+}
+
+.invite-page .invite-rules-body {
+  gap: 24px;
+  padding: 24px;
+}
+
+.invite-page .invite-rule-block {
+  gap: 10px;
+}
+
+.invite-page .invite-rule-block h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.invite-page .invite-rule-detail-table {
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.invite-page .invite-rule-detail-row {
+  min-height: 48px;
+  gap: 16px;
+  padding: 10px 16px;
+  color: rgba(235, 234, 228, 0.62);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.invite-page .invite-rule-detail-row.is-head {
+  min-height: 40px;
+  color: rgba(235, 234, 228, 0.44);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.invite-page .invite-rule-detail-row strong {
+  color: rgba(247, 247, 243, 0.92);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.invite-page .invite-rule-detail-row span {
+  color: rgba(235, 234, 228, 0.62);
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.invite-page .invite-rule-detail-table.is-rewards .invite-rule-detail-row {
+  grid-template-columns: minmax(210px, 0.95fr) minmax(112px, 0.42fr) minmax(360px, 1.55fr);
+}
+
+.invite-page .invite-rule-detail-table.is-limits .invite-rule-detail-row {
+  grid-template-columns: minmax(92px, 0.34fr) minmax(220px, 1fr) minmax(100px, 0.4fr) minmax(290px, 1.35fr);
+}
+
+.invite-page .invite-rule-detail-table.is-risk .invite-rule-detail-row {
+  grid-template-columns: minmax(150px, 0.6fr) minmax(260px, 1.05fr) minmax(350px, 1.4fr);
+}
+
+.invite-page .invite-rule-detail-table.is-rewards .invite-rule-detail-row:not(.is-head) > span:nth-child(2),
+.invite-page .invite-rule-detail-table.is-limits .invite-rule-detail-row:not(.is-head) > span:nth-child(3) {
+  color: var(--ds-gold-emphasis);
+  font-weight: 600;
+}
+
+.invite-page .invite-rule-detail-table.is-rewards .invite-rule-detail-row:not(.is-head) > span:nth-child(3),
+.invite-page .invite-rule-detail-table.is-risk .invite-rule-detail-row:not(.is-head) > span:nth-child(3) {
+  color: rgba(235, 234, 228, 0.62);
+}
+
+@media (max-width: 760px) {
+  .invite-page .invite-rules-modal {
+    padding: 12px;
+  }
+
+  .invite-page .invite-rules-dialog {
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+  }
+
+  .invite-page .invite-rules-head {
+    min-height: 80px;
+    padding: 16px 18px;
+  }
+
+  .invite-page .invite-rules-head h2 {
+    font-size: 22px;
+  }
+
+  .invite-page .invite-rules-head p {
+    padding-right: 4px;
+    font-size: 12px;
+  }
+
+  .invite-page .invite-rules-body {
+    gap: 20px;
+    padding: 18px;
+  }
+
+  .invite-page .invite-rule-detail-row {
+    padding-inline: 14px;
+  }
+
+  .invite-page .invite-rule-detail-table.is-rewards .invite-rule-detail-row {
+    min-width: 700px;
+  }
+
+  .invite-page .invite-rule-detail-table.is-limits .invite-rule-detail-row {
+    min-width: 840px;
+  }
+
+  .invite-page .invite-rule-detail-table.is-risk .invite-rule-detail-row {
+    min-width: 760px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invite-page .invite-rules-head .modal-close-icon {
+    transition: none;
+  }
+}
+
 /* Match the model plaza “探索模型” specular action. */
 .invite-primary,
 body.invite-page-body .invite-primary {
