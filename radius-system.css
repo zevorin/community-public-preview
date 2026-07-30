@@ -6,19 +6,6 @@
  * 999px — buttons, tabs, filters, badges and circular controls
  */
 
-:root {
-  --radius: 12px;
-  --radius-control: 12px;
-  --radius-card: 16px;
-  --radius-large: 24px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-  --ds-radius-control: 12px;
-  --ds-radius-card: 16px;
-  --ds-radius-modal: 24px;
-  --ds-radius-pill: 999px;
-}
-
 /* Inputs and compact controls */
 :where(
   input:not([type="radio"]):not([type="checkbox"]),

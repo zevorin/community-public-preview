@@ -4,75 +4,15 @@
  * defined in UIguide.html.
  */
 
-:root {
-  --ds-bg: #05070b;
-  --ds-bg-raised: #0b0f13;
-  --ds-surface: rgba(11, 15, 19, 0.74);
-  --ds-surface-strong: rgba(20, 22, 24, 0.92);
-  --ds-surface-hover: rgba(31, 30, 27, 0.94);
-  --ds-text: #fffaf0;
-  --ds-text-muted: rgba(255, 250, 240, 0.62);
-  --ds-text-faint: rgba(255, 250, 240, 0.42);
-  --ds-line: rgba(255, 247, 230, 0.14);
-  --ds-line-strong: rgba(244, 201, 93, 0.34);
-  --ds-gold: #f4c95d;
-  --ds-gold-soft: rgba(244, 201, 93, 0.14);
-  --ds-lime: #d9ff8c;
-  --ds-mint: #66e2cf;
-  --ds-danger: #ef664e;
-  --ds-success: #68ca93;
-
-  /* Compatibility aliases used by the existing page styles. */
-  --bg: var(--ds-bg);
-  --bg-2: var(--ds-bg-raised);
-  --paper: var(--ds-text);
-  --muted: var(--ds-text-muted);
-  --faint: var(--ds-text-faint);
-  --line: var(--ds-line);
-  --panel: var(--ds-surface);
-  --panel-strong: var(--ds-surface-strong);
-  --gold: var(--ds-gold);
-  --mint: var(--ds-mint);
-  --green: var(--ds-success);
-  --red: var(--ds-danger);
-
-  --secondary-bg: var(--ds-bg);
-  --secondary-surface: var(--ds-surface);
-  --secondary-surface-strong: var(--ds-surface-strong);
-  --secondary-line: var(--ds-line);
-  --secondary-line-strong: var(--ds-line-strong);
-  --secondary-text: var(--ds-text);
-  --secondary-muted: var(--ds-text-muted);
-  --secondary-gold: var(--ds-gold);
-  --secondary-lime: var(--ds-lime);
-}
-
-.activity-center-page {
-  --activity-bg: var(--ds-bg);
-  --activity-surface: var(--ds-surface);
-  --activity-surface-hover: var(--ds-surface-hover);
-  --activity-paper: var(--ds-text);
-  --activity-muted: var(--ds-text-muted);
-  --activity-faint: var(--ds-text-faint);
-  --activity-line: var(--ds-line);
-  --activity-gold: var(--ds-gold);
-  --activity-lime: var(--ds-lime);
-  --activity-mint: var(--ds-mint);
-}
-
 .member-store-page {
   --store-bg: var(--ds-bg);
   --store-paper: var(--ds-text);
-  --store-muted: var(--ds-text-muted);
-  --store-gold: var(--ds-gold);
-  --store-gold-bright: var(--ds-gold);
   --store-card: var(--ds-surface-strong);
 }
 
 .message-center-page {
   --message-gold: var(--ds-gold);
   --message-paper: var(--ds-text);
-  --message-muted: var(--ds-text-muted);
   --message-border: var(--ds-gold-soft);
 }
 
@@ -82,18 +22,6 @@
 
 .flash-page {
   --flash-accent: var(--ds-gold);
-}
-
-body.invite-page-body .invite-space {
-  --invite-gold: var(--ds-gold);
-  --invite-gold-light: var(--ds-gold);
-  --invite-green: var(--ds-lime);
-  --invite-text: var(--ds-text);
-  --invite-muted: var(--ds-text-muted);
-}
-
-body.invite-page-body .invite-reward-card {
-  --reward-accent: var(--ds-lime);
 }
 
 /* Navigation selection follows the UIguide selected-state treatment. */
@@ -168,7 +96,7 @@ body:not(.home-page) :is(
   color: var(--ds-gold);
   border-color: var(--ds-line-strong);
   background: var(--ds-gold-soft);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: var(--ds-shadow-highlight-subtle);
 }
 
 .ui-glide-tabs > .ui-glide-tab-indicator {
