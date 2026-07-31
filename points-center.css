@@ -480,7 +480,7 @@ img {
 }
 
 .records-panel {
-  padding: var(--ds-space-6, 24px);
+  padding: var(--ds-space-8, 32px) var(--ds-space-6, 24px) var(--ds-space-6, 24px);
 }
 
 .section-heading {
@@ -708,6 +708,11 @@ img {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
   color: var(--ds-paper-solid, rgba(255, 247, 230, 0.84));
   font-size: var(--ds-type-sm, 12px);
+}
+
+.record-head > span:last-child {
+  justify-self: end;
+  text-align: right;
 }
 
 .record-row time {
