@@ -51,6 +51,74 @@ final result: passed
 
 ---
 
+# 积分中心截图还原 QA（2026-07-30）
+
+- Source visual truth: `C:/Users/a/AppData/Local/Temp/codex-clipboard-a08d189e-ff9e-4730-acda-7a8c620f519e.png`
+- Implementation screenshot: `qa/points-center-implementation-1678x941-final.png`
+- Mobile implementation screenshot: `qa/points-center-mobile-cdp-390x844-final.png`
+- Full-view comparison evidence: `qa/points-center-side-by-side-final.png`
+- Focused hero comparison: `qa/points-center-focused-hero.png`
+- Focused content comparison: `qa/points-center-focused-content.png`
+- Viewport: `1678 × 941` CSS px; responsive check at `390 × 844` CSS px
+- Source pixels / CSS size: `1678 × 941` pixels / `1678 × 941` CSS px
+- Implementation pixels / CSS size: `1678 × 941` pixels / `1678 × 941` CSS px
+- Density normalization: none; source and implementation were compared at native `deviceScaleFactor: 1`
+- State: default points-center view, balance `1280`, five records, no hover/focus overlay
+
+## Full-view comparison evidence
+
+The side-by-side native-size comparison confirms the same page structure and first-view composition: `60px` left alignment, heading and record shortcut, `290px` balance card, fixed balance/stat/shop tracks, `21px` lower-column gap, featured task, two secondary tasks, and five-row points log. The implementation keeps all key horizontal and vertical anchors aligned with the reference, including the `145px` hero start, `452px` content start, `571px` task/table start, and right card edge.
+
+## Focused comparison evidence
+
+- Hero crop: typography hierarchy, balance numeral, three stat columns, shop copy/button, card borders, radii, and generated coin artwork were inspected at native size.
+- Content crop: earn-panel heading, robot/moon overlap, featured task border, secondary task cards, task CTAs, log headers, row spacing, and positive/negative point colors were inspected at native size.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Chinese text uses the platform CJK sans stack; English labels and large numerals use the bundled Montserrat display font. Weights, letter spacing, line heights, hierarchy, wrapping, and tabular number alignment match the reference closely.
+- Spacing and layout rhythm: desktop panel bounds, `16–21px` major gaps, `20–25px` radii, internal padding, grid tracks, and row heights align with the source. Mobile collapses to one column with `scrollWidth === innerWidth` (`390px`), so no horizontal overflow remains.
+- Colors and visual tokens: near-black blue background, cool gray borders, white hierarchy, yellow accent, gold CTA, and red debit state match the source palette and maintain readable contrast.
+- Image quality and asset fidelity: three page-specific raster assets were produced for the header planets, shop coin sculpture, and robot/moon artwork. Local Remix icons are used for standard UI icons. No placeholder imagery remains.
+- Copy and content: all visible Chinese labels, balances, rewards, task descriptions, record times, actions, and point deltas match the supplied screenshot.
+
+## Comparison history
+
+1. Initial browser capture
+   - Earlier findings: a missing CSS closing brace caused oversized stat artwork and collapsed layout (`P0`).
+   - Fix: restored the declaration boundary and recaptured the page.
+   - Post-fix evidence: `qa/points-center-implementation-1678x941-v2.png`.
+2. Geometry alignment pass
+   - Earlier findings: header art was oversized, the shop/record columns were shifted right, and the lower task buttons sat in the wrong grid row (`P1/P2`).
+   - Fixes: aligned the hero to `145px`, locked desktop grid tracks, matched the `947px / 570px` lower split, repositioned robot artwork, and anchored secondary CTAs to the card bottom-right.
+   - Post-fix evidence: `qa/points-center-implementation-1678x941-v5.png`.
+3. Final fidelity and responsive pass
+   - Earlier findings: the robot/moon asset was too dark and exact mobile capture still needed overflow verification (`P2`).
+   - Fixes: adjusted image brightness/saturation, captured through Chrome device metrics at `390 × 844`, confirmed `scrollWidth: 390`, and repeated the desktop comparison.
+   - Post-fix evidence: `qa/points-center-implementation-1678x941-final.png` and `qa/points-center-mobile-cdp-390x844-final.png`.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` mismatch remains.
+- `P3`: the generated top purple planet is slightly flatter and wider than the reference artwork, while preserving the same position, palette, depth cue, and non-interactive role.
+
+## Interaction and runtime checks
+
+- “查看积分记录” click updates the URL to `#points-records`.
+- Balance shortcut, shop CTA, and all three task cards are visible interactive links.
+- `member-store.html`, `campaign-new-user.html`, `campaign-seven-day.html`, and `campaign-detail.html` all return HTTP `200`.
+- Desktop viewport: `innerWidth 1678`, no horizontal overflow.
+- Mobile viewport: `innerWidth 390`, `scrollWidth 390`, no horizontal overflow.
+- Browser console errors: none.
+
+## Follow-up polish
+
+- If the original header planet source asset becomes available, it can replace the generated header image for closer decorative-art parity without changing layout or behavior.
+
+final result: passed
+
+---
+
 # AI 商城积分面板第 3 稿设计 QA
 
 - Selected visual source: `qa/member-store-v4/selected-wallet-panel-option-3.png`
@@ -1114,5 +1182,64 @@ The combined comparison confirms that the existing 1280px frame, black-gold hier
 - Redeem success dialog: two equal `226px` action columns.
 - Redeem record dialog: `720px` wide with `6` visible table rows.
 - Product card parity: all `16` products now use the exact `pricing-card ai-store-product` class list; `is-featured` count is `0`.
+
+final result: passed
+
+---
+
+# 积分中心 1280 版心修订 QA（2026-07-30）
+
+- Source visual truth: `C:/Users/a/AppData/Local/Temp/codex-clipboard-a08d189e-ff9e-4730-acda-7a8c620f519e.png`
+- Secondary design-system truth: `UIguide.html` and `design-tokens.css`
+- Implementation screenshot: `qa/points-center-1280-layout-1678-final.png`
+- 1280-layout review screenshot: `qa/points-center-1280-layout-final.png`
+- Mobile screenshot: `qa/points-center-1280-mobile-final.png`
+- Full-view comparison: `qa/points-center-1280-side-by-side-final.png`
+- Focused hero comparison: `qa/points-center-1280-focused-hero.png`
+- Focused content comparison: `qa/points-center-1280-focused-content.png`
+- Viewports: `1678 × 941`, `1448 × 900`, and `390 × 844` CSS px
+- Density normalization: all captures use `deviceScaleFactor: 1`
+- State: default points-center view, balance `1280`, five log rows
+
+## User-requested corrections
+
+- Background artwork now keeps its source aspect ratio. The image uses natural height and proportional translation/cropping; no `object-fit: fill` or fixed-height stretching remains.
+- The balance numeral is capped at `100px` on desktop and `78px` on mobile.
+- The main layout uses the UI Guide rule `width: min(1280px, calc(100% - 48px))` and is centered.
+- UI Guide tokens now drive the page: `16px` card radii, `24px` panel radii, `16px` major grid gaps, `44px` large controls, warm-gold accents, paper borders, card shadows, focus outlines, and the shared platform/CJK font stack.
+
+## Full-view and focused evidence
+
+- Full-view comparison verifies the intentional change from the wider screenshot layout to the user-requested centered `1280px` frame while preserving the same information architecture and card order.
+- The focused hero comparison verifies that the planets remain circular and proportionate, the purple planet is cropped rather than stretched, and the smaller `1280` value no longer dominates its column.
+- The focused content comparison verifies UI Guide spacing, typography, borders, buttons, task-card hierarchy, and table-row styling inside the narrower frame.
+
+## Required fidelity surfaces
+
+- Fonts and typography: UI Guide font stack is applied; the balance value is reduced to `100px`; section headings use the `32px` section token; body copy uses `14px`.
+- Spacing and layout rhythm: `1280px` centered frame, `48px` desktop safety allowance, `16px` primary gaps, `24px` panel padding, and UI Guide control/card radii are applied.
+- Colors and visual tokens: page background, paper borders, warm gold, danger red, veil surfaces, focus rings, and shadows resolve through `design-tokens.css`.
+- Image quality and asset fidelity: all three generated raster assets remain sharp. The header image is proportionally scaled and cropped with no distortion.
+- Copy and content: points, task descriptions, actions, timestamps, and record deltas remain unchanged.
+
+## Comparison history
+
+1. User feedback identified a stretched header background and oversized balance numeral (`P1/P2`).
+2. First correction moved the page to a `1280px` frame, removed image stretching, reduced the number to `112px`, and adopted UI Guide tokens.
+3. Final correction constrained the artwork to the `1280px` frame and reduced the number to `100px`, improving balance and preserving the original image ratio.
+
+## Interaction and runtime checks
+
+- “查看积分记录” updates the URL to `#points-records`.
+- All six visible links remain interactive.
+- Browser console errors: none.
+- Desktop: `innerWidth 1448`, `scrollWidth 1448`.
+- Mobile: `innerWidth 390`, `scrollWidth 390`.
+- No horizontal overflow at tested desktop or mobile sizes.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` issue remains.
+- The narrower task cards wrap body copy one line earlier than the original wide screenshot; this is an expected consequence of the requested `1280px` frame and matches UI Guide body sizing.
 
 final result: passed

@@ -2,192 +2,174 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>积分中心 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
-  <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./points-center.css?v=20260730-points-redesign-v1">
+  <link rel="stylesheet" href="./points-center.css?v=20260730-cosmic-points-v2">
 </head>
 <body>
-  <div class="page growth-detail-page growth-app-page points-detail-page" data-page="points-center" data-points-entry-surface="unified-center" style="--growth-hero-image: url('assets/image_assets/18.webp')">
-    <div class="page-bg"><img src="assets/image_assets/18.webp" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-points" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>赚积分入口</span><span class="timer">一期活动已聚合</span><span>新手、七日、创作挑战、Prompt 共创和邀请奖励都在这里找入口</span><span>查看入口</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
-    <header class="site-header shared-home-header">
-      <div class="header-inner wide-container">
-        <a class="logo" href="./index.html" aria-label="多元拾光">
-          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
-        </a>
-        <nav class="nav" aria-label="主导航">
-          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
-          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
-          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
-          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
-          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
-        </nav>
-        <div class="header-actions">
-          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
-          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
-            <a class="action-link points-link is-active" aria-current="page" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
-            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
-          </div>
-        </div>
-      </div>
-    </header>
+  <main class="points-page">
+    <img class="cosmic-header-art" src="assets/points/points-space-header.png" alt="" aria-hidden="true">
 
-    <main>
-      <section class="app-workspace section points-center-workspace">
-        <div class="wide-container points-center-layout">
-          <header class="points-page-head">
-            <div>
-              <h1>积分中心</h1>
-              <p>完成社区任务，兑换模型体验和创作权益。</p>
+    <div class="points-shell">
+      <header class="points-heading">
+        <div class="points-heading-copy">
+          <div class="title-line">
+            <h1>积分中心</h1>
+            <span>POINTS CENTER</span>
+          </div>
+          <p>完成社区任务，兑换模型体验和创作权益。</p>
+        </div>
+        <a class="outline-button" href="#points-records">
+          <span>查看积分记录</span>
+          <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+        </a>
+      </header>
+
+      <section class="balance-panel" aria-labelledby="balance-title">
+        <div class="balance-total">
+          <h2 id="balance-title">可用积分</h2>
+          <span class="balance-number">
+            <strong>1280</strong>
+            <img src="resources/icons/remixicon/svg/Others/shining-2-fill.svg" alt="" aria-hidden="true">
+          </span>
+          <a href="#points-records">今日已获得 40 积分
+            <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+          </a>
+        </div>
+
+        <dl class="balance-stats" aria-label="积分概览">
+          <div class="stat-item">
+            <span class="stat-icon"><img src="resources/icons/remixicon/svg/Others/flashlight-fill.svg" alt=""></span>
+            <dt>今日获得</dt>
+            <dd>+40</dd>
+            <small>TODAY</small>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon"><img src="resources/icons/remixicon/svg/Finance/copper-coin-line.svg" alt=""></span>
+            <dt>近 7 日获得</dt>
+            <dd>+180</dd>
+            <small>7 DAYS</small>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon"><img src="resources/icons/remixicon/svg/Others/shining-2-fill.svg" alt=""></span>
+            <dt>待到账</dt>
+            <dd>+40</dd>
+            <small>PENDING</small>
+          </div>
+        </dl>
+
+        <article class="shop-card">
+          <img class="shop-art" src="assets/points/points-shop-coin.png" alt="">
+          <div class="shop-copy">
+            <span>AI 商城</span>
+            <h2>用积分兑换创作权益</h2>
+            <p>把积分换成模型体验卡和创作权益。</p>
+          </div>
+          <a class="gold-button" href="./member-store.html">
+            <span>去兑换</span>
+            <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+          </a>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section class="earn-panel" aria-labelledby="earn-title">
+          <header class="section-heading">
+            <div class="title-line compact">
+              <h2 id="earn-title">赚积分入口</h2>
+              <span>EARN POINTS</span>
             </div>
-            <a class="points-record-shortcut" href="#points-records">
-              <span>查看积分记录</span>
-              <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
-            </a>
+            <p>选择一个任务开始积累积分。</p>
           </header>
 
-          <section class="app-card points-balance-hero" data-points-section="balance">
-            <div class="points-balance-copy">
-              <span class="points-balance-label">可用积分</span>
-              <strong class="points-balance-number">1280</strong>
-              <p>今日已获得 40 积分</p>
-            </div>
+          <img class="robot-art" src="assets/points/points-robot-moon.png" alt="" aria-hidden="true">
 
-            <dl class="points-balance-stats" aria-label="积分状态">
-              <div><dt>今日获得</dt><dd>+40</dd></div>
-              <div><dt>近 7 日获得</dt><dd>+180</dd></div>
-              <div><dt>待到账</dt><dd>+40</dd></div>
-            </dl>
+          <div class="task-grid">
+            <a class="task-card featured" href="./campaign-new-user.html">
+              <span class="task-icon">
+                <img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt="">
+              </span>
+              <span class="task-copy">
+                <strong>新手任务</strong>
+                <small>完成首次访问、资料、浏览、互动、收藏和首次发布。</small>
+                <em>最高 110 积分</em>
+              </span>
+              <span class="task-button">去完成</span>
+            </a>
 
-            <div class="points-balance-shop">
-              <div class="points-shop-icon" aria-hidden="true">
-                <img src="resources/icons/remixicon/svg/Finance/coins-fill.svg" alt="">
-              </div>
-              <div class="points-shop-copy">
-                <span>AI商城</span>
-                <strong>用积分换创作权益</strong>
-                <p>把积分换成模型体验卡和创作权益。</p>
-              </div>
-              <a class="points-primary-action" href="./member-store.html" data-points-shop-entry>
-                <span>去兑换</span>
-                <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
-              </a>
-            </div>
-          </section>
+            <a class="task-card" href="./campaign-seven-day.html">
+              <span class="task-icon text-icon" aria-hidden="true">7+</span>
+              <span class="task-copy">
+                <strong>七日成长任务</strong>
+                <small>连续 7 天完成浏览、收藏、复制、发布、挑战、分享和兑换。</small>
+                <em>每日 140 + 连续 180</em>
+              </span>
+              <span class="task-button">去完成</span>
+            </a>
 
-          <div class="points-content-grid">
-            <section class="app-card points-earn-card" data-points-section="earn">
-              <div class="app-card-head">
-                <div>
-                  <h2>赚积分入口</h2>
-                  <p>选择一个任务开始积累积分。</p>
-                </div>
-              </div>
-              <div class="points-earn-grid">
-                <a class="points-earn-tile is-featured" href="./campaign-new-user.html" data-points-earn-card>
-                  <span class="points-earn-icon" aria-hidden="true"><img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt=""></span>
-                  <span class="points-earn-copy">
-                    <strong>新手任务</strong>
-                    <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
-                    <em>最高 110 积分</em>
-                  </span>
-                  <span class="points-task-action">去完成</span>
-                </a>
-                <a class="points-earn-tile" href="./campaign-seven-day.html" data-points-earn-card>
-                  <span class="points-earn-icon" aria-hidden="true"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""></span>
-                  <span class="points-earn-copy">
-                    <strong>七日成长任务</strong>
-                    <p>连续 7 天完成浏览、收藏、复制、发布、挑战、分享和兑换。</p>
-                    <em>每日 140 + 连续 180</em>
-                  </span>
-                  <span class="points-task-action">去完成</span>
-                </a>
-                <a class="points-earn-tile" href="./campaign-detail.html" data-points-earn-card>
-                  <span class="points-earn-icon" aria-hidden="true"><img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt=""></span>
-                  <span class="points-earn-copy">
-                    <strong>AI 生图创作挑战</strong>
-                    <p>按主题发布 AI 作品，争取精选候选和首页推荐候选。</p>
-                    <em>50 / 100 / 1000 积分</em>
-                  </span>
-                  <span class="points-task-action">去完成</span>
-                </a>
-                <a class="points-earn-tile" href="./campaign-prompt.html" data-points-earn-card>
-                  <span class="points-earn-icon" aria-hidden="true"><img src="resources/icons/remixicon/svg/Document/draft-line.svg" alt=""></span>
-                  <span class="points-earn-copy">
-                    <strong>Prompt 共创计划</strong>
-                    <p>进入共创活动，发布可复用 Prompt 并补充图文案例。</p>
-                    <em>20 / 40 / 100 / 500 积分</em>
-                  </span>
-                  <span class="points-task-action">去完成</span>
-                </a>
-                <a class="points-earn-tile" href="./invite.html" data-points-earn-card>
-                  <span class="points-earn-icon" aria-hidden="true"><img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt=""></span>
-                  <span class="points-earn-copy">
-                    <strong>邀请有礼</strong>
-                    <p>好友完成注册、首次互动和首次发布后累计奖励。</p>
-                    <em>单个好友最高 90 积分</em>
-                  </span>
-                  <span class="points-task-action">去完成</span>
-                </a>
-              </div>
-            </section>
-
-            <section class="app-card points-record-card" data-points-section="records">
-              <div class="app-card-head">
-                <div>
-                  <h2>积分记录</h2>
-                  <p>最近的积分收入和支出。</p>
-                </div>
-                <span class="points-record-count">5 条</span>
-              </div>
-              <div id="points-records" class="points-record-list" role="table" aria-label="最近积分记录">
-                <div class="points-record-row is-head" role="row">
-                  <span role="columnheader">时间</span>
-                  <span role="columnheader">动作</span>
-                  <span role="columnheader">变化</span>
-                </div>
-                <div class="points-record-row" role="row" data-points-record>
-                  <time datetime="2026-07-30T09:12" role="cell">今天 09:12</time>
-                  <span role="cell">新手首访</span>
-                  <strong class="is-positive" role="cell">+10</strong>
-                </div>
-                <div class="points-record-row" role="row" data-points-record>
-                  <time datetime="2026-07-30T09:28" role="cell">今天 09:28</time>
-                  <span role="cell">完善资料</span>
-                  <strong class="is-positive" role="cell">+10</strong>
-                </div>
-                <div class="points-record-row" role="row" data-points-record>
-                  <time datetime="2026-07-30T11:40" role="cell">今天 11:40</time>
-                  <span role="cell">AI商城工具兑换</span>
-                  <strong class="is-negative" role="cell">-40</strong>
-                </div>
-                <div class="points-record-row" role="row" data-points-record>
-                  <time datetime="2026-07-29T18:06" role="cell">昨天 18:06</time>
-                  <span role="cell">参与生图挑战</span>
-                  <strong class="is-positive" role="cell">+20</strong>
-                </div>
-                <div class="points-record-row" role="row" data-points-record>
-                  <time datetime="2026-07-29T20:15" role="cell">昨天 20:15</time>
-                  <span role="cell">生图挑战作品发布</span>
-                  <strong class="is-positive" role="cell">+50</strong>
-                </div>
-              </div>
-            </section>
+            <a class="task-card" href="./campaign-detail.html">
+              <span class="task-icon">
+                <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
+              </span>
+              <span class="task-copy">
+                <strong>AI 生图创作挑战</strong>
+                <small>按主题发布 AI 作品，争取精选候选和首页推荐候选。</small>
+                <em>50 / 100 / 1000 积分</em>
+              </span>
+              <span class="task-button">去完成</span>
+            </a>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-<div class="footer-space"></div>
-  </div>
-  <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
+        <section class="records-panel" id="points-records" aria-labelledby="records-title">
+          <header class="section-heading records-heading">
+            <div>
+              <div class="title-line compact">
+                <h2 id="records-title">积分记录</h2>
+                <span>POINTS LOG</span>
+              </div>
+              <p>最近的积分收入和支出。</p>
+            </div>
+            <span class="record-count">5 条</span>
+          </header>
+
+          <div class="records-table" role="table" aria-label="最近积分记录">
+            <div class="record-row record-head" role="row">
+              <span role="columnheader">时间</span>
+              <span role="columnheader">动作</span>
+              <span role="columnheader">变化</span>
+            </div>
+            <div class="record-row" role="row">
+              <time datetime="2026-07-30T09:12" role="cell">今天 09:12</time>
+              <span role="cell">新手首访</span>
+              <strong class="positive" role="cell">+10</strong>
+            </div>
+            <div class="record-row" role="row">
+              <time datetime="2026-07-30T09:28" role="cell">今天 09:28</time>
+              <span role="cell">完善资料</span>
+              <strong class="positive" role="cell">+10</strong>
+            </div>
+            <div class="record-row" role="row">
+              <time datetime="2026-07-30T11:40" role="cell">今天 11:40</time>
+              <span role="cell">AI 商城工具兑换</span>
+              <strong class="negative" role="cell">−40</strong>
+            </div>
+            <div class="record-row" role="row">
+              <time datetime="2026-07-29T18:06" role="cell">昨天 18:06</time>
+              <span role="cell">参与生图挑战</span>
+              <strong class="positive" role="cell">+20</strong>
+            </div>
+            <div class="record-row" role="row">
+              <time datetime="2026-07-29T20:15" role="cell">昨天 20:15</time>
+              <span role="cell">生图挑战作品发布</span>
+              <strong class="positive" role="cell">+50</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
