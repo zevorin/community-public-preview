@@ -1,0 +1,87 @@
+.campaign-live-page {
+  --activity-gold: #e9c77a;
+  --activity-lime: #d9ff8c;
+  --activity-paper: #f4f2ed;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+html:has(.campaign-live-page),
+body:has(.campaign-live-page) { min-width: 0; overflow-x: hidden; }
+
+.campaign-live-page > .page-bg { display: none; }
+.campaign-live-page > main { margin-top: 76px; }
+.campaign-detail-screen { min-height: calc(100vh - 76px); }
+.campaign-detail-page-inner { padding-bottom: 92px; }
+.campaign-detail-article { gap: 44px; }
+.campaign-detail-cover { min-height: 360px; }
+.campaign-detail-summary { min-height: 360px; }
+.campaign-detail-description-body { max-width: none; }
+.campaign-detail-description-body p { margin: 0; }
+
+.campaign-detail-task-list { gap: 14px; }
+.campaign-detail-task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+}
+.campaign-detail-task-card .new-user-task-main { flex: 1; }
+.campaign-detail-task-card .new-user-task-head { align-items: center; }
+.campaign-detail-task-card .new-user-task-points { margin-left: 2px; }
+.campaign-detail-task-card .new-user-task-cta { flex: 0 0 auto; }
+.campaign-detail-task-card .new-user-task-cta:disabled {
+  border-color: rgba(255, 247, 230, .12);
+  color: rgba(255, 247, 230, .42);
+  background: rgba(255, 247, 230, .06);
+  cursor: not-allowed;
+}
+.campaign-detail-task-card .new-user-task-status.is_locked {
+  color: rgba(255, 247, 230, .42);
+  border-color: rgba(255, 247, 230, .12);
+  background: rgba(255, 247, 230, .04);
+}
+.campaign-detail-task-card .new-user-task-status.is_locked::before { background: rgba(255, 247, 230, .32); box-shadow: none; }
+
+.campaign-detail-submissions { scroll-margin-top: 92px; }
+.campaign-detail-submissions .new-user-section-head { justify-content: space-between; }
+.campaign-detail-submissions-total { padding-bottom: 8px; color: rgba(255, 247, 230, .45); font-size: 13px; line-height: 1; }
+.campaign-detail-empty {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 64px 24px;
+  border: 1px solid rgba(255, 247, 230, .1);
+  border-radius: 20px;
+  background: rgba(8, 11, 16, .5);
+  color: rgba(255, 247, 230, .68);
+  text-align: center;
+}
+.campaign-detail-empty strong { color: rgba(255, 252, 246, .9); font-size: 16px; font-weight: 650; }
+.campaign-detail-empty p { margin: 0; color: rgba(255, 247, 230, .42); font-size: 13px; }
+.campaign-detail-empty .new-user-task-cta { margin-top: 6px; }
+
+@media (max-width: 960px) {
+  .campaign-live-page > main { margin-top: 0; }
+  .campaign-detail-screen { min-height: 100vh; }
+  .campaign-detail-page-inner { padding-bottom: 56px; }
+  .campaign-detail-article { gap: 10px; }
+  .campaign-detail-cover, .campaign-detail-summary { min-height: 0; }
+  .campaign-detail-task-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 7px 8px;
+  }
+  .campaign-detail-task-card .new-user-task-head { gap: 4px; }
+  .campaign-detail-task-card .new-user-task-points { margin-left: 0; }
+  .campaign-detail-task-card .new-user-task-cta { width: 100%; min-height: 24px; }
+  .campaign-detail-submissions .new-user-section-head { align-items: flex-end; }
+  .campaign-detail-submissions-total { padding-bottom: 2px; font-size: 6px; }
+  .campaign-detail-empty { gap: 5px; padding: 24px 10px; border-radius: 9px; }
+  .campaign-detail-empty strong { font-size: 8px; }
+  .campaign-detail-empty p { font-size: 6px; }
+  .campaign-detail-empty .new-user-task-cta { min-height: 17px; margin-top: 2px; }
+}

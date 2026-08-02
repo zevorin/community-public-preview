@@ -2,181 +2,342 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prompt 共创计划 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
-  <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
+  <style>
+    @font-face {
+      font-family: "Activity Display";
+      src: url("assets/Montserrat-Bold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #06080d;
+      --panel: rgba(8, 11, 16, .78);
+      --panel-strong: rgba(8, 11, 16, .94);
+      --paper: #f4f2ed;
+      --muted: rgba(255, 247, 230, .62);
+      --faint: rgba(255, 247, 230, .42);
+      --gold: #e9c77a;
+      --lime: #d9ff8c;
+      --line: rgba(255, 247, 230, .12);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--paper);
+      background: var(--bg);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: 72px;
+      border-bottom: 1px solid rgba(255, 247, 230, .08);
+      background: rgba(6, 8, 13, .78);
+      backdrop-filter: blur(18px) saturate(1.1);
+    }
+    .header-inner {
+      width: min(1280px, calc(100% - 48px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .logo { display: inline-flex; align-items: center; flex: 0 0 auto; }
+    .logo img { width: 122px; height: auto; display: block; }
+    .nav { display: flex; align-items: center; gap: 6px; }
+    .nav a, .header-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      padding: 0 11px;
+      border-radius: 10px;
+      color: var(--faint);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color .2s ease, background .2s ease, transform .25s var(--ease);
+    }
+    .nav a:hover, .nav a:focus-visible, .header-action:hover, .header-action:focus-visible,
+    .nav a.is-active { color: var(--paper); background: rgba(255, 247, 230, .07); outline: 0; }
+    .nav-icon { width: 16px; height: 16px; opacity: .72; filter: invert(1); }
+    .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .header-action { color: rgba(255, 247, 230, .75); }
+    .header-action.is-active { color: var(--gold); }
+    .points { color: var(--gold); font-weight: 700; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255, 247, 230, .2); }
+
+    .activity-detail {
+      min-height: calc(100vh - 72px);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(233, 199, 122, .08), transparent 28%),
+        radial-gradient(circle at 8% 42%, rgba(217, 255, 140, .04), transparent 24%),
+        var(--bg);
+    }
+    .page-shell {
+      width: 1280px;
+      max-width: calc(100% - 48px);
+      margin: 0 auto;
+      padding: 28px 0 84px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      margin-bottom: 28px;
+      padding: 0 16px 0 14px;
+      border: 0;
+      border-radius: 999px;
+      color: rgba(255, 250, 240, .72);
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)), rgba(8,11,16,.56);
+      box-shadow: inset 0 1px rgba(255,255,255,.055), 0 12px 34px rgba(0,0,0,.16);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color .2s ease, transform .28s var(--ease);
+    }
+    .back-link:hover, .back-link:focus-visible { color: #fffaf0; transform: translateY(-2px); outline: 0; }
+    .back-link img { width: 17px; height: 17px; filter: invert(1); opacity: .76; transform: rotate(180deg); }
+    .activity-article { display: flex; flex-direction: column; gap: 42px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, .9fr); gap: 24px; align-items: stretch; }
+    .cover, .summary, .desc-body, .task-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: inset 0 1px rgba(255,255,255,.05), 0 24px 56px rgba(0,0,0,.22);
+      backdrop-filter: blur(16px);
+    }
+    .cover { position: relative; min-height: 320px; overflow: hidden; border-radius: 24px; }
+    .cover img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+    .status {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: #17130a;
+      background: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+    }
+    .summary {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 26px 24px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 90% 0%, rgba(233,199,122,.1), transparent 34%), var(--panel);
+    }
+    .summary-kicker, .section-kicker {
+      width: fit-content;
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: rgba(217, 255, 140, .78);
+      background: rgba(217, 255, 140, .06);
+      font-family: "Activity Display", Inter, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .17em;
+      line-height: 1;
+    }
+    .summary h1 { margin: 0; color: rgba(255, 252, 246, .94); font-size: clamp(28px, 2.4vw, 36px); font-weight: 650; line-height: 1.2; letter-spacing: -.04em; }
+    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+    .meta-points { display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; border: 1px solid rgba(233,199,122,.35); border-radius: 999px; color: var(--gold); background: rgba(233,199,122,.08); font-size: 12px; font-weight: 650; }
+    .time-range { display: flex; flex-wrap: wrap; gap: 16px; color: var(--faint); font-size: 13px; }
+    .participation { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(255,247,230,.1); }
+    .participation-info { min-width: 0; display: grid; gap: 6px; }
+    .participation-info strong { color: rgba(255,252,246,.92); font-size: 16px; font-weight: 650; }
+    .participation-info p { margin: 0; color: var(--faint); font-size: 13px; line-height: 1.45; }
+    .participation-aside { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .progress { color: var(--gold); font-size: 30px; font-weight: 720; line-height: 1; letter-spacing: -.04em; }
+    .primary-button, .task-cta {
+      min-height: 40px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      color: #17130a;
+      background: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s ease, transform .28s var(--ease);
+    }
+    .primary-button:hover, .primary-button:focus-visible, .task-cta:hover, .task-cta:focus-visible { opacity: .92; transform: translateY(-1px); outline: 0; }
+
+    .section-head { position: relative; min-height: 84px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 0 0 22px; padding: 0 0 16px; isolation: isolate; }
+    .section-head::before { content: ""; position: absolute; left: -26px; bottom: 8px; z-index: -1; width: 148px; height: 74px; border-radius: 999px; background: radial-gradient(circle, rgba(244,201,93,.1), transparent 68%); filter: blur(14px); pointer-events: none; }
+    .section-head h2 { display: flex; align-items: baseline; gap: .18em; margin: 0; color: rgba(255,252,246,.94); font-size: 34px; font-weight: 600; line-height: 1; letter-spacing: -.05em; }
+    .section-head h2 span { color: var(--gold); font-weight: 700; }
+    .section-total { padding-bottom: 8px; color: var(--faint); font-size: 13px; }
+    .desc-body { padding: 22px 24px; border-radius: 20px; color: rgba(255,247,230,.72); font-size: 15px; line-height: 1.7; }
+    .desc-body p { margin: 0 0 14px; }
+    .desc-body p:last-child { margin-bottom: 0; }
+    .desc-body strong { color: rgba(255,252,246,.94); }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+    .info-card { padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: rgba(8,11,16,.56); }
+    .info-card h3 { margin: 0 0 10px; color: rgba(255,252,246,.9); font-size: 15px; }
+    .info-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .path-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .path-list li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .path-list b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; color: #17130a; background: var(--gold); font-size: 12px; }
+
+    .task-list { display: flex; flex-direction: column; gap: 14px; }
+    .task-card { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)), var(--panel); }
+    .task-main { min-width: 0; flex: 1; display: grid; gap: 8px; }
+    .task-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .task-head h3 { margin: 0; color: rgba(255,252,246,.94); font-size: 16px; font-weight: 650; }
+    .task-status { min-height: 22px; display: inline-flex; align-items: center; padding: 0 8px; border-radius: 999px; color: rgba(255,247,230,.62); background: rgba(255,247,230,.08); font-size: 12px; font-weight: 650; }
+    .task-points { color: var(--gold); font-size: 13px; font-weight: 650; }
+    .task-main p { margin: 0; color: rgba(255,247,230,.52); font-size: 13px; line-height: 1.55; }
+    .task-cta.is-deferred { color: rgba(255,247,230,.45); background: rgba(255,247,230,.1); cursor: default; }
+    .task-cta.is-deferred:hover { opacity: 1; transform: none; }
+
+    .submission-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .submission-card { position: relative; min-height: 250px; overflow: hidden; border: 1px solid rgba(255,247,230,.1); border-radius: 18px; background: #080b10; box-shadow: inset 0 1px rgba(255,255,255,.05), 0 16px 40px rgba(0,0,0,.2); transition: transform .3s var(--ease), border-color .25s ease; }
+    .submission-card:hover, .submission-card:focus-visible { transform: translateY(-4px); border-color: rgba(233,199,122,.48); outline: 0; }
+    .submission-card.tall { grid-row: span 2; min-height: 420px; }
+    .submission-card img { display: block; width: 100%; height: 100%; min-height: 250px; object-fit: cover; }
+    .submission-card.tall img { min-height: 420px; }
+    .submission-card::after { content: ""; position: absolute; inset: 34% 0 0; background: linear-gradient(180deg, transparent, rgba(0,0,0,.86)); pointer-events: none; }
+    .submission-copy { position: absolute; right: 16px; bottom: 14px; left: 16px; z-index: 1; }
+    .submission-copy h3 { margin: 0 0 10px; color: rgba(255,252,246,.96); font-size: 15px; font-weight: 650; line-height: 1.35; }
+    .author { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,247,230,.62); font-size: 12px; }
+    .author-avatar { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #1a1407; background: var(--gold); font-size: 11px; font-weight: 700; }
+    .footer-note { margin: 18px 0 0; color: var(--faint); font-size: 12px; line-height: 1.6; }
+
+    @media (max-width: 960px) {
+      .header-inner, .page-shell { max-width: calc(100% - 32px); }
+      .nav a { padding: 0 8px; }
+      .nav a span { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .cover, .cover img { min-height: 240px; }
+      .task-card { flex-direction: column; align-items: stretch; }
+      .task-cta { width: 100%; }
+      .submission-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .site-header { height: 64px; }
+      .header-inner { gap: 10px; }
+      .logo img { width: 96px; }
+      .nav { overflow: hidden; }
+      .nav a { min-height: 32px; padding: 0 6px; font-size: 12px; }
+      .header-actions .header-action:not(.points) { display: none; }
+      .avatar { width: 28px; height: 28px; }
+      .activity-detail { min-height: calc(100vh - 64px); }
+      .page-shell { padding-top: 20px; }
+      .back-link { margin-bottom: 20px; }
+      .summary { padding: 22px 18px; }
+      .participation { align-items: flex-start; flex-direction: column; }
+      .participation-aside { width: 100%; justify-content: space-between; }
+      .section-head { align-items: flex-start; flex-direction: column; justify-content: flex-end; gap: 10px; }
+      .section-head h2 { font-size: 28px; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .desc-body { padding: 18px; }
+      .submission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .submission-card, .submission-card.tall, .submission-card img, .submission-card.tall img { min-height: 220px; }
+      .submission-card.tall { grid-row: span 1; }
+      .submission-copy { right: 12px; bottom: 11px; left: 12px; }
+      .submission-copy h3 { font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="page campaign-detail-page tutorial-detail-page growth-detail-page prompt-campaign-page" data-page="activity-detail-prompt">
-    <div class="page-bg"><img src="assets/image_assets/4.webp" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-prompt" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">长期开放</span><span>发布可复用 Prompt，图文案例奖励更高</span><span>进行中</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
-    <header class="site-header shared-home-header">
-      <div class="header-inner wide-container">
-        <a class="logo" href="./index.html" aria-label="多元拾光">
-          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
-        </a>
-        <nav class="nav" aria-label="主导航">
-          <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
-          <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
-          <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
-          <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
-          <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
-        </nav>
-        <div class="header-actions">
-          <a class="action-link activity-center-link is-active" aria-current="page" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
-          <div class="member-account-pill" role="group" aria-label="积分与用户中心">
-            <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
-            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
-          </div>
-        </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="./index.html" aria-label="多元拾光首页"><img src="assets/brand/LOGO.svg" alt="多元拾光"></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt=""><span>首页</span></a>
+        <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt=""><span>AIGC</span></a>
+        <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt=""><span>模型广场</span></a>
+        <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt=""><span>闪念</span></a>
+        <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt=""><span>官方教程</span></a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-action is-active" href="./activity-center.html">活动中心</a>
+        <a class="header-action" href="./member-store.html">AI商城</a>
+        <a class="header-action points" href="./points-center.html">积分 1280</a>
+        <a href="./user-center.html" aria-label="个人中心"><img class="avatar" src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="个人头像"></a>
       </div>
-    </header>
-
-    <main class="tutorial-detail-main">
-      <section id="prompt-co-create" class="wide-container tutorial-detail-page-shell" data-activity-detail="prompt">
-        <div class="tutorial-detail-page-head">
-          <h1>Prompt 共创计划 <span class="campaign-title-status">进行中</span></h1>
-        </div>
-        <div class="lesson-reference-layout">
-          <article class="lesson-reference-article campaign-lesson-article" data-prompt-info-flow>
-            <div class="lesson-meta-row"><span>Prompt 活动</span><span>长期开放</span></div>
-            <div class="campaign-hero-action-row prompt-hero-action-row" data-prompt-hero-action>
-              <a class="campaign-primary-entry campaign-primary-entry-hero" href="./prompt-submit.html" data-prompt-primary-cta>
-                <span>立即参与</span>
-                <strong>发布 Prompt，先拿 20 积分</strong>
-                <em>前 2 条 +20，案例 +40，精选 +100，首页推荐 +500。</em>
-              </a>
-              <div class="campaign-hero-status campaign-status-stack campaign-status-stack-vivid campaign-status-stack-compact" aria-label="Prompt 共创计划我的参与状态" data-prompt-lean-info data-prompt-hero-status>
-                  <div class="campaign-user-progress-strip" data-prompt-user-progress>
-                    <div class="campaign-status-head" data-prompt-user-stat="我的进度">
-                      <span>我的参与状态</span>
-                      <strong>0/3</strong>
-                      <em>发布、案例、精选/推荐</em>
-                    </div>
-                    <div class="campaign-user-progress-grid campaign-status-metrics prompt-status-metrics" aria-label="Prompt 共创计划个人进度">
-                      <div data-prompt-user-stat="今日有效投稿"><span>今日有效投稿</span><strong>0/2</strong><em>前 2 条可计基础奖励</em></div>
-                    </div>
-                  </div>
-                  <div class="campaign-status-summary-strip" data-prompt-status-panel>
-                    <div class="campaign-progress-grid campaign-progress-grid-compact campaign-status-metrics prompt-reward-strip" aria-label="Prompt 共创计划关键奖励">
-                      <div data-prompt-stat="基础奖励" data-activity-reward><strong>+20</strong><span>基础奖励</span><em>纯文字 Prompt</em></div>
-                      <div data-prompt-stat="案例奖励" data-activity-reward><strong>+40</strong><span>案例奖励</span><em>补充图文/视频案例</em></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <section class="lesson-section campaign-major-block campaign-content-detail-block" data-activity-major-block="content" data-prompt-info-block="活动内容详情" data-prompt-content-block>
-              <h3>1）活动内容详情</h3>
-              <div class="campaign-detail-subsection">
-                <h4>活动概述</h4>
-                <p>Prompt 共创计划面向所有社区用户收集可复用提示词。内容不只看一句提示词本身，还要能说明适用场景、推荐模型、输入变量和复用注意点；有结果图或视频案例时，其他用户更容易判断是否值得收藏和同款复用。</p>
-              </div>
-              <div class="campaign-detail-subsection">
-                <h4>参与路径</h4>
-                <div class="lesson-numbered-steps prompt-path-steps" role="list" aria-label="Prompt 共创计划参与路径" data-prompt-text-steps>
-                  <div role="listitem"><strong>1</strong><span><b>先投稿</b>进入投稿编辑弹层，完成标题、提示词、适用场景和推荐模型。</span></div>
-                  <div role="listitem"><strong>2</strong><span><b>补案例</b>同一条 Prompt 可以补充效果图或视频，让复用结果更可判断。</span></div>
-                  <div role="listitem"><strong>3</strong><span><b>被复用</b>发布后的 Prompt 进入 AIGC 灵感广场详情弹层，其他用户可免费复制或一键同款。</span></div>
-                </div>
-              </div>
-              <div class="campaign-detail-subsection">
-                <h4>奖励任务</h4>
-                <div class="lesson-numbered-steps campaign-task-steps prompt-reward-steps" role="list" aria-label="Prompt 共创计划奖励任务" data-prompt-text-steps>
-                  <a href="./prompt-submit.html" role="listitem" data-prompt-task-item data-prompt-status="current" data-prompt-task="发布纯文字 Prompt" data-prompt-reward="+20" data-activity-reward>
-                    <strong>1</strong><span><b>发布纯文字 Prompt</b>写清使用场景、核心提示词、推荐模型和可复用注意点</span><em>+20 积分</em>
-                  </a>
-                  <a href="./prompt-submit.html#prompt-media-upload" role="listitem" data-prompt-task-item data-prompt-status="todo" data-prompt-task="补充图文/视频案例" data-prompt-reward="+40" data-activity-reward>
-                    <strong>2</strong><span><b>补充图文/视频案例</b>为同一条 Prompt 补充至少 1 张效果图或 1 段效果视频</span><em>+40 积分</em>
-                  </a>
-                  <a href="./aigc.html#prompt-detail-text" role="listitem" data-prompt-task-item data-prompt-status="locked" data-prompt-task="免费复制/同款复用" data-prompt-reward="免费" data-activity-reward>
-                    <strong>3</strong><span><b>免费复制/同款复用</b>用户可在 Prompt 详情弹层复制正文，或一键同款带入轻创作</span><em>免费</em>
-                  </a>
-                </div>
-                <p class="prompt-completion-note" data-prompt-completion-note data-activity-reward>每日前 2 条有效投稿可计基础奖励；达到每日上限后仍可发布，只提示感谢共创，不再新增基础积分。复制正文和一键同款均为免费复用动作，同款会带入轻创作。</p>
-              </div>
-              <div class="campaign-detail-subsection" data-prompt-rule-panel>
-                <h4>活动规则</h4>
-                <p>先保证 Prompt 可读、可复用、可验证，再按内容完整度和推荐结果计算奖励。</p>
-                <ol class="campaign-rule-text-list prompt-rule-text-list">
-                  <li data-prompt-rule="发布入口"><strong>发布入口：</strong><span>从活动详情页进入投稿编辑弹层，完成标题、提示词、适用场景和推荐模型后提交。</span></li>
-                  <li data-prompt-rule="编辑要求"><strong>编辑要求：</strong><span>标题不少于 4 个字；中文正文不少于 30 字；英文或中英混合不少于 20 个英文单词；可选上传效果图或视频。</span></li>
-                  <li data-prompt-rule="发布前校验"><strong>发布前校验：</strong><span>未达到标题、正文、场景、模型或案例要求时，发布按钮置灰，并在投稿编辑弹层直接提示缺失项。</span></li>
-                  <li data-prompt-rule="发布成功反馈"><strong>发布成功反馈：</strong><span>纯文字 Prompt 发布成功获得 20 积分；带图文/视频案例发布成功获得 40 积分，并跳转到 AIGC 灵感广场自动打开 Prompt 详情弹层。</span></li>
-                  <li data-prompt-rule="每日上限提示"><strong>每日上限提示：</strong><span>达到每日奖励上限后仍可发布，但只提示“今日积分已达上限，感谢您的共创”。</span></li>
-                  <li data-prompt-rule="免费复制复用"><strong>免费复制复用：</strong><span>正文块内复制免费；一键同款免费带入轻创作，后续生成由轻创作页承接。</span></li>
-                  <li data-prompt-rule="精选奖励"><strong>精选奖励：</strong><span>Prompt 被选入精选后，单条可再获得 100 积分；同一条 Prompt 只计一次精选奖励。</span></li>
-                  <li data-prompt-rule="首页推荐奖励"><strong>首页推荐奖励：</strong><span>Prompt 被推荐到首页后，单条可再获得 500 积分；同一条 Prompt 只计一次首页推荐奖励。</span></li>
-                  <li data-prompt-rule="重复内容处理"><strong>重复内容处理：</strong><span>高度相似、搬运、符号堆砌或无意义内容会被拦截或下架，已获得积分可追回。</span></li>
-                </ol>
-              </div>
-            </section>
-
-            <section id="prompt-submissions" class="lesson-section campaign-major-block campaign-submissions-section" data-activity-major-block="submissions" data-prompt-info-block="本期投稿作品" data-prompt-submissions-block>
-              <h3>2）本期投稿作品</h3>
-              <div class="masonry campaign-submission-flow prompt-case-flow" data-prompt-case-list>
-                <a class="case-card campaign-submission-card prompt-case-card tall" href="./aigc.html#prompt-detail-media" data-prompt-case-card>
-                  <img src="assets/image_assets/28.webp" alt="电影感角色设定 Prompt 案例">
-                  <div class="copy"><h3>电影感角色设定</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">镜</span><span class="case-author-name">镜头笔记</span></span></div></div>
-                </a>
-                <a class="case-card campaign-submission-card prompt-case-card" href="./aigc.html#prompt-detail-media" data-prompt-case-card>
-                  <img src="assets/image_assets/29.webp" alt="产品海报分镜 Prompt 案例">
-                  <div class="copy"><h3>产品海报分镜</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">分</span><span class="case-author-name">分镜阿泽</span></span></div></div>
-                </a>
-                <a class="case-card campaign-submission-card prompt-case-card short" href="./aigc.html#prompt-detail-text" data-prompt-case-card>
-                  <img src="assets/image_assets/4.webp" alt="治愈场景插画 Prompt 案例">
-                  <div class="copy"><h3>治愈场景插画</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">青</span><span class="case-author-name">青柠Prompt</span></span></div></div>
-                </a>
-                <a class="case-card campaign-submission-card prompt-case-card tall" href="./aigc.html#prompt-detail-media" data-prompt-case-card>
-                  <img src="assets/image_assets/5.webp" alt="国风人物海报 Prompt 案例">
-                  <div class="copy"><h3>国风人物海报</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">扇</span><span class="case-author-name">画扇</span></span></div></div>
-                </a>
-                <a class="case-card campaign-submission-card prompt-case-card" href="./aigc.html#prompt-detail-text" data-prompt-case-card>
-                  <img src="assets/image_assets/7.webp" alt="空间光影构图 Prompt 案例">
-                  <div class="copy"><h3>空间光影构图</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">光</span><span class="case-author-name">光合构图</span></span></div></div>
-                </a>
-                <a class="case-card campaign-submission-card prompt-case-card short" href="./aigc.html#prompt-detail-media" data-prompt-case-card>
-                  <img src="assets/image_assets/11.webp" alt="教程封面 Prompt 案例">
-                  <div class="copy"><h3>教程封面 Prompt</h3><div class="case-hover-meta"><span class="case-hover-author"><span class="case-author-avatar">封</span><span class="case-author-name">封面工坊</span></span></div></div>
-                </a>
-              </div>
-            </section>
-
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <div class="activity-config-schema" hidden aria-hidden="true">
-      <strong data-activity-field>活动标题：Prompt 共创计划</strong>
-      <strong data-activity-field>活动副标题：分享可复用提示词</strong>
-      <strong data-activity-field>活动类型：内容共创</strong>
-      <strong data-activity-field>活动状态：进行中</strong>
-      <strong data-activity-field>开始时间：长期开放</strong>
-      <strong data-activity-field>结束时间：长期开放</strong>
-      <strong data-activity-field>参与条件：标题不少于 4 字；中文正文不少于 30 字；英文或中英混合不少于 20 个英文单词</strong>
-      <strong data-activity-field>参与动作：发布纯文字 Prompt、补充图文/视频案例、免费复制或同款复用</strong>
-      <strong data-activity-field>奖励摘要：纯文字 Prompt 20 积分；图文/视频案例 40 积分；精选 100 积分；首页推荐 500 积分</strong>
-      <strong data-activity-field>奖励确认方式：投稿成功反馈、AIGC Prompt 详情弹层反馈和积分记录共同表达</strong>
-      <strong data-activity-field>关联页面：活动中心、Prompt 投稿弹层、AIGC 灵感广场、Prompt 详情弹层、积分中心</strong>
-      <strong data-activity-field>CTA 文案：发布 Prompt，先拿 20 积分</strong>
-      <strong data-activity-field>CTA 目标：prompt-submit.html</strong>
-      <strong data-activity-field>活动封面：image_assets/4.png</strong>
-      <strong data-activity-field>历史回顾内容：Prompt 投稿、作品案例和复用反馈</strong>
-      <strong data-activity-field>展示结构：首屏承接发布 Prompt 入口和我的参与状态，正文信息流承接活动内容详情和本期投稿作品</strong>
     </div>
+  </header>
 
+  <main class="activity-detail">
+    <div class="page-shell">
+      <a class="back-link" href="./activity-center.html"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">返回活动列表</a>
 
-<div class="footer-space"></div>
-  </div>
-  <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
+      <article class="activity-article">
+        <section class="hero" aria-labelledby="activity-title">
+          <div class="cover">
+            <img src="assets/activity/activity-prompt-cocreate-cover-v2.png" alt="Prompt 共创计划活动封面">
+            <span class="status">进行中</span>
+          </div>
+          <div class="summary">
+            <span class="summary-kicker">PROMPT · CO-CREATION</span>
+            <h1 id="activity-title">Prompt 共创计划</h1>
+            <div class="meta"><span>内容共创</span><span>长期开放</span><span class="meta-points">最高 +640 积分</span></div>
+            <div class="time-range"><span>活动时间：长期开放</span><span>全体用户可参与</span></div>
+            <div class="participation">
+              <div class="participation-info"><strong>我的参与进度</strong><p>发布、补充案例，参与共创并获得积分奖励</p></div>
+              <div class="participation-aside"><strong class="progress">0/4</strong><a class="primary-button" href="#activity-tasks">立即参与</a></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="activity-section" aria-labelledby="overview-title">
+          <header class="section-head"><div><h2 id="overview-title"><span>活动</span>说明</h2><em class="section-kicker">ABOUT THE PLAN</em></div></header>
+          <div class="desc-body">
+            <p>本计划面向全体用户征集可复用 Prompt。提交内容不只是提示词本身，还需包含：<strong>适用场景、推荐模型、输入变量和复用注意事项</strong>；有结果图或视频案例时，其他用户更容易判断它是否值得收藏和复用。</p>
+            <div class="detail-grid">
+              <div class="info-card"><h3>参与路径</h3><ol class="path-list"><li><b>1</b><span><strong>投稿</strong>：完善标题、Prompt、适用场景和推荐模型。</span></li><li><b>2</b><span><strong>补充</strong>：为同一 Prompt 增加图片或视频案例。</span></li><li><b>3</b><span><strong>复用</strong>：发布后进入 AIGC 灵感广场，其他用户可免费复制或一键同款。</span></li></ol></div>
+              <div class="info-card"><h3>发布前检查</h3><p>标题至少 4 个字；中文正文至少 30 个汉字，英文或中英混合至少 20 个英文单词。视觉素材可选，图文或视频案例会带来额外奖励。</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="activity-tasks" class="activity-section" aria-labelledby="tasks-title">
+          <header class="section-head"><div><h2 id="tasks-title"><span>奖励</span>任务</h2><em class="section-kicker">REWARD TASKS</em></div></header>
+          <div class="task-list">
+            <div class="task-card"><div class="task-main"><div class="task-head"><h3>发布纯文本 Prompt</h3><span class="task-status">待完成</span><span class="task-points">+20 积分</span></div><p>包含使用场景、核心 Prompt、推荐模型和复用说明的纯文本 Prompt。</p></div><a class="task-cta" href="./prompt-submit.html">去投稿</a></div>
+            <div class="task-card"><div class="task-main"><div class="task-head"><h3>补充图文 / 视频案例</h3><span class="task-status">待完成</span><span class="task-points">+40 积分</span></div><p>为同一 Prompt 至少补充 1 张效果图或 1 个视频，让效果更可预期。</p></div><a class="task-cta" href="./prompt-submit.html#prompt-media-upload">去补充案例</a></div>
+            <div class="task-card"><div class="task-main"><div class="task-head"><h3>精选加奖</h3><span class="task-status">待审核</span><span class="task-points">+100 积分</span></div><p>Prompt 被设为精选后额外奖励，每个 Prompt 仅一次。</p></div><span class="task-cta is-deferred">自动获得</span></div>
+            <div class="task-card"><div class="task-main"><div class="task-head"><h3>首页推荐加奖</h3><span class="task-status">待审核</span><span class="task-points">+500 积分</span></div><p>Prompt 被推荐至首页后额外奖励，每个 Prompt 仅一次。</p></div><span class="task-cta is-deferred">自动获得</span></div>
+          </div>
+          <p class="footer-note">基础奖励仅对每日前 2 条有效投稿发放；达到当日上限后仍可继续发布，感谢你的共创。复制文本和一键同款均免费。</p>
+        </section>
+
+        <section class="activity-section" aria-labelledby="submissions-title">
+          <header class="section-head"><div><h2 id="submissions-title"><span>投稿</span>作品</h2><em class="section-kicker">SUBMISSIONS</em></div><span class="section-total">共 6 件</span></header>
+          <div class="submission-grid">
+            <a class="submission-card tall" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/28.webp" alt="电影感角色设定 Prompt 案例"><div class="submission-copy"><h3>电影感角色设定 Prompt</h3><span class="author"><span class="author-avatar">镜</span>镜头笔记</span></div></a>
+            <a class="submission-card" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/29.webp" alt="产品海报分镜 Prompt 案例"><div class="submission-copy"><h3>产品海报分镜</h3><span class="author"><span class="author-avatar">分</span>分镜阿辰</span></div></a>
+            <a class="submission-card" href="./aigc.html#prompt-detail-text"><img src="assets/image_assets/4.webp" alt="绘演场景插画 Prompt 案例"><div class="submission-copy"><h3>绘演场景插画</h3><span class="author"><span class="author-avatar">青</span>青柠 Prompt</span></div></a>
+            <a class="submission-card tall" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/5.webp" alt="国风人物海报 Prompt 案例"><div class="submission-copy"><h3>国风人物海报</h3><span class="author"><span class="author-avatar">画</span>画册</span></div></a>
+            <a class="submission-card" href="./aigc.html#prompt-detail-text"><img src="assets/image_assets/7.webp" alt="空间光影构图 Prompt 案例"><div class="submission-copy"><h3>空间光影构图</h3><span class="author"><span class="author-avatar">光</span>光合构图</span></div></a>
+            <a class="submission-card" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/11.webp" alt="教程封面 Prompt 案例"><div class="submission-copy"><h3>教程封面 Prompt</h3><span class="author"><span class="author-avatar">封</span>封面工坊</span></div></a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
 </body>
 </html>

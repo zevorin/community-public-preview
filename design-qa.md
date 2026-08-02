@@ -51,6 +51,130 @@ final result: passed
 
 ---
 
+# Campaign new-user reference clone QA — 2026-08-03
+
+- Source visual truth: `https://www.ai666.net/#/activity/detail/newbie_task`
+- Source screenshots: `qa/campaign-new-user-reference-latest/source-desktop-dismissed-1440.png`, `qa/campaign-new-user-reference-latest/source-mobile-dismissed.png`
+- Implementation screenshots: `qa/campaign-new-user-reference-latest/implementation-desktop-ui-guide-button.png`, `qa/campaign-new-user-reference-latest/implementation-mobile-ui-guide-button.png`
+- Viewports: `1440 × 1000` and `390 × 844` CSS px; device scale factor `1`
+- Temporary source guide modal was dismissed before capture and is intentionally not copied into the page.
+
+## Fidelity checks
+
+- Current source activity-detail structure is reproduced: hero cover/status, activity summary, participation progress, description, and four task cards.
+- Local cover and customer-service assets are used; no final-page assets are hotlinked.
+- Desktop layout matches the source's 1280px centered detail frame, dark radial background, gold/lime pills, 24px hero radii, and 18px task-card radii.
+- Mobile layout now matches the source's compact 390px presentation: compact header, full-width cover ratio, stacked summary, compact section headings, and four visible task cards without horizontal overflow.
+- The task-list wrapper is transparent, so no extra background block sits behind the four cards; each task now carries a local square thumbnail with consistent crop and radius.
+- The activity-task heading is closer to its card list, and task title-to-copy spacing is tightened without changing the CTA hierarchy.
+- Task thumbnails were redesigned as four independent generated assets in the activity banner language: cobalt-blue rounded objects, cream highlights, lime accents, and midnight-navy backgrounds; subjects are entry portal, profile edit card, interaction bubbles, and favorite artwork.
+- The latest asset pass shifts the task imagery toward a gold-dominant palette while retaining the banner's navy, cobalt, and lime accents.
+- The `待完成` state now uses a restrained gold outline pill with a status dot instead of the previous gray-filled badge.
+- The activity description heading is closer to its description panel, and the shared `.page :is(... .new-user-task-list)` surface is explicitly overridden to transparent.
+- The upper-left back/list control is omitted as requested, so the hero begins directly beneath the shared header.
+- Each task now places `+20 积分` immediately to the right of its action button; the action uses the UIguide Buttons default “探索模型” treatment: 44px pill control, gold outline, translucent dark gradient, and inset highlight.
+- Guest header state matches the current reference (`积分 -- 登录`).
+
+## Interaction and runtime checks
+
+- `立即参与` scrolls to the task list.
+- Four task CTAs link to existing local destinations: home, profile, gallery interaction, and AIGC work detail.
+- Local preview responds with HTTP `200` for `campaign-new-user.html`, cover asset, and all four CTA destinations.
+- Horizontal overflow: none at `1440 × 1000` and `390 × 844`.
+- Browser console/runtime errors: none observed.
+
+final result: passed
+
+---
+
+# Campaign new-user redesign QA — 2026-08-02
+
+- Implementation screenshots: `F:\community-public-preview\qa\campaign-new-user-reference\implementation-redesign-desktop.png` and `F:\community-public-preview\qa\campaign-new-user-reference\implementation-redesign-mobile.png`.
+- Viewports: desktop `1440 x 1000`, mobile `390 x 844`; Chrome headless, device scale factor 1.
+- State: default new-user activity detail, 0/4 completed.
+
+## Changes verified
+
+- Removed the back-to-list control from the top of the detail page.
+- Reworked the cover status into a translucent UI Guide pill with gold status indicator.
+- Reworked the task area with an AIGC-style kicker, large medium-weight heading, supporting copy, completion count, and a 2×2 desktop task grid.
+- Applied UI Guide tokens for 16px card radii, paper-soft borders, dark surfaces, gold accents, control radii, shadows, and focus/hover states.
+- Confirmed the mobile layout remains readable and CTA controls stay within the viewport under the existing reference zoom behavior.
+
+## Findings
+
+- No actionable P0, P1, or P2 issue remains.
+- P3: the existing preview shell header remains authenticated while the source reference is logged out; this is intentionally outside the requested task-area redesign.
+
+final result: passed
+
+---
+
+# Campaign new-user reference QA — 2026-08-01
+
+- Source visual truth: `https://www.ai666.net/#/activity/detail/newbie_task`; captures at `F:\community-public-preview\qa\campaign-new-user-reference\source-desktop.png` and `F:\community-public-preview\qa\campaign-new-user-reference\source-mobile.png`.
+- Implementation screenshots: `F:\community-public-preview\qa\campaign-new-user-reference\implementation-desktop-final.png` and `F:\community-public-preview\qa\campaign-new-user-reference\implementation-mobile-final.png`.
+- Viewports: desktop `1440 x 1000`, mobile `390 x 844`; Chrome headless, device scale factor 1; no density normalization required.
+- State: default activity detail, logged-out source data with 0/4 task progress, all four tasks available.
+
+## Comparison evidence
+
+- Full view: the implementation preserves the reference's header, back link, 300px cover, right-side summary, description, task heading, and four stacked task cards at desktop.
+- Mobile view: the implementation uses the reference site's global viewport zoom behavior so the 390px capture keeps the same compact header, horizontal cover, summary, and task list rhythm without clipped controls.
+- Focused regions: cover crop and task-card hierarchy were compared at both viewports; the cover asset is local and matches the source composition.
+
+## Findings
+
+- No actionable P0, P1, or P2 issue remains.
+- P3: the local authenticated header shows the existing preview user's points/avatar instead of the source site's logged-out “登录” state; this is intentional local-shell context and does not affect the activity detail content.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Chinese copy, title hierarchy, muted metadata, point badge, progress text, and CTA sizing match the source structure and local platform font stack.
+- Spacing and layout rhythm: 120px desktop frame inset, 24px top/section gaps, 16px task-card padding, 12px card radius, and mobile zoom behavior match the captured source.
+- Colors and visual tokens: near-black page surfaces, white/paper text, gold points/status/CTA accents, and low-contrast separators match the source palette.
+- Image quality and asset fidelity: the source cover was copied locally to `assets/activity/activity-new-user-cover-v2.png`; no hotlinked image remains.
+- Copy and content: title, description, four task names, 20-point rewards, 0/1 progress, and CTA labels match the live activity payload.
+
+## Interaction and runtime checks
+
+- Back link targets `activity-center.html`.
+- Task CTAs target existing local pages: `index.html`, `user-center.html#edit-profile`, `index.html#case-gallery`, and `aigc.html#case-detail-image`.
+- All linked local pages returned HTTP 200 from the static preview.
+- The top-campaign dismiss control remains keyboard/label accessible.
+- No console errors were observed in the Chrome screenshot run.
+
+final result: passed
+
+---
+
+# 积分中心 Banner 边缘融合 QA（2026-07-31）
+
+- User direction: banner 图片左右与页面背景更融合。
+- Fix: added a horizontal edge mask to `.cosmic-header-art`, fading the left and right 8% into the shared `#000204` page base while preserving the central artwork。
+- Evidence: `qa/points-center-banner-edge-blend-1448.png`。
+- Desktop viewport: `1448 x 900` CSS px; `scrollWidth 1448`。
+- Primary interaction: “查看积分记录” updates the URL to `#points-records`。
+- Browser console errors: none。
+
+final result: passed
+
+---
+
+# 积分中心背景色衔接 QA（2026-07-31）
+
+- User direction: 页面背景色与 banner 背景色一致。
+- Banner source sample: dominant dark pixel `#000204` from `assets/points/points-space-header.png`。
+- Fix: body and `.points-page` now use the same flat `#000204` base; previously叠加的径向和横向渐变已移除，避免 banner 下方出现色带。
+- Evidence: `qa/points-center-background-match-1448.png`。
+- Desktop viewport: `1448 x 900` CSS px; `scrollWidth 1448`。
+- Primary interaction: “查看积分记录” updates the URL to `#points-records`。
+- Browser console errors: none。
+
+final result: passed
+
+---
+
 # 积分中心截图还原 QA（2026-07-30）
 
 - Source visual truth: `C:/Users/a/AppData/Local/Temp/codex-clipboard-a08d189e-ff9e-4730-acda-7a8c620f519e.png`
