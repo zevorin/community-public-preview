@@ -1,0 +1,356 @@
+@font-face {
+  font-family: "Seven Day Display";
+  src: url("assets/Montserrat-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.seven-day-campaign-page {
+  --seven-bg: var(--ds-bg);
+  --seven-surface: var(--ds-bg-raised);
+  --seven-surface-soft: var(--ds-surface-strong);
+  --seven-ink: var(--ds-text);
+  --seven-muted: var(--ds-warm-emphasis);
+  --seven-faint: var(--ds-warm-strong);
+  --seven-line: var(--ds-paper-soft);
+  --seven-line-strong: var(--ds-paper-muted);
+  --seven-accent: var(--ds-gold);
+  --seven-accent-soft: var(--ds-gold-soft);
+  --seven-growth: var(--ds-lime);
+  --seven-ease: cubic-bezier(.16, 1, .3, 1);
+  min-width: 0;
+  overflow-x: hidden;
+  color: var(--seven-ink);
+  background: var(--seven-bg);
+}
+
+html:has(.seven-day-campaign-page),
+body:has(.seven-day-campaign-page) { min-width: 0; overflow-x: hidden; background: var(--seven-bg); }
+
+.seven-day-campaign-page > .page-bg { display: none; }
+.seven-day-campaign-page > main { margin-top: 76px; }
+
+.seven-day-main {
+  min-height: calc(100dvh - 76px);
+  background:
+    radial-gradient(circle at 88% 8%, var(--ds-gold-veil), transparent 28%),
+    linear-gradient(180deg, var(--ds-warm-veil), transparent 18%),
+    var(--seven-bg);
+}
+
+.seven-day-shell { width: min(1280px, calc(100% - 80px)); margin: 0 auto; padding: 24px 0 80px; }
+.seven-day-experience { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 64px; }
+.seven-day-experience > * { min-width: 0; }
+
+.seven-day-hero {
+  min-height: 360px;
+  display: grid;
+  grid-template-columns: minmax(360px, .78fr) minmax(0, 1.32fr);
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: var(--ds-radius-modal);
+  background: var(--seven-surface);
+  box-shadow: inset 0 0 0 1px var(--seven-line), 0 24px 64px var(--ds-black-muted);
+}
+
+.seven-day-hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 48px;
+}
+.seven-day-hero-copy::after {
+  content: "7";
+  position: absolute;
+  right: 16px;
+  bottom: -58px;
+  z-index: -1;
+  color: var(--ds-warm-veil);
+  font-family: "Seven Day Display", sans-serif;
+  font-size: 280px;
+  font-weight: 700;
+  line-height: .72;
+  pointer-events: none;
+}
+.seven-day-status-line { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--seven-faint); font-size: 12px; }
+.seven-day-status-line strong { color: var(--seven-growth); font-weight: 700; }
+.seven-day-status-line strong::after { content: ""; width: 44px; height: 1px; display: inline-block; margin-left: 14px; background: var(--seven-line-strong); vertical-align: middle; }
+.seven-day-hero h1 { max-width: none; margin: 0; color: var(--seven-ink); font-size: 48px; font-weight: 720; line-height: 1; letter-spacing: -.03em; white-space: nowrap; text-wrap: nowrap; }
+.seven-day-hero-copy > p { max-width: 31ch; margin: 16px 0 0; color: var(--seven-muted); font-size: 14px; line-height: 1.6; }
+.seven-day-hero-actions { width: 100%; display: flex; align-items: center; justify-content: flex-start; gap: 28px; margin-top: 28px; }
+
+.seven-day-primary,
+.seven-day-secondary {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-pill);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .22s ease, border-color .22s ease, background .22s ease, transform .28s var(--seven-ease);
+}
+.seven-day-primary { color: var(--ds-ink); background: var(--seven-accent); }
+.seven-day-primary:hover, .seven-day-primary:focus-visible { color: var(--ds-ink); background: var(--ds-gold-bright); outline: 0; transform: translateY(-1px); }
+.seven-day-primary:active { transform: translateY(1px) scale(.98); }
+.seven-day-secondary { color: var(--seven-ink); border-color: var(--seven-line-strong); background: rgba(244, 240, 232, .045); }
+.seven-day-secondary:hover, .seven-day-secondary:focus-visible { color: var(--seven-ink); border-color: var(--ds-gold-strong); background: var(--seven-accent-soft); outline: 0; transform: translateY(-1px); }
+.seven-day-secondary:active { transform: translateY(1px) scale(.98); }
+.seven-day-secondary:disabled { color: rgba(244, 240, 232, .42); border-color: var(--seven-line); background: rgba(244, 240, 232, .035); cursor: not-allowed; transform: none; }
+
+.seven-day-progress-lockup { display: flex; align-items: baseline; gap: 8px; padding-left: 28px; border-left: 1px solid var(--seven-line); }
+.seven-day-progress-lockup strong { display: inline-flex; align-items: baseline; gap: 7px; color: var(--seven-accent); font-family: "Seven Day Display", sans-serif; font-size: 34px; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: .04em; }
+.seven-day-progress-lockup strong span { color: var(--seven-faint); font-size: 20px; letter-spacing: .12em; }
+.seven-day-progress-lockup small { color: var(--seven-faint); font-size: 11px; white-space: nowrap; }
+
+.seven-day-hero-art { position: relative; min-width: 0; min-height: 0; margin: 0; overflow: hidden; background: var(--seven-surface); }
+.seven-day-hero-art::before { content: ""; position: absolute; inset: 0 auto 0 0; z-index: 1; width: 24%; background: linear-gradient(90deg, var(--seven-surface), transparent); pointer-events: none; }
+.seven-day-hero-art img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: right center; }
+
+.seven-day-reward-rhythm {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) minmax(420px, 1.6fr) minmax(160px, .5fr);
+  align-items: end;
+  gap: 16px;
+  padding: 0 0 32px;
+  border-bottom: 1px solid var(--seven-line);
+}
+.seven-day-reward-intro h2,
+.seven-day-route-head h2 { margin: 0; color: var(--seven-ink); font-size: 40px; font-weight: 680; line-height: 1.08; letter-spacing: -.03em; }
+.seven-day-reward-intro p,
+.seven-day-route-head p { max-width: 52ch; margin: 14px 0 0; color: var(--seven-muted); font-size: 14px; line-height: 1.7; }
+
+.seven-day-milestones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.seven-day-milestones > div { min-height: 96px; display: grid; align-content: end; padding: 0 20px 0; border-left: 1px solid var(--seven-line); }
+.seven-day-milestones span,
+.seven-day-max-reward span { color: var(--seven-faint); font-size: 12px; }
+.seven-day-milestones strong,
+.seven-day-max-reward strong { margin-top: 8px; color: var(--seven-ink); font-family: "Seven Day Display", sans-serif; font-size: 32px; line-height: 1; letter-spacing: -.03em; }
+.seven-day-milestones small,
+.seven-day-max-reward small { color: var(--seven-faint); font-size: 10px; }
+.seven-day-max-reward { min-height: 96px; display: grid; align-content: end; padding: 0 0 0 20px; border-left: 1px solid var(--ds-gold-strong); }
+.seven-day-max-reward strong { color: var(--seven-accent); font-size: 44px; }
+
+.seven-day-route { scroll-margin-top: 96px; }
+.seven-day-route-head { display: grid; justify-items: start; margin-bottom: 28px; }
+
+.seven-day-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  padding-bottom: 30px;
+}
+.seven-day-tabs::before { content: ""; position: absolute; left: 7%; right: 7%; bottom: 12px; height: 1px; background: var(--seven-line); }
+.seven-day-tab {
+  position: relative;
+  min-width: 0;
+  min-height: 83px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  align-items: baseline;
+  gap: 12px 12px;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: var(--ds-radius-control) !important;
+  color: var(--seven-faint);
+  background: #ffffff0f;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color .22s ease, background .22s ease, transform .3s var(--seven-ease);
+}
+.seven-day-tab::after { content: ""; position: absolute; left: 50%; bottom: -23px; width: 9px; height: 9px; border-radius: 50%; background: var(--seven-surface-soft); box-shadow: 0 0 0 1px var(--seven-line-strong); transform: translateX(-50%); transition: background .22s ease, box-shadow .22s ease, transform .3s var(--seven-ease); }
+.seven-day-tab span { grid-column: 1 / -1; color: rgba(244, 240, 232, .88); font-family: "Seven Day Display", sans-serif; font-size: 18px; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: .08em; }
+.seven-day-tab strong { color: var(--seven-muted); font-size: 12px; font-weight: 650; line-height: 1; }
+.seven-day-tab small { justify-self: end; color: var(--seven-faint); font-size: 10px; line-height: 1; }
+.seven-day-tab:hover { color: var(--seven-muted); background: rgba(244, 240, 232, .04); transform: translateY(-2px); }
+.seven-day-tab:focus-visible { outline: 2px solid var(--seven-accent); outline-offset: 2px; }
+.seven-day-tab[aria-selected="true"] { color: var(--ds-black-emphasis); background: var(--seven-accent); transform: translateY(-4px); }
+.seven-day-tab[aria-selected="true"] span { color: var(--ds-ink); }
+.seven-day-tab[aria-selected="true"] strong,
+.seven-day-tab[aria-selected="true"] small { color: var(--ds-black-emphasis); }
+.seven-day-tab[aria-selected="true"]::after { background: var(--seven-accent); box-shadow: 0 0 0 5px var(--ds-gold-soft); transform: translateX(-50%) scale(1.12); }
+.seven-day-tab.is-complete::after { background: var(--seven-ink); }
+.seven-day-tab.is-locked { opacity: .58; }
+
+/* Keep the shared sliding-tab behavior while using this campaign's primary-gold selection language. */
+.seven-day-tabs.ui-glide-tabs > .ui-glide-tab-indicator {
+  border-color: transparent;
+  border-radius: var(--ds-radius-control) !important;
+  background: var(--seven-accent);
+  box-shadow: none;
+}
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active,
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active:hover,
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active:focus-visible {
+  color: var(--ds-black-emphasis) !important;
+  transform: translateY(-4px);
+}
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active span { color: var(--ds-ink); }
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active strong,
+.seven-day-tabs.ui-glide-tabs > .seven-day-tab.is-glide-active small { color: var(--ds-black-emphasis); }
+
+.seven-day-stage {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  border-radius: var(--ds-radius-modal);
+  background: var(--seven-surface);
+  box-shadow: inset 0 0 0 1px var(--seven-line), 0 20px 56px var(--ds-black-muted);
+}
+.seven-day-stage::before { content: ""; position: absolute; top: 0; left: 0; width: 34%; height: 100%; background: linear-gradient(135deg, var(--seven-accent-soft), transparent 66%); pointer-events: none; }
+.seven-day-task-panel {
+  position: relative;
+  z-index: 1;
+  min-height: 280px;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 48px;
+  padding: 32px 48px;
+}
+.seven-day-task-panel[hidden] { display: none; }
+.seven-day-panel-number { display: grid; gap: 8px; }
+.seven-day-panel-number span { color: var(--seven-accent); font-family: "Seven Day Display", sans-serif; font-size: 11px; letter-spacing: .2em; }
+.seven-day-panel-number strong { color: var(--seven-ink); font-family: "Seven Day Display", sans-serif; font-size: 112px; line-height: .8; letter-spacing: -.04em; }
+.seven-day-panel-copy { min-width: 0; }
+.seven-day-panel-status { margin-bottom: 14px; color: var(--seven-accent); font-size: 12px; font-weight: 700; }
+.seven-day-panel-copy h3 { margin: 0; color: var(--seven-ink); font-size: 36px; font-weight: 680; line-height: 1.08; letter-spacing: -.03em; }
+.seven-day-panel-copy > p { max-width: 48ch; margin: 16px 0 0; color: var(--seven-muted); font-size: 14px; line-height: 1.7; }
+.seven-day-panel-copy dl { display: flex; flex-wrap: wrap; gap: 34px; margin: 28px 0 0; }
+.seven-day-panel-copy dl > div { display: grid; gap: 5px; }
+.seven-day-panel-copy dt { color: var(--seven-faint); font-size: 11px; }
+.seven-day-panel-copy dd { margin: 0; color: var(--seven-ink); font-size: 14px; font-weight: 650; }
+.seven-day-task-panel.is-locked .seven-day-panel-number,
+.seven-day-task-panel.is-locked .seven-day-panel-copy { opacity: .7; }
+
+.seven-day-close {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px 0 0;
+}
+.seven-day-close > div { display: grid; gap: 8px; }
+.seven-day-close span { color: var(--seven-faint); font-size: 12px; }
+.seven-day-close strong { color: var(--seven-ink); font-size: 30px; font-weight: 720; letter-spacing: -.03em; }
+.seven-day-close p { margin: 0; color: var(--seven-muted); font-size: 13px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .seven-day-hero-copy { animation: seven-day-copy-in .72s var(--seven-ease) both; }
+  .seven-day-hero-art { animation: seven-day-art-in .9s var(--seven-ease) .08s both; }
+  .seven-day-task-panel:not([hidden]) { animation: seven-day-panel-in .44s var(--seven-ease) both; }
+}
+
+@keyframes seven-day-copy-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes seven-day-art-in {
+  from { opacity: .25; clip-path: inset(0 0 0 100%); transform: translateX(22px); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateX(0); }
+}
+@keyframes seven-day-panel-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1100px) {
+  .seven-day-shell { width: min(100% - 40px, 960px); }
+  .seven-day-experience { gap: 64px; }
+  .seven-day-hero { min-height: 360px; grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr); }
+  .seven-day-hero-copy { padding: 32px 40px; }
+  .seven-day-hero h1 { font-size: 44px; }
+  .seven-day-reward-rhythm { grid-template-columns: 1fr; align-items: start; }
+  .seven-day-milestones > div:first-child { border-left: 0; padding-left: 0; }
+  .seven-day-max-reward { border-left: 0; padding: 8px 0 0; border-top: 1px solid var(--ds-gold-border); }
+  .seven-day-task-panel { grid-template-columns: 150px minmax(0, 1fr); }
+  .seven-day-task-panel > .seven-day-primary,
+  .seven-day-task-panel > .seven-day-secondary { grid-column: 2; justify-self: start; }
+}
+
+@media (max-width: 767px) {
+  .seven-day-campaign-page > main { margin-top: 0; }
+  .seven-day-main { min-height: 100dvh; }
+  .seven-day-shell { width: calc(100% - 24px); padding: 12px 0 64px; }
+  .seven-day-experience { gap: 48px; }
+  .seven-day-hero { position: relative; width: 100%; min-width: 0; min-height: 340px; display: block; }
+  .seven-day-hero-copy { min-height: 340px; padding: 24px 20px; background: linear-gradient(90deg, var(--seven-surface) 0%, rgba(11, 15, 19, .96) 46%, rgba(11, 15, 19, .68) 70%, rgba(11, 15, 19, .12) 100%); }
+  .seven-day-status-line { margin-bottom: 14px; }
+  .seven-day-hero h1 { max-width: none; font-size: 40px; }
+  .seven-day-hero-copy > p { max-width: 21ch; margin-top: 14px; font-size: 13px; line-height: 1.6; }
+  .seven-day-hero-actions { gap: 18px; margin-top: 24px; }
+  .seven-day-primary, .seven-day-secondary { min-height: 44px; padding: 0 18px; }
+  .seven-day-progress-lockup { gap: 7px; }
+  .seven-day-progress-lockup { padding-left: 18px; }
+  .seven-day-progress-lockup strong { font-size: 30px; }
+  .seven-day-progress-lockup strong span { font-size: 16px; }
+  .seven-day-progress-lockup small { font-size: 10px; }
+  .seven-day-hero-art { position: absolute; inset: 0; z-index: 0; aspect-ratio: auto; }
+  .seven-day-hero-art::before { inset: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(11, 15, 19, .92), rgba(11, 15, 19, .28) 72%, transparent); }
+  .seven-day-hero-art img { object-position: 72% center; }
+  .seven-day-reward-rhythm { gap: 24px; padding-bottom: 28px; }
+  .seven-day-reward-intro h2, .seven-day-route-head h2 { font-size: 34px; }
+  .seven-day-reward-intro p, .seven-day-route-head p { font-size: 13px; }
+  .seven-day-milestones { gap: 0; }
+  .seven-day-milestones > div { min-height: 92px; padding: 0 12px 0; }
+  .seven-day-milestones > div:first-child { padding-left: 0; }
+  .seven-day-milestones span { font-size: 11px; }
+  .seven-day-milestones strong { font-size: 28px; }
+  .seven-day-max-reward { display: flex; align-items: baseline; gap: 10px; min-height: 0; padding-top: 18px; }
+  .seven-day-max-reward strong { margin: 0; font-size: 40px; }
+  .seven-day-route-head { margin-bottom: 24px; }
+  .seven-day-tabs { width: 100%; min-width: 0; display: flex; gap: 8px; margin-right: 0; padding: 0 12px 28px 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .seven-day-tabs::-webkit-scrollbar { display: none; }
+  .seven-day-tabs::before { left: 34px; right: 34px; bottom: 12px; }
+  .seven-day-tab { flex: 0 0 112px; min-height: 83px; scroll-snap-align: start; }
+  .seven-day-stage { width: 100%; min-width: 0; min-height: 0; }
+  .seven-day-task-panel { min-height: 0; grid-template-columns: 78px minmax(0, 1fr); gap: 20px 16px; padding: 28px 22px 24px; }
+  .seven-day-panel-number strong { font-size: 58px; }
+  .seven-day-panel-copy h3 { font-size: 25px; }
+  .seven-day-panel-copy > p { font-size: 13px; }
+  .seven-day-panel-copy dl { gap: 24px; margin-top: 22px; }
+  .seven-day-task-panel > .seven-day-primary,
+  .seven-day-task-panel > .seven-day-secondary { grid-column: 1 / -1; width: 100%; }
+  .seven-day-close { align-items: stretch; padding-top: 30px; }
+  .seven-day-close strong { font-size: 24px; }
+  .seven-day-close p { max-width: 24ch; font-size: 12px; line-height: 1.5; }
+  .seven-day-close .seven-day-secondary { align-self: flex-end; }
+}
+
+@media (max-width: 420px) {
+  .seven-day-hero { min-height: 340px; }
+  .seven-day-hero-copy { min-height: 340px; padding-inline: 18px; }
+  .seven-day-hero h1 { font-size: 40px; }
+  .seven-day-hero-actions { gap: 14px; }
+  .seven-day-primary, .seven-day-secondary { font-size: 12px; }
+  .seven-day-progress-lockup small { display: none; }
+  .seven-day-task-panel { grid-template-columns: 66px minmax(0, 1fr); padding-inline: 18px; }
+  .seven-day-panel-number strong { font-size: 50px; }
+  .seven-day-close { flex-direction: column; }
+  .seven-day-close .seven-day-secondary { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seven-day-primary,
+  .seven-day-secondary,
+  .seven-day-tab,
+  .seven-day-tab::after { transition: none; }
+  .seven-day-primary:hover,
+  .seven-day-secondary:hover,
+  .seven-day-tab:hover,
+  .seven-day-tab[aria-selected="true"] { transform: none; }
+}

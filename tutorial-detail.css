@@ -1,0 +1,666 @@
+/* Tutorial detail redesign. UIguide-aligned, media-first, 1280px content baseline. */
+
+.tutorial-detail-page {
+  --tutorial-surface: rgba(11, 15, 19, 0.76);
+  --tutorial-surface-strong: rgba(16, 19, 22, 0.94);
+  --tutorial-line: rgba(255, 247, 230, 0.11);
+  --tutorial-line-strong: rgba(244, 201, 93, 0.32);
+}
+
+.tutorial-detail-page .page-bg img {
+  opacity: 0.09 !important;
+}
+
+.tutorial-detail-page .page-bg::after {
+  background:
+    radial-gradient(circle at 74% 10%, rgba(244, 201, 93, 0.09), transparent 28%),
+    linear-gradient(180deg, rgba(5, 7, 11, 0.76), var(--ds-bg) 72%) !important;
+}
+
+.tutorial-detail-main {
+  position: relative;
+  z-index: 2;
+  padding: 32px 0 96px;
+}
+
+.tutorial-detail-view[hidden] {
+  display: none;
+}
+
+.tutorial-detail-toolbar {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tutorial-back-link {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-paper-emphasis);
+  background: rgba(11, 15, 19, 0.6);
+  box-shadow: inset 0 1px 0 var(--ds-white-veil);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.tutorial-back-link img,
+.lesson-primary-action img {
+  width: 17px;
+  height: 17px;
+  filter: brightness(0) invert(1);
+}
+
+.tutorial-back-link .tutorial-back-icon {
+  transform: rotate(180deg);
+}
+
+.tutorial-back-link:hover,
+.tutorial-back-link:focus-visible {
+  color: var(--ds-text);
+  border-color: var(--ds-paper-muted);
+  background: var(--ds-white-veil);
+}
+
+.tutorial-back-link:active,
+.lesson-primary-action:active,
+.lesson-finish-panel > a:active {
+  transform: translateY(1px);
+}
+
+.tutorial-course-position {
+  color: var(--ds-text-faint);
+  font-size: 13px;
+}
+
+.tutorial-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(360px, 5fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.tutorial-player-shell,
+.tutorial-article-visual {
+  min-width: 0;
+  min-height: 472px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-modal);
+  background: #090b0e;
+  box-shadow: inset 0 1px 0 var(--ds-white-veil), 0 24px 64px var(--ds-black-strong);
+}
+
+.tutorial-player {
+  width: 100%;
+  height: 100%;
+  min-height: 472px;
+  display: block;
+  object-fit: cover;
+  object-position: left center;
+  background: #090b0e;
+}
+
+.tutorial-article-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 472px;
+  display: block;
+  object-fit: cover;
+}
+
+.tutorial-lesson-summary {
+  min-width: 0;
+  min-height: 472px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-modal);
+  background:
+    radial-gradient(circle at 90% 8%, rgba(244, 201, 93, 0.1), transparent 28%),
+    linear-gradient(180deg, var(--ds-white-veil), transparent 38%),
+    var(--tutorial-surface);
+  box-shadow: inset 0 1px 0 var(--ds-white-veil), 0 24px 64px var(--ds-black-muted);
+  backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.tutorial-detail-page .lesson-meta-row {
+  gap: 8px;
+}
+
+.tutorial-detail-page .lesson-meta-row span {
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-paper-emphasis);
+  background: var(--ds-white-veil);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tutorial-detail-page .lesson-meta-row span:first-child {
+  color: var(--ds-gold-bright);
+  border-color: var(--tutorial-line-strong);
+  background: var(--ds-gold-soft);
+}
+
+.tutorial-lesson-summary h1 {
+  max-width: 11em;
+  margin: 28px 0 16px;
+  color: var(--ds-text);
+  font-size: clamp(34px, 3vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.tutorial-detail-page .lesson-lead {
+  max-width: 31em;
+  color: var(--ds-paper-emphasis);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.lesson-outcomes {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.lesson-outcomes span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ds-paper-solid);
+  font-size: 14px;
+}
+
+.lesson-outcomes img {
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--ds-gold-soft);
+  filter: brightness(0) saturate(100%) invert(83%) sepia(48%) saturate(702%) hue-rotate(352deg) brightness(102%);
+}
+
+.lesson-primary-action {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 0 20px;
+  border: 1px solid var(--ds-gold-strong);
+  border-radius: var(--ds-radius-pill);
+  color: #17130a;
+  background: linear-gradient(180deg, var(--ds-gold-bright), var(--ds-gold));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 12px 32px rgba(0, 0, 0, 0.24);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: filter 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.lesson-primary-action img {
+  filter: brightness(0) saturate(100%);
+}
+
+.lesson-primary-action:hover,
+.lesson-primary-action:focus-visible {
+  filter: brightness(1.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), 0 14px 34px rgba(0, 0, 0, 0.3), 0 0 24px var(--ds-gold-muted);
+}
+
+.tutorial-detail-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 9fr) minmax(260px, 3fr);
+  gap: 48px;
+  align-items: start;
+  margin-top: 64px;
+}
+
+.tutorial-lesson-content {
+  min-width: 0;
+}
+
+.lesson-copy-section {
+  padding: 0 0 48px;
+}
+
+.lesson-copy-section + .lesson-copy-section {
+  padding-top: 48px;
+  border-top: 1px solid var(--tutorial-line);
+}
+
+.lesson-copy-section h2,
+.lesson-section-heading h2,
+.lesson-finish-panel h2 {
+  margin: 0;
+  color: var(--ds-text);
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.lesson-copy-section p,
+.lesson-section-heading p,
+.lesson-finish-panel p {
+  max-width: 660px;
+  margin: 14px 0 0;
+  color: var(--ds-paper-emphasis);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.lesson-method-section {
+  padding: 48px 0 64px;
+  border-top: 1px solid var(--tutorial-line);
+}
+
+.lesson-section-heading {
+  margin-bottom: 32px;
+}
+
+.lesson-step-list-v2 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tutorial-step;
+}
+
+.lesson-step-list-v2 li {
+  position: relative;
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 24px 0 24px 58px;
+  border-top: 1px solid var(--tutorial-line);
+  counter-increment: tutorial-step;
+}
+
+.lesson-step-list-v2 li:last-child {
+  border-bottom: 1px solid var(--tutorial-line);
+}
+
+.lesson-step-list-v2 li::before {
+  content: counter(tutorial-step);
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--tutorial-line-strong);
+  border-radius: var(--ds-radius-control);
+  color: var(--ds-gold-bright);
+  background: var(--ds-gold-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lesson-step-list-v2 strong {
+  color: var(--ds-paper-solid);
+  font-size: 15px;
+}
+
+.lesson-step-list-v2 span {
+  color: var(--ds-paper-emphasis);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.lesson-finish-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: end;
+  padding: 36px;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-modal);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(244, 201, 93, 0.12), transparent 34%),
+    var(--tutorial-surface-strong);
+  box-shadow: inset 0 1px 0 var(--ds-white-veil), 0 20px 54px var(--ds-black-muted);
+}
+
+.lesson-finish-panel > a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid var(--ds-gold-strong);
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-gold-bright);
+  background: var(--ds-gold-soft);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.lesson-finish-panel > a:hover,
+.lesson-finish-panel > a:focus-visible {
+  border-color: var(--ds-gold-emphasis);
+  background: rgba(244, 201, 93, 0.16);
+}
+
+.tutorial-lesson-outline {
+  position: sticky;
+  top: 108px;
+  overflow: hidden;
+  border: 1px solid var(--tutorial-line);
+  border-radius: var(--ds-radius-card);
+  background: var(--tutorial-surface);
+  box-shadow: inset 0 1px 0 var(--ds-white-veil), 0 14px 36px var(--ds-black-muted);
+  backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.lesson-outline-head {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--tutorial-line);
+}
+
+.lesson-outline-head > div {
+  display: grid;
+  gap: 5px;
+}
+
+.lesson-outline-head strong {
+  color: var(--ds-text);
+  font-size: 15px;
+}
+
+.lesson-outline-head span {
+  color: var(--ds-text-faint);
+  font-size: 12px;
+}
+
+.lesson-outline-head > img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.58;
+  filter: brightness(0) invert(1);
+}
+
+.tutorial-lesson-outline nav {
+  display: grid;
+  padding: 8px;
+}
+
+.tutorial-lesson-outline nav a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: var(--ds-radius-control);
+  color: var(--ds-paper-emphasis);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.tutorial-lesson-outline nav a:hover,
+.tutorial-lesson-outline nav a:focus-visible {
+  color: var(--ds-text);
+  background: var(--ds-white-veil);
+}
+
+.tutorial-lesson-outline > p {
+  margin: 0;
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--tutorial-line);
+  color: var(--ds-text-faint);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.tutorial-detail-page :is(a, video):focus-visible {
+  outline: 2px solid var(--ds-gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1099px) {
+  .tutorial-detail-hero {
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  }
+
+  .tutorial-player-shell,
+  .tutorial-player,
+  .tutorial-article-visual,
+  .tutorial-article-visual img,
+  .tutorial-lesson-summary {
+    min-height: 430px;
+  }
+
+  .tutorial-lesson-summary {
+    padding: 28px;
+  }
+
+  .tutorial-detail-content-grid {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 899px) {
+  html:has(.tutorial-detail-page),
+  body.home-header-shell:has(.tutorial-detail-page),
+  .tutorial-detail-page {
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .tutorial-detail-page .shared-home-header {
+    position: sticky;
+    min-width: 0;
+  }
+
+  .tutorial-detail-page .shared-home-header .header-inner {
+    width: 100%;
+    min-width: 0;
+    padding: 0 16px;
+    grid-template-columns: 154px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .tutorial-detail-page .shared-home-header .logo {
+    width: 150px;
+    min-width: 150px;
+  }
+
+  .tutorial-detail-page .shared-home-header .brand-logo {
+    width: 146px;
+    min-width: 146px;
+  }
+
+  .tutorial-detail-page .shared-home-header .nav {
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  .tutorial-detail-page .shared-home-header .nav a,
+  .tutorial-detail-page .shared-home-header .nav a:first-child:not(.is-active) {
+    flex: 0 0 auto;
+    padding: 0 14px;
+  }
+
+  .tutorial-detail-page .shared-home-header .header-actions {
+    display: none;
+  }
+
+  .tutorial-detail-main {
+    padding-top: 24px;
+  }
+
+  .tutorial-detail-hero,
+  .tutorial-detail-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tutorial-player-shell,
+  .tutorial-player,
+  .tutorial-article-visual,
+  .tutorial-article-visual img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .tutorial-player {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .tutorial-lesson-summary {
+    min-height: 0;
+  }
+
+  .lesson-primary-action {
+    margin-top: 32px;
+  }
+
+  .tutorial-detail-content-grid {
+    margin-top: 48px;
+  }
+
+  .tutorial-lesson-outline {
+    position: static;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 639px) {
+  .tutorial-detail-main {
+    padding: 16px 0 64px;
+  }
+
+  .tutorial-detail-page .wide-container {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .tutorial-detail-page .shared-home-header .header-inner {
+    grid-template-columns: 132px minmax(0, 1fr);
+  }
+
+  .tutorial-detail-page .shared-home-header .logo {
+    width: 130px;
+    min-width: 130px;
+  }
+
+  .tutorial-detail-page .shared-home-header .brand-logo {
+    width: 126px;
+    min-width: 126px;
+  }
+
+  .tutorial-detail-page .shared-home-header .nav a,
+  .tutorial-detail-page .shared-home-header .nav a:first-child:not(.is-active) {
+    padding: 0 12px;
+  }
+
+  .tutorial-course-position {
+    display: none;
+  }
+
+  .tutorial-detail-hero {
+    gap: 12px;
+  }
+
+  .tutorial-player-shell,
+  .tutorial-article-visual,
+  .tutorial-lesson-summary,
+  .lesson-finish-panel {
+    border-radius: var(--ds-radius-card);
+  }
+
+  .tutorial-lesson-summary {
+    padding: 24px 20px;
+  }
+
+  .tutorial-lesson-summary h1 {
+    margin-top: 24px;
+    font-size: 32px;
+  }
+
+  .lesson-primary-action {
+    width: 100%;
+  }
+
+  .tutorial-detail-content-grid {
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .lesson-copy-section {
+    padding-bottom: 36px;
+  }
+
+  .lesson-copy-section + .lesson-copy-section,
+  .lesson-method-section {
+    padding-top: 36px;
+  }
+
+  .lesson-method-section {
+    padding-bottom: 48px;
+  }
+
+  .lesson-copy-section h2,
+  .lesson-section-heading h2,
+  .lesson-finish-panel h2 {
+    font-size: 24px;
+  }
+
+  .lesson-step-list-v2 {
+    margin-left: 0;
+  }
+
+  .lesson-step-list-v2 li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding-left: 52px;
+  }
+
+  .lesson-finish-panel {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    padding: 24px 20px;
+  }
+
+  .lesson-finish-panel > a {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tutorial-detail-page *,
+  .tutorial-detail-page *::before,
+  .tutorial-detail-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

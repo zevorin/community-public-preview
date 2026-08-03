@@ -31327,6 +31327,274 @@ body:not(.home-page) .flash-timeline-shell .flash-post-card:hover {
   transform: scale(1.018);
 }
 
+.flash-timeline-shell .flash-media-grid figure[data-flash-lightbox-trigger] {
+  cursor: zoom-in;
+  outline: 0;
+}
+
+.flash-timeline-shell .flash-media-grid figure[data-flash-lightbox-trigger]:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--ds-gold);
+}
+
+.flash-timeline-shell .flash-media-grid figure[data-flash-lightbox-trigger]:focus-visible > img {
+  filter: brightness(1.06);
+  transform: scale(1.018);
+}
+
+body.is-flash-lightbox-open {
+  overflow: hidden;
+}
+
+.flash-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--ds-z-modal) + 20);
+  display: grid;
+  place-items: center;
+  padding: var(--ds-space-7);
+  isolation: isolate;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--ds-duration-moderate) ease, visibility var(--ds-duration-moderate) ease;
+}
+
+.flash-image-lightbox[hidden] {
+  display: none;
+}
+
+.flash-image-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.flash-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(2, 4, 7, 0.86);
+  backdrop-filter: blur(18px) saturate(1.08);
+  cursor: zoom-out;
+}
+
+.flash-lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1320px, calc(100vw - 112px));
+  height: min(86vh, 900px);
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--ds-gold-muted);
+  border-radius: var(--ds-radius-modal);
+  outline: 0;
+  background:
+    radial-gradient(circle at 76% 18%, var(--ds-gold-veil), transparent 28%),
+    rgba(7, 10, 13, 0.96);
+  box-shadow: var(--ds-shadow-overlay-deep);
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition: opacity var(--ds-duration-moderate) ease, transform var(--ds-duration-reveal) var(--ds-ease-standard);
+}
+
+.flash-image-lightbox.is-open .flash-lightbox-dialog {
+  opacity: 1;
+  transform: none;
+}
+
+.flash-lightbox-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  padding: 44px 84px 64px;
+  box-sizing: border-box;
+}
+
+.flash-lightbox-stage > img {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 20px 64px var(--ds-black-emphasis);
+}
+
+.flash-lightbox-stage > img.is-entering {
+  animation: flash-lightbox-image-in var(--ds-duration-slow) var(--ds-ease-standard) both;
+}
+
+.flash-lightbox-control {
+  position: absolute;
+  z-index: 2;
+  width: var(--ds-control-large);
+  min-width: var(--ds-control-large);
+  height: var(--ds-control-large);
+  min-height: var(--ds-control-large);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--ds-white-soft);
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-text);
+  background: rgba(12, 15, 19, 0.84);
+  box-shadow: var(--ds-shadow-control);
+  backdrop-filter: blur(14px) saturate(1.08);
+  transition: border-color var(--ds-duration-fast) ease, background-color var(--ds-duration-fast) ease, box-shadow var(--ds-duration-fast) ease;
+  cursor: pointer;
+}
+
+.flash-lightbox-control[hidden],
+.flash-image-lightbox.is-single-image .flash-lightbox-arrow {
+  display: none !important;
+}
+
+.flash-lightbox-control img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(19%) saturate(682%) hue-rotate(345deg) brightness(105%) contrast(101%);
+  pointer-events: none;
+}
+
+.flash-lightbox-control:hover,
+.flash-lightbox-control:focus-visible {
+  border-color: var(--ds-gold-strong);
+  outline: 0;
+  background: rgba(35, 31, 20, 0.9);
+  box-shadow: var(--ds-shadow-gold-control-hover), var(--ds-focus-ring);
+}
+
+.flash-lightbox-control:active {
+  border-color: var(--ds-gold-emphasis);
+  background: rgba(48, 39, 20, 0.92);
+  box-shadow: var(--ds-shadow-highlight);
+}
+
+.flash-lightbox-close {
+  top: var(--ds-space-4);
+  right: var(--ds-space-4);
+}
+
+.flash-lightbox-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.flash-lightbox-prev {
+  left: var(--ds-space-4);
+}
+
+.flash-lightbox-prev img {
+  transform: rotate(180deg);
+}
+
+.flash-lightbox-next {
+  right: var(--ds-space-4);
+}
+
+.flash-lightbox-meta {
+  position: absolute;
+  left: 50%;
+  bottom: var(--ds-space-4);
+  z-index: 2;
+  min-height: var(--ds-control-default);
+  min-width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--ds-space-3);
+  border: 1px solid var(--ds-white-soft);
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-warm-solid);
+  background: rgba(8, 11, 15, 0.82);
+  box-shadow: var(--ds-shadow-highlight);
+  backdrop-filter: blur(14px) saturate(1.08);
+  transform: translateX(-50%);
+}
+
+.flash-lightbox-meta strong {
+  color: var(--ds-gold-emphasis);
+  font-size: var(--ds-type-sm);
+  font-weight: var(--ds-weight-semibold);
+}
+
+@keyframes flash-lightbox-image-in {
+  from {
+    opacity: 0.36;
+    filter: blur(5px) brightness(0.82);
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .flash-image-lightbox {
+    padding: var(--ds-space-2);
+  }
+
+  .flash-lightbox-dialog {
+    width: calc(100vw - 16px);
+    height: calc(100vh - 24px);
+    min-height: 0;
+    border-radius: var(--ds-radius-card);
+  }
+
+  .flash-lightbox-stage {
+    padding: 56px var(--ds-space-3) 58px;
+  }
+
+  .flash-lightbox-control {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .flash-lightbox-close {
+    top: var(--ds-space-3);
+    right: var(--ds-space-3);
+  }
+
+  .flash-lightbox-prev {
+    left: var(--ds-space-2);
+  }
+
+  .flash-lightbox-next {
+    right: var(--ds-space-2);
+  }
+
+  .flash-lightbox-meta {
+    bottom: var(--ds-space-3);
+    padding: 0 var(--ds-space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-image-lightbox,
+  .flash-lightbox-dialog,
+  .flash-lightbox-control {
+    transition: none;
+  }
+
+  .flash-lightbox-stage > img.is-entering {
+    animation: none;
+  }
+}
+
 .flash-video-frame {
   width: min(100%, 640px);
   margin-top: var(--ds-space-3);

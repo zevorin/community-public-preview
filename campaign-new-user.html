@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./campaign-new-user.css?v=20260801-reference-match-v1">
+  <link rel="stylesheet" href="./campaign-new-user.css?v=20260803-reversed-task-cta-v10">
+  <link rel="stylesheet" href="./campaign-shared.css?v=20260803-campaign-back-v1">
 </head>
 <body>
   <div class="page growth-detail-page growth-app-page invite-detail-page new-user-campaign-page" data-page="activity-detail-new-user">
@@ -46,45 +47,47 @@
     <main class="new-user-campaign-main">
       <section id="new-user-tasks" class="new-user-detail-screen" data-activity-detail="new-user">
         <div class="new-user-detail-page">
+          <a class="campaign-list-back" href="./activity-center.html"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">返回活动列表</a>
+
           <article class="new-user-detail-article">
-            <section class="new-user-detail-hero">
-              <div class="new-user-cover">
-                <img class="new-user-cover-image" src="assets/activity/activity-new-user-cover-v2.png" alt="新手任务">
-                <span class="new-user-cover-status">进行中</span>
-              </div>
+            <section class="new-user-detail-hero" aria-labelledby="new-user-title">
               <div class="new-user-summary">
-                <header class="new-user-summary-head"><em>ACTIVITY DETAIL</em><h1>新手任务</h1></header>
-                <div class="new-user-meta"><span class="new-user-meta-points">最高可得 80 积分</span></div>
-                <div class="new-user-participation">
-                  <div class="new-user-participation-info"><strong>我的参与状态</strong><p>首次访问、完善资料、首次互动、收藏作品</p></div>
-                  <div class="new-user-participation-aside"><div class="new-user-participation-progress">0/4</div><a class="new-user-participation-join" href="#new-user-task-list">立即参与</a></div>
+                <div class="new-user-status-line"><strong>进行中</strong><span>最高可得 80 积分</span></div>
+                <h1 id="new-user-title">新手任务</h1>
+                <p class="new-user-summary-lede">完成首次访问、完善资料、首次互动与收藏作品，解锁七日成长活动。</p>
+                <div class="new-user-hero-actions">
+                  <a class="new-user-participation-join" href="#new-user-task-list">开始新手任务</a>
+                  <div class="new-user-progress-lockup" aria-label="已完成 0 项，共 4 项任务"><strong>0<span>/4</span></strong><small>任务进度</small></div>
                 </div>
               </div>
+              <figure class="new-user-cover">
+                <img class="new-user-cover-image" src="assets/activity/activity-new-user-cover-v4.png" alt="新手任务活动装置">
+              </figure>
             </section>
 
             <section class="new-user-description" aria-labelledby="new-user-description-title">
-              <header class="new-user-section-head"><div><h2 id="new-user-description-title"><span>活动</span>说明</h2><em>DESCRIPTION</em></div></header>
+              <header class="new-user-section-head"><div class="new-user-section-title"><h2 id="new-user-description-title"><span>活动</span>说明</h2><span class="new-user-section-kicker">DESCRIPTION</span></div></header>
               <div class="new-user-description-body"><p>完成新手引导任务，解锁七日成长活动。</p></div>
             </section>
 
             <section class="new-user-tasks" aria-labelledby="new-user-task-title">
-              <header class="new-user-section-head"><div><h2 id="new-user-task-title"><span>活动</span>任务</h2><em>TASK LIST</em></div></header>
+              <header class="new-user-section-head"><div class="new-user-section-title"><h2 id="new-user-task-title"><span>活动</span>任务</h2><span class="new-user-section-kicker">TASK LIST</span></div></header>
               <div id="new-user-task-list" class="new-user-task-list" role="list">
                 <div class="new-user-task-card" role="listitem" data-activity-reward data-new-user-task="首次访问" data-new-user-reward="+20">
-                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-first-visit-v4.png" alt="">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>首次访问</h3><span class="new-user-task-status is_pending">待完成</span></div><p>首次进入应用</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./index.html">去逛逛</a><span class="new-user-task-points">+20 积分</span></div>
+                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-first-visit-v6.png" alt="">
+                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>首次访问</h3><span class="new-user-task-status is_pending">待完成</span></div><p>首次进入应用</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./index.html"><span class="new-user-task-points">+20 积分</span><span class="new-user-task-action-label">去逛逛</span></a></div>
                 </div>
                 <div class="new-user-task-card" role="listitem" data-activity-reward data-new-user-task="完善资料" data-new-user-reward="+20">
-                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-complete-profile-v4.png" alt="">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>完善资料</h3><span class="new-user-task-status is_pending">待完成</span></div><p>完善个人资料信息</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./user-center.html#edit-profile">去完善</a><span class="new-user-task-points">+20 积分</span></div>
+                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-complete-profile-v6.png" alt="">
+                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>完善资料</h3><span class="new-user-task-status is_pending">待完成</span></div><p>完善个人资料信息</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./user-center.html#edit-profile"><span class="new-user-task-points">+20 积分</span><span class="new-user-task-action-label">去完善</span></a></div>
                 </div>
                 <div class="new-user-task-card" role="listitem" data-activity-reward data-new-user-task="首次互动" data-new-user-reward="+20">
-                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-first-interaction-v4.png" alt="">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>首次互动</h3><span class="new-user-task-status is_pending">待完成</span></div><p>完成首次点赞/评论/收藏等互动</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./index.html#case-gallery">去互动</a><span class="new-user-task-points">+20 积分</span></div>
+                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-first-interaction-v6.png" alt="">
+                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>首次互动</h3><span class="new-user-task-status is_pending">待完成</span></div><p>完成首次点赞/评论/收藏等互动</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./index.html#case-gallery"><span class="new-user-task-points">+20 积分</span><span class="new-user-task-action-label">去互动</span></a></div>
                 </div>
                 <div class="new-user-task-card" role="listitem" data-activity-reward data-new-user-task="收藏作品" data-new-user-reward="+20">
-                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-favorite-work-v4.png" alt="">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>收藏作品</h3><span class="new-user-task-status is_pending">待完成</span></div><p>收藏一条作品</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./aigc.html#case-detail-image">去收藏</a><span class="new-user-task-points">+20 积分</span></div>
+                  <img class="new-user-task-thumb" src="assets/activity/new-user-task-favorite-work-v6.png" alt="">
+                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>收藏作品</h3><span class="new-user-task-status is_pending">待完成</span></div><p>收藏一条作品</p><div class="new-user-task-progress">进度 0 / 1</div></div><div class="new-user-task-actions"><a class="new-user-task-cta" href="./aigc.html#case-detail-image"><span class="new-user-task-points">+20 积分</span><span class="new-user-task-action-label">去收藏</span></a></div>
                 </div>
               </div>
             </section>
@@ -108,7 +111,7 @@
       <strong data-activity-field>参与动作：首次访问、完善资料、首次互动、收藏作品</strong>
       <strong data-activity-field>奖励摘要：4 个任务，每项 20 积分，最高 80 积分</strong>
       <strong data-activity-field>CTA 文案：去逛逛、去完善、去互动、去收藏</strong>
-      <strong data-activity-field>活动封面：assets/activity/activity-new-user-cover-v2.png</strong>
+      <strong data-activity-field>活动封面：assets/activity/activity-new-user-cover-v4.png</strong>
     </div>
 
     <div class="footer-space"></div>

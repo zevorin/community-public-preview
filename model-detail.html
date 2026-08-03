@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html class="model-detail-document" lang="zh-CN">
 <head>
   <meta charset="utf-8">  <title>模型详情 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./model-detail.css?v=20260803-taste-redesign-v1">
 </head>
-<body>
+<body class="model-detail-body">
   <div class="page model-detail-page" data-model-detail-page>
     <div class="page-bg"><img src="assets/image_assets/18.webp" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-model-detail" aria-label="关闭顶部广告">
@@ -40,72 +41,103 @@
     </header>
 
     <main>
-      <section class="section model-detail-hero">
-        <div class="wide-container model-detail-hero-grid">
-          <article class="model-detail-copy">
-            <a class="detail-back-link" href="./model-plaza.html#model-list">返回模型广场</a>
-            <div class="detail-model-meta">
-              <span id="modelType">文本模型</span>
-              <span id="modelProvider">OpenAI</span>
-              <span id="modelCost">低成本优先</span>
-            </div>
-            <h1 id="modelName">gpt-4.1</h1>
-            <p id="modelSummary">复杂写作、代码生成、产品分析和多轮推理。</p>
-            <div class="hero-actions">
-              <a class="button" href="#api-access">查看 API 接入</a>
-              <a class="button secondary" href="#model-cases">看案例反馈</a>
-            </div>
-          </article>
+      <section class="model-detail-hero" id="overview" aria-labelledby="modelName">
+        <div class="wide-container">
+          <a class="detail-back-link" href="./model-plaza.html#model-list">
+            <span aria-hidden="true">←</span> 返回模型广场
+          </a>
 
-          <aside class="model-detail-scoreboard" aria-label="模型详情摘要">
-            <div>
-              <span>推荐用途</span>
-              <strong id="modelPrimaryUse">长文与方案</strong>
-            </div>
-            <div>
-              <span>价格口径</span>
-              <strong id="modelPrice">输入 $0.4000</strong>
-            </div>
-            <div>
-              <span>底部标签</span>
-              <strong id="modelTagSummary">工具 / 对话 / 识图</strong>
-            </div>
-          </aside>
+          <div class="model-overview-grid">
+            <article class="model-overview-primary">
+              <div class="model-identity-row">
+                <span class="model-provider-mark" aria-hidden="true">
+                  <img id="modelProviderLogo" src="assets/logos/openai.svg" alt="">
+                </span>
+                <div class="model-identity-copy">
+                  <span id="modelProvider">OpenAI</span>
+                  <div class="detail-model-meta">
+                    <span id="modelType">文本模型</span>
+                    <span id="modelCost">按量计费</span>
+                  </div>
+                </div>
+              </div>
+
+              <h1 id="modelName">gpt-4.1</h1>
+              <p id="modelSummary">GPT-4.1 是由 OpenAI 提供的人工智能模型。</p>
+
+              <div class="model-primary-use">
+                <span>推荐用途</span>
+                <strong id="modelPrimaryUse">工具对话</strong>
+              </div>
+
+              <section class="model-use-section" aria-labelledby="model-use-title">
+                <h2 id="model-use-title">核心适用场景</h2>
+                <ul class="model-detail-use-grid" id="modelUseCases"></ul>
+              </section>
+
+              <div class="model-fit-grid" aria-label="选型边界">
+                <div>
+                  <strong>适合优先试</strong>
+                  <span>有明确输入样例，需要比较输出质量，能接受小样本试跑成本。</span>
+                </div>
+                <div>
+                  <strong>暂不适合</strong>
+                  <span>依赖生产级 SLA、完整商用授权或私有数据自动化接入。</span>
+                </div>
+              </div>
+            </article>
+
+            <aside class="model-access-card" aria-label="价格与接入摘要">
+              <div>
+                <span class="model-access-label">价格与接入</span>
+                <strong class="model-access-price" id="modelPrice">输入 $0.4000</strong>
+                <p id="modelCostNoteHero">输入 $0.4000 / 1M Tokens；补全 $0.8000 / 1M Tokens</p>
+              </div>
+
+              <dl class="model-access-facts">
+                <div>
+                  <dt>模型 ID</dt>
+                  <dd><code id="modelId">gpt-4.1</code><button class="model-copy-button" type="button" data-copy-model-id aria-label="复制模型 ID"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button></dd>
+                </div>
+                <div>
+                  <dt>能力标签</dt>
+                  <dd id="modelTagSummary">工具 / 对话 / 识图</dd>
+                </div>
+              </dl>
+
+              <div class="model-access-actions">
+                <a class="button" href="./aigc.html">开始体验</a>
+                <a class="button secondary" href="#api-access">查看 API 信息</a>
+              </div>
+
+              <p class="model-access-hint">建议先使用脱敏样例进行小批量验证，再决定生产接入。</p>
+            </aside>
+          </div>
         </div>
       </section>
 
-      <section class="section model-detail-body-section">
+      <nav class="model-detail-anchor-nav" aria-label="本页导航">
+        <div class="wide-container">
+          <a href="#overview">选型概览</a>
+          <a href="#api-access">API 接入</a>
+          <a href="#model-cases">案例反馈</a>
+          <a href="#related-models">相关模型</a>
+        </div>
+      </nav>
+
+      <section class="model-detail-body-section">
         <div class="wide-container model-detail-layout">
           <article class="model-detail-main" aria-label="模型详情正文">
-            <section class="model-detail-panel">
-              <div class="model-detail-panel-head">
-                <h2>适用场景</h2>
-              </div>
-              <div class="model-detail-use-grid" id="modelUseCases"></div>
-              <div class="model-decision-grid">
-                <div class="model-decision-card">
-                  <strong>适合优先试</strong>
-                  <span>有明确输入样例、需要比较输出质量、能接受小样本试跑成本的任务。</span>
-                </div>
-                <div class="model-decision-card">
-                  <strong>暂不适合</strong>
-                  <span>需要生产级 SLA、完整商用授权、私有数据接入或自动化结算的场景。</span>
-                </div>
-              </div>
-              <div class="model-commercial-note">
-                <strong>商业规则与 AI 生成声明</strong>
-                <span>模型案例、样例结果和反馈内容可能包含 AI 生成或 AI 辅助整理内容；本页只表达体验、学习和选型口径，具体商用授权暂不在 1.0 展开。</span>
-              </div>
-            </section>
-
             <section class="model-detail-panel" id="api-access">
               <div class="model-detail-panel-head">
+                <span>接入前确认</span>
                 <h2>API 接入</h2>
+                <p>用一组脱敏样例完成质量、响应速度和成本验证。</p>
               </div>
               <div class="api-access-grid">
                 <div>
                   <strong>模型 ID</strong>
-                  <span id="modelId">gpt-4.1</span>
+                  <span id="modelIdApi">gpt-4.1</span>
                 </div>
                 <div>
                   <strong>成本口径</strong>
@@ -121,34 +153,35 @@
             <section class="model-detail-panel" id="model-cases">
               <div class="model-detail-panel-head">
                 <h2>案例反馈</h2>
+                <p>用统一字段记录实际任务，方便社区成员复现和比较。</p>
               </div>
               <div class="model-feedback-template" aria-label="模型反馈字段">
-                <div><strong>使用目标</strong><span>写作、代码、图片、视频、知识库或客服等明确任务。</span></div>
-                <div><strong>关键输入</strong><span>记录脱敏 Prompt、参数或素材类型，便于复现判断。</span></div>
-                <div><strong>结果判断</strong><span>写清楚可用点、不稳定点、成本和下一步建议。</span></div>
+                <div><strong>使用目标</strong><span>记录写作、代码、图片、视频、知识库或客服等明确任务。</span></div>
+                <div><strong>关键输入</strong><span>保留脱敏 Prompt、参数或素材类型，便于复现判断。</span></div>
+                <div><strong>结果判断</strong><span>写清可用点、不稳定点、成本和下一步建议。</span></div>
               </div>
-              <div class="model-case-list">
-                <a href="./flash.html"><strong>发布模型反馈</strong><span>闪念反馈</span></a>
-                <a href="./tutorial.html"><strong>查看接入教程</strong><span>教程入口</span></a>
-                <a href="./campaign-detail.html"><strong>参加 AI 生图挑战</strong><span>活动入口</span></a>
+              <div class="model-case-actions">
+                <a href="./flash.html">发布模型反馈 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
+                <a href="./tutorial.html">查看接入教程 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
               </div>
             </section>
           </article>
 
-          <aside class="model-detail-rail" aria-label="模型详情侧栏">
-            <div class="detail-rail-card">
-              <span>供给结构</span>
-              <strong>98 / 79 / 10 / 2</strong>
-            </div>
-            <div class="detail-rail-card">
-              <span>相关模型</span>
+          <aside class="model-detail-rail" aria-label="补充信息">
+            <section class="detail-rail-card" id="related-models">
+              <h2>相关模型</h2>
               <div class="related-model-links">
-                <a href="./model-detail.html?model=gpt-5-chat-latest">gpt-5-chat-latest</a>
-                <a href="./model-detail.html?model=o4-mini">o4-mini</a>
-                <a href="./model-detail.html?model=gemini-2.5-pro">gemini-2.5-pro</a>
-                <a href="./model-detail.html?model=gpt-image-2">gpt-image-2</a>
+                <a href="./model-detail.html?model=gpt-5-chat-latest"><span>gpt-5-chat-latest</span><small>通用对话</small></a>
+                <a href="./model-detail.html?model=o4-mini"><span>o4-mini</span><small>轻量推理</small></a>
+                <a href="./model-detail.html?model=gemini-2.5-pro"><span>gemini-2.5-pro</span><small>多模态</small></a>
+                <a href="./model-detail.html?model=gpt-image-2"><span>gpt-image-2</span><small>图像生成</small></a>
               </div>
-            </div>
+            </section>
+
+            <section class="model-commercial-note">
+              <strong>商业规则与 AI 生成声明</strong>
+              <span>案例、样例结果和反馈可能包含 AI 生成或辅助整理内容。本页仅提供体验、学习和选型参考，具体商用授权以模型服务方规则为准。</span>
+            </section>
           </aside>
         </div>
       </section>
@@ -163,7 +196,7 @@
         type: "文本模型",
         provider: "OpenAI",
         billing: "按量计费",
-        summary: "GPT-4.1 是由 openai 提供的人工智能模型。",
+        summary: "GPT-4.1 是由 OpenAI 提供的人工智能模型。",
         primaryUse: "工具对话",
         price: "输入 $0.4000",
         tagSummary: "工具 / 对话 / 识图",
@@ -294,22 +327,52 @@
     };
 
     const params = new URLSearchParams(window.location.search);
-    const modelId = params.get("model") || "gpt-4.1";
-    const current = modelData[modelId] || modelData["gpt-4.1"];
+    const requestedModelId = params.get("model") || "gpt-4.1";
+    const modelId = modelData[requestedModelId] ? requestedModelId : "gpt-4.1";
+    const current = modelData[modelId];
     document.title = `${modelId} 模型详情 - 多元拾光`;
+    const providerLogos = {
+      "OpenAI": "assets/logos/openai.svg",
+      "Anthropic": "assets/logos/anthropic.svg",
+      "Google": "assets/logos/google.svg",
+      "Grok (xAI)": "assets/logos/grok.svg",
+      "Doubao (豆包)": "assets/logos/doubao.svg"
+    };
+
     document.getElementById("modelName").textContent = modelId;
     document.getElementById("modelId").textContent = modelId;
+    document.getElementById("modelIdApi").textContent = modelId;
     document.getElementById("modelType").textContent = current.type;
     document.getElementById("modelProvider").textContent = current.provider;
+    document.getElementById("modelProviderLogo").src = providerLogos[current.provider] || "assets/logos/openai.svg";
     document.getElementById("modelCost").textContent = current.billing;
     document.getElementById("modelSummary").textContent = current.summary;
     document.getElementById("modelPrimaryUse").textContent = current.primaryUse;
     document.getElementById("modelPrice").textContent = current.price;
     document.getElementById("modelTagSummary").textContent = current.tagSummary;
     document.getElementById("modelCostNote").textContent = current.costNote;
+    document.getElementById("modelCostNoteHero").textContent = current.costNote;
     document.getElementById("modelUseCases").innerHTML = current.uses
-      .map((item) => `<div><strong>${item}</strong></div>`)
+      .map((item) => `<li><img src="resources/icons/remixicon/svg/System/check-line.svg" alt=""><span>${item}</span></li>`)
       .join("");
+
+    const copyButton = document.querySelector("[data-copy-model-id]");
+    const copyIcon = copyButton.querySelector("img");
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(modelId);
+        copyButton.classList.add("is-copied");
+        copyButton.setAttribute("aria-label", "模型 ID 已复制");
+        copyIcon.src = "resources/icons/remixicon/svg/System/check-line.svg";
+        window.setTimeout(() => {
+          copyButton.classList.remove("is-copied");
+          copyButton.setAttribute("aria-label", "复制模型 ID");
+          copyIcon.src = "resources/icons/remixicon/svg/Document/file-copy-line.svg";
+        }, 1600);
+      } catch (error) {
+        copyButton.setAttribute("aria-label", "复制失败，请手动复制模型 ID");
+      }
+    });
   </script>
   <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
 </body>

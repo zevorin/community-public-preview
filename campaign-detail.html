@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>生图挑战 - 多元拾光</title>
+  <meta name="description" content="参加多元拾光 AI 生图创作挑战，发布主题作品，争取精选与首页推荐奖励。">
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="preload" as="image" href="assets/activity/activity-image-challenge-banner-textless-v1.webp">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./campaign-new-user.css?v=20260801-reference-match-v1">
-  <link rel="stylesheet" href="./campaign-detail.css?v=20260803-current-activity-v1">
+  <link rel="stylesheet" href="./campaign-detail.css?v=20260803-reward-cards-v4">
+  <link rel="stylesheet" href="./campaign-shared.css?v=20260803-campaign-back-v1">
 </head>
 <body>
   <div class="page growth-detail-page growth-app-page new-user-campaign-page campaign-detail-page campaign-live-page" data-page="activity-detail-image-challenge">
@@ -23,7 +26,9 @@
 
     <header class="site-header shared-home-header">
       <div class="header-inner wide-container">
-        <a class="logo" href="./index.html" aria-label="多元拾光"><img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI 原生实践者社区"></a>
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+        </a>
         <nav class="nav" aria-label="主导航">
           <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
           <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
@@ -33,7 +38,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link activity-center-link is-active" aria-current="page" href="./activity-center.html" data-nav-action="activity-center">活动中心</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI 商城</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
@@ -43,59 +48,151 @@
       </div>
     </header>
 
-    <main class="new-user-campaign-main campaign-detail-main">
-      <section id="image-challenge-tasks" class="new-user-detail-screen campaign-detail-screen" data-activity-detail="image-challenge">
-        <div class="new-user-detail-page campaign-detail-page-inner">
-          <button class="new-user-back-button campaign-detail-back" type="button" onclick="if (history.length > 1) history.back(); else location.href='./activity-center.html';"><span aria-hidden="true">←</span>返回列表</button>
+    <main class="campaign-detail-main">
+      <article class="campaign-editorial" data-activity-detail="image-challenge">
+        <div class="campaign-shell">
+          <a class="campaign-list-back" href="./activity-center.html">
+            <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+            返回活动列表
+          </a>
 
-          <article class="new-user-detail-article campaign-detail-article">
-            <section class="new-user-detail-hero campaign-detail-hero">
-              <div class="new-user-cover campaign-detail-cover">
-                <img class="new-user-cover-image" src="assets/activity/activity-image-challenge-cover-current.png" alt="AI 生图创作挑战">
-                <span class="new-user-cover-status">进行中</span>
-              </div>
-              <div class="new-user-summary campaign-detail-summary">
-                <header class="new-user-summary-head"><em>ACTIVITY DETAIL</em><h1>生图挑战</h1></header>
-                <div class="new-user-meta"><span class="new-user-meta-points">最高可得 2,600 积分</span></div>
-                <div class="new-user-participation">
-                  <div class="new-user-participation-info"><strong>我的参与状态</strong><p>发布主题作品、进入精选候选和首页推荐候选</p></div>
-                  <div class="new-user-participation-aside"><div class="new-user-participation-progress">0/3</div><a class="new-user-participation-join" href="#image-challenge-task-list">立即参与</a></div>
+          <section class="campaign-hero" aria-labelledby="campaign-title">
+            <div class="campaign-hero-copy">
+              <div class="campaign-status-line"><strong>进行中</strong><span>长期活动</span></div>
+              <h1 id="campaign-title">AI生图创作挑战</h1>
+              <p class="campaign-hero-lede">发布主题图片作品，进入社区精选与首页推荐候选。</p>
+              <div class="campaign-hero-actions">
+                <a class="campaign-button is-primary" href="#image-challenge-task-list">发布主题作品</a>
+                <div class="campaign-progress-lockup" aria-label="已完成 0 项，共 3 项">
+                  <strong>0<span>/3</span></strong><small>任务进度</small>
                 </div>
               </div>
-            </section>
+            </div>
+            <figure class="campaign-hero-media">
+              <img src="assets/activity/activity-image-challenge-banner-textless-v1.webp" alt="AI 图像创作场景中的画板与创作机器人" fetchpriority="high">
+            </figure>
+          </section>
 
-            <section class="new-user-description campaign-detail-description" aria-labelledby="image-challenge-description-title">
-              <header class="new-user-section-head"><div><h2 id="image-challenge-description-title"><span>活动</span>说明</h2><em>DESCRIPTION</em></div></header>
-              <div class="new-user-description-body campaign-detail-description-body">
-                <p>围绕当期主题生成并发布 AI 图片作品。发布后作品将进入活动信息流；若有效作品满足活动周期、图片内容与标题长度要求，即可获得对应奖励。</p>
+          <section class="campaign-facts" aria-label="活动概览">
+            <div><span>最高积分</span><strong>2,600</strong></div>
+            <div><span>活动周期</span><strong>长期开放</strong></div>
+            <div><span>当前进度</span><strong>0 / 3</strong></div>
+            <p>完成发布后，作品会进入活动信息流并参与后续评选。</p>
+          </section>
+
+          <section class="campaign-guide" aria-labelledby="image-challenge-description-title">
+            <aside class="campaign-guide-nav" aria-label="活动说明目录">
+              <div class="campaign-section-title">
+                <h2 id="image-challenge-description-title"><span>活动</span>说明</h2>
+                <span class="campaign-section-kicker">ACTIVITY GUIDE</span>
               </div>
-            </section>
+              <nav>
+                <a href="#campaign-overview">活动描述</a>
+                <a href="#campaign-path">参与路径</a>
+                <a href="#image-challenge-task-list">奖励任务</a>
+                <a href="#campaign-rules">活动规则</a>
+              </nav>
+            </aside>
 
-            <section id="image-challenge-task-list" class="new-user-tasks campaign-detail-tasks" aria-labelledby="image-challenge-task-title">
-              <header class="new-user-section-head"><div><h2 id="image-challenge-task-title"><span>活动</span>任务</h2><em>TASK LIST</em></div></header>
-              <div class="new-user-task-list campaign-detail-task-list" role="list">
-                <div class="new-user-task-card campaign-detail-task-card" role="listitem">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>发布主题作品</h3><span class="new-user-task-status is_pending">待完成</span><span class="new-user-task-points">+50 积分</span></div><p>按当期主题生成并发布 AI 图片作品，每期前 2 条有效发布可获基础奖励</p><div class="new-user-task-progress">进度 0 / 1</div></div>
-                  <a class="new-user-task-cta" href="./aigc.html#quick-create-campaign">发布主题作品</a>
+            <div class="campaign-guide-content">
+              <section id="campaign-overview" class="campaign-copy-block campaign-overview-block">
+                <h3>围绕当期主题完成一张好作品</h3>
+                <p>围绕当期主题生成并发布 AI 图片作品。发布后作品将进入活动信息流；有效作品满足活动周期、图片内容与标题长度要求后，可获得对应奖励。</p>
+                <dl class="campaign-requirements">
+                  <div><dt>图片要求</dt><dd>至少 1 张图片</dd></div>
+                  <div><dt>标题要求</dt><dd>不少于 4 个字</dd></div>
+                  <div><dt>重复作品</dt><dd>同周期不重复计奖</dd></div>
+                </dl>
+              </section>
+
+              <section id="campaign-path" class="campaign-copy-block campaign-path-block">
+                <h3>从发布到首页推荐</h3>
+                <div class="campaign-path">
+                  <div><strong>发布</strong><p>按当期主题创作并发布图片作品。</p></div>
+                  <div><strong>入选</strong><p>高质量作品进入精选候选并获得额外奖励。</p></div>
+                  <div><strong>推荐</strong><p>顶尖作品进入首页，获得更高曝光与积分。</p></div>
                 </div>
-                <div class="new-user-task-card campaign-detail-task-card" role="listitem">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>精选奖励</h3><span class="new-user-task-status is_locked">未解锁</span><span class="new-user-task-points">+100 积分</span></div><p>作品进入精选候选并被设为精选后发放，每期每人最多 5 次</p><div class="new-user-task-progress">进度 0 / 1</div></div>
-                  <button class="new-user-task-cta" type="button" disabled>未解锁</button>
-                </div>
-                <div class="new-user-task-card campaign-detail-task-card" role="listitem">
-                  <div class="new-user-task-main"><div class="new-user-task-head"><h3>首页推荐奖励</h3><span class="new-user-task-status is_locked">未解锁</span><span class="new-user-task-points">+1,000 积分</span></div><p>作品进入首页推荐后发放，每期每人最多 2 次</p><div class="new-user-task-progress">进度 0 / 1</div></div>
-                  <button class="new-user-task-cta" type="button" disabled>未解锁</button>
-                </div>
+              </section>
+            </div>
+          </section>
+
+          <section id="image-challenge-task-list" class="campaign-tasks" aria-labelledby="image-challenge-task-title">
+            <header class="campaign-section-heading">
+              <div class="campaign-section-title">
+                <h2 id="image-challenge-task-title"><span>奖励</span>任务</h2>
+                <span class="campaign-section-kicker">REWARD MISSIONS</span>
               </div>
-            </section>
+              <p>每期先完成有效发布，再争取精选与首页推荐。</p>
+            </header>
 
-            <section class="campaign-detail-submissions" aria-labelledby="image-challenge-submissions-title">
-              <header class="new-user-section-head"><div><h2 id="image-challenge-submissions-title"><span>活动</span>投稿</h2><em>SUBMISSIONS</em></div><span class="campaign-detail-submissions-total">共 0 件</span></header>
-              <div class="campaign-detail-empty"><strong>还没有投稿作品</strong><p>发布第一张主题作品，让灵感被更多人看见。</p><a class="new-user-task-cta" href="./aigc.html#quick-create-campaign">去发布作品</a></div>
-            </section>
-          </article>
+            <div class="campaign-task-layout" role="list">
+              <article class="campaign-task is-featured" role="listitem">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-publish-v2.webp" alt="创作机器人在空白数字画板前准备发布作品" loading="lazy">
+                <div class="campaign-task-content">
+                  <div class="campaign-task-heading"><h3>发布主题作品</h3><span>+50 积分</span></div>
+                  <p>每期前 2 条有效发布可获得基础奖励，后续作品仍可参与展示与评选。</p>
+                  <div class="campaign-task-footer"><span>进度 0 / 1</span><a class="campaign-button is-primary" href="./aigc.html#quick-create-campaign">发布主题作品</a></div>
+                </div>
+              </article>
+
+              <article class="campaign-task" role="listitem">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-featured-v2.webp" alt="暖色聚光灯下被选中的数字艺术作品" loading="lazy">
+                <div class="campaign-task-content">
+                  <div class="campaign-task-heading"><h3>精选奖励</h3><span>+100 积分</span></div>
+                  <p>作品被设为精选后发放，每期每人最多获得 5 次。</p>
+                  <div class="campaign-task-footer"><span>进度 0 / 1</span><strong>等待评选</strong></div>
+                </div>
+              </article>
+
+              <article class="campaign-task" role="listitem">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-homepage-v2.webp" alt="在珊瑚色光环前升上高台的推荐作品" loading="lazy">
+                <div class="campaign-task-content">
+                  <div class="campaign-task-heading"><h3>首页推荐奖励</h3><span>+1,000 积分</span></div>
+                  <p>作品被推荐至首页后发放，每期每人最多获得 2 次。</p>
+                  <div class="campaign-task-footer"><span>进度 0 / 1</span><strong>等待评选</strong></div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="campaign-rules" class="campaign-rules" aria-labelledby="campaign-rules-title">
+            <header class="campaign-section-heading">
+              <div class="campaign-section-title">
+                <h2 id="campaign-rules-title"><span>活动</span>规则</h2>
+                <span class="campaign-section-kicker">ACTIVITY RULES</span>
+              </div>
+              <p>提交前请确认作品与奖励条件。</p>
+            </header>
+            <div class="campaign-rule-groups">
+              <section>
+                <h3>作品要求</h3>
+                <ol>
+                  <li>在活动页点击「发布主题作品」，按当期主题创作并发布。</li>
+                  <li>作品须在活动周期内发布，至少包含 1 张图片，标题不少于 4 个字。</li>
+                  <li>同一用户在同一周期内提交相同图片不重复计奖。</li>
+                </ol>
+              </section>
+              <section>
+                <h3>奖励上限</h3>
+                <ol start="4">
+                  <li>每期每人仅前 2 条有效发布可获得 50 积分基础奖励。</li>
+                  <li>每期每人最多获得 5 次精选奖励，每次 100 积分。</li>
+                  <li>每期每人最多获得 2 次首页推荐奖励，每次 1,000 积分。</li>
+                </ol>
+              </section>
+            </div>
+          </section>
+
+          <section class="campaign-submissions" aria-labelledby="image-challenge-submissions-title">
+            <div class="campaign-submissions-copy">
+              <span>共 0 件</span>
+              <h2 id="image-challenge-submissions-title">还没有投稿作品</h2>
+              <p>发布第一张主题作品，让灵感被更多人看见。</p>
+            </div>
+            <a class="campaign-button is-primary" href="./aigc.html#quick-create-campaign">发布主题作品</a>
+          </section>
         </div>
-      </section>
+      </article>
     </main>
 
     <div class="footer-space"></div>

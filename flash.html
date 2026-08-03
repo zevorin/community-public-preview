@@ -4,7 +4,7 @@
   <meta charset="utf-8">  <title>闪念 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v9">
+  <link rel="stylesheet" href="./style.css?v=20260803-flash-lightbox-v5">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
 </head>
@@ -232,6 +232,28 @@
         <video controls muted playsinline preload="metadata" poster="assets/image_assets/52.webp">
           <source src="assets/video_assets/2.mp4" type="video/mp4">
         </video>
+      </div>
+    </section>
+
+    <section class="flash-image-lightbox" data-flash-lightbox role="dialog" aria-modal="true" aria-labelledby="flash-lightbox-title" hidden>
+      <button class="flash-lightbox-backdrop" type="button" aria-label="关闭图片大图" data-lightbox-close></button>
+      <div class="flash-lightbox-dialog" data-lightbox-dialog tabindex="-1">
+        <h2 class="sr-only" id="flash-lightbox-title">图片大图预览</h2>
+        <div class="flash-lightbox-stage">
+          <img src="assets/image_assets/42.webp" alt="图片大图预览" data-lightbox-image>
+        </div>
+        <button class="flash-lightbox-control flash-lightbox-close" type="button" aria-label="关闭图片大图" data-lightbox-close>
+          <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
+        </button>
+        <button class="flash-lightbox-control flash-lightbox-arrow flash-lightbox-prev" type="button" aria-label="查看上一张图片" data-lightbox-prev>
+          <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+        </button>
+        <button class="flash-lightbox-control flash-lightbox-arrow flash-lightbox-next" type="button" aria-label="查看下一张图片" data-lightbox-next>
+          <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+        </button>
+        <div class="flash-lightbox-meta" aria-live="polite">
+          <strong data-lightbox-counter>1 / 1</strong>
+        </div>
       </div>
     </section>
 
@@ -641,6 +663,7 @@
 
     });
   </script>
+  <script src="./flash-lightbox.js?v=20260803-flash-lightbox-v3" defer></script>
   <script src="./flash-compose.js?v=20260729-flash-compose-controls-v6" defer></script>
   <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
 </body>

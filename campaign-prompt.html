@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prompt 共创计划 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
+  <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./campaign-new-user.css?v=20260803-youth-task-art-v2">
+  <link rel="stylesheet" href="./campaign-detail.css?v=20260803-current-activity-v1">
+  <link rel="stylesheet" href="./campaign-shared.css?v=20260803-campaign-back-v1">
   <style>
     @font-face {
       font-family: "Activity Display";
@@ -39,50 +47,14 @@
     }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      height: 72px;
-      border-bottom: 1px solid rgba(255, 247, 230, .08);
-      background: rgba(6, 8, 13, .78);
-      backdrop-filter: blur(18px) saturate(1.1);
+    .prompt-header-context {
+      color: var(--secondary-text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
     }
-    .header-inner {
-      width: min(1280px, calc(100% - 48px));
-      height: 100%;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-    .logo { display: inline-flex; align-items: center; flex: 0 0 auto; }
-    .logo img { width: 122px; height: auto; display: block; }
-    .nav { display: flex; align-items: center; gap: 6px; }
-    .nav a, .header-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      min-height: 36px;
-      padding: 0 11px;
-      border-radius: 10px;
-      color: var(--faint);
-      font-size: 13px;
-      font-weight: 600;
-      transition: color .2s ease, background .2s ease, transform .25s var(--ease);
-    }
-    .nav a:hover, .nav a:focus-visible, .header-action:hover, .header-action:focus-visible,
-    .nav a.is-active { color: var(--paper); background: rgba(255, 247, 230, .07); outline: 0; }
-    .nav-icon { width: 16px; height: 16px; opacity: .72; filter: invert(1); }
-    .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-    .header-action { color: rgba(255, 247, 230, .75); }
-    .header-action.is-active { color: var(--gold); }
-    .points { color: var(--gold); font-weight: 700; }
-    .avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255, 247, 230, .2); }
 
     .activity-detail {
-      min-height: calc(100vh - 72px);
+      min-height: 100vh;
+      padding-top: 76px;
       background:
         radial-gradient(circle at 88% 0%, rgba(233, 199, 122, .08), transparent 28%),
         radial-gradient(circle at 8% 42%, rgba(217, 255, 140, .04), transparent 24%),
@@ -92,100 +64,54 @@
       width: 1280px;
       max-width: calc(100% - 48px);
       margin: 0 auto;
-      padding: 28px 0 84px;
+      padding: 24px 0 84px;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 42px;
-      margin-bottom: 28px;
-      padding: 0 16px 0 14px;
-      border: 0;
-      border-radius: 999px;
-      color: rgba(255, 250, 240, .72);
-      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)), rgba(8,11,16,.56);
-      box-shadow: inset 0 1px rgba(255,255,255,.055), 0 12px 34px rgba(0,0,0,.16);
-      font-size: 13px;
-      font-weight: 600;
-      transition: color .2s ease, transform .28s var(--ease);
-    }
-    .back-link:hover, .back-link:focus-visible { color: #fffaf0; transform: translateY(-2px); outline: 0; }
-    .back-link img { width: 17px; height: 17px; filter: invert(1); opacity: .76; transform: rotate(180deg); }
     .activity-article { display: flex; flex-direction: column; gap: 42px; }
-    .hero { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, .9fr); gap: 24px; align-items: stretch; }
-    .cover, .summary, .desc-body, .task-card {
+    .desc-body, .task-card {
       border: 1px solid var(--line);
       background: var(--panel);
       box-shadow: inset 0 1px rgba(255,255,255,.05), 0 24px 56px rgba(0,0,0,.22);
       backdrop-filter: blur(16px);
     }
-    .cover { position: relative; min-height: 320px; overflow: hidden; border-radius: 24px; }
-    .cover img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
-    .status {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 12px;
-      border-radius: 999px;
-      color: #17130a;
-      background: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-      backdrop-filter: blur(12px);
+    .prompt-campaign-hero {
+      --campaign-surface: #0d1015;
+      --campaign-text: #f7f4ed;
+      --campaign-muted: rgba(247, 244, 237, .62);
+      --campaign-faint: rgba(247, 244, 237, .42);
+      --campaign-line: rgba(247, 244, 237, .12);
+      --campaign-line-strong: rgba(233, 199, 122, .34);
+      --campaign-accent: #e9c77a;
+      --campaign-accent-ink: #211b0d;
+      --campaign-radius: 16px;
+      --campaign-ease: var(--ease);
     }
-    .summary {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 26px 24px;
-      border-radius: 24px;
-      background: radial-gradient(circle at 90% 0%, rgba(233,199,122,.1), transparent 34%), var(--panel);
+    .prompt-campaign-hero .campaign-hero-copy::after { content: "P"; }
+    .prompt-campaign-hero .campaign-hero-media::after {
+      background: linear-gradient(90deg, var(--campaign-surface), rgba(13,16,21,.72) 5%, rgba(13,16,21,.34) 11%, transparent 19%);
     }
-    .summary-kicker, .section-kicker {
+    .section-kicker {
       width: fit-content;
       min-height: 24px;
       display: inline-flex;
       align-items: center;
-      padding: 0 10px;
+      gap: 8px;
+      padding: 0 8px;
+      border: 0;
       border-radius: 999px;
-      color: rgba(217, 255, 140, .78);
-      background: rgba(217, 255, 140, .06);
+      color: rgba(244,201,93,.78);
+      background: rgba(244,201,93,.06);
+      box-shadow: inset 0 1px rgba(255,255,255,.05);
       font-family: "Activity Display", Inter, sans-serif;
-      font-size: 9px;
+      font-size: 10px;
+      font-style: normal;
       font-weight: 700;
       letter-spacing: .17em;
       line-height: 1;
     }
-    .summary h1 { margin: 0; color: rgba(255, 252, 246, .94); font-size: clamp(28px, 2.4vw, 36px); font-weight: 650; line-height: 1.2; letter-spacing: -.04em; }
-    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
-    .meta-points { display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; border: 1px solid rgba(233,199,122,.35); border-radius: 999px; color: var(--gold); background: rgba(233,199,122,.08); font-size: 12px; font-weight: 650; }
-    .time-range { display: flex; flex-wrap: wrap; gap: 16px; color: var(--faint); font-size: 13px; }
-    .participation { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(255,247,230,.1); }
-    .participation-info { min-width: 0; display: grid; gap: 6px; }
-    .participation-info strong { color: rgba(255,252,246,.92); font-size: 16px; font-weight: 650; }
-    .participation-info p { margin: 0; color: var(--faint); font-size: 13px; line-height: 1.45; }
-    .participation-aside { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-    .progress { color: var(--gold); font-size: 30px; font-weight: 720; line-height: 1; letter-spacing: -.04em; }
-    .primary-button, .task-cta {
-      min-height: 40px;
-      padding: 0 18px;
-      border: 0;
-      border-radius: 999px;
-      color: #17130a;
-      background: var(--gold);
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity .2s ease, transform .28s var(--ease);
-    }
-    .primary-button:hover, .primary-button:focus-visible, .task-cta:hover, .task-cta:focus-visible { opacity: .92; transform: translateY(-1px); outline: 0; }
 
-    .section-head { position: relative; min-height: 84px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 0 0 22px; padding: 0 0 16px; isolation: isolate; }
+    .section-head { position: relative; min-height: 64px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin: 0 0 8px; padding: 0 0 16px; isolation: isolate; }
     .section-head::before { content: ""; position: absolute; left: -26px; bottom: 8px; z-index: -1; width: 148px; height: 74px; border-radius: 999px; background: radial-gradient(circle, rgba(244,201,93,.1), transparent 68%); filter: blur(14px); pointer-events: none; }
+    .section-head > div { display: grid; gap: 8px; }
     .section-head h2 { display: flex; align-items: baseline; gap: .18em; margin: 0; color: rgba(255,252,246,.94); font-size: 34px; font-weight: 600; line-height: 1; letter-spacing: -.05em; }
     .section-head h2 span { color: var(--gold); font-weight: 700; }
     .section-total { padding-bottom: 8px; color: var(--faint); font-size: 13px; }
@@ -193,31 +119,73 @@
     .desc-body p { margin: 0 0 14px; }
     .desc-body p:last-child { margin-bottom: 0; }
     .desc-body strong { color: rgba(255,252,246,.94); }
-    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
-    .info-card { padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: rgba(8,11,16,.56); }
-    .info-card h3 { margin: 0 0 10px; color: rgba(255,252,246,.9); font-size: 15px; }
-    .info-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-    .path-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-    .path-list li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; color: var(--muted); font-size: 13px; line-height: 1.55; }
-    .path-list b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; color: #17130a; background: var(--gold); font-size: 12px; }
+    .desc-body h3 { margin: 28px 0 12px; color: rgba(255,252,246,.94); font-size: 17px; font-weight: 650; line-height: 1.35; }
+    .desc-body h3:first-child { margin-top: 0; }
+    .desc-body ul, .desc-body ol { margin: 0 0 18px; padding-left: 22px; color: var(--muted); }
+    .desc-body li + li { margin-top: 7px; }
+    .desc-body li::marker { color: var(--gold); font-weight: 700; }
+    .desc-body li ul { margin: 8px 0 0; }
+    .reward-table-wrap { margin: 0 0 18px; overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+    .reward-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 13px; line-height: 1.55; }
+    .reward-table th, .reward-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,247,230,.08); text-align: left; vertical-align: top; }
+    .reward-table th { color: rgba(255,252,246,.92); background: rgba(255,247,230,.055); font-weight: 650; }
+    .reward-table td { color: var(--muted); }
+    .reward-table td:last-child { color: var(--gold); white-space: nowrap; }
+    .reward-table tr:last-child td { border-bottom: 0; }
+    .activity-note { margin: 0 0 18px; padding: 14px 16px; border: 1px solid rgba(233,199,122,.22); border-radius: 14px; color: rgba(255,247,230,.68); background: rgba(233,199,122,.055); }
+    .activity-note p { margin: 0; }
 
     .task-list { display: flex; flex-direction: column; gap: 14px; }
-    .task-card { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)), var(--panel); }
-    .task-main { min-width: 0; flex: 1; display: grid; gap: 8px; }
-    .task-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .task-card { display: grid; grid-template-columns: 168px minmax(0, 1fr) auto; align-items: center; gap: 20px; padding: 14px 18px 14px 14px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)), rgba(8,11,16,.62); transition: border-color .22s ease, background .22s ease, box-shadow .26s ease, transform .28s var(--ease); }
+    .task-card:hover { border-color: rgba(233,199,122,.32); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015)), rgba(12,15,19,.82); box-shadow: inset 0 1px rgba(255,255,255,.07), 0 24px 56px rgba(0,0,0,.28); transform: translateY(-2px); }
+    .task-thumb { width: 168px; height: 112px; margin: 0; overflow: hidden; border-radius: 12px; background: #0b0d12; }
+    .task-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .42s var(--ease), filter .24s ease; }
+    .task-card:hover .task-thumb img { filter: saturate(1.06) contrast(1.03); transform: scale(1.035); }
+    .task-main { min-width: 0; display: grid; gap: 5px; }
+    .task-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
     .task-head h3 { margin: 0; color: rgba(255,252,246,.94); font-size: 16px; font-weight: 650; }
-    .task-status { min-height: 22px; display: inline-flex; align-items: center; padding: 0 8px; border-radius: 999px; color: rgba(255,247,230,.62); background: rgba(255,247,230,.08); font-size: 12px; font-weight: 650; }
-    .task-points { color: var(--gold); font-size: 13px; font-weight: 650; }
+    .task-status { min-height: 24px; display: inline-flex; align-items: center; gap: 6px; padding: 0 9px 0 7px; border: 1px solid rgba(233,199,122,.28); border-radius: 999px; color: rgba(255,247,230,.68); background: rgba(233,199,122,.06); font-size: 12px; font-weight: 650; line-height: 1; }
+    .task-status::before { content: ""; width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(233,199,122,.1); }
     .task-main p { margin: 0; color: rgba(255,247,230,.52); font-size: 13px; line-height: 1.55; }
-    .task-cta.is-deferred { color: rgba(255,247,230,.45); background: rgba(255,247,230,.1); cursor: default; }
-    .task-cta.is-deferred:hover { opacity: 1; transform: none; }
+    .task-actions { min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .task-points { flex: 0 0 auto; color: var(--gold); font-size: 13px; font-weight: 650; line-height: 1; white-space: nowrap; }
+    .task-cta {
+      min-width: 112px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: var(--ds-radius-pill);
+      color: var(--ds-ink);
+      background: var(--gold);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease, transform .28s var(--ease);
+    }
+    .task-cta:hover { color: var(--ds-ink); background: var(--ds-gold-bright); transform: translateY(-1px); }
+    .task-cta:focus-visible { color: var(--ds-ink); background: var(--ds-gold-bright); box-shadow: 0 0 0 3px rgba(233,199,122,.2); outline: 0; transform: translateY(-1px); }
+    .task-cta:active { transform: translateY(1px) scale(.98); }
+    .task-cta.is-deferred {
+      color: rgba(244,240,232,.56);
+      border-color: rgba(244,240,232,.18);
+      background: rgba(244,240,232,.045);
+      cursor: default;
+    }
+    .task-cta.is-deferred:hover,
+    .task-cta.is-deferred:active { color: rgba(244,240,232,.56); border-color: rgba(244,240,232,.18); background: rgba(244,240,232,.045); transform: none; }
 
-    .submission-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-    .submission-card { position: relative; min-height: 250px; overflow: hidden; border: 1px solid rgba(255,247,230,.1); border-radius: 18px; background: #080b10; box-shadow: inset 0 1px rgba(255,255,255,.05), 0 16px 40px rgba(0,0,0,.2); transition: transform .3s var(--ease), border-color .25s ease; }
-    .submission-card:hover, .submission-card:focus-visible { transform: translateY(-4px); border-color: rgba(233,199,122,.48); outline: 0; }
-    .submission-card.tall { grid-row: span 2; min-height: 420px; }
-    .submission-card img { display: block; width: 100%; height: 100%; min-height: 250px; object-fit: cover; }
-    .submission-card.tall img { min-height: 420px; }
+    .submission-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-rows: 10px; gap: 12px; }
+    .submission-card { position: relative; min-height: 0; grid-row: span 11; overflow: hidden; border: 0; border-radius: 16px; background: #080b10; box-shadow: 0 16px 40px rgba(0,0,0,.2); transition: transform .3s var(--ease), filter .3s ease; }
+    .submission-card:hover, .submission-card:focus-visible { transform: translateY(-3px); filter: drop-shadow(0 18px 28px rgba(0,0,0,.34)); outline: 0; }
+    .submission-card.short { grid-row: span 9; }
+    .submission-card.tall { grid-row: span 15; }
+    .submission-card img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease), filter .3s ease; }
+    .submission-card:hover img, .submission-card:focus-visible img { transform: scale(1.045); filter: saturate(1.05) contrast(1.04); }
     .submission-card::after { content: ""; position: absolute; inset: 34% 0 0; background: linear-gradient(180deg, transparent, rgba(0,0,0,.86)); pointer-events: none; }
     .submission-copy { position: absolute; right: 16px; bottom: 14px; left: 16px; z-index: 1; }
     .submission-copy h3 { margin: 0 0 10px; color: rgba(255,252,246,.96); font-size: 15px; font-weight: 650; line-height: 1.35; }
@@ -226,101 +194,149 @@
     .footer-note { margin: 18px 0 0; color: var(--faint); font-size: 12px; line-height: 1.6; }
 
     @media (max-width: 960px) {
-      .header-inner, .page-shell { max-width: calc(100% - 32px); }
-      .nav a { padding: 0 8px; }
-      .nav a span { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .cover, .cover img { min-height: 240px; }
-      .task-card { flex-direction: column; align-items: stretch; }
-      .task-cta { width: 100%; }
+      .page-shell { max-width: calc(100% - 32px); }
+      .activity-detail { padding-top: 34px; }
+      .task-card { grid-template-columns: 128px minmax(0, 1fr); grid-template-areas: "thumb main" "thumb actions"; gap: 10px 14px; padding: 12px; }
+      .task-thumb { grid-area: thumb; align-self: start; width: 128px; height: 86px; }
+      .task-main { grid-area: main; }
+      .task-actions { grid-area: actions; justify-content: flex-start; }
+      .task-cta { min-width: 104px; }
       .submission-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
+    @media (max-width: 900px) {
+      .activity-detail { padding-top: 0; }
+    }
+    @media (max-width: 820px) {
+      .page-shell { max-width: min(calc(100% - 32px), 720px); }
+      .prompt-campaign-hero .campaign-hero-media::after { background: linear-gradient(90deg, rgba(13,16,21,.9), rgba(13,16,21,.52) 46%, rgba(13,16,21,.12) 70%, transparent 82%); }
+    }
     @media (max-width: 640px) {
-      .site-header { height: 64px; }
-      .header-inner { gap: 10px; }
-      .logo img { width: 96px; }
-      .nav { overflow: hidden; }
-      .nav a { min-height: 32px; padding: 0 6px; font-size: 12px; }
-      .header-actions .header-action:not(.points) { display: none; }
-      .avatar { width: 28px; height: 28px; }
-      .activity-detail { min-height: calc(100vh - 64px); }
-      .page-shell { padding-top: 20px; }
-      .back-link { margin-bottom: 20px; }
-      .summary { padding: 22px 18px; }
-      .participation { align-items: flex-start; flex-direction: column; }
-      .participation-aside { width: 100%; justify-content: space-between; }
+      .page-shell { max-width: calc(100% - 24px); padding-top: 12px; }
       .section-head { align-items: flex-start; flex-direction: column; justify-content: flex-end; gap: 10px; }
       .section-head h2 { font-size: 28px; }
-      .detail-grid { grid-template-columns: 1fr; }
       .desc-body { padding: 18px; }
       .submission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .submission-card, .submission-card.tall, .submission-card img, .submission-card.tall img { min-height: 220px; }
-      .submission-card.tall { grid-row: span 1; }
+      .submission-card { grid-row: span 10; }
+      .submission-card.short { grid-row: span 8; }
+      .submission-card.tall { grid-row: span 13; }
       .submission-copy { right: 12px; bottom: 11px; left: 12px; }
       .submission-copy h3 { font-size: 13px; }
+    }
+    @media (max-width: 560px) {
+      .task-card { grid-template-columns: 108px minmax(0, 1fr); gap: 10px 12px; }
+      .task-thumb { width: 108px; height: 82px; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="./index.html" aria-label="多元拾光首页"><img src="assets/brand/LOGO.svg" alt="多元拾光"></a>
+  <div class="prompt-header-context new-user-campaign-page campaign-detail-page">
+    <header class="site-header shared-home-header">
+    <div class="header-inner wide-container">
+      <a class="logo" href="./index.html" aria-label="多元拾光">
+        <img class="brand-logo" src="assets/brand/LOGO.svg" alt="多元拾光 AI原生实践者社区">
+      </a>
       <nav class="nav" aria-label="主导航">
-        <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt=""><span>首页</span></a>
-        <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt=""><span>AIGC</span></a>
-        <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt=""><span>模型广场</span></a>
-        <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt=""><span>闪念</span></a>
-        <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt=""><span>官方教程</span></a>
+        <a href="./index.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt="">首页</a>
+        <a href="./aigc.html"><img class="nav-icon" src="resources/icons/remixicon/svg/User &amp; Faces/robot-2-line.svg" alt="">AIGC</a>
+        <a href="./model-plaza.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">模型广场</a>
+        <a href="./flash.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Others/lightbulb-flash-line.svg" alt="">闪念</a>
+        <a href="./tutorial.html"><img class="nav-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt="">官方教程</a>
       </nav>
       <div class="header-actions">
-        <a class="header-action is-active" href="./activity-center.html">活动中心</a>
-        <a class="header-action" href="./member-store.html">AI商城</a>
-        <a class="header-action points" href="./points-center.html">积分 1280</a>
-        <a href="./user-center.html" aria-label="个人中心"><img class="avatar" src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="个人头像"></a>
+        <a class="action-link activity-center-link is-active" aria-current="page" href="./activity-center.html" data-nav-action="activity-center">活动中心</a>
+        <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+        <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+        <div class="member-account-pill" role="group" aria-label="积分与用户中心">
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+        </div>
       </div>
     </div>
-  </header>
+    </header>
+  </div>
 
   <main class="activity-detail">
     <div class="page-shell">
-      <a class="back-link" href="./activity-center.html"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">返回活动列表</a>
+      <a class="campaign-list-back" href="./activity-center.html"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">返回活动列表</a>
 
       <article class="activity-article">
-        <section class="hero" aria-labelledby="activity-title">
-          <div class="cover">
-            <img src="assets/activity/activity-prompt-cocreate-cover-v2.png" alt="Prompt 共创计划活动封面">
-            <span class="status">进行中</span>
-          </div>
-          <div class="summary">
-            <span class="summary-kicker">PROMPT · CO-CREATION</span>
+        <section class="campaign-hero prompt-campaign-hero" aria-labelledby="activity-title">
+          <div class="campaign-hero-copy">
+            <div class="campaign-status-line"><strong>进行中</strong><span>长期开放 · 全体用户可参与</span></div>
             <h1 id="activity-title">Prompt 共创计划</h1>
-            <div class="meta"><span>内容共创</span><span>长期开放</span><span class="meta-points">最高 +640 积分</span></div>
-            <div class="time-range"><span>活动时间：长期开放</span><span>全体用户可参与</span></div>
-            <div class="participation">
-              <div class="participation-info"><strong>我的参与进度</strong><p>发布、补充案例，参与共创并获得积分奖励</p></div>
-              <div class="participation-aside"><strong class="progress">0/4</strong><a class="primary-button" href="#activity-tasks">立即参与</a></div>
+            <p class="campaign-hero-lede">分享好用 Prompt，让更多人一键同款；发布并补充案例，最高可获得 640 积分。</p>
+            <div class="campaign-hero-actions">
+              <a class="campaign-button is-primary" href="#activity-tasks">立即参与</a>
+              <div class="campaign-progress-lockup" aria-label="已完成 0 项，共 4 项"><strong>0<span>/4</span></strong><small>任务进度</small></div>
             </div>
           </div>
+          <figure class="campaign-hero-media">
+            <img src="assets/activity/activity-prompt-cocreate-banner-textless-v1.webp" alt="Prompt 共创计划的提示词与案例共创场景" fetchpriority="high">
+          </figure>
         </section>
 
         <section class="activity-section" aria-labelledby="overview-title">
           <header class="section-head"><div><h2 id="overview-title"><span>活动</span>说明</h2><em class="section-kicker">ABOUT THE PLAN</em></div></header>
           <div class="desc-body">
-            <p>本计划面向全体用户征集可复用 Prompt。提交内容不只是提示词本身，还需包含：<strong>适用场景、推荐模型、输入变量和复用注意事项</strong>；有结果图或视频案例时，其他用户更容易判断它是否值得收藏和复用。</p>
-            <div class="detail-grid">
-              <div class="info-card"><h3>参与路径</h3><ol class="path-list"><li><b>1</b><span><strong>投稿</strong>：完善标题、Prompt、适用场景和推荐模型。</span></li><li><b>2</b><span><strong>补充</strong>：为同一 Prompt 增加图片或视频案例。</span></li><li><b>3</b><span><strong>复用</strong>：发布后进入 AIGC 灵感广场，其他用户可免费复制或一键同款。</span></li></ol></div>
-              <div class="info-card"><h3>发布前检查</h3><p>标题至少 4 个字；中文正文至少 30 个汉字，英文或中英混合至少 20 个英文单词。视觉素材可选，图文或视频案例会带来额外奖励。</p></div>
+            <h3>活动概述</h3>
+            <p>本计划面向全体用户征集可复用 Prompt。提交内容不只是提示词本身，还需包含：</p>
+            <ul>
+              <li>适用场景</li>
+              <li>推荐模型</li>
+              <li>输入变量</li>
+              <li>复用注意事项</li>
+              <li>可选效果图 / 视频，方便其他用户判断质量</li>
+            </ul>
+
+            <h3>参与路径</h3>
+            <ol>
+              <li><strong>投稿</strong>：进入活动详情页，打开投稿编辑弹窗，完善标题、Prompt、适用场景、推荐模型。</li>
+              <li><strong>补充</strong>：为同一 Prompt 补充图片或视频案例，让效果更可预期。</li>
+              <li><strong>复用</strong>：发布后进入「AIGC 灵感广场」，其他用户可免费复制，或使用「一键同款」导入轻创作。</li>
+            </ol>
+
+            <h3>奖励任务</h3>
+            <div class="reward-table-wrap">
+              <table class="reward-table">
+                <thead><tr><th scope="col">任务</th><th scope="col">要求</th><th scope="col">奖励</th></tr></thead>
+                <tbody>
+                  <tr><td>发布纯文本 Prompt</td><td>含使用场景、核心 Prompt、推荐模型、复用说明</td><td>+20 积分</td></tr>
+                  <tr><td>补充图文 / 视频案例</td><td>同一 Prompt 至少补充 1 张效果图或 1 个视频</td><td>+40 积分</td></tr>
+                  <tr><td>免费复制 / 复用</td><td>复制文本或「一键同款」导入轻创作</td><td>免费</td></tr>
+                  <tr><td>精选加奖</td><td>被设为精选（每个 Prompt 仅一次）</td><td>+100 积分</td></tr>
+                  <tr><td>首页推荐加奖</td><td>被推荐至首页（每个 Prompt 仅一次）</td><td>+500 积分</td></tr>
+                </tbody>
+              </table>
             </div>
+            <blockquote class="activity-note"><p>基础奖励仅对每日前 2 条有效投稿发放，后续投稿欢迎继续，但不再获得基础积分。</p></blockquote>
+
+            <h3>活动规则</h3>
+            <ol>
+              <li><strong>入口</strong>：通过活动详情页进入投稿编辑弹窗提交。</li>
+              <li><strong>编辑要求</strong>：
+                <ul>
+                  <li>标题：至少 4 个字</li>
+                  <li>正文（中文）：至少 30 个汉字</li>
+                  <li>正文（英文 / 中英混合）：至少 20 个英文单词</li>
+                  <li>视觉素材：可选上传图片或视频</li>
+                </ul>
+              </li>
+              <li><strong>发布前校验</strong>：标题、正文、场景、模型、案例等未满足时，「发布」按钮不可点，并高亮缺失项。</li>
+              <li><strong>成功反馈</strong>：发布成功后发放 20 / 40 积分，并跳转至 AIGC 灵感广场打开对应 Prompt 详情。</li>
+              <li><strong>每日上限</strong>：达到当日积分上限后提示：「今日积分已达上限，感谢你的共创。」</li>
+              <li><strong>复用机制</strong>：复制文本免费；「一键同款」将 Prompt 导入轻创作页继续生成。</li>
+              <li><strong>内容治理</strong>：高度相似、抄袭、低质或符号堆砌内容将被移除，已发积分可能追回。</li>
+            </ol>
           </div>
         </section>
 
         <section id="activity-tasks" class="activity-section" aria-labelledby="tasks-title">
           <header class="section-head"><div><h2 id="tasks-title"><span>奖励</span>任务</h2><em class="section-kicker">REWARD TASKS</em></div></header>
-          <div class="task-list">
-            <div class="task-card"><div class="task-main"><div class="task-head"><h3>发布纯文本 Prompt</h3><span class="task-status">待完成</span><span class="task-points">+20 积分</span></div><p>包含使用场景、核心 Prompt、推荐模型和复用说明的纯文本 Prompt。</p></div><a class="task-cta" href="./prompt-submit.html">去投稿</a></div>
-            <div class="task-card"><div class="task-main"><div class="task-head"><h3>补充图文 / 视频案例</h3><span class="task-status">待完成</span><span class="task-points">+40 积分</span></div><p>为同一 Prompt 至少补充 1 张效果图或 1 个视频，让效果更可预期。</p></div><a class="task-cta" href="./prompt-submit.html#prompt-media-upload">去补充案例</a></div>
-            <div class="task-card"><div class="task-main"><div class="task-head"><h3>精选加奖</h3><span class="task-status">待审核</span><span class="task-points">+100 积分</span></div><p>Prompt 被设为精选后额外奖励，每个 Prompt 仅一次。</p></div><span class="task-cta is-deferred">自动获得</span></div>
-            <div class="task-card"><div class="task-main"><div class="task-head"><h3>首页推荐加奖</h3><span class="task-status">待审核</span><span class="task-points">+500 积分</span></div><p>Prompt 被推荐至首页后额外奖励，每个 Prompt 仅一次。</p></div><span class="task-cta is-deferred">自动获得</span></div>
+          <div class="task-list" role="list">
+            <div class="task-card" role="listitem"><figure class="task-thumb"><img src="assets/activity/activity-prompt-task-publish-v1.webp" alt="深紫创作台上的空白稿纸、键盘与钢笔" loading="lazy"></figure><div class="task-main"><div class="task-head"><h3>发布纯文本 Prompt</h3><span class="task-status">待完成</span></div><p>包含使用场景、核心 Prompt、推荐模型和复用说明的纯文本 Prompt。</p></div><div class="task-actions"><a class="task-cta" href="./prompt-submit.html">去投稿</a><span class="task-points">+20 积分</span></div></div>
+            <div class="task-card" role="listitem"><figure class="task-thumb"><img src="assets/activity/activity-prompt-task-media-v1.webp" alt="摆放照片、胶片与镜头的媒体制作工作台" loading="lazy"></figure><div class="task-main"><div class="task-head"><h3>补充图文 / 视频案例</h3><span class="task-status">待完成</span></div><p>为同一 Prompt 至少补充 1 张效果图或 1 个视频，让效果更可预期。</p></div><div class="task-actions"><a class="task-cta" href="./prompt-submit.html#prompt-media-upload">去补充案例</a><span class="task-points">+40 积分</span></div></div>
+            <div class="task-card" role="listitem"><figure class="task-thumb"><img src="assets/activity/activity-prompt-task-curated-v1.webp" alt="聚光灯下陈列在展台上的精选创作手册" loading="lazy"></figure><div class="task-main"><div class="task-head"><h3>精选加奖</h3><span class="task-status">待审核</span></div><p>Prompt 被设为精选后额外奖励，每个 Prompt 仅一次。</p></div><div class="task-actions"><span class="task-cta is-deferred">自动获得</span><span class="task-points">+100 积分</span></div></div>
+            <div class="task-card" role="listitem"><figure class="task-thumb"><img src="assets/activity/activity-prompt-task-featured-v1.webp" alt="主展台上获得重点展示的紫色创作作品" loading="lazy"></figure><div class="task-main"><div class="task-head"><h3>首页推荐加奖</h3><span class="task-status">待审核</span></div><p>Prompt 被推荐至首页后额外奖励，每个 Prompt 仅一次。</p></div><div class="task-actions"><span class="task-cta is-deferred">自动获得</span><span class="task-points">+500 积分</span></div></div>
           </div>
           <p class="footer-note">基础奖励仅对每日前 2 条有效投稿发放；达到当日上限后仍可继续发布，感谢你的共创。复制文本和一键同款均免费。</p>
         </section>
@@ -330,10 +346,10 @@
           <div class="submission-grid">
             <a class="submission-card tall" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/28.webp" alt="电影感角色设定 Prompt 案例"><div class="submission-copy"><h3>电影感角色设定 Prompt</h3><span class="author"><span class="author-avatar">镜</span>镜头笔记</span></div></a>
             <a class="submission-card" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/29.webp" alt="产品海报分镜 Prompt 案例"><div class="submission-copy"><h3>产品海报分镜</h3><span class="author"><span class="author-avatar">分</span>分镜阿辰</span></div></a>
-            <a class="submission-card" href="./aigc.html#prompt-detail-text"><img src="assets/image_assets/4.webp" alt="绘演场景插画 Prompt 案例"><div class="submission-copy"><h3>绘演场景插画</h3><span class="author"><span class="author-avatar">青</span>青柠 Prompt</span></div></a>
+            <a class="submission-card short" href="./aigc.html#prompt-detail-text"><img src="assets/image_assets/4.webp" alt="绘演场景插画 Prompt 案例"><div class="submission-copy"><h3>绘演场景插画</h3><span class="author"><span class="author-avatar">青</span>青柠 Prompt</span></div></a>
             <a class="submission-card tall" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/5.webp" alt="国风人物海报 Prompt 案例"><div class="submission-copy"><h3>国风人物海报</h3><span class="author"><span class="author-avatar">画</span>画册</span></div></a>
             <a class="submission-card" href="./aigc.html#prompt-detail-text"><img src="assets/image_assets/7.webp" alt="空间光影构图 Prompt 案例"><div class="submission-copy"><h3>空间光影构图</h3><span class="author"><span class="author-avatar">光</span>光合构图</span></div></a>
-            <a class="submission-card" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/11.webp" alt="教程封面 Prompt 案例"><div class="submission-copy"><h3>教程封面 Prompt</h3><span class="author"><span class="author-avatar">封</span>封面工坊</span></div></a>
+            <a class="submission-card short" href="./aigc.html#prompt-detail-media"><img src="assets/image_assets/11.webp" alt="教程封面 Prompt 案例"><div class="submission-copy"><h3>教程封面 Prompt</h3><span class="author"><span class="author-avatar">封</span>封面工坊</span></div></a>
           </div>
         </section>
       </article>
