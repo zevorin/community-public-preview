@@ -2,14 +2,15 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>用户中心 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./user-center-redesign.css?v=20260731-profile-refresh-v1">
+  <link rel="stylesheet" href="./user-center-redesign.css?v=20260804-account-menu-profile-dialog-v15">
 </head>
 <body>
   <div class="page growth-detail-page growth-app-page user-center-page profile-studio-page" data-page="user-center" style="--growth-hero-image: url('assets/image_assets/28.webp')">
@@ -34,16 +35,16 @@
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
-            <a class="user-avatar-link is-active" aria-current="page" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+            <a class="user-avatar-link is-active" aria-current="page" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="进入个人中心"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
           </div>
         </div>
       </div>
     </header>
 
     <section id="continue-dragon" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 图片生成">
-      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <a class="modal-backdrop" href="#my-works" aria-label="关闭创作结果详情"></a>
       <article class="case-detail-dialog">
-        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <a class="case-detail-close" href="#my-works" aria-label="关闭">×</a>
         <div class="case-detail-media profile-creation-detail-media">
           <div class="case-detail-viewport">
             <img class="case-gallery-main" src="assets/image_assets/15.webp" alt="图片生成结果预览">
@@ -86,9 +87,9 @@
     </section>
 
     <section id="continue-cyber" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 视频生成">
-      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <a class="modal-backdrop" href="#my-works" aria-label="关闭创作结果详情"></a>
       <article class="case-detail-dialog">
-        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <a class="case-detail-close" href="#my-works" aria-label="关闭">×</a>
         <div class="case-detail-media profile-creation-detail-media">
           <div class="case-detail-viewport video-viewport">
             <video src="assets/video_assets/2.mp4" poster="assets/image_assets/17.webp" controls muted playsinline aria-label="视频生成结果预览"></video>
@@ -132,9 +133,9 @@
     </section>
 
     <section id="continue-model-note" class="case-detail-modal content-format-modal profile-creation-detail-modal" data-profile-creation-detail aria-label="创作结果详情 剧本创作">
-      <a class="modal-backdrop" href="#creation-records" aria-label="关闭创作结果详情"></a>
+      <a class="modal-backdrop" href="#my-works" aria-label="关闭创作结果详情"></a>
       <article class="case-detail-dialog">
-        <a class="case-detail-close" href="#creation-records" aria-label="关闭">×</a>
+        <a class="case-detail-close" href="#my-works" aria-label="关闭">×</a>
         <div class="case-detail-media profile-creation-detail-media">
           <div class="case-detail-viewport">
             <article class="creation-script-result profile-creation-script-result">
@@ -186,100 +187,150 @@
 
     <section id="edit-profile" class="create-modal profile-edit-modal" aria-label="编辑个人资料">
       <a class="modal-backdrop" href="#" aria-label="关闭个人资料编辑"></a>
-      <div class="create-dialog profile-edit-dialog">
-        <div class="create-dialog-head">
-          <div><h2>编辑个人资料</h2></div>
+      <div class="create-dialog profile-edit-dialog" role="dialog" aria-modal="true" aria-labelledby="profile-edit-title">
+        <header class="profile-edit-head">
+          <div><h2 id="profile-edit-title">编辑个人资料</h2></div>
           <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭个人资料编辑"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
-        </div>
-        <div class="profile-edit-body" data-profile-edit-modal>
-          <section class="profile-avatar-upload" data-profile-avatar-upload>
-            <div class="profile-avatar-preview">
-              <img src="assets/image_assets/29.webp" alt="">
-              <span><img src="resources/icons/remixicon/svg/Media/image-edit-line.svg" alt=""></span>
-            </div>
-            <div>
-              <strong>头像</strong>
-              <p>用于作品、闪念和邀请卡展示</p>
-              <label class="profile-upload-button">
-                <input type="file" accept="image/*" aria-label="上传新头像">
-                上传新头像
+        </header>
+        <div class="profile-edit-layout" data-profile-edit-modal>
+          <div class="profile-edit-main">
+            <section class="profile-avatar-upload" data-profile-avatar-upload>
+              <div class="profile-avatar-preview">
+                <img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="拾光创作者头像">
+                <span><img src="resources/icons/remixicon/svg/Media/image-edit-line.svg" alt=""></span>
+              </div>
+              <div>
+                <strong>个人头像</strong>
+                <p>建议使用 1:1 图片，将同步展示在作品、闪念和邀请卡中。</p>
+                <label class="profile-upload-button">
+                  <input type="file" accept="image/*" aria-label="上传新头像">
+                  更换头像
+                </label>
+              </div>
+            </section>
+
+            <div class="profile-edit-fields">
+              <label class="profile-field" data-profile-nickname-field>
+                <span>昵称 <em>最多 16 个字符</em></span>
+                <input type="text" value="拾光创作者" maxlength="16" aria-label="昵称">
+              </label>
+              <label class="profile-field profile-field-wide" data-profile-bio-field>
+                <span>个人简介 <em>最多 80 个字符</em></span>
+                <textarea maxlength="80" aria-label="个人简介">用 AIGC 记录灵感、模型体验和创作过程。</textarea>
               </label>
             </div>
-          </section>
-
-          <div class="profile-edit-fields">
-            <label class="profile-field" data-profile-nickname-field>
-              <span>昵称</span>
-              <input type="text" value="拾光创作者" maxlength="16" aria-label="昵称">
-            </label>
-            <label class="profile-field profile-field-wide" data-profile-bio-field>
-              <span>个人简介</span>
-              <textarea maxlength="80" aria-label="个人简介">用 AIGC 记录灵感、模型体验和创作过程。</textarea>
-            </label>
           </div>
-
-          <section class="profile-bind-list" aria-label="绑定状态">
-            <a class="profile-bind-card" href="#edit-profile" data-profile-bind-entry="wechat">
-              <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Logos/wechat-line.svg" alt=""></span>
-              <div><strong>微信绑定</strong><em>未绑定</em></div>
-              <b>去绑定</b>
-            </a>
-            <a class="profile-bind-card is-bound" href="#edit-profile" data-profile-bind-entry="phone">
-              <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Device/smartphone-line.svg" alt=""></span>
-              <div><strong>手机号绑定</strong><em>已绑定 · 138****8628</em></div>
-              <b>更换</b>
-            </a>
-          </section>
+          <aside class="profile-edit-settings" aria-label="账号绑定状态">
+            <h3>账号绑定</h3>
+            <p>完善绑定信息，便于登录和找回账号。</p>
+            <section class="profile-bind-list">
+              <a class="profile-bind-card" href="#edit-profile" data-profile-bind-entry="wechat">
+                <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Logos/wechat-line.svg" alt=""></span>
+                <div><strong>微信</strong><em>暂未绑定</em></div>
+                <b>绑定</b>
+              </a>
+              <a class="profile-bind-card is-bound" href="#edit-profile" data-profile-bind-entry="phone">
+                <span class="profile-bind-icon"><img src="resources/icons/remixicon/svg/Device/smartphone-line.svg" alt=""></span>
+                <div><strong>手机号</strong><em>138****8628</em></div>
+                <b>更换</b>
+              </a>
+            </section>
+          </aside>
         </div>
-        <div class="modal-actions"><a class="button secondary" href="#creation-records">取消</a><a class="button" href="#creation-records">保存资料</a></div>
+        <footer class="profile-edit-footer">
+          <span>资料修改后会同步更新到社区公开页面</span>
+          <div class="modal-actions"><a class="button secondary" href="#account-status">取消</a><a class="button" href="#account-status">保存资料</a></div>
+        </footer>
       </div>
     </section>
 
     <main>
       <section class="profile-hero" aria-labelledby="profile-hero-title">
-        <div class="wide-container profile-hero-inner">
-          <div class="profile-hero-copy">
-            <span class="profile-eyebrow">PERSONAL STUDIO / 2026</span>
-            <h1 id="profile-hero-title">把灵感，留在这里。</h1>
-            <p>管理你的创作、收藏与成长记录，随时回到下一次创作。</p>
-          </div>
-          <div class="profile-hero-actions">
-            <a class="button secondary profile-hero-link" href="./points-center.html">查看成长权益</a>
-            <a class="button profile-hero-link" href="./aigc.html">开始新创作<span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="profile-hero-stats" aria-label="个人中心数据概览">
-            <div class="profile-stat"><strong>12</strong><span>创作记录</span></div>
-            <div class="profile-stat"><strong>06</strong><span>收藏内容</span></div>
-            <div class="profile-stat"><strong>1,280</strong><span>可用积分</span></div>
-            <div class="profile-stat profile-stat-status"><i aria-hidden="true"></i><strong>活跃中</strong><span>本周已创作 3 次</span></div>
-          </div>
+        <div class="wide-container">
+          <article class="profile-cover-card">
+            <div class="profile-cover-art" aria-hidden="true">
+              <img src="assets/user/userbg.png" alt="">
+            </div>
+            <div class="profile-cover-content">
+              <div class="profile-hero-identity">
+                <div class="profile-hero-avatar">
+                  <img class="profile-avatar" src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="拾光创作者头像">
+                  <a class="profile-edit-icon" href="#edit-profile" aria-label="编辑个人资料" title="编辑个人资料"><img src="resources/icons/remixicon/svg/Design/edit-2-line.svg" alt=""></a>
+                </div>
+                <div class="profile-hero-copy">
+                  <div class="profile-hero-title-row">
+                    <h1 id="profile-hero-title">拾光创作者</h1>
+                    <span class="profile-creator-badge">AIGC 创作者</span>
+                  </div>
+                  <p>用 AIGC 记录灵感、模型体验和创作过程。</p>
+                </div>
+              </div>
+              <div class="profile-cover-actions">
+                <a class="button secondary profile-hero-link" href="#edit-profile">编辑资料<img class="profile-action-icon profile-edit-action-icon" src="resources/icons/remixicon/svg/Design/edit-2-line.svg" alt=""></a>
+              </div>
+              <nav class="profile-cover-summary" aria-label="创作者数据概览">
+                <a href="#profile-flashes"><strong>08</strong><span>闪念</span></a>
+                <a href="#my-works"><strong>12</strong><span>作品</span></a>
+                <a href="#favorites"><strong>06</strong><span>收藏</span></a>
+                <a href="./points-center.html"><strong>1,280</strong><span>积分</span></a>
+              </nav>
+            </div>
+          </article>
         </div>
       </section>
       <section class="profile-studio section">
         <div class="wide-container profile-studio-layout">
           <aside class="profile-sidebar" aria-label="用户中心分区">
-            <div class="profile-id-card">
-              <div class="profile-id-head">
-                <img class="profile-avatar" src="assets/image_assets/29.webp" alt="">
-                <a class="profile-edit-icon" href="#edit-profile" aria-label="编辑资料" title="编辑资料"><img src="resources/icons/remixicon/svg/Design/edit-2-line.svg" alt=""></a>
-              </div>
-              <strong>拾光创作者</strong>
-              <span>内容创作者</span>
-            </div>
             <nav class="profile-anchor-nav" aria-label="用户中心导航">
-              <a class="is-active" href="#creation-records"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Document/draft-line.svg" alt="">创作记录</span></a>
+              <a class="is-active" href="#creation-records"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/System/time-line.svg" alt="">创作记录</span></a>
+              <a href="#profile-flashes"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">我的闪念</span></a>
+              <a href="#my-works"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Media/gallery-line.svg" alt="">我的作品</span></a>
               <a href="#favorites"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt="">我的收藏</span></a>
-              <a href="#likes"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">我的点赞</span></a>
-              <a href="#points" data-profile-points-entry="embedded-center"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/coins-fill.svg" alt="">积分中心</span><em>1280</em></a>
-              <a href="#invite"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/gift-2-fill.svg" alt="">邀请有礼</span></a>
+              <a href="#account-status"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/User &amp; Faces/user-3-line.svg" alt="">账号状态</span></a>
+              <a href="./points-center.html"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt="">积分中心</span></a>
+              <a href="./invite.html"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt="">邀请有礼</span></a>
             </nav>
           </aside>
 
           <div class="profile-studio-main">
-            <section id="creation-records" class="profile-module-panel is-default-profile-panel" data-user-section="creation-records">
+            <section id="creation-records" class="profile-module-panel profile-section profile-activity-section is-default-profile-panel" data-user-section="creation-records">
+              <div class="profile-section-head">
+                <div><h2>创作记录</h2><p>最近的生成、发布与收藏动态</p></div>
+                <a class="button secondary profile-section-action" href="#my-works">查看全部作品</a>
+              </div>
+              <div class="profile-activity-list">
+                <a href="#continue-dragon"><time>今天 14:32</time><span class="profile-activity-type">图片生成</span><strong>竹泉秘境</strong><em>已完成</em></a>
+                <a href="#profile-flashes"><time>昨天 20:18</time><span class="profile-activity-type">发布闪念</span><strong>三图构图的阅读顺序</strong><em>已发布</em></a>
+                <a href="#favorites"><time>08 月 01 日</time><span class="profile-activity-type">加入收藏</span><strong>国风神女 Prompt</strong><em>已收藏</em></a>
+              </div>
+            </section>
+
+            <section id="profile-flashes" class="profile-module-panel profile-section profile-flash-section" data-user-section="profile-flashes">
+              <div class="profile-section-head">
+                <div><h2>我的闪念</h2><p>记录创作过程里的判断与灵感</p></div>
+                <a class="button profile-section-action" href="./flash.html#compose-flash">发布闪念</a>
+              </div>
+              <div class="profile-flash-list">
+                <article class="profile-flash-item">
+                  <div class="profile-flash-copy"><time>刚刚</time><p>三张图的重点不是平均：大图交代世界，右侧两张补足场景和人物，阅读顺序会自然发生。</p><div><span>评论 31</span><span>赞 205</span></div></div>
+                  <img src="assets/image_assets/29.webp" alt="山间古建筑创作图">
+                </article>
+                <article class="profile-flash-item">
+                  <div class="profile-flash-copy"><time>昨天</time><p>同一组蓝色时装概念，一张看人物关系，一张看空间节奏。并排后故事比单图更完整。</p><div><span>评论 18</span><span>赞 142</span></div></div>
+                  <img src="assets/image_assets/50.webp" alt="蓝色时装概念图">
+                </article>
+                <article class="profile-flash-item">
+                  <div class="profile-flash-copy"><time>3 天前</time><p>用一台复古电脑做主视觉，把“技术”与“自然”只留两个对比元素，画面反而更有记忆点。</p><div><span>评论 24</span><span>赞 186</span></div></div>
+                  <img src="assets/image_assets/42.webp" alt="花丛中的复古电脑">
+                </article>
+              </div>
+            </section>
+
+            <section id="my-works" class="profile-module-panel" data-user-section="my-works">
               <section class="profile-section profile-record-section">
                 <div class="profile-section-head">
-                  <div><h2>创作记录</h2></div>
+                  <div><h2>我的作品</h2><p>最近生成和继续编辑的内容</p></div>
+                  <a class="button profile-section-action" href="./aigc.html">开始创作</a>
                 </div>
                 <div class="profile-creation-grid" data-profile-card-grid>
                   <a class="case-card profile-creation-card profile-result-record-card" href="#continue-dragon" data-user-asset data-user-create-source data-profile-standard-card data-profile-creation-result-card data-result-type="image">
@@ -320,9 +371,25 @@
               </section>
             </section>
 
+            <section id="account-status" class="profile-module-panel profile-section profile-account-section" data-user-section="account-status">
+              <div class="profile-section-head">
+                <div><h2>账号状态</h2><p>登录、绑定与公开身份信息</p></div>
+                <a class="button secondary profile-section-action" href="#edit-profile">编辑资料</a>
+              </div>
+              <div class="profile-account-summary">
+                <div class="profile-account-state"><span class="profile-status-dot" aria-hidden="true"></span><div><strong>账号可正常使用</strong><p>当前未发现需要处理的账号问题</p></div></div>
+                <dl class="profile-account-list">
+                  <div><dt>昵称</dt><dd>拾光创作者</dd></div>
+                  <div><dt>社区身份</dt><dd>内容创作者</dd></div>
+                  <div><dt>手机号</dt><dd>138****8628 <em>已绑定</em></dd></div>
+                  <div><dt>微信</dt><dd><a href="#edit-profile">去绑定</a></dd></div>
+                </dl>
+              </div>
+            </section>
+
             <section id="favorites" class="profile-module-panel profile-section" data-user-section="favorites">
               <div class="profile-section-head">
-                <div><h2>我的收藏</h2></div>
+                <div><h2>我的收藏</h2><p>保存的作品、Prompt 和内容灵感</p></div>
               </div>
               <div class="filter-row profile-content-filter-row" data-content-taxonomy="aigc-inspiration-v1" aria-label="收藏分类">
                 <a class="filter-chip is-active" href="#favorites" data-content-category="all">全部</a>
@@ -824,6 +891,7 @@
 
 <div class="footer-space"></div>
   </div>
-  <script src="./walkthrough.js?v=20260724-detail-comment-motion-media-skeleton" defer></script>
+  <script src="./user-center-tabs.js?v=20260804-no-scroll-tabs-v1" defer></script>
+  <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
 </body>
 </html>

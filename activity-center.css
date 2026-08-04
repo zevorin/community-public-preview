@@ -223,63 +223,48 @@
   box-shadow: 0 0 12px var(--ds-gold-strong);
 }
 
-/* Page entrance: reveal the banner first, then stagger whole cards by section. */
-.activity-center-page.activity-motion-ready .activity-enter-banner,
-.activity-center-page.activity-motion-ready .activity-enter-heading {
-  transition:
-    opacity var(--ds-duration-long) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    transform var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    clip-path var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms);
-}
-
-.activity-center-page.activity-motion-ready .activity-enter-card {
-  transition:
-    opacity var(--ds-duration-long) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    translate var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    scale var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    clip-path var(--ds-duration-cinematic) var(--ds-ease-emphasized) var(--activity-enter-delay, 0ms),
-    transform var(--ds-duration-slow) var(--activity-ease),
-    border-color var(--ds-duration-moderate) ease,
-    background-color var(--ds-duration-moderate) ease,
-    box-shadow var(--ds-duration-slow) ease;
-}
-
+/* Page entrance: a left-to-right timeline, followed by whole-card arrivals. */
 .activity-center-page.activity-motion-ready .activity-enter-banner:not(.is-activity-entered) {
-  opacity: 0.76;
-  clip-path: inset(0 8% 0 0 round 16px);
-  transform: translateY(8px);
-  will-change: opacity, transform, clip-path;
+  opacity: 0;
+  clip-path: inset(0 16% 0 0 round var(--ds-radius-card));
+  translate: -12px 0;
 }
 
 .activity-center-page.activity-motion-ready .activity-enter-card:not(.is-activity-entered) {
-  opacity: 0.18;
-  clip-path: inset(0 0 14px 0 round 18px);
-  translate: 0 16px;
-  scale: 0.988;
-  will-change: opacity, translate, scale, clip-path;
+  opacity: 0;
+  clip-path: inset(0 0 12% 0 round 18px);
+  translate: 0 24px;
 }
 
 .activity-center-page.activity-motion-ready .activity-enter-heading:not(.is-activity-entered) {
-  opacity: 0.72;
-  clip-path: inset(0 20% 0 0);
-  transform: translateX(-12px);
-  will-change: opacity, transform, clip-path;
+  opacity: 0;
+  clip-path: inset(0 0 18% 0);
+  translate: 0 12px;
 }
 
-.activity-center-page.activity-motion-ready .activity-enter-banner.is-activity-entered,
-.activity-center-page.activity-motion-ready .activity-enter-heading.is-activity-entered {
+.activity-center-page.activity-motion-ready .activity-enter-banner.is-activity-entered:not(.is-activity-settled) {
+  animation: activity-banner-enter var(--ds-duration-long) var(--activity-enter-delay, 0ms) var(--ds-ease-emphasized) both;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered:not(.is-activity-settled) {
+  animation: activity-card-enter var(--ds-duration-long) var(--activity-enter-delay, 0ms) var(--ds-ease-emphasized) both;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-heading.is-activity-entered:not(.is-activity-settled) {
+  animation: activity-heading-enter var(--ds-duration-long) var(--activity-enter-delay, 0ms) var(--ds-ease-emphasized) both;
+}
+
+.activity-center-page.activity-motion-ready .activity-enter-banner.is-activity-settled,
+.activity-center-page.activity-motion-ready .activity-enter-heading.is-activity-settled {
   opacity: 1;
   clip-path: inset(0);
-  transform: none;
-  will-change: auto;
+  translate: 0 0;
 }
 
-.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered {
+.activity-center-page.activity-motion-ready .activity-enter-card.is-activity-settled {
   opacity: var(--activity-card-rest-opacity, 1);
   clip-path: inset(0);
   translate: 0 0;
-  scale: 1;
-  will-change: auto;
 }
 
 .activity-center-page.activity-motion-ready .activity-enter-card.is-activity-entered:hover,
@@ -632,6 +617,48 @@
   }
 }
 
+@keyframes activity-banner-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 16% 0 0 round var(--ds-radius-card));
+    translate: -12px 0;
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes activity-card-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 12% 0 round 18px);
+    translate: 0 24px;
+  }
+
+  to {
+    opacity: var(--activity-card-rest-opacity, 1);
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes activity-heading-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 18% 0);
+    translate: 0 12px;
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
 @keyframes activity-banner-texture-drift {
   to {
     background-position: 72px 0, 36px 18px;
@@ -695,7 +722,6 @@
     opacity: var(--activity-card-rest-opacity, 1);
     clip-path: none;
     translate: none;
-    scale: none;
     transform: none;
     transition: none;
     will-change: auto;

@@ -8,12 +8,12 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" as="image" href="assets/activity/activity-image-challenge-banner-textless-v1.webp">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./campaign-new-user.css?v=20260801-reference-match-v1">
-  <link rel="stylesheet" href="./campaign-detail.css?v=20260803-reward-cards-v4">
+  <link rel="stylesheet" href="./campaign-detail.css?v=20260804-scroll-motion-v15">
   <link rel="stylesheet" href="./campaign-shared.css?v=20260803-campaign-back-v1">
 </head>
 <body>
@@ -42,7 +42,7 @@
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
-            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" aria-label="进入个人中心"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
           </div>
         </div>
       </div>
@@ -81,23 +81,20 @@
           </section>
 
           <section class="campaign-guide" aria-labelledby="image-challenge-description-title">
-            <aside class="campaign-guide-nav" aria-label="活动说明目录">
+            <header class="campaign-guide-head">
               <div class="campaign-section-title">
                 <h2 id="image-challenge-description-title"><span>活动</span>说明</h2>
                 <span class="campaign-section-kicker">ACTIVITY GUIDE</span>
               </div>
-              <nav>
-                <a href="#campaign-overview">活动描述</a>
-                <a href="#campaign-path">参与路径</a>
-                <a href="#image-challenge-task-list">奖励任务</a>
-                <a href="#campaign-rules">活动规则</a>
-              </nav>
-            </aside>
+              <p>完成一张有效作品，即可进入精选与首页推荐候选。</p>
+            </header>
 
             <div class="campaign-guide-content">
               <section id="campaign-overview" class="campaign-copy-block campaign-overview-block">
-                <h3>围绕当期主题完成一张好作品</h3>
-                <p>围绕当期主题生成并发布 AI 图片作品。发布后作品将进入活动信息流；有效作品满足活动周期、图片内容与标题长度要求后，可获得对应奖励。</p>
+                <div class="campaign-overview-copy">
+                  <h3>围绕当期主题完成一张好作品</h3>
+                  <p>围绕当期主题生成并发布 AI 图片作品。作品满足活动周期、图片内容与标题长度要求后，即可获得基础奖励并参与后续评选。</p>
+                </div>
                 <dl class="campaign-requirements">
                   <div><dt>图片要求</dt><dd>至少 1 张图片</dd></div>
                   <div><dt>标题要求</dt><dd>不少于 4 个字</dd></div>
@@ -107,11 +104,20 @@
 
               <section id="campaign-path" class="campaign-copy-block campaign-path-block">
                 <h3>从发布到首页推荐</h3>
-                <div class="campaign-path">
-                  <div><strong>发布</strong><p>按当期主题创作并发布图片作品。</p></div>
-                  <div><strong>入选</strong><p>高质量作品进入精选候选并获得额外奖励。</p></div>
-                  <div><strong>推荐</strong><p>顶尖作品进入首页，获得更高曝光与积分。</p></div>
-                </div>
+                <ol class="campaign-path" aria-label="奖励进度">
+                  <li class="is-current" aria-current="step">
+                    <span class="campaign-path-marker" aria-hidden="true">1</span>
+                    <div><strong>发布</strong><p>发布主题作品，进入活动评选。</p></div>
+                  </li>
+                  <li>
+                    <span class="campaign-path-marker" aria-hidden="true">2</span>
+                    <div><strong>入选</strong><p>入选社区精选，获得积分奖励。</p></div>
+                  </li>
+                  <li>
+                    <span class="campaign-path-marker" aria-hidden="true">3</span>
+                    <div><strong>推荐</strong><p>登上首页推荐，获得曝光积分。</p></div>
+                  </li>
+                </ol>
               </section>
             </div>
           </section>
@@ -127,7 +133,7 @@
 
             <div class="campaign-task-layout" role="list">
               <article class="campaign-task is-featured" role="listitem">
-                <img class="campaign-task-image" src="assets/activity/image-challenge-publish-v2.webp" alt="创作机器人在空白数字画板前准备发布作品" loading="lazy">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-publish-v5.webp" alt="白色宇航员在悬浮创作台完成作品并通过光轨提交" loading="lazy">
                 <div class="campaign-task-content">
                   <div class="campaign-task-heading"><h3>发布主题作品</h3><span>+50 积分</span></div>
                   <p>每期前 2 条有效发布可获得基础奖励，后续作品仍可参与展示与评选。</p>
@@ -136,7 +142,7 @@
               </article>
 
               <article class="campaign-task" role="listitem">
-                <img class="campaign-task-image" src="assets/activity/image-challenge-featured-v2.webp" alt="暖色聚光灯下被选中的数字艺术作品" loading="lazy">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-featured-v4.webp" alt="白色宇航员在聚光展廊中选出精选作品" loading="lazy">
                 <div class="campaign-task-content">
                   <div class="campaign-task-heading"><h3>精选奖励</h3><span>+100 积分</span></div>
                   <p>作品被设为精选后发放，每期每人最多获得 5 次。</p>
@@ -145,7 +151,7 @@
               </article>
 
               <article class="campaign-task" role="listitem">
-                <img class="campaign-task-image" src="assets/activity/image-challenge-homepage-v2.webp" alt="在珊瑚色光环前升上高台的推荐作品" loading="lazy">
+                <img class="campaign-task-image" src="assets/activity/image-challenge-homepage-v4.webp" alt="白色宇航员将推荐作品送上首页展示舞台" loading="lazy">
                 <div class="campaign-task-content">
                   <div class="campaign-task-heading"><h3>首页推荐奖励</h3><span>+1,000 积分</span></div>
                   <p>作品被推荐至首页后发放，每期每人最多获得 2 次。</p>
@@ -197,6 +203,7 @@
 
     <div class="footer-space"></div>
   </div>
-  <script src="./walkthrough.js?v=20260721-no-walkthrough-media-skeleton" defer></script>
+  <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
+  <script src="./campaign-page-motion.js?v=20260804-campaign-motion-v5" defer></script>
 </body>
 </html>

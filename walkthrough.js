@@ -1896,14 +1896,15 @@
       if (menu === exceptMenu) {
         return;
       }
-      menu.classList.remove("is-open");
-      menu.querySelector(".user-avatar-link")?.setAttribute("aria-expanded", "false");
+      setUserMenuOpen(menu, false);
     });
   }
 
   function setUserMenuOpen(menu, open) {
     menu.classList.toggle("is-open", open);
-    menu.querySelector(".user-avatar-link")?.setAttribute("aria-expanded", String(open));
+    const toggle = menu.querySelector(".user-menu-toggle");
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "关闭用户菜单" : "打开用户菜单");
   }
 
   function createUserMenuLink(item) {
@@ -1940,10 +1941,10 @@
 
     document.documentElement.dataset.userMenuReady = "true";
     const items = [
-      { key: "profile", label: "我的主页", href: "./user-center.html", icon: "resources/icons/remixicon/svg/User & Faces/user-3-line.svg" },
+      { key: "profile", label: "个人中心", href: "./user-center.html", icon: "resources/icons/remixicon/svg/User & Faces/user-3-line.svg" },
       { key: "invite", label: "邀请有礼", href: "./invite.html", icon: "resources/icons/remixicon/svg/Finance/gift-2-line.svg" },
       { key: "points", label: "积分中心", href: "./points-center.html", icon: "resources/icons/remixicon/svg/Finance/coins-line.svg" },
-      { key: "logout", label: "退出登录", href: "./login.html?logout=1", icon: "resources/icons/remixicon/svg/System/logout-box-r-line.svg", logout: true },
+      { key: "logout", label: "退出登录", href: "./index.html#login-modal", icon: "resources/icons/remixicon/svg/System/logout-box-r-line.svg", logout: true },
     ];
 
     document.querySelectorAll(".site-header .user-avatar-link").forEach((avatar, index) => {
@@ -1955,30 +1956,55 @@
       menu.className = "user-menu";
       menu.dataset.userMenu = "true";
 
-      const target = document.createElement("span");
-      target.id = index === 0 ? "user-menu" : `user-menu-${index + 1}`;
-      target.className = "user-menu-target";
-      target.setAttribute("aria-hidden", "true");
-
       const dropdown = document.createElement("div");
+      dropdown.id = index === 0 ? "user-menu" : `user-menu-${index + 1}`;
       dropdown.className = "user-menu-dropdown";
       dropdown.dataset.userMenuDropdown = "true";
       dropdown.setAttribute("role", "menu");
       dropdown.setAttribute("aria-label", "用户快捷菜单");
       items.forEach((item) => dropdown.append(createUserMenuLink(item)));
 
-      avatar.parentElement?.insertBefore(menu, avatar);
-      menu.append(target, avatar, dropdown);
-      avatar.href = `#${target.id}`;
-      avatar.dataset.ctaState = "open-user-menu";
-      avatar.setAttribute("aria-haspopup", "menu");
-      avatar.setAttribute("aria-expanded", "false");
+      const toggle = document.createElement("button");
+      toggle.className = "user-menu-toggle";
+      toggle.type = "button";
+      toggle.setAttribute("aria-label", "打开用户菜单");
+      toggle.setAttribute("aria-haspopup", "menu");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-controls", dropdown.id);
 
-      avatar.addEventListener("click", (event) => {
-        event.preventDefault();
+      avatar.parentElement?.insertBefore(menu, avatar);
+      menu.append(avatar, toggle, dropdown);
+      avatar.href = "./user-center.html";
+      avatar.setAttribute("aria-label", "进入个人中心");
+      avatar.removeAttribute("aria-haspopup");
+      avatar.removeAttribute("aria-expanded");
+
+      toggle.addEventListener("click", () => {
         const shouldOpen = !menu.classList.contains("is-open");
         closeUserMenus(menu);
         setUserMenuOpen(menu, shouldOpen);
+      });
+
+      toggle.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowDown") {
+          return;
+        }
+        event.preventDefault();
+        closeUserMenus(menu);
+        setUserMenuOpen(menu, true);
+        dropdown.querySelector("[role='menuitem']")?.focus();
+      });
+
+      dropdown.addEventListener("click", (event) => {
+        if (event.target.closest("[data-logout-action]")) {
+          setUserMenuOpen(menu, false);
+        }
+      });
+
+      menu.addEventListener("focusout", (event) => {
+        if (!menu.contains(event.relatedTarget)) {
+          setUserMenuOpen(menu, false);
+        }
       });
     });
 
@@ -1991,7 +2017,9 @@
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
+        const openMenuToggle = document.querySelector("[data-user-menu].is-open .user-menu-toggle");
         closeUserMenus();
+        openMenuToggle?.focus();
       }
     });
   }

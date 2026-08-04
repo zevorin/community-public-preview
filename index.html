@@ -6,11 +6,11 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" href="./assets/GGQ.ttf?v=20260720-ggq-font" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260730-entry-card-transparent-v1">
+  <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
 </head>
-<body class="home-page is-guest">
+<body class="home-page is-authenticated">
   <div class="page">
     <div class="page-bg"><img src="assets/image_assets/17.webp" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-index" aria-label="关闭顶部广告">
@@ -30,13 +30,10 @@
         <div class="header-actions">
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <div class="member-account-pill guest-account-pill">
-            <a class="home-login-button" href="#login-modal" data-open-login aria-haspopup="dialog">登录</a>
-          </div>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <div class="member-account-pill" role="group" aria-label="积分与用户中心">
             <a class="action-link points-link" href="./points-center.html" data-nav-action="points"><span>积分</span><strong>1280</strong></a>
-            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="打开用户菜单"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
+            <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="进入个人中心"><img src="assets/image_assets/nav-avatar-ai-creator-v1.png" alt="用户头像"></a>
           </div>
         </div>
       </div>
@@ -1602,6 +1599,6 @@
     })();
   </script>
   <script src="./login-modal.js?v=20260727-home-login-modal-v7" defer></script>
-  <script src="./walkthrough.js?v=20260728-content-copy-kinetics-v3" defer></script>
+  <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
 </body>
 </html>

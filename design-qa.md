@@ -1,3 +1,54 @@
+# 个人中心顶部主视觉参考图 QA（2026-08-04）
+
+- Source visual truth: `qa/user-center-taste-v1/profile-cover-source-reference.png`
+- Implementation screenshot: `qa/user-center-taste-v1/profile-cover-reference-desktop.png`
+- Mobile implementation screenshot: `qa/user-center-taste-v1/profile-cover-reference-mobile.png`
+- Focused comparison evidence: `qa/user-center-taste-v1/profile-cover-comparison.png`
+- Desktop viewport: `1280 × 720` CSS px; mobile viewport: `390 × 844` CSS px
+- Source pixels: `1541 × 1021`; source card crop: `1469 × 312`, normalized to `1232 × 268`
+- Implementation pixels / CSS size: `1280 × 720` pixels / `1280 × 720` CSS px; implementation card: `1232 × 268`
+- Density normalization: native `1×`; only the source card crop was proportionally normalized for the focused comparison
+- State: default personal-profile panel, no hover or modal overlay
+
+## Full-view comparison evidence
+
+The desktop capture verifies the requested component in its real page context: the 1280px page frame remains intact, the creator card stays above the vertical-tab workspace, and all important profile information remains visible in the first viewport. The responsive capture verifies that the same hierarchy collapses into a single card without horizontal overflow.
+
+## Focused comparison evidence
+
+The combined image places the normalized source card above the implementation card. Both use the same major composition: identity cluster in the upper-left, cinematic image spanning the frame, four metrics anchored along the lower-left edge, and two vertically stacked actions on the right. The implementation intentionally uses the project's existing black-gold futuristic scene, design tokens, local avatar, Remix icons, and Chinese system font stack instead of copying the source artwork or brand shell.
+
+## Required fidelity surfaces
+
+- Fonts and typography: title, badge, description, metadata, metrics, and button labels follow the source hierarchy while preserving the project's existing CJK stack; numerals retain the UIguide's Montserrat display treatment.
+- Spacing and layout rhythm: the implementation card is `1232 × 268` at the default 1280px viewport, with aligned identity, action, and metric zones matching the source card proportions.
+- Colors and visual tokens: near-black image treatment, restrained gold outline, warm-gold primary action, paper-soft dividers, 16px card radius, and project shadow tokens match the existing UIguide.
+- Image quality and asset fidelity: the cover uses `assets/image_assets/model-plaza-hero-v4.webp` at its native high resolution; the avatar uses the existing local creator portrait; all visible controls use local Remix icons.
+- Copy and content: existing creator name, bio, role, weekly activity, four metrics, and action destinations are preserved; only the reference's `AIGC 创作者` identity badge was added.
+
+## Findings
+
+- No actionable P0, P1, or P2 differences remain for the requested profile-card main-visual scope.
+- P3: the existing creator avatar source is `64 × 64`, so it is slightly softer than the larger portrait in the reference; this preserves the established account identity and does not affect hierarchy or usability.
+
+## Comparison history
+
+1. Initial state: the cover image occupied only the right 49%, the identity/action/metrics read as separate dashboard cells, and the visual lacked the reference's full-width cinematic composition.
+2. Implementation: expanded the image across the card, introduced a controlled readability overlay, strengthened the identity cluster, moved the metrics to a bottom data band, stacked the actions on the right, and replaced the gray landscape with the project's high-resolution black-gold futuristic asset.
+3. Post-fix evidence: the focused comparison shows matching information zones and proportions; the mobile capture confirms `innerWidth = scrollWidth = 390` with the card bounded from `x=12` to `x=378`.
+
+## Interaction and runtime checks
+
+- The hero “编辑资料” link uniquely resolves and opens `#edit-profile`; the modal becomes visible with `display: flex`.
+- “开始创作” and the four metric links retain their existing destinations.
+- Desktop: `innerWidth = scrollWidth = 1280`; card bounds `x=24`, `width=1232`, `height=268`.
+- Mobile: `innerWidth = scrollWidth = 390`; card bounds `x=12`, `width=366`, `height=374`.
+- Browser console errors and warnings: none.
+
+final result: passed
+
+---
+
 # 发布闪念 UIguide 按钮状态设计 QA
 
 - Source visual truth: `qa/uiguide-controls-v10-source.png`（`UIguide.html#controls` 浏览器实拍）

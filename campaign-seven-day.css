@@ -250,19 +250,9 @@ body:has(.seven-day-campaign-page) { min-width: 0; overflow-x: hidden; backgroun
 .seven-day-close p { margin: 0; color: var(--seven-muted); font-size: 13px; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .seven-day-hero-copy { animation: seven-day-copy-in .72s var(--seven-ease) both; }
-  .seven-day-hero-art { animation: seven-day-art-in .9s var(--seven-ease) .08s both; }
   .seven-day-task-panel:not([hidden]) { animation: seven-day-panel-in .44s var(--seven-ease) both; }
 }
 
-@keyframes seven-day-copy-in {
-  from { opacity: 0; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes seven-day-art-in {
-  from { opacity: .25; clip-path: inset(0 0 0 100%); transform: translateX(22px); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateX(0); }
-}
 @keyframes seven-day-panel-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }

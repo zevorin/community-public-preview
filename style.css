@@ -743,8 +743,7 @@ input {
     transform var(--ds-duration-fast) ease;
 }
 
-.user-menu.is-open .user-menu-dropdown,
-.user-menu:focus-within .user-menu-dropdown {
+.user-menu.is-open .user-menu-dropdown {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -27825,8 +27824,7 @@ body:not(.home-page) :focus-visible {
     transform var(--ds-duration-base) var(--ds-ease-standard);
 }
 
-.site-header .member-account-pill .user-menu.is-open .user-menu-dropdown,
-.site-header .member-account-pill .user-menu:focus-within .user-menu-dropdown {
+.site-header .member-account-pill .user-menu.is-open .user-menu-dropdown {
   transform: translateY(0) scale(1);
 }
 
@@ -37404,4 +37402,99 @@ body:not(.home-page) .flash-compose-modal .flash-compose-submit:disabled:active 
     animation: none !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Shared authenticated account control: profile and menu are separate actions. */
+.site-header .member-account-pill .user-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+body .shared-home-header .member-account-pill .user-avatar-link,
+body .shared-home-header .member-account-pill .user-avatar-link:hover,
+body .shared-home-header .member-account-pill .user-avatar-link:focus-visible {
+  position: relative;
+  width: 42px;
+  min-width: 42px;
+  height: var(--ds-control-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ds-space-1) var(--ds-space-2);
+  overflow: visible;
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  background: transparent;
+  box-shadow: none;
+}
+
+body .shared-home-header .member-account-pill .user-avatar-link::before {
+  content: none;
+}
+
+body .shared-home-header .member-account-pill .user-avatar-link::after {
+  content: none;
+}
+
+body .shared-home-header .member-account-pill .user-avatar-link img {
+  width: 32px;
+  height: var(--ds-control-compact);
+  flex: 0 0 32px;
+  border: 1px solid var(--ds-gold-strong);
+  border-radius: var(--ds-radius-pill);
+  object-fit: cover;
+  object-position: 50% 27%;
+}
+
+body .shared-home-header .member-account-pill .user-avatar-link:hover,
+body .shared-home-header .member-account-pill .user-avatar-link:focus-visible {
+  background: var(--ds-white-veil);
+  outline: 0;
+}
+
+.site-header .member-account-pill .user-menu-toggle {
+  position: relative;
+  width: 30px;
+  min-width: 30px;
+  height: var(--ds-control-default);
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-pill);
+  color: var(--ds-white-emphasis);
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition: color var(--ds-duration-fast) ease,
+    background-color var(--ds-duration-fast) ease;
+}
+
+.site-header .member-account-pill .user-menu-toggle::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: url("resources/icons/remixicon/svg/Arrows/arrow-down-s-line.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+  transition: transform var(--ds-duration-base) var(--ds-ease-standard),
+    opacity var(--ds-duration-fast) ease;
+}
+
+.site-header .member-account-pill .user-menu-toggle:hover,
+.site-header .member-account-pill .user-menu-toggle:focus-visible,
+.site-header .member-account-pill .user-menu.is-open .user-menu-toggle {
+  color: #fff;
+  background: var(--ds-white-veil);
+  outline: 0;
+}
+
+.site-header .member-account-pill .user-menu-toggle:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--ds-gold-border);
+}
+
+.site-header .member-account-pill .user-menu.is-open .user-menu-toggle::before {
+  opacity: 1;
+  transform: rotate(180deg);
 }

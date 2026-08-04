@@ -13,34 +13,61 @@
     ? Array.from(historySection.querySelectorAll('.activity-equal-card'))
     : [];
 
-  const items = [];
+  const initialItems = [];
+  const deferredItems = [];
   const prepare = (element, type, delay) => {
     if (!element) return;
     element.classList.add('activity-enter-item', `activity-enter-${type}`);
     element.style.setProperty('--activity-enter-delay', `${delay}ms`);
-    items.push(element);
+    return element;
   };
 
-  prepare(banner, 'banner', 40);
+  const preparedBanner = prepare(banner, 'banner', 20);
+  if (preparedBanner) initialItems.push(preparedBanner);
+
   currentCards.forEach((card, index) => {
-    prepare(card, 'card', 150 + Math.min(index, 4) * 80);
-  });
-  prepare(historyHeading, 'heading', 0);
-  historyCards.forEach((card, index) => {
-    prepare(card, 'card', 90 + Math.min(index, 4) * 80);
+    const preparedCard = prepare(card, 'card', 150 + Math.min(index, 4) * 65);
+    if (preparedCard) initialItems.push(preparedCard);
   });
 
-  if (!items.length) return;
+  const preparedHistoryHeading = prepare(historyHeading, 'heading', 0);
+  if (preparedHistoryHeading) deferredItems.push(preparedHistoryHeading);
+
+  historyCards.forEach((card, index) => {
+    const preparedCard = prepare(card, 'card', 80 + Math.min(index, 4) * 70);
+    if (preparedCard) deferredItems.push(preparedCard);
+  });
+
+  if (!initialItems.length && !deferredItems.length) return;
 
   const reveal = (element) => {
+    const settle = (event) => {
+      if (event.target !== element) return;
+      element.removeEventListener('animationend', settle);
+      element.classList.add('is-activity-settled');
+    };
+    element.addEventListener('animationend', settle);
     element.classList.add('is-activity-entered');
   };
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   page.classList.add('activity-motion-ready');
 
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    items.forEach(reveal);
+  if (prefersReducedMotion) {
+    [...initialItems, ...deferredItems].forEach(reveal);
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      initialItems.forEach(reveal);
+    });
+  });
+
+  if (!deferredItems.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    deferredItems.forEach(reveal);
     return;
   }
 
@@ -51,13 +78,9 @@
       observer.unobserve(entry.target);
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -28px',
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px',
   });
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      items.forEach((item) => observer.observe(item));
-    });
-  });
+  deferredItems.forEach((item) => observer.observe(item));
 })();
