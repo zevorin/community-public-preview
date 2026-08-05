@@ -36,37 +36,19 @@
 }
 
 .model-detail-page .model-detail-hero {
-  padding: 28px 0 24px;
+  padding: 24px 0;
   scroll-margin-top: 92px;
 }
 
-.model-detail-page .detail-back-link {
-  min-height: 32px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--model-text-secondary);
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color var(--ds-duration-fast) ease;
-}
-
-.model-detail-page .detail-back-link span {
-  color: var(--ds-gold);
-  font-size: 16px;
-}
-
-.model-detail-page .detail-back-link:hover,
-.model-detail-page .detail-back-link:focus-visible {
-  color: var(--ds-text);
+.model-detail-page .model-detail-hero > .wide-container {
+  width: min(1280px, calc(100% - 80px));
 }
 
 .model-overview-grid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
   gap: 16px;
-  margin-top: 12px;
+  margin-top: 0;
   align-items: stretch;
 }
 
@@ -98,8 +80,8 @@
   width: 58%;
   background:
     linear-gradient(90deg, var(--model-surface), rgba(12, 16, 21, 0.24)),
-    url("assets/image_assets/18.webp") center / cover no-repeat;
-  opacity: 0.2;
+    url("assets/image_assets/model-banner-ringed-planet-v1.webp") 72% center / cover no-repeat;
+  opacity: 0.34;
   pointer-events: none;
 }
 
@@ -686,12 +668,12 @@
   gap: 8px;
   margin: 0;
   padding: 20px 24px;
-  border-color: rgba(102, 226, 207, 0.18);
-  background: rgba(102, 226, 207, 0.055);
+  border-color: var(--ds-gold-border);
+  background: var(--ds-gold-veil);
 }
 
 .model-detail-page .model-commercial-note strong {
-  color: #76dccb;
+  color: var(--ds-gold-champagne);
   font-size: 12px;
   font-weight: 600;
 }
@@ -708,6 +690,10 @@
 }
 
 @media (max-width: 1100px) {
+  .model-detail-page .model-detail-hero > .wide-container {
+    width: min(960px, calc(100% - 40px));
+  }
+
   .model-overview-grid,
   .model-detail-page .model-detail-layout {
     grid-template-columns: 1fr;
@@ -741,7 +727,11 @@
 
 @media (max-width: 720px) {
   .model-detail-page .model-detail-hero {
-    padding-top: 18px;
+    padding-top: 12px;
+  }
+
+  .model-detail-page .model-detail-hero > .wide-container {
+    width: calc(100% - 24px);
   }
 
   .model-overview-primary,
