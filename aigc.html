@@ -5,7 +5,7 @@
   <title>多元拾光 AIGC</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
+  <link rel="stylesheet" href="./style.css?v=20260805-canvas-exit-modal-v2">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
 </head>
@@ -468,6 +468,53 @@
       </div>
     </section>
 
+    <section id="canvas-exit-modal" class="canvas-exit-overlay" aria-hidden="true" data-canvas-exit-modal>
+      <a class="canvas-exit-backdrop" href="#canvas-studio" aria-label="取消并关闭画布访问提示" data-canvas-exit-close></a>
+      <article class="canvas-exit-dialog" role="dialog" aria-modal="true" aria-labelledby="canvas-exit-title" aria-describedby="canvas-exit-description" tabindex="-1">
+        <div class="canvas-exit-visual" aria-hidden="true">
+          <img src="assets/image_assets/model-banner-ringed-planet-v1.webp" alt="">
+        </div>
+        <a class="canvas-exit-close" href="#canvas-studio" aria-label="关闭画布访问提示" data-canvas-exit-close>
+          <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
+        </a>
+
+        <header class="canvas-exit-head">
+          <span class="canvas-exit-label">LEAVE SITE</span>
+          <h2 id="canvas-exit-title">即将离开本站</h2>
+          <p id="canvas-exit-description">你将前往外部画布工作台，请确认后再继续访问。</p>
+        </header>
+
+        <section class="canvas-exit-product" aria-label="即将访问的产品">
+          <span class="canvas-exit-product-icon" aria-hidden="true">
+            <img src="resources/icons/remixicon/svg/画布部分icon/打开画布.svg" alt="">
+          </span>
+          <div>
+            <h3>漫画制作</h3>
+            <p>面向创作者的无限画布工作台，支持分镜、角色与成片协同，让一句话想法快速长成完整漫画。</p>
+          </div>
+        </section>
+
+        <ul class="canvas-exit-features" aria-label="画布能力">
+          <li><span><img src="resources/icons/remixicon/svg/画布部分icon/分镜脚本.svg" alt=""></span><strong>无限画布，自由排布分镜与素材</strong></li>
+          <li><span><img src="resources/icons/remixicon/svg/画布部分icon/场景构建.svg" alt=""></span><strong>角色设定、场景构建一站完成</strong></li>
+          <li><span><img src="resources/icons/remixicon/svg/画布部分icon/成片输出.svg" alt=""></span><strong>适合广告片、短剧与创意叙事</strong></li>
+        </ul>
+
+        <aside class="canvas-exit-notice">
+          <img src="resources/icons/remixicon/svg/System/shield-check-line.svg" alt="" aria-hidden="true">
+          <p>也可先在站内参与活动赚取积分，兑换卡密后再前往站外产品使用。</p>
+        </aside>
+
+        <footer class="canvas-exit-actions">
+          <a class="canvas-exit-button is-secondary" href="#canvas-studio" data-canvas-exit-close>取消</a>
+          <a class="canvas-exit-button is-primary" href="https://www.ai666.net/" target="_blank" rel="noopener noreferrer" data-canvas-exit-continue>
+            <span>继续访问</span>
+            <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="" aria-hidden="true">
+          </a>
+        </footer>
+      </article>
+    </section>
+
     <main>
       <section class="home-video-hero aigc-home-video-hero" aria-labelledby="aigc-hero-title">
         <video class="home-video-hero-media" src="assets/video_assets/bannervideo.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
@@ -504,7 +551,7 @@
               <h2>直接编排，<br>做<span>专业</span>分镜</h2>
               <p>从角色、场景到镜头节奏，在一张画布上完成你的创作流程。</p>
               <div class="canvas-actions">
-                <a class="canvas-primary-action" href="#aigc-create-panel">
+                <a class="canvas-primary-action" href="#canvas-exit-modal" aria-haspopup="dialog" aria-controls="canvas-exit-modal" data-canvas-exit-trigger>
                   <span class="canvas-action-main"><span class="canvas-action-icon"><img src="resources/icons/remixicon/svg/画布部分icon/场景构建.svg" alt=""></span><strong>打开画布</strong></span>
                   <em>新建创作项目</em>
                   <span class="canvas-action-arrow" aria-hidden="true"><img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></span>
@@ -1497,6 +1544,65 @@
           trigger.style.setProperty("--edge-proximity", "82");
         });
       }
+    })();
+
+    (() => {
+      const modal = document.querySelector("[data-canvas-exit-modal]");
+      const trigger = document.querySelector("[data-canvas-exit-trigger]");
+      const dialog = modal?.querySelector(".canvas-exit-dialog");
+      const closeButton = modal?.querySelector(".canvas-exit-close");
+      const continueButton = modal?.querySelector("[data-canvas-exit-continue]");
+      if (!modal || !trigger || !dialog || !closeButton) return;
+
+      let returnFocus = trigger;
+      let wasOpen = false;
+      const getFocusable = () => Array.from(dialog.querySelectorAll("a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])"))
+        .filter((element) => !element.hidden && element.getClientRects().length > 0);
+
+      const syncCanvasExitModal = () => {
+        const isOpen = window.location.hash === "#canvas-exit-modal";
+        modal.setAttribute("aria-hidden", String(!isOpen));
+        if (isOpen) {
+          window.requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+        } else if (wasOpen) {
+          window.requestAnimationFrame(() => returnFocus?.focus({ preventScroll: true }));
+        }
+        wasOpen = isOpen;
+      };
+
+      trigger.addEventListener("click", () => {
+        returnFocus = trigger;
+      });
+
+      dialog.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          window.location.hash = "canvas-studio";
+          return;
+        }
+        if (event.key !== "Tab") return;
+        const focusable = getFocusable();
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      continueButton?.addEventListener("click", () => {
+        window.setTimeout(() => {
+          window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#canvas-studio`);
+          syncCanvasExitModal();
+        }, 0);
+      });
+
+      window.addEventListener("hashchange", syncCanvasExitModal);
+      syncCanvasExitModal();
     })();
 
     (() => {

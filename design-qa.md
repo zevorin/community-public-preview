@@ -49,6 +49,170 @@ final result: passed
 
 ---
 
+# AIGC 打开画布离站弹窗 QA（2026-08-05）
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-d4b971a6-669a-43d4-93c9-6d1f8de4c11c.png`
+- Design-system truth: `UIguide.html`, `design-tokens.css`, `radius-system.css`
+- Initial implementation screenshot: `qa/canvas-exit-modal-v1.png`
+- Final implementation screenshot: `qa/canvas-exit-modal-v2.png`
+- Full-view comparison evidence: `qa/canvas-exit-modal-comparison-v2.png`
+- Viewport: `1280 × 720` CSS px
+- Source pixels: `1270 × 1239`; final implementation pixels: `1280 × 720`
+- Density normalization: source scaled proportionally to `738 × 720`; implementation captured at `deviceScaleFactor: 1`
+- State: AIGC page, canvas section, `#canvas-exit-modal` open
+
+## Full-view and focused evidence
+
+- The combined comparison confirms the same reading order as the source: departure warning, large title, explanatory copy, product summary, three capabilities, points notice, cancel action, and continue action.
+- The implementation intentionally adapts the tall reference into the UIguide desktop overlay frame. The final dialog measures `980 × 672px`, stays fully visible at the tested viewport, and has no internal or horizontal overflow.
+- Focused product and action details are readable in the full-height comparison, so a separate crop was not required.
+
+## Required fidelity surfaces
+
+- Fonts and typography: the title uses the project `GGQ` display face; UI labels use the incumbent Montserrat asset; body content uses the shared platform/CJK stack. Hierarchy, wrapping, and optical weight remain clear at `1280 × 720`.
+- Spacing and layout rhythm: UIguide `24px` modal radius, `16px` content-card radius, pill controls, tokenized gaps, restrained product surface, and right-aligned actions are applied. The final height correction restores the source's vertical pacing.
+- Colors and visual tokens: the reference purple is intentionally replaced by UIguide near-black surfaces, warm paper text, restrained gold borders, gold focus state, and the UIguide modal shadow.
+- Image quality and asset fidelity: the decorative planet uses the existing `model-banner-ringed-planet-v1.webp` raster asset with a controlled crop and mask. Canvas capabilities use the existing `画布部分icon` SVG set; no placeholder, emoji, CSS-drawn illustration, or substitute icon is present.
+- Copy and content: departure language, product name, product description, three capabilities, points notice, cancel, and continue actions all remain present and understandable.
+
+## Comparison history
+
+1. Initial comparison found one `P2` proportion issue: the `980 × 601px` first pass compressed the reference's vertical rhythm.
+2. The dialog was increased to `height: min(760px, calc(100vh - 48px))`, producing a final `980 × 672px` frame with `24px` viewport margins and no scroll.
+3. Final combined comparison shows no actionable `P0`, `P1`, or `P2` mismatch. The wider composition is an intentional adaptation to the existing desktop AIGC page and UIguide overlay system.
+
+## Interaction and runtime checks
+
+- “打开画布” opens the dialog and moves focus to the close control.
+- Cancel and Escape close the dialog, restore `#canvas-studio`, and return focus to “打开画布”.
+- Shift+Tab from the close control wraps focus to “继续访问”.
+- “继续访问” exposes `https://www.ai666.net/` in a new tab with `noopener noreferrer`; the external navigation itself was not triggered during QA.
+- `aria-modal`, labelled title/description, hidden-state synchronization, focus loop, reduced-motion handling, and body scroll locking are present.
+- Browser console warnings/errors: none.
+- Horizontal overflow: none.
+
+final result: passed
+
+---
+
+# Continue 创作结果弹窗参考图对齐 QA（2026-08-05）
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-fc49724b-bcc6-4acf-8ada-716fcc1a8a67.png`
+- Secondary design-system truth: `UIguide.html`, `design-tokens.css`, and `ui-theme.css`
+- Implementation files: `user-center.html` and `user-center-redesign.css`
+- Full implementation screenshot: `qa/continue-panel-v27-final.png`
+- Focused implementation rail: `qa/continue-panel-v27-final-rail.png`
+- Normalized side-by-side comparison: `qa/continue-panel-v27-final-comparison.png`
+- Viewport: `1440 × 900` CSS px, desktop-only per user direction
+- Density: `deviceScaleFactor: 1`
+- Tested states: `#continue-dragon`, `#continue-cyber`, and `#continue-model-note`
+
+## User-requested corrections
+
+- Rebuilt the right-side panel hierarchy to follow the supplied reference: prominent title and helper copy, three compact action controls, two elevated information cards, one full-width adjustment control, and two destination actions.
+- Moved the close control into a dedicated `44 × 44px` top-right area and kept the toolbar below it; Download, Share, and Favorite no longer overlap the close control.
+- Removed the footer divider and retained only the meaningful row separators inside the basic-parameter card.
+- Matched UI Guide values for `16px` card radii, `12px` control radii, `44px` large controls, warm-gold emphasis, paper borders, restrained dark surfaces, shadows, and keyboard focus treatment.
+- Replaced the bookmark treatment with the reference-like star icon and used existing Remixicon assets for the model and adjustment affordances.
+
+## Required fidelity surfaces
+
+- Typography: `28px` result title, `14px` helper/body text, and `16px` gold card labels reproduce the reference hierarchy using the project font stack.
+- Spacing and rhythm: `32px` top padding, `24px` side padding, `16px` major gaps, and `12px` toolbar gaps keep the desktop panel dense without crowding.
+- Colors and surfaces: UI Guide dark backgrounds, paper-soft borders, gold labels/icons, and restrained hover/focus highlights are applied consistently.
+- Controls: the close button is `44 × 44px`; all three shortcut buttons are `92 × 44px`; the adjustment and destination controls are also `44px` high.
+- Copy and content: result type, model, size, ratio, prompt, and next-step destinations remain unchanged.
+
+## Focused comparison and intentional differences
+
+- The final normalized comparison shows the same top-to-bottom visual order, card grouping, control sizing, gold emphasis, and close-button placement as the reference.
+- The UI Guide's `44px` desktop control height is intentionally retained where the raster reference appears slightly shorter.
+- Existing official Remixicon glyphs are used instead of drawing source-specific custom icons; geometry and visual weight are kept close to the reference.
+- The implementation shows both destination actions because the live desktop modal has enough vertical space; the source image is cropped before those controls finish.
+
+## Interaction and runtime checks
+
+- All three Continue states render at `479 × 686px` with `scrollWidth === clientWidth` and `scrollHeight === clientHeight`.
+- All three toolbar controls measure `92 × 44px`; the close control measures `44 × 44px`.
+- Geometry check confirms the Download, Share, and Favorite buttons do not overlap the close control in any tested state.
+- Footer divider computes to `0px` in all three states.
+- Clicking the close control updates the URL to `#my-works`.
+- The Continue Adjustment destination remains `./index.html#quick-create`.
+- Browser console errors: none.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` fidelity issue remains.
+- No horizontal or vertical overflow remains in the tested desktop panel.
+
+final result: passed
+
+---
+
+# Continue 弹窗：首页爆款作品样式对齐 QA（2026-08-05）
+
+- Source visual truth: `qa/home-popular-modal-style-reference.png`
+- Source route: `index.html#case-detail-video`
+- Implementation screenshot: `qa/continue-home-style-v28-final.png`
+- Focused source rail: `qa/home-popular-modal-style-reference-rail.png`
+- Focused implementation rail: `qa/continue-home-style-v28-final-rail.png`
+- Side-by-side comparison: `qa/continue-home-style-v28-comparison.png`
+- Implementation files: `user-center.html` and `user-center-redesign.css`
+- Viewport and CSS size: `1440 × 900`
+- Source and implementation pixels: `1440 × 900`
+- Density normalization: both captures use `deviceScaleFactor: 1`
+- Tested states: `#continue-dragon`, `#continue-cyber`, and `#continue-model-note`
+
+## User-requested alignment
+
+- Shortcut icons now use the homepage detail action's warm-white filter, `20px` geometry, and `0.78` default opacity instead of the earlier gold treatment.
+- All Continue action labels now use the homepage button scale: `14px`, weight `500`.
+- The close control now exactly matches the homepage detail modal: `38 × 36px`, `18px` from the top and right, `999px` radius, `18px` gold close icon.
+- Shortcut, Continue Adjustment, and destination buttons use the homepage's `999px` pill radius.
+- Continue Adjustment now follows the homepage One-click Remix hierarchy with gold text/icon, gold-soft surface, gold border, and the shared control shadow.
+
+## Full-view and focused comparison evidence
+
+- Full captures confirm both source and implementation use the same `1000 × 688px` desktop dialog frame and the same `480px` right-rail width.
+- The focused side-by-side comparison makes the requested details readable at native density: close geometry and inset, warm-white utility icons, 14px button text, pill controls, and gold primary action.
+- Information architecture intentionally differs because the Continue panel shows generated-result parameters and destinations, while the homepage source shows prompt/comments and engagement; this QA evaluates the shared visual language requested by the user.
+
+## Required fidelity surfaces
+
+- Fonts and typography: action labels resolve to the same `14px / 500` homepage button treatment; existing result title and body hierarchy remain unchanged.
+- Spacing and layout rhythm: the modal frame, close offset, right-rail width, action spacing, and footer alignment remain stable with no new overflow.
+- Colors and visual tokens: utility icons/text use homepage warm-white values; the primary adjustment action uses homepage gold tokens; the close icon retains the homepage gold filter.
+- Image quality and asset fidelity: existing local Remixicon assets remain in use; no substitute drawings or generated assets were introduced.
+- Copy and content: result metadata, prompt text, and action destinations remain unchanged.
+
+## Comparison history
+
+1. Earlier V27 state
+   - Shortcut icons were gold at `18px / 0.94`, Continue Adjustment used `16px` text with a `12px` radius, and the close control measured `44 × 44px` at `16px` offsets.
+2. V28 correction
+   - Synchronized icon color/opacity, button typography, pill radii, primary-action treatment, and close geometry directly from computed homepage modal values.
+3. Post-fix evidence
+   - Browser computed values match the source targets in all three Continue states; the normalized focused comparison shows no actionable visual drift in the requested details.
+
+## Interaction and runtime checks
+
+- Each right rail measures `479 × 686px` with `scrollWidth === clientWidth` and `scrollHeight === clientHeight`.
+- Shortcut labels, Continue Adjustment, and destination actions all compute to `14px / 500` with `999px` radii.
+- Close controls compute to `38 × 36px`, `top: 18px`, `right: 18px`, and `999px` radius.
+- Geometry confirms no shortcut overlaps the close control in any tested Continue state.
+- Shortcut Hover matches the homepage feedback: gold-soft background, gold-muted border, and icon opacity increases from `0.78` to `1`.
+- Clicking close updates the URL to `#my-works`; Continue Adjustment remains `./index.html#quick-create`.
+- Browser console errors: none.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` mismatch remains in the requested homepage-style details.
+- No horizontal or vertical overflow remains in the tested desktop states.
+
+final result: passed
+
+---
+
 # 发布闪念 UIguide 按钮状态设计 QA
 
 - Source visual truth: `qa/uiguide-controls-v10-source.png`（`UIguide.html#controls` 浏览器实拍）
