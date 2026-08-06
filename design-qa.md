@@ -49,6 +49,38 @@ final result: passed
 
 ---
 
+# 站外访问弹窗打开动画 QA（2026-08-06）
+
+- Route and state: `aigc.html#canvas-exit-modal`
+- Final-state screenshot: `qa/canvas-exit-motion-v15-final.png`
+- CSS viewport: `1280 × 720`
+- Motion duration: dialog `460ms`; content stagger completes at `615ms`; portal artwork completes at `710ms`
+
+## Motion design
+
+- Backdrop fades into its darkened state first so the page context recedes without an abrupt cut.
+- The dialog rises `26px`, scales from `0.965`, and resolves from a bounded blur/clip reveal using the UI Guide standard easing.
+- Header, product card, notice, and actions enter in four short staggered groups at `90ms`, `145ms`, `190ms`, and `235ms`.
+- The top-right cosmic portal receives the longest reveal and the close control resolves independently, creating a clear focal point without looping motion.
+- All new entrance animations are disabled under `prefers-reduced-motion: reduce` while the final layout remains fully visible.
+
+## Interaction and runtime checks
+
+- Opening moves focus to the close control and preserves the existing focus trap.
+- Clicking “取消” and pressing `Escape` both return to `#canvas-studio`, hide the modal, restore body scrolling, and return focus to the launch action.
+- Final dialog geometry remains `610 × 381px`; the centered cancel button remains `76 × 44px`.
+- Reopening through the launch action reapplies the `:target` animation sequence.
+- Browser console errors: none.
+- `git diff --check`: passed.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` issue remains for the requested opening animation.
+
+final result: passed
+
+---
+
 # AIGC 打开画布离站弹窗 QA（2026-08-05）
 
 - Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-d4b971a6-669a-43d4-93c9-6d1f8de4c11c.png`
@@ -1580,5 +1612,52 @@ final result: passed
 
 - No actionable `P0`, `P1`, or `P2` issue remains.
 - The narrower task cards wrap body copy one line earlier than the original wide screenshot; this is an expected consequence of the requested `1280px` frame and matches UI Guide body sizing.
+
+final result: passed
+
+---
+
+# 站外访问弹窗取消按钮居中 QA（2026-08-06）
+
+- Source visual truth: `/var/folders/9w/xc7wj1z55s7bbr2kvqrmvdbw0000gn/T/codex-clipboard-9ec5dedf-e73b-4c0b-9725-92d18a5b75ba.png`（用户提供的缺陷截图）
+- Intended target: the “取消” label is horizontally centered with equal left and right insets while the neighboring arrow button remains unchanged
+- Route and state: `aigc.html#canvas-exit-modal`
+- Implementation screenshot: `qa/canvas-exit-cancel-centered-v14.png`
+- Focused implementation crop: `qa/canvas-exit-cancel-centered-v14-focus.png`
+- Normalized defect/fixed comparison: `qa/canvas-exit-cancel-centered-v14-comparison.png`
+- Source pixels: `362 × 284` at approximately `2×` density; normalized source: `181 × 142`
+- Implementation pixels and CSS viewport: `1280 × 720`, `deviceScaleFactor: 2`
+
+## Findings and correction
+
+- [P2 resolved] The shared canvas-exit button rule applied `24px` left padding and `16px` right padding to both controls. This is appropriate for the primary button with its right-side arrow, but shifted the plain “取消” text 4px right of center.
+- Added a secondary-button-specific `20px` symmetric inline padding and centered text alignment. The button keeps its existing `76 × 44px` geometry.
+- Removed the earlier unrelated user-center cancel-button override and restored its prior stylesheet cache key.
+
+## Focused comparison evidence
+
+- Before the fix, browser geometry measured the “取消” text at `28px` from the left edge and `20px` from the right edge.
+- After the fix, the same text measures exactly `24px` from both edges.
+- The primary “继续访问” button retains its original `24px` left and `16px` right padding for the arrow composition.
+- The focused comparison uses a density-normalized crop so the `76px` CSS button width matches the `152px` appearance in the supplied `2×` screenshot.
+
+## Required fidelity surfaces
+
+- Fonts and typography: label font, size, weight, and line height remain unchanged; only horizontal placement changed.
+- Spacing and layout rhythm: cancel-button width, height, footer gap, and primary-button placement remain unchanged.
+- Colors and visual tokens: no color, border, surface, shadow, or state token changed.
+- Image quality and asset fidelity: existing product artwork and Remixicon arrow remain untouched.
+- Copy and content: all modal text and destinations remain unchanged.
+
+## Interaction and runtime checks
+
+- Clicking “取消” updates the URL to `#canvas-studio` and closes the modal.
+- “继续访问” retains its external destination and arrow layout.
+- Browser console errors: none.
+- `git diff --check`: passed.
+
+## Findings
+
+- No actionable `P0`, `P1`, or `P2` issue remains for the requested alignment fix.
 
 final result: passed

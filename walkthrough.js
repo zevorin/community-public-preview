@@ -2,7 +2,7 @@
   const glidingTabInstances = new Set();
   const glidingTabRoots = new WeakMap();
   const glidingTabListSelector = [
-    '[role="tablist"]:not(.home-hero-carousel-pagination)',
+    '[role="tablist"]:not(.home-hero-carousel-pagination):not(.home-launch-sidebar)',
     ".experience-tabs",
     ".message-tabs",
     ".filter-row[data-tutorial-filters]",

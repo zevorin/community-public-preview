@@ -1260,6 +1260,24 @@ body:has(#continue-model-note:target) .user-center-page #my-works {
   background: var(--profile-surface-raised);
 }
 
+/* Favorites reuse the homepage artwork-detail component without inheriting
+   homepage page-shell layout from the scoped wrapper. */
+.user-center-page .profile-home-detail-scope {
+  all: revert;
+  display: contents;
+}
+
+body:has(.user-center-page .profile-favorite-detail-modal:target) {
+  overflow: hidden;
+}
+
+.user-center-page .profile-home-detail-scope .profile-favorite-detail-modal .case-detail-dialog {
+  border-color: var(--ds-paper-soft);
+  background:
+    radial-gradient(circle at 70% 16%, var(--ds-white-veil), transparent 25%),
+    #080a0d;
+}
+
 /* Continue creation detail — follows the homepage artwork-detail shell. */
 body:has(.user-center-page .profile-creation-detail-modal:target) {
   overflow: hidden;

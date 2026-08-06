@@ -11127,6 +11127,10 @@ body:has(.canvas-exit-overlay:target) {
   transition: opacity var(--ds-duration-slow) ease;
 }
 
+.canvas-exit-overlay:target .canvas-exit-backdrop {
+  animation: canvas-exit-backdrop-in 360ms ease-out backwards;
+}
+
 .canvas-exit-backdrop {
   position: absolute;
   inset: 0;
@@ -11154,25 +11158,108 @@ body:has(.canvas-exit-overlay:target) {
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 30%),
     rgba(7, 10, 13, 0.97);
   box-shadow: var(--ds-shadow-overlay-deep);
+  transform-origin: 78% 10%;
   isolation: isolate;
 }
 
 .canvas-exit-overlay:target .canvas-exit-dialog {
-  animation: canvas-exit-dialog-in var(--ds-duration-reveal) var(--ds-ease-standard) both;
+  animation: canvas-exit-dialog-in 460ms var(--ds-ease-standard) backwards;
+}
+
+.canvas-exit-overlay:target .canvas-exit-visual {
+  animation: canvas-exit-portal-in 620ms 90ms var(--ds-ease-standard) backwards;
+}
+
+.canvas-exit-overlay:target .canvas-exit-close {
+  animation: canvas-exit-control-in 300ms 180ms var(--ds-ease-standard) backwards;
+}
+
+.canvas-exit-overlay:target .canvas-exit-head,
+.canvas-exit-overlay:target .canvas-exit-product,
+.canvas-exit-overlay:target .canvas-exit-notice,
+.canvas-exit-overlay:target .canvas-exit-actions {
+  animation: canvas-exit-content-in 380ms var(--ds-ease-standard) backwards;
+}
+
+.canvas-exit-overlay:target .canvas-exit-head {
+  animation-delay: 90ms;
+}
+
+.canvas-exit-overlay:target .canvas-exit-product {
+  animation-delay: 145ms;
+}
+
+.canvas-exit-overlay:target .canvas-exit-notice {
+  animation-delay: 190ms;
+}
+
+.canvas-exit-overlay:target .canvas-exit-actions {
+  animation-delay: 235ms;
+}
+
+@keyframes canvas-exit-backdrop-in {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes canvas-exit-dialog-in {
   from {
     opacity: 0;
-    filter: blur(8px);
-    clip-path: inset(7% 5% round var(--ds-radius-modal));
-    transform: translateY(22px) scale(0.975);
+    filter: blur(10px) brightness(0.82);
+    clip-path: inset(5% 3% round var(--ds-radius-modal));
+    transform: translate3d(0, 26px, 0) scale(0.965);
   }
+
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    clip-path: inset(0 round var(--ds-radius-modal));
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes canvas-exit-portal-in {
+  from {
+    opacity: 0;
+    filter: blur(10px) saturate(0.58) brightness(0.68);
+    transform: translate3d(20px, -10px, 0) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0) saturate(1) brightness(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes canvas-exit-control-in {
+  from {
+    opacity: 0;
+    transform: scale(0.78) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes canvas-exit-content-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translate3d(0, 12px, 0);
+  }
+
   to {
     opacity: 1;
     filter: blur(0);
-    clip-path: inset(0 round var(--ds-radius-modal));
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -11384,6 +11471,11 @@ body:has(.canvas-exit-overlay:target) {
   min-width: 104px;
 }
 
+.canvas-exit-button.is-secondary {
+  padding-inline: 20px;
+  text-align: center;
+}
+
 .canvas-exit-button:hover,
 .canvas-exit-button:focus-visible {
   border-color: var(--ds-gold-emphasis);
@@ -11456,6 +11548,16 @@ body:has(.canvas-exit-overlay:target) {
   }
 
   .canvas-exit-overlay:target .canvas-exit-dialog {
+    animation: none;
+  }
+
+  .canvas-exit-overlay:target .canvas-exit-backdrop,
+  .canvas-exit-overlay:target .canvas-exit-visual,
+  .canvas-exit-overlay:target .canvas-exit-close,
+  .canvas-exit-overlay:target .canvas-exit-head,
+  .canvas-exit-overlay:target .canvas-exit-product,
+  .canvas-exit-overlay:target .canvas-exit-notice,
+  .canvas-exit-overlay:target .canvas-exit-actions {
     animation: none;
   }
 }

@@ -6,9 +6,10 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" href="./assets/GGQ.ttf?v=20260720-ggq-font" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
+  <link rel="stylesheet" href="./style.css?v=20260806-home-launch-v1">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./home-launch-modal.css?v=20260806-redesign-v9">
 </head>
 <body class="home-page is-authenticated">
   <div class="page">
@@ -86,6 +87,58 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="home-launch-modal" data-home-launch-modal aria-label="多元拾光正式上线" hidden>
+      <button class="home-launch-backdrop" type="button" tabindex="-1" data-home-launch-dismiss="close" aria-label="关闭上线弹窗"></button>
+      <section class="home-launch-dialog" role="dialog" aria-modal="true" aria-labelledby="home-launch-title" aria-describedby="home-launch-description">
+        <header class="home-launch-hero">
+          <div class="home-launch-hero-copy">
+            <h2 id="home-launch-title">多元拾光正式上线</h2>
+            <p id="home-launch-description">从首批社区活动开始，发布作品、分享 Prompt，领取你的创作积分。</p>
+          </div>
+          <button class="home-launch-icon-close" type="button" data-home-launch-dismiss="close" aria-label="关闭上线弹窗">
+            <img src="resources/icons/remixicon/svg/System/close-line.svg" alt="">
+          </button>
+        </header>
+
+        <div class="home-launch-workspace">
+          <div class="home-launch-sidebar" role="tablist" aria-label="推荐活动">
+            <button class="home-launch-filter is-active" type="button" role="tab" aria-selected="true" aria-controls="home-launch-panel" data-home-launch-tab data-title="AI 生图创作挑战" data-description="发布你的 AI 图片作品，争取社区精选、首页推荐与创作积分。" data-tag="作品征集 · 进行中" data-image="assets/activity/activity-image-challenge-banner-textless-v1.webp" data-href="./campaign-detail.html">
+              <span class="home-launch-filter-thumb"><img src="assets/activity/activity-image-challenge-cover-v2.png" alt=""></span>
+              <span class="home-launch-filter-copy"><strong>AI 生图创作挑战</strong><small>发布作品，赢首页推荐</small><em>进行中</em></span>
+            </button>
+            <button class="home-launch-filter" type="button" role="tab" aria-selected="false" aria-controls="home-launch-panel" data-home-launch-tab data-title="Prompt 共创计划" data-description="分享经过验证的好用 Prompt，让更多创作者一键同款，并获得共创奖励。" data-tag="Prompt 征集 · 长期开放" data-image="assets/activity/activity-prompt-cocreate-banner-textless-v1.webp" data-href="./campaign-prompt.html">
+              <span class="home-launch-filter-thumb"><img src="assets/activity/activity-prompt-cocreate-cover-v2.png" alt=""></span>
+              <span class="home-launch-filter-copy"><strong>Prompt 共创计划</strong><small>分享 Prompt，获得奖励</small><em>长期开放</em></span>
+            </button>
+            <button class="home-launch-filter" type="button" role="tab" aria-selected="false" aria-controls="home-launch-panel" data-home-launch-tab data-title="新手成长任务" data-description="完成首次访问、互动、收藏与资料完善，熟悉社区的同时领取成长积分。" data-tag="新用户专属 · 轻松上手" data-image="assets/activity/activity-new-user-cover-v4.png" data-href="./campaign-new-user.html">
+              <span class="home-launch-filter-thumb"><img src="assets/activity/activity-new-user-cover-v4.png" alt=""></span>
+              <span class="home-launch-filter-copy"><strong>新手成长任务</strong><small>完成任务，领取积分</small><em>新用户专属</em></span>
+            </button>
+          </div>
+
+          <article class="home-launch-panel" id="home-launch-panel" role="tabpanel">
+            <img class="home-launch-panel-media" src="assets/activity/activity-image-challenge-banner-textless-v1.webp" alt="AI 生图创作挑战" data-home-launch-image>
+            <div class="home-launch-panel-mask" aria-hidden="true"></div>
+            <div class="home-launch-panel-copy">
+              <span class="home-launch-panel-tag" data-home-launch-tag>作品征集 · 进行中</span>
+              <h3 data-home-launch-title>AI 生图创作挑战</h3>
+              <p data-home-launch-description>发布你的 AI 图片作品，争取社区精选、首页推荐与创作积分。</p>
+              <a class="home-launch-cta" href="./campaign-detail.html" data-home-launch-cta>
+                <span>查看活动</span>
+                <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt="">
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <footer class="home-launch-footer">
+          <span>首批活动现已开放</span>
+          <button class="home-launch-button is-ghost" type="button" data-home-launch-dismiss="close">关闭</button>
+          <button class="home-launch-button is-primary" type="button" data-home-launch-dismiss="today">今日不再展示</button>
+        </footer>
+      </section>
     </section>
 
     <section id="login-modal" class="create-modal home-login-modal login-body" data-login-modal-root aria-label="登录" hidden>
@@ -1598,7 +1651,8 @@
       });
     })();
   </script>
+  <script src="./home-launch-modal.js?v=20260806-launch-v1" defer></script>
   <script src="./login-modal.js?v=20260727-home-login-modal-v7" defer></script>
-  <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
+  <script src="./walkthrough.js?v=20260806-home-launch-v2" defer></script>
 </body>
 </html>
