@@ -43,8 +43,8 @@ body.has-home-launch-modal {
 
 .home-launch-dialog {
   position: relative;
-  width: min(1040px, calc(100vw - 48px));
-  max-height: min(88vh, 720px);
+  width: min(920px, calc(100vw - 48px));
+  max-height: min(86vh, 640px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -72,11 +72,11 @@ body.has-home-launch-modal {
 .home-launch-hero {
   position: relative;
   isolation: isolate;
-  min-height: 118px;
+  min-height: 104px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 28px 32px;
+  padding: 24px 28px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: #0d1116;
 }
@@ -92,9 +92,9 @@ body.has-home-launch-modal {
 
 .home-launch-hero::before {
   inset: -6px 0 0;
-  background: url("./assets/image_assets/flash-compose-header-space-ip-v2.webp") right 28px center / auto 100% no-repeat;
-  filter: brightness(0.76) saturate(0.88) contrast(0.92);
-  opacity: 0.82;
+  background: url("./assets/image_assets/home-launch-header-time-ribbons-v1.webp") right 28px center / auto 100% no-repeat;
+  filter: brightness(0.88) saturate(0.94) contrast(0.96);
+  opacity: 0.92;
   transform: scale(1.01);
 }
 
@@ -180,16 +180,16 @@ body.has-home-launch-modal {
 .home-launch-workspace {
   min-height: 0;
   display: grid;
-  grid-template-columns: 304px minmax(0, 1fr);
-  gap: 18px;
-  padding: 20px;
+  grid-template-columns: 272px minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
 }
 
 .home-launch-sidebar {
   min-height: 0;
   display: grid;
   align-content: start;
-  gap: 10px;
+  gap: 8px;
   overflow: visible;
 }
 
@@ -197,11 +197,11 @@ body.has-home-launch-modal {
   position: relative;
   z-index: 0;
   width: 100%;
-  min-height: 94px;
+  min-height: 86px;
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 64px minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   padding: 10px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -248,8 +248,8 @@ body.has-home-launch-modal {
 }
 
 .home-launch-filter-thumb {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: 11px;
@@ -304,7 +304,7 @@ body.has-home-launch-modal {
 .home-launch-panel {
   position: relative;
   min-width: 0;
-  min-height: 320px;
+  min-height: 288px;
   overflow: hidden;
   border-radius: 18px;
   background: #07090c;
@@ -324,6 +324,40 @@ body.has-home-launch-modal {
   transform: scale(1.018);
 }
 
+.home-launch-panel.is-switching .home-launch-panel-media {
+  will-change: opacity, transform;
+  animation: home-launch-panel-media-switch 280ms var(--ds-ease-standard, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.home-launch-panel.is-switching .home-launch-panel-copy {
+  will-change: opacity, transform;
+  animation: home-launch-panel-copy-switch 240ms 36ms var(--ds-ease-standard, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+@keyframes home-launch-panel-media-switch {
+  from {
+    opacity: 0.7;
+    transform: translateX(8px) scale(1.018);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes home-launch-panel-copy-switch {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home-launch-panel-mask {
   position: absolute;
   inset: 0;
@@ -341,7 +375,7 @@ body.has-home-launch-modal {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 8px 24px;
-  padding: 28px;
+  padding: 24px;
 }
 
 .home-launch-panel-tag {
@@ -440,12 +474,12 @@ body.has-home-launch-modal {
 }
 
 .home-launch-footer {
-  min-height: 68px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: #0d1115;
 }
@@ -510,8 +544,8 @@ body.has-home-launch-modal {
   }
 
   .home-launch-hero {
-    min-height: 112px;
-    padding: 24px 64px 24px 20px;
+    min-height: 104px;
+    padding: 20px 64px 20px 20px;
   }
 
   .home-launch-hero-copy h2 {
@@ -525,8 +559,8 @@ body.has-home-launch-modal {
 
   .home-launch-workspace {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 12px;
+    gap: 10px;
+    padding: 10px;
   }
 
   .home-launch-sidebar {
@@ -563,12 +597,12 @@ body.has-home-launch-modal {
   }
 
   .home-launch-panel {
-    min-height: 300px;
+    min-height: 280px;
   }
 
   .home-launch-panel-copy {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 18px;
   }
 
   .home-launch-panel-copy h3,
@@ -589,6 +623,11 @@ body.has-home-launch-modal {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-launch-panel.is-switching .home-launch-panel-media,
+  .home-launch-panel.is-switching .home-launch-panel-copy {
+    animation: none !important;
+  }
+
   .home-launch-modal,
   .home-launch-dialog,
   .home-launch-icon-close,

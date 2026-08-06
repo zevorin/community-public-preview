@@ -3,13 +3,24 @@
   if (!modal) return;
 
   const DAY_KEY = "duoyuan-home-launch-hidden-date";
+  const forceShow = new URLSearchParams(window.location.search).get("showLaunch") === "1";
   const tabs = Array.from(modal.querySelectorAll("[data-home-launch-tab]"));
   const panelImage = modal.querySelector("[data-home-launch-image]");
   const panelTitle = modal.querySelector("[data-home-launch-title]");
   const panelDescription = modal.querySelector("[data-home-launch-description]");
   const panelTag = modal.querySelector("[data-home-launch-tag]");
   const panelCta = modal.querySelector("[data-home-launch-cta]");
+  const panel = modal.querySelector("#home-launch-panel");
   let previousFocus = null;
+  let panelAnimationTimer = 0;
+  let panelAnimationFrame = 0;
+
+  tabs.forEach((tab) => {
+    if (!tab.dataset.image) return;
+    const image = new Image();
+    image.decoding = "async";
+    image.src = tab.dataset.image;
+  });
 
   const today = () => {
     const date = new Date();
@@ -35,10 +46,26 @@
     }
   };
 
-  const shouldStayHidden = () => getStorage(DAY_KEY) === today();
+  const shouldStayHidden = () => !forceShow && getStorage(DAY_KEY) === today();
+
+  const animatePanelSwitch = () => {
+    if (!panel) return;
+    window.clearTimeout(panelAnimationTimer);
+    window.cancelAnimationFrame(panelAnimationFrame);
+    panel.classList.remove("is-switching");
+    panelAnimationFrame = window.requestAnimationFrame(() => {
+      panel.classList.add("is-switching");
+      panelAnimationTimer = window.setTimeout(() => {
+        panel.classList.remove("is-switching");
+      }, 360);
+    });
+  };
 
   const selectTab = (tab) => {
     if (!tab || !panelImage || !panelTitle || !panelDescription || !panelTag || !panelCta) return;
+
+    const previousTab = tabs.find((item) => item.classList.contains("is-active"));
+    const shouldAnimate = Boolean(previousTab && previousTab !== tab && !modal.hidden);
 
     tabs.forEach((item) => {
       const isActive = item === tab;
@@ -53,6 +80,8 @@
     panelDescription.textContent = tab.dataset.description || "";
     panelTag.textContent = tab.dataset.tag || "社区活动";
     panelCta.href = tab.dataset.href || "#";
+
+    if (shouldAnimate) animatePanelSwitch();
   };
 
   const hide = (mode = "close") => {
