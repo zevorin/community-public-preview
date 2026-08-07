@@ -2441,11 +2441,22 @@
     );
     task.append(taskCopy, createTaskGuideElement("em", "", "+20积分"));
 
-    const artwork = document.createElement("img");
+    const artworkFrame = createTaskGuideElement("span", "activity-center-guide-artwork-frame", "");
+    artworkFrame.setAttribute("aria-hidden", "true");
+
+    const artwork = document.createElement("video");
     artwork.className = "activity-center-guide-artwork";
-    artwork.src = "assets/activity/giftandB.png";
-    artwork.alt = "";
+    artwork.src = "assets/activity/giftandB.mp4";
+    artwork.autoplay = true;
+    artwork.muted = true;
+    artwork.loop = false;
+    artwork.playsInline = true;
+    artwork.preload = "auto";
+    artwork.controls = false;
+    artwork.addEventListener("ended", () => artwork.pause());
     artwork.setAttribute("aria-hidden", "true");
+    artwork.tabIndex = -1;
+    artworkFrame.append(artwork);
 
     const actions = createTaskGuideElement("div", "activity-center-guide-actions", "");
     const primary = createTaskGuideElement("a", "activity-center-guide-primary", "注册并领取20积分");
@@ -2456,7 +2467,7 @@
     later.dataset.activityCenterGuideLink = "true";
     actions.append(primary, later);
 
-    guide.append(pointer, header, heading, task, artwork, actions);
+    guide.append(pointer, header, heading, task, artworkFrame, actions);
     return guide;
   }
 

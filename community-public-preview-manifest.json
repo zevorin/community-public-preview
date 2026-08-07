@@ -115,11 +115,6 @@
   ],
   "standalonePages": [
     {
-      "slug": "content-detail-modals",
-      "label": "内容详情弹层调试台",
-      "path": "content-detail-modals.html"
-    },
-    {
       "slug": "campaign-ops",
       "label": "一期活动预览入口",
       "path": "campaign-ops.html"

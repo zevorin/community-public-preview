@@ -51,7 +51,6 @@ npm.cmd run validate:community:public-preview
 
 ## 调试页
 
-- 内容详情弹层调试台: content-detail-modals.html
 - 一期活动预览入口: campaign-ops.html
 
 ## 边界

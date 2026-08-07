@@ -1389,16 +1389,42 @@ body.activity-task-guide-open {
   white-space: nowrap;
 }
 
-.activity-center-guide-artwork {
+.activity-center-guide-artwork-frame {
   position: absolute;
   top: 43px;
   right: 11px;
   width: 100px;
   height: 80px;
-  object-fit: contain;
-  opacity: 1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 50%;
   pointer-events: none;
   transform: rotate(1deg);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 52%, rgba(0, 0, 0, 0.9) 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, #000 52%, rgba(0, 0, 0, 0.9) 70%, transparent 100%);
+}
+
+.activity-center-guide-artwork-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 42%, transparent 38%, rgba(23, 19, 15, 0.16) 76%, rgba(23, 19, 15, 0.72) 100%),
+    linear-gradient(180deg, rgba(191, 150, 75, 0.06), rgba(11, 12, 14, 0.22));
+  mix-blend-mode: multiply;
+}
+
+.activity-center-guide-artwork {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.96;
+  mix-blend-mode: screen;
+  filter: saturate(0.92) contrast(0.92) brightness(0.94);
 }
 
 .activity-center-guide-actions {
