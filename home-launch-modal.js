@@ -14,6 +14,7 @@
   let previousFocus = null;
   let panelAnimationTimer = 0;
   let panelAnimationFrame = 0;
+  let entranceTimer = 0;
 
   tabs.forEach((tab) => {
     if (!tab.dataset.image) return;
@@ -89,6 +90,8 @@
       setStorage(DAY_KEY, today());
     }
 
+    window.clearTimeout(entranceTimer);
+    modal.classList.remove("is-entering");
     modal.classList.add("is-closing");
     window.setTimeout(() => {
       modal.hidden = true;
@@ -104,7 +107,11 @@
     modal.hidden = false;
     document.body.classList.add("has-home-launch-modal");
     requestAnimationFrame(() => {
-      modal.classList.add("is-visible");
+      modal.classList.add("is-visible", "is-entering");
+      window.clearTimeout(entranceTimer);
+      entranceTimer = window.setTimeout(() => {
+        modal.classList.remove("is-entering");
+      }, 940);
       modal.querySelector(".home-launch-icon-close")?.focus({ preventScroll: true });
     });
   };

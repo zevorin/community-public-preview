@@ -2378,6 +2378,281 @@
     }
   }
 
+  const activityCenterGuideStorageKey = "duoyuan-activity-center-guide-dismissed-v1";
+
+  function shouldForceActivityCenterGuideOpen() {
+    return new URLSearchParams(window.location.search).get("activityGuide") === "1";
+  }
+
+  function hasDismissedActivityCenterGuide() {
+    try {
+      return window.localStorage.getItem(activityCenterGuideStorageKey) === "true";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function rememberActivityCenterGuideDismissal() {
+    try {
+      window.localStorage.setItem(activityCenterGuideStorageKey, "true");
+    } catch (error) {
+      // The guide remains dismissible when storage is unavailable.
+    }
+  }
+
+  function createActivityCenterGuide() {
+    const guide = createTaskGuideElement("aside", "activity-center-guide", "");
+    guide.hidden = true;
+    guide.dataset.activityCenterGuide = "true";
+    guide.setAttribute("role", "dialog");
+    guide.setAttribute("aria-modal", "false");
+    guide.setAttribute("aria-labelledby", "activity-center-guide-title");
+    guide.setAttribute("aria-describedby", "activity-center-guide-task");
+
+    const pointer = createTaskGuideElement("span", "activity-center-guide-pointer", "");
+    pointer.setAttribute("aria-hidden", "true");
+
+    const header = createTaskGuideElement("div", "activity-center-guide-header", "");
+    const progress = createTaskGuideElement("div", "activity-center-guide-progress", "");
+    progress.append(
+      createTaskGuideElement("span", "", "新人任务"),
+      createTaskGuideElement("em", "", "1/5")
+    );
+
+    const closeButton = createTaskGuideElement("button", "activity-center-guide-close", "");
+    closeButton.type = "button";
+    closeButton.dataset.activityCenterGuideDismiss = "true";
+    closeButton.setAttribute("aria-label", "关闭活动中心引导");
+    const closeIcon = document.createElement("img");
+    closeIcon.src = "resources/icons/remixicon/svg/System/close-line.svg";
+    closeIcon.alt = "";
+    closeButton.append(closeIcon);
+    header.append(progress, closeButton);
+
+    const heading = createTaskGuideElement("h2", "", "完成新手任务，领取积分");
+    heading.id = "activity-center-guide-title";
+
+    const task = createTaskGuideElement("div", "activity-center-guide-task", "");
+    task.id = "activity-center-guide-task";
+    const taskCopy = createTaskGuideElement("div", "", "");
+    taskCopy.append(
+      createTaskGuideElement("span", "", "当前任务"),
+      createTaskGuideElement("strong", "", "首次访问多元拾光")
+    );
+    task.append(taskCopy, createTaskGuideElement("em", "", "+20积分"));
+
+    const artwork = document.createElement("img");
+    artwork.className = "activity-center-guide-artwork";
+    artwork.src = "assets/activity/giftandB.png";
+    artwork.alt = "";
+    artwork.setAttribute("aria-hidden", "true");
+
+    const actions = createTaskGuideElement("div", "activity-center-guide-actions", "");
+    const primary = createTaskGuideElement("a", "activity-center-guide-primary", "注册并领取20积分");
+    primary.href = "./login.html";
+    primary.dataset.activityCenterGuideLink = "true";
+    const later = createTaskGuideElement("a", "activity-center-guide-later", "已有账号，去登录");
+    later.href = "./login.html";
+    later.dataset.activityCenterGuideLink = "true";
+    actions.append(primary, later);
+
+    guide.append(pointer, header, heading, task, artwork, actions);
+    return guide;
+  }
+
+  function positionActivityCenterGuide(guide, anchor) {
+    const viewportGutter = 16;
+    const anchorRect = anchor.getBoundingClientRect();
+    const guideWidth = guide.offsetWidth;
+    const guideHeight = guide.offsetHeight;
+    const maxLeft = Math.max(viewportGutter, window.innerWidth - guideWidth - viewportGutter);
+    const left = Math.min(maxLeft, Math.max(viewportGutter, anchorRect.right - guideWidth));
+    const preferredTop = anchorRect.bottom + 16;
+    const maxTop = Math.max(viewportGutter, window.innerHeight - guideHeight - viewportGutter);
+    const top = Math.min(maxTop, preferredTop);
+    const pointerX = Math.min(guideWidth - 28, Math.max(28, anchorRect.left + (anchorRect.width / 2) - left));
+
+    guide.style.left = `${Math.round(left)}px`;
+    guide.style.top = `${Math.round(top)}px`;
+    guide.style.setProperty("--activity-guide-pointer-x", `${Math.round(pointerX)}px`);
+    guide.classList.toggle("is-above", top < anchorRect.bottom);
+  }
+
+  let activityRewardToastExitTimer = 0;
+  let activityRewardToastRemoveTimer = 0;
+  let activityRewardToastCheckTimer = 0;
+
+  function showActivityRewardToast() {
+    window.clearTimeout(activityRewardToastExitTimer);
+    window.clearTimeout(activityRewardToastRemoveTimer);
+    window.clearTimeout(activityRewardToastCheckTimer);
+
+    document.querySelector("[data-activity-reward-toast]")?.remove();
+
+    const toast = createTaskGuideElement("aside", "activity-reward-toast", "");
+    toast.dataset.activityRewardToast = "true";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    toast.setAttribute("aria-atomic", "true");
+
+    const icon = createTaskGuideElement("button", "activity-reward-toast-icon", "");
+    icon.type = "button";
+    icon.setAttribute("aria-label", "切换成功动画");
+
+    const svgNamespace = "http://www.w3.org/2000/svg";
+    const checkGraphic = document.createElementNS(svgNamespace, "svg");
+    checkGraphic.setAttribute("viewBox", "0 0 52 52");
+    checkGraphic.setAttribute("aria-hidden", "true");
+
+    const ring = document.createElementNS(svgNamespace, "circle");
+    ring.classList.add("activity-reward-toast-ring");
+    ring.setAttribute("cx", "26");
+    ring.setAttribute("cy", "26");
+    ring.setAttribute("r", "24");
+
+    const tick = document.createElementNS(svgNamespace, "path");
+    tick.classList.add("activity-reward-toast-tick");
+    tick.setAttribute("d", "M15 27 l7 7 l15 -15");
+    checkGraphic.append(ring, tick);
+    icon.append(checkGraphic);
+
+    const copy = createTaskGuideElement("div", "activity-reward-toast-copy", "");
+    const title = createTaskGuideElement("strong", "", "首次访问多元拾光");
+    copy.append(
+      title,
+      createTaskGuideElement("p", "", "已完成")
+    );
+
+    const points = createTaskGuideElement("span", "activity-reward-toast-points", "+20积分");
+
+    toast.append(icon, copy, points);
+    document.body.append(toast);
+
+    const setCheckDone = (done) => {
+      icon.classList.toggle("done", done);
+      icon.setAttribute("aria-pressed", String(done));
+    };
+    setCheckDone(false);
+    icon.addEventListener("click", () => {
+      setCheckDone(!icon.classList.contains("done"));
+    });
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        toast.classList.add("is-visible");
+        const checkDelay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 160;
+        activityRewardToastCheckTimer = window.setTimeout(() => {
+          setCheckDone(true);
+        }, checkDelay);
+      });
+    });
+
+    activityRewardToastExitTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toast.classList.add("is-leaving");
+      activityRewardToastRemoveTimer = window.setTimeout(() => toast.remove(), 240);
+    }, 4200);
+  }
+
+  function initActivityCenterGuide() {
+    const anchor = document.querySelector('.home-page [data-nav-action="activity-center"]');
+    if (!anchor || document.documentElement.dataset.activityCenterGuideReady === "true") {
+      return;
+    }
+
+    const forceOpen = shouldForceActivityCenterGuideOpen();
+    if (!forceOpen && hasDismissedActivityCenterGuide()) {
+      return;
+    }
+
+    document.documentElement.dataset.activityCenterGuideReady = "true";
+    const guide = createActivityCenterGuide();
+    document.body.append(guide);
+    let isOpen = false;
+    let launchObserver = null;
+
+    const close = (persist = true) => {
+      if (!isOpen) {
+        return;
+      }
+      if (persist) {
+        rememberActivityCenterGuideDismissal();
+      }
+      isOpen = false;
+      guide.classList.remove("is-open");
+      anchor.classList.remove("is-guide-target");
+      anchor.removeAttribute("aria-describedby");
+      const rewardDelay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 160;
+      window.setTimeout(showActivityRewardToast, rewardDelay);
+      window.setTimeout(() => {
+        if (!isOpen) {
+          guide.hidden = true;
+        }
+      }, 220);
+    };
+
+    const open = () => {
+      if (isOpen) {
+        return;
+      }
+      isOpen = true;
+      guide.hidden = false;
+      anchor.classList.add("is-guide-target");
+      anchor.setAttribute("aria-describedby", "activity-center-guide-title");
+      positionActivityCenterGuide(guide, anchor);
+      window.requestAnimationFrame(() => guide.classList.add("is-open"));
+    };
+
+    const openWhenLaunchModalIsDone = () => {
+      const launchModal = document.querySelector("[data-home-launch-modal]");
+      if (!launchModal || launchModal.hidden) {
+        window.setTimeout(open, forceOpen ? 80 : 520);
+        return;
+      }
+
+      launchObserver = new MutationObserver(() => {
+        if (!launchModal.hidden) {
+          return;
+        }
+        launchObserver?.disconnect();
+        window.setTimeout(open, 360);
+      });
+      launchObserver.observe(launchModal, { attributes: true, attributeFilter: ["hidden"] });
+    };
+
+    guide.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      if (target.closest("[data-activity-center-guide-dismiss]")) {
+        close(true);
+      } else if (target.closest("[data-activity-center-guide-link]")) {
+        rememberActivityCenterGuideDismissal();
+      }
+    });
+
+    anchor.addEventListener("click", rememberActivityCenterGuideDismissal);
+    window.addEventListener("resize", () => {
+      if (isOpen) {
+        positionActivityCenterGuide(guide, anchor);
+      }
+    });
+    window.addEventListener("scroll", () => {
+      if (isOpen) {
+        positionActivityCenterGuide(guide, anchor);
+      }
+    }, { passive: true });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen) {
+        close(true);
+        anchor.focus({ preventScroll: true });
+      }
+    });
+
+    openWhenLaunchModalIsDone();
+  }
+
   function init() {
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2386,6 +2661,7 @@
     initReferenceImageUploads();
     enhanceUserMenus();
     initActivityTaskGuide();
+    initActivityCenterGuide();
     initGlidingTabs();
     initResultPromptCopy();
     initContentCardCopy();
