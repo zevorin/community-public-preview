@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
-  <link rel="stylesheet" href="./member-store.css?v=20260730-system-convergence-v3">
+  <link rel="stylesheet" href="./member-store.css?v=20260808-pag-hero-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
 </head>
 <body class="home-header-shell">
@@ -55,8 +55,14 @@
               </a>
             </div>
           </div>
-          <div class="member-store-hero-visual" aria-hidden="true">
-            <img src="assets/image_assets/member-store-hero-blackgold-v1.png" alt="">
+          <div
+            class="member-store-hero-visual"
+            data-member-store-pag
+            data-pag-src="assets/image_assets/member-store-hero-blackgold-v1.pag"
+            aria-hidden="true"
+          >
+            <canvas class="member-store-hero-canvas" data-member-store-pag-canvas></canvas>
+            <img class="member-store-hero-fallback" src="assets/image_assets/member-store-hero-blackgold-v1.png" alt="">
           </div>
         </div>
 
@@ -459,6 +465,6 @@
 <div class="footer-space"></div>
   </div>
   <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
-  <script src="./member-store.js?v=20260729-navigation-no-flash-v1" defer></script>
+  <script src="./member-store.js?v=20260808-pag-hero-v1" defer></script>
 </body>
 </html>

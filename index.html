@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="preload" href="./assets/GGQ.ttf?v=20260720-ggq-font" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./design-tokens.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./style.css?v=20260807-activity-center-guide-v11">
+  <link rel="stylesheet" href="./style.css?v=20260808-pag-astronaut-v1">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./home-launch-modal.css?v=20260807-redesign-v15">
@@ -213,7 +213,10 @@
                   <img class="login-qr-corner is-bottom-left" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
                   <img class="login-qr-corner is-bottom-right" src="resources/icons/tabler/maximize.svg" alt="" aria-hidden="true">
                 </div>
-                <img class="login-astronaut" src="assets/login/ip.png" alt="多元拾光宇航员">
+                <div class="login-astronaut" data-login-pag data-pag-src="assets/login/login.pag">
+                  <canvas class="login-astronaut-canvas" data-login-pag-canvas aria-hidden="true"></canvas>
+                  <img class="login-astronaut-fallback" src="assets/login/ip.png" alt="多元拾光宇航员">
+                </div>
               </div>
             </div>
           </section>
@@ -1652,7 +1655,7 @@
     })();
   </script>
   <script src="./home-launch-modal.js?v=20260807-launch-v6" defer></script>
-  <script src="./login-modal.js?v=20260727-home-login-modal-v7" defer></script>
+  <script src="./login-modal.js?v=20260808-pag-astronaut-v1" defer></script>
   <script src="./walkthrough.js?v=20260807-activity-center-guide-v9" defer></script>
 </body>
 </html>

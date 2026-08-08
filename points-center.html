@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./style.css?v=20260804-account-menu-v2">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./points-center.css?v=20260731-records-align-v21">
+  <link rel="stylesheet" href="./points-center.css?v=20260808-shop-video-v3">
 </head>
 <body class="points-center-page">
   <header class="site-header shared-home-header">
@@ -87,7 +87,18 @@
         </dl>
 
         <article class="shop-card">
-          <img class="shop-art" src="assets/points/points-shop-coin.png?v=20260731-orbit-coin-v2" alt="">
+          <video
+            class="shop-art"
+            data-points-shop-video
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/points/points-shop-coin.png?v=20260731-orbit-coin-v2"
+            aria-hidden="true"
+          >
+            <source src="assets/points/points-shop-coin.mp4" type="video/mp4">
+          </video>
           <div class="shop-copy">
             <span>AI 商城</span>
             <h2>用积分兑换创作权益</h2>
@@ -119,7 +130,15 @@
                 <strong>新手任务</strong>
                 <small>完成首次访问、资料、浏览、互动、收藏和首次发布。</small>
               </span>
-              <img class="robot-art" src="assets/points/points-robot-moon.png" alt="" aria-hidden="true">
+              <span
+                class="robot-art"
+                data-points-robot-pag
+                data-pag-src="assets/points/points-robot-moon.pag"
+                aria-hidden="true"
+              >
+                <canvas class="robot-art-canvas" data-points-robot-pag-canvas></canvas>
+                <img class="robot-art-fallback" src="assets/points/points-robot-moon.png" alt="">
+              </span>
               <span class="task-button">去完成</span>
             </a>
 
@@ -212,5 +231,6 @@
     </div>
   </main>
   <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
+  <script src="./points-center.js?v=20260808-shop-video-v1" defer></script>
 </body>
 </html>

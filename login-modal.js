@@ -11,6 +11,8 @@
   const submitButton = modal.querySelector("[data-login-complete-target]");
   const message = modal.querySelector("[data-login-message]");
   const galaxyContainer = modal.querySelector("[data-login-galaxy]");
+  const astronautAnimation = modal.querySelector("[data-login-pag]");
+  const astronautCanvas = astronautAnimation?.querySelector("[data-login-pag-canvas]");
   const openTriggers = [...document.querySelectorAll("[data-open-login]")];
   let lastFocusedElement = null;
   let timer = null;
@@ -18,6 +20,13 @@
   let galaxyInstance = null;
   let galaxyModulePromise = null;
   let galaxyLoadToken = 0;
+  let pagModulePromise = null;
+  let pagView = null;
+  let pagFile = null;
+  let pagLoadToken = 0;
+
+  const LIBPAG_VERSION = "4.5.85";
+  const LIBPAG_BASE_URL = `https://cdn.jsdelivr.net/npm/libpag@${LIBPAG_VERSION}/lib/`;
 
   const setMessage = (text, type = "") => {
     if (!message) return;
@@ -75,10 +84,98 @@
       });
   };
 
+  const loadPAGModule = () => {
+    pagModulePromise ||= import(`${LIBPAG_BASE_URL}libpag.esm.js`)
+      .then(({ PAGInit }) => PAGInit({
+        locateFile: (file) => `${LIBPAG_BASE_URL}${file}`
+      }))
+      .catch((error) => {
+        pagModulePromise = null;
+        throw error;
+      });
+    return pagModulePromise;
+  };
+
+  const setAstronautActive = async (isActive) => {
+    if (!astronautAnimation || !astronautCanvas) return;
+    const loadToken = ++pagLoadToken;
+
+    if (!isActive) {
+      try {
+        await pagView?.pause();
+      } catch (error) {
+        console.warn("PAG 宇航员动画暂停失败。", error);
+      }
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      astronautAnimation.dataset.pagState = "reduced-motion";
+      return;
+    }
+
+    if (pagView) {
+      try {
+        astronautAnimation.dataset.pagState = "ready";
+        await pagView.play();
+      } catch (error) {
+        astronautAnimation.dataset.pagState = "fallback";
+        console.warn("PAG 宇航员动画恢复失败，已回退到静态插图。", error);
+      }
+      return;
+    }
+
+    astronautAnimation.dataset.pagState = "loading";
+    try {
+      const [PAG, response] = await Promise.all([
+        loadPAGModule(),
+        fetch(new URL(astronautAnimation.dataset.pagSrc, document.baseURI))
+      ]);
+      if (!response.ok) throw new Error(`PAG 文件加载失败（HTTP ${response.status}）`);
+
+      const buffer = await response.arrayBuffer();
+      if (loadToken !== pagLoadToken || modal.hidden) return;
+
+      pagFile = await PAG.PAGFile.load(buffer);
+      if (loadToken !== pagLoadToken || modal.hidden) {
+        pagFile.destroy();
+        pagFile = null;
+        return;
+      }
+
+      astronautCanvas.width = pagFile.width();
+      astronautCanvas.height = pagFile.height();
+      pagView = await PAG.PAGView.init(pagFile, astronautCanvas);
+      if (!pagView) throw new Error("PAGView 初始化失败");
+
+      if (loadToken !== pagLoadToken || modal.hidden) {
+        pagView.destroy();
+        pagView = null;
+        pagFile.destroy();
+        pagFile = null;
+        return;
+      }
+
+      pagView.setRepeatCount(0);
+      pagView.setMaxFrameRate(30);
+      astronautAnimation.dataset.pagState = "ready";
+      await pagView.play();
+    } catch (error) {
+      if (loadToken !== pagLoadToken) return;
+      pagView?.destroy();
+      pagView = null;
+      pagFile?.destroy();
+      pagFile = null;
+      astronautAnimation.dataset.pagState = "fallback";
+      console.warn("PAG 宇航员动画加载失败，已回退到静态插图。", error);
+    }
+  };
+
   const closeModal = () => {
     modal.classList.remove("is-open");
     modal.hidden = true;
     setGalaxyActive(false);
+    void setAstronautActive(false);
     if (window.location.hash === "#login-modal") {
       window.history.replaceState(
         window.history.state,
@@ -96,6 +193,7 @@
     modal.classList.toggle("is-open", isOpen);
     document.body.classList.toggle("login-modal-open", isOpen);
     setGalaxyActive(isOpen);
+    void setAstronautActive(isOpen);
     if (!isOpen) return;
 
     lastFocusedElement = document.activeElement;
@@ -218,5 +316,25 @@
 
   syncSendCodeState();
   window.addEventListener("hashchange", syncModalState);
+  document.addEventListener("visibilitychange", () => {
+    const shouldPlay = !document.hidden && !modal.hidden;
+    setGalaxyActive(shouldPlay);
+    void setAstronautActive(shouldPlay);
+  });
+  window.addEventListener("pagehide", (event) => {
+    setGalaxyActive(false);
+    if (event.persisted) {
+      void setAstronautActive(false);
+      return;
+    }
+    galaxyInstance?.destroy?.();
+    pagView?.destroy();
+    pagView = null;
+    pagFile?.destroy();
+    pagFile = null;
+  }, { once: true });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) syncModalState();
+  });
   syncModalState();
 })();

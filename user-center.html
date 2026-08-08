@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./secondary-pages.css?v=20260730-system-convergence-v3">
   <link rel="stylesheet" href="./radius-system.css?v=20260730-design-system-v1">
   <link rel="stylesheet" href="./ui-theme.css?v=20260730-system-convergence-v3">
-  <link rel="stylesheet" href="./user-center-redesign.css?v=20260806-favorite-home-detail-v29">
+  <link rel="stylesheet" href="./user-center-redesign.css?v=20260808-userbg-video-v2">
 </head>
 <body>
   <div class="page growth-detail-page growth-app-page user-center-page profile-studio-page" data-page="user-center" style="--growth-hero-image: url('assets/image_assets/28.webp')">
@@ -249,7 +249,17 @@
         <div class="wide-container">
           <article class="profile-cover-card">
             <div class="profile-cover-art" aria-hidden="true">
-              <img src="assets/user/userbg.png" alt="">
+              <video
+                class="profile-cover-media"
+                data-user-cover-video
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="assets/user/userbg.png"
+              >
+                <source src="assets/user/userbg.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="profile-cover-content">
               <div class="profile-hero-identity">
@@ -931,7 +941,7 @@
 
 <div class="footer-space"></div>
   </div>
-  <script src="./user-center-tabs.js?v=20260806-favorite-home-detail-v4" defer></script>
+  <script src="./user-center-tabs.js?v=20260808-userbg-video-v1" defer></script>
   <script src="./walkthrough.js?v=20260804-account-menu-v1" defer></script>
 </body>
 </html>

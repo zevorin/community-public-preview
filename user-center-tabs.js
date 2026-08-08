@@ -1,4 +1,38 @@
 (() => {
+  const coverVideo = document.querySelector('[data-user-cover-video]');
+  if (!coverVideo) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let coverIsVisible = true;
+
+  const syncCoverPlayback = () => {
+    const shouldPlay = !reduceMotion && !document.hidden && coverIsVisible;
+    if (!shouldPlay) {
+      coverVideo.pause();
+      return;
+    }
+
+    void coverVideo.play().catch((error) => {
+      console.warn('用户中心背景视频自动播放失败，已保留封面图。', error);
+    });
+  };
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      coverIsVisible = entry.isIntersecting;
+      syncCoverPlayback();
+    }, { threshold: 0.05 });
+    observer.observe(coverVideo);
+  } else {
+    syncCoverPlayback();
+  }
+
+  document.addEventListener('visibilitychange', syncCoverPlayback);
+  window.addEventListener('pagehide', () => coverVideo.pause());
+  window.addEventListener('pageshow', syncCoverPlayback);
+})();
+
+(() => {
   const page = document.querySelector('.user-center-page');
   const nav = page?.querySelector('.profile-anchor-nav');
 

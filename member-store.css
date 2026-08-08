@@ -354,6 +354,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     linear-gradient(
       180deg,
@@ -371,7 +372,12 @@
     );
 }
 
-.member-store-page .member-store-hero-visual img {
+.member-store-page .member-store-hero-canvas,
+.member-store-page .member-store-hero-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
@@ -379,7 +385,24 @@
   object-position: top center;
 }
 
-.member-store-page.is-entered .member-store-hero-visual img {
+.member-store-page .member-store-hero-canvas {
+  opacity: 0;
+  transition: opacity var(--ds-duration-moderate) ease;
+}
+
+.member-store-page .member-store-hero-fallback {
+  transition: opacity var(--ds-duration-moderate) ease;
+}
+
+.member-store-page .member-store-hero-visual[data-pag-state="ready"] .member-store-hero-canvas {
+  opacity: 1;
+}
+
+.member-store-page .member-store-hero-visual[data-pag-state="ready"] .member-store-hero-fallback {
+  opacity: 0;
+}
+
+.member-store-page.is-entered .member-store-hero-visual:not([data-pag-state="ready"]) .member-store-hero-fallback {
   animation: memberStoreHeroFloat 9s ease-in-out 1.2s infinite alternate;
 }
 
@@ -980,7 +1003,7 @@ body:not(.home-page) .member-store-page .ai-store-record-dialog {
     animation: none;
   }
 
-  .member-store-page.is-entered .member-store-hero-visual img,
+  .member-store-page.is-entered .member-store-hero-fallback,
   .member-store-page.has-reveal-motion .ai-store-product-group.is-in-view .ai-store-product,
   .member-store-page .ai-store-redeem-modal:target .modal-backdrop,
   .member-store-page .ai-store-redeem-modal:target .ai-store-redeem-detail > div,

@@ -7,7 +7,103 @@
   const productGroups = Array.from(document.querySelectorAll("[data-ai-store-group]"));
   const productCards = Array.from(document.querySelectorAll("[data-ai-store-product]"));
   const particlesContainer = document.querySelector("[data-member-store-particles]");
+  const heroPAG = document.querySelector("[data-member-store-pag]");
+  const heroPAGCanvas = heroPAG?.querySelector("[data-member-store-pag-canvas]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const LIBPAG_VERSION = "4.5.85";
+  const LIBPAG_BASE_URL = `https://cdn.jsdelivr.net/npm/libpag@${LIBPAG_VERSION}/lib/`;
+  let heroPAGView = null;
+  let heroPAGFile = null;
+  let heroPAGInitPromise = null;
+  let heroIsVisible = true;
+
+  const shouldPlayHeroPAG = () => !reduceMotion && !document.hidden && heroIsVisible;
+
+  const initHeroPAG = () => {
+    if (!heroPAG || !heroPAGCanvas || reduceMotion) return Promise.resolve();
+    if (heroPAGInitPromise) return heroPAGInitPromise;
+
+    heroPAG.dataset.pagState = "loading";
+    heroPAGInitPromise = Promise.all([
+      import(`${LIBPAG_BASE_URL}libpag.esm.js`).then(({ PAGInit }) => PAGInit({
+        locateFile: (file) => `${LIBPAG_BASE_URL}${file}`
+      })),
+      fetch(new URL(heroPAG.dataset.pagSrc, document.baseURI))
+    ])
+      .then(async ([PAG, response]) => {
+        if (!response.ok) throw new Error(`PAG 文件加载失败（HTTP ${response.status}）`);
+
+        heroPAGFile = await PAG.PAGFile.load(await response.arrayBuffer());
+        heroPAGCanvas.width = heroPAGFile.width();
+        heroPAGCanvas.height = heroPAGFile.height();
+        heroPAGView = await PAG.PAGView.init(heroPAGFile, heroPAGCanvas);
+        if (!heroPAGView) throw new Error("PAGView 初始化失败");
+
+        heroPAGView.setRepeatCount(0);
+        heroPAGView.setMaxFrameRate(30);
+        heroPAG.dataset.pagState = "ready";
+        if (shouldPlayHeroPAG()) await heroPAGView.play();
+      })
+      .catch((error) => {
+        heroPAGView?.destroy();
+        heroPAGView = null;
+        heroPAGFile?.destroy();
+        heroPAGFile = null;
+        heroPAG.dataset.pagState = "fallback";
+        console.warn("商城 PAG 首图加载失败，已回退到静态背景。", error);
+      });
+
+    return heroPAGInitPromise;
+  };
+
+  const syncHeroPAGPlayback = () => {
+    if (!heroPAG || reduceMotion) return;
+
+    if (!shouldPlayHeroPAG()) {
+      void heroPAGView?.pause().catch((error) => {
+        console.warn("商城 PAG 首图暂停失败。", error);
+      });
+      return;
+    }
+
+    if (!heroPAGView) {
+      void initHeroPAG();
+      return;
+    }
+
+    void heroPAGView.play().catch((error) => {
+      console.warn("商城 PAG 首图恢复失败。", error);
+    });
+  };
+
+  if (heroPAG) {
+    if (reduceMotion) {
+      heroPAG.dataset.pagState = "reduced-motion";
+    } else if ("IntersectionObserver" in window) {
+      const heroPAGObserver = new IntersectionObserver(([entry]) => {
+        heroIsVisible = entry.isIntersecting;
+        syncHeroPAGPlayback();
+      }, { threshold: 0.01 });
+      heroPAGObserver.observe(heroPAG);
+    } else {
+      syncHeroPAGPlayback();
+    }
+
+    document.addEventListener("visibilitychange", syncHeroPAGPlayback);
+    window.addEventListener("pagehide", (event) => {
+      if (event.persisted) {
+        void heroPAGView?.pause();
+        return;
+      }
+      heroPAGView?.destroy();
+      heroPAGView = null;
+      heroPAGFile?.destroy();
+      heroPAGFile = null;
+    }, { once: true });
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) syncHeroPAGPlayback();
+    });
+  }
 
   if (page && !reduceMotion) {
     page.classList.add("is-motion-ready", "has-reveal-motion");
